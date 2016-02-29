@@ -3,7 +3,6 @@ layout: page
 title: About Me
 tags: [about, Jekyll, theme, responsive]
 modified: 2015-08-01
-comments: true
 image:
   feature: sample-image-2.jpg
   credit: WeGraphics

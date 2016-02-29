@@ -26,7 +26,7 @@ defaults:
       type: "pages"
     values:
       layout: "page"
-      comments: true
+      comments: false
       
 permalink:   pretty #/:categories/:title/
 markdown:    kramdown
