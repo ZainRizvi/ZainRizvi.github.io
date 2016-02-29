@@ -1,7 +1,7 @@
 # Site navigation links
 
-- title: Blog Posts
-  url: /posts/
+- title: Blog
+  url: /blog/
 
 - title: About
   url: /about/
