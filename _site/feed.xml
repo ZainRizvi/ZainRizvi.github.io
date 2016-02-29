@@ -1,0 +1,430 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>Zain Rizvi</title>
+
+<meta name="keywords" content="">
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="Zain Rizvi">
+
+
+
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Zain Rizvi">
+
+<meta property="og:url" content="/feed.xml">
+<meta property="og:site_name" content="Zain Rizvi">
+
+<meta property="og:image" content="/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="/feed.xml">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
+
+</head>
+
+<body class="page">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="/">Zain Rizvi</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="/about/" >About</a></li>
+				
+				    
+				    <li><a href="/posts/" >Blog Posts</a></li>
+				
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="/images/bio-photo.png" class="bio-photo" alt="Zain Rizvi bio photo">
+
+
+  <h3 itemprop="name">Zain Rizvi</h3>
+  <p>Programmer, experimenter, life-long student. Working at Microsoft in the Azure Web Apps team</p>
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="http://github.com/ZainRizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  <a href="http://stackoverflow.com/users/21539/zain-rizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> Stackoverflow</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</div>
+
+  </div>
+  <article class="page">
+    <h1></h1>
+    <div class="article-wrap">
+      <?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+<title type="text">Zain Rizvi</title>
+<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2016-02-29T00:29:54-08:00</updated>
+<id>/</id>
+<author>
+  <name>Zain Rizvi</name>
+  <uri>/</uri>
+  
+</author>
+
+
+<entry>
+  <title type="html"><![CDATA[Deploy statically generated sites to Azure Web Apps]]></title>
+  <link rel="alternate" type="text/html" href="/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps/" />
+  <id>/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps</id>
+  <published>2015-10-13T00:00:00-07:00</published>
+  <updated>2015-10-13T00:00:00-07:00</updated>
+  <author>
+    <name>Zain Rizvi</name>
+    <uri></uri>
+    
+  </author>
+  <content type="html">
+    &lt;p&gt;There are a lot of awesome static site generators out there.  It’s not always easy to figure out how to setup continuous deployment for them though.&lt;/p&gt;
+
+&lt;p&gt;This post will describe how to deploy a statically generated site using yeoman angular to Azure Web Apps, but these steps can be applied to deploy any statically generated site to Azure Web Apps.&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;deploying-the-initial-site&quot;&gt;Deploying the initial site&lt;/h4&gt;
+&lt;p&gt;I tried using yeoman’s gulp-angular generator.  I made a quick site following their &lt;a href=&quot;http://yeoman.io/codelab/index.html&quot;&gt;tutorial&lt;/a&gt;, setup &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/&quot;&gt;continuous deployment via github&lt;/a&gt;, navigated to the newly deployed site and I saw…huh?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015/10/01-No-permission-to-site.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;What’s going on here?&lt;/p&gt;
+
+&lt;h4 id=&quot;using-kudu-for-debugging&quot;&gt;Using Kudu for debugging&lt;/h4&gt;
+&lt;p&gt;Luckily all Azure Web Apps come with a handy &lt;a href=&quot;https://github.com/projectkudu/kudu/wiki&quot;&gt;Kudu site&lt;/a&gt; that gives you command line access to your site. You can get to it at &lt;code class=&quot;highlighter-rouge&quot;&gt;https://&amp;lt;yourSiteName&amp;gt;.scm.azurewebsites.net\DebugConsole&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015/10/02-Kudu-console.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;I navigated to the site’s &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot&lt;/code&gt; folder and saw all the content was there.  And that’s when I face-palmed and realized &lt;em&gt;that statically generated site is saved to the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist&lt;/code&gt; folder, and that’s not even part of the deployment!!!&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Luckily, that’s easy enough to fix.&lt;/p&gt;
+
+&lt;h4 id=&quot;check-the-static-site-into-the-source-code&quot;&gt;Check the static site into the source code&lt;/h4&gt;
+&lt;p&gt;First issue was to include the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist&lt;/code&gt; folder in the source code. You just need to exclude the &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist&lt;/code&gt; line from the .gitignore file for that. &lt;a href=&quot;https://github.com/ZainRizvi/YoAngularOnAzureWebApps/commit/3fc3040eb65699295e85c151f339dc30aae6c971#diff-a084b794bc0759e7a6b77810e01874f2&quot;&gt;Easy enough&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now when you deploy your site to Azure Web Apps your site exists in the new &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\dist&lt;/code&gt; folder!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015/10/03-Dist-folder-appears.png&quot; alt=&quot;alt&quot; /&gt;
+(Fyi, with &lt;code class=&quot;highlighter-rouge&quot;&gt;yo angular&lt;/code&gt; you have to run &lt;code class=&quot;highlighter-rouge&quot;&gt;grunt&lt;/code&gt; once first before you check in your code to actually generate the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist&lt;/code&gt; folder).&lt;/p&gt;
+
+&lt;p&gt;But your site still doesn’t work…because Azure Web Apps is expecting the site’s content to be in &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Darn.&lt;/p&gt;
+
+&lt;h4 id=&quot;custom-deployment-settings-to-the-rescue&quot;&gt;Custom deployment settings to the rescue!&lt;/h4&gt;
+
+&lt;p&gt;Add a &lt;code class=&quot;highlighter-rouge&quot;&gt;.deployment&lt;/code&gt; &lt;a href=&quot;https://github.com/ZainRizvi/YoAngularOnAzureWebApps/commit/9be9a4b503a86678d85e3a4287fa26cce1f175b7&quot;&gt;file&lt;/a&gt; to the root folder of your code and paste the below inside:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[config]
+project = dist
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This will tell Azure Web Sits that the root folder for your site is the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist&lt;/code&gt; folder. Now your sites will be hosted from the &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\dist&lt;/code&gt; folder. If your static site generator puts your site in some other folder, set project to that folder’s name.&lt;/p&gt;
+
+&lt;p&gt;Check in the file, deploy it to Azure Web Apps, and see the magic happen.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015/10/04-Working-site.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can find a full copy of the sample code here on Github, with check-ins corresponding to each step of this tutorial: https://github.com/ZainRizvi/YoAngularOnAzureWebApps&lt;/p&gt;
+
+&lt;p&gt;You can see the final working site here: http://yoangularonazurewebapps.azurewebsites.net&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps/&quot;&gt;Deploy statically generated sites to Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on October 13, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
+  <title type="html"><![CDATA[Backup just the Important Parts of your Site with Azure Web Apps]]></title>
+  <link rel="alternate" type="text/html" href="/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/" />
+  <id>/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps</id>
+  <published>2015-06-05T00:00:00-07:00</published>
+  <updated>2015-06-05T00:00:00-07:00</updated>
+  <author>
+    <name>Zain Rizvi</name>
+    <uri></uri>
+    
+  </author>
+  <content type="html">
+    &lt;p&gt;Introducting a way to backup just the parts of your website that matter most.&lt;/p&gt;
+
+&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
+
+&lt;p&gt;Azure Web Apps provides powerful &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/&quot;&gt;backup/restore functionality&lt;/a&gt;. (Because disasters can &lt;a href=&quot;http://blog.codinghorror.com/international-backup-awareness-day/&quot;&gt;happen to anyone&lt;/a&gt;)&lt;/p&gt;
+
+&lt;p&gt;However, sometimes you don’t want to backup everything on your site, especially if you backup your site regularly, or if your site has over 10GB of content (that’s the max amount you can backup at a time).&lt;/p&gt;
+
+&lt;p&gt;For example, you probably don’t want to back up the log files. Or if you &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/#configure-automated-backups&quot;&gt;setup weekly backups&lt;/a&gt; you won’t want to fill up your storage account with static content that never changes like old blog posts or images.&lt;/p&gt;
+
+&lt;p&gt;Partial backups will let you choose exactly which files you want to back up.&lt;/p&gt;
+
+&lt;h1 id=&quot;specify-the-files-you-dont-want-to-backup&quot;&gt;Specify the files you don’t want to backup&lt;/h1&gt;
+
+&lt;p&gt;You can create a list of files and folders to exclude from the backup.&lt;/p&gt;
+
+&lt;p&gt;You save the list as a text file called _backup.filter in the wwwroot folder of your site. An easy way to access this is through the &lt;a href=&quot;https://github.com/projectkudu/kudu/wiki/Kudu-console&quot;&gt;Kudu Console&lt;/a&gt; at &lt;code class=&quot;highlighter-rouge&quot;&gt;http://{yoursite}.scm.azurewebsites.net/DebugConsole&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The instructions below will be using the Kudu Console to create the _backup.filter file, but you can use your favorite deployment method to put the file there.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-to-do&quot;&gt;What to do&lt;/h2&gt;
+
+&lt;p&gt;I’ve got a site that contains log files and static images from past years that are never going to change.&lt;/p&gt;
+
+&lt;p&gt;I already have a full backup of the site which includes the old images. Now I want to backup the site every day, but I don’t want to pay for storing log files or the static image files that never change.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015/06/Logs-1.PNG&quot; alt=&quot;Log files directory&quot; /&gt; &lt;img src=&quot;/images/2015/06/Images-2.PNG&quot; alt=&quot;Images directory&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The below steps show how I’d exclude those files from the backup.&lt;/p&gt;
+
+&lt;h3 id=&quot;identify-the-files-and-folders-you-dont-want-to-backup&quot;&gt;Identify the files and folders you don’t want to backup&lt;/h3&gt;
+
+&lt;p&gt;This is easy. I already know I don’t want to backup any log files, so I want to exclude &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\Logs&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;There’s another log file folder that all Azure Web Apps have at &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\LogFiles&lt;/code&gt;. Let’s exclude that too.&lt;/p&gt;
+
+&lt;p&gt;I also don’t want to backup the images from previous years over and over again. So lets add &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\Images\2013&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\Images\2014&lt;/code&gt; to the list as well.&lt;/p&gt;
+
+&lt;p&gt;Finally, let’s not backup the brand.png file in the Images folder either, just to show we can blacklist individual files as well. It’s located at &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\Images\brand.png&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This gives us the following folders that we don’t want to backup:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;D:\home\site\wwwroot\Logs&lt;/li&gt;
+  &lt;li&gt;D:\home\LogFiles&lt;/li&gt;
+  &lt;li&gt;D:\home\site\wwwroot\Images\2013&lt;/li&gt;
+  &lt;li&gt;D:\home\site\wwwroot\Images\2014&lt;/li&gt;
+  &lt;li&gt;D:\home\site\wwwroot\Images\brand.png&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;create-the-exclusion-list&quot;&gt;Create the exclusion list&lt;/h3&gt;
+
+&lt;p&gt;You save the blacklist of files and folders that you don’t want to backup in  a special file called _backup.filter.  Create the file and place it at &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\_backup.filter&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;List all the files and folders you don’t want to backup in the _backup.filter file. You add the full path relative to D:\home of the folder or file that you want to exclude from the backup, one path per line.&lt;/p&gt;
+
+&lt;p&gt;So for my site, &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\Logs&lt;/code&gt; becomes &lt;code class=&quot;highlighter-rouge&quot;&gt;\site\wwwroot\Logs&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\LogFiles&lt;/code&gt; becomes &lt;code class=&quot;highlighter-rouge&quot;&gt;\LogFiles&lt;/code&gt;, so on and so forth, resulting in the following contents for my _backup.filter:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\site\wwwroot\Logs
+\LogFiles
+\site\wwwroot\Images\2013
+\site\wwwroot\Images\2014
+\site\wwwroot\Images\brand.png
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Note the starting &lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt; at the beginning of each line. That’s important.&lt;/p&gt;
+
+&lt;h1 id=&quot;run-a-backup&quot;&gt;Run a backup&lt;/h1&gt;
+
+&lt;p&gt;Now you can run backups the same way you would normally do it. &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/#create-a-manual-backup&quot;&gt;Manually&lt;/a&gt;, &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/#configure-automated-backups&quot;&gt;automatically&lt;/a&gt;, either way is fine.&lt;/p&gt;
+
+&lt;p&gt;Any files and folders that fall under the filters listed in the _backup.filter will be excluded from the backup. This means now the log files and the 2013 and 2014 image files will no longer be backed up.&lt;/p&gt;
+
+&lt;h1 id=&quot;restoring-your-backed-up-site&quot;&gt;Restoring your backed up site&lt;/h1&gt;
+
+&lt;p&gt;You restore partial backups of your site the same way you would &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-restore/&quot;&gt;restore a regular backup&lt;/a&gt;. It’ll do the right thing.&lt;/p&gt;
+
+&lt;h4 id=&quot;the-technical-details&quot;&gt;The technical details&lt;/h4&gt;
+
+&lt;p&gt;With full (non-partial) backups normally all content on the site is replaced with whatever is in the backup.  If a file is on the site but not in the backup it gets deleted.&lt;/p&gt;
+
+&lt;p&gt;But when restoring partial backups though any content that is located in one of the blacklisted folders (like &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\images\2014&lt;/code&gt; for my site) will be left as is. And if individual files were black listed then they’ll also be left alone during the restore.&lt;/p&gt;
+
+&lt;h1 id=&quot;best-practices&quot;&gt;Best Practices&lt;/h1&gt;
+
+&lt;p&gt;What do you do when disaster strikes and you have to restore your site?  Make sure you’re prepared beforehand.&lt;/p&gt;
+
+&lt;p&gt;Yeah, you have partial backups, but take at least one full backup of the site first so that you have all your site’s contents backed up (this is worst case scenario planning).  Then when you’re restoring your backups you can first restore the full backup of the site, and then restore the latest partial backup on top of it.&lt;/p&gt;
+
+&lt;p&gt;Here’s why: it lets you use &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/&quot;&gt;Deployment Slots&lt;/a&gt; to test your restored site. You can even test the restore process without ever touching your production site. And testing your restore process is a &lt;a href=&quot;http://axcient.com/blog/one-thing-can-derail-disaster-recovery-plan/&quot;&gt;Very Good Thing&lt;/a&gt;.  You never know when you might run into some subtle gotcha like I did when I tried restoring my blog and end up losing half your content.&lt;/p&gt;
+
+&lt;h2 id=&quot;my-horror-story&quot;&gt;My horror story&lt;/h2&gt;
+
+&lt;p&gt;My blog is powered by the &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost&lt;/a&gt; blogging platform.  Like a responsible dev I created a backup of my site and everything was great. Then one day I got a message saying that there was a new version of Ghost available and I could upgrade my blog to it. Great!&lt;/p&gt;
+
+&lt;p&gt;I created one more backup of my site to backup the latest blog posts, and proceeded to upgrade Ghost.&lt;/p&gt;
+
+&lt;p&gt;On my production site.&lt;/p&gt;
+
+&lt;p&gt;Bad mistake.&lt;/p&gt;
+
+&lt;p&gt;Something went wrong with the upgrade, my home screen just showed a blank screen.  “No problem” I thought, “I’ll simply restore the backup I just took.”&lt;/p&gt;
+
+&lt;p&gt;I restored the upgrade, saw everything come back…except the blog posts.&lt;/p&gt;
+
+&lt;p&gt;WHAT???&lt;/p&gt;
+
+&lt;p&gt;Turns out, in the &lt;a href=&quot;http://support.ghost.org/how-to-upgrade/&quot;&gt;Ghost upgrade notes&lt;/a&gt; there’s this warning:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2015/06/Ghost--upgrade-warning.PNG&quot; alt=&quot;You can take a copy of your database from content/data but you  should not do this while Ghost is runing. Please stop it first&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you try to backup the data while Ghost is running…the data doesn’t actually get backed up.&lt;/p&gt;
+
+&lt;p&gt;Bummer.&lt;/p&gt;
+
+&lt;p&gt;If I had tried the restore on a test slot first I would have seen this issue and not lost all my posts.&lt;/p&gt;
+
+&lt;p&gt;Such is life. It can happen to &lt;a href=&quot;http://blog.codinghorror.com/international-backup-awareness-day/&quot;&gt;the best of us&lt;/a&gt;.&lt;/p&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/&quot;&gt;Backup just the Important Parts of your Site with Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on June 05, 2015.&lt;/p&gt;
+  </content>
+</entry>
+
+</feed>
+
+      
+        <hr />
+        <div class="social-share">
+  <h4>Share on</h4>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=/feed.xml" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=/feed.xml" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+    <li>
+      <a href="https://plus.google.com/share?url=/feed.xml" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+    </li>
+  </ul>
+</div><!-- /.social-share -->
+      
+    </div><!-- /.article-wrap -->
+    
+      <section id="disqus_thread"></section><!-- /#disqus_thread -->
+    
+  </article>
+</div><!-- /#index -->
+
+<div class="footer-wrap">
+  <footer>
+    
+
+<span>&copy; 2016 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'zainriz'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+</body>
+</html>
