@@ -1,4 +1,4 @@
----
+
 layout: page
 title: Theme Setup
 modified: 2016-01-19
@@ -7,7 +7,7 @@ image:
   feature: sample-image-3.jpg
   credit: WeGraphics
   creditlink: http://wegraphics.net/downloads/free-ultimate-blurred-background-pack/
----
+
 
 {% include _toc.html %}
 
@@ -17,7 +17,7 @@ Minimal Mistakes now requires [Jekyll](http://jekyllrb.com/) 3.0. Make sure to r
 
 If you are creating a new Jekyll site using Minimal Mistakes follow these steps:
 
-1. Fork the [Minimal Mistakes repo](http://github.com/mmistakes/minimal-mistakes/fork).
+1. Fork the [Minimal Mistakes repo]().
 2. Clone the repo you just forked and rename it.
 3. [Install Bundler](http://bundler.io) `gem install bundler` and Run `bundle install` to install all dependencies (Jekyll, [Jekyll-Sitemap](https://github.com/jekyll/jekyll-sitemap), [Octopress](https://github.com/octopress/octopress), etc)
 4. Update `config.yml`, add navigation, and replace demo posts and pages with your own. Full details below.
