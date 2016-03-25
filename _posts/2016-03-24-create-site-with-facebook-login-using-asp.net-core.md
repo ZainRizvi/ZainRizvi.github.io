@@ -138,6 +138,8 @@ app.UseFacebookAuthentication(options =>
 });
 ```
 
+(Fyi, the team managing the Facebook package has vanished into the netherwebs, but you can find a [cached copy of their documentation here] (http://web.archive.org/web/20150317045522/http://facebooksdk.net/docs/web/getting-started/))
+
 Now if we redeploy our site and try to register using Facebook we'll see the following page:
 
 ![Login window](/images/2016/03/Register-user-with-email.png)
