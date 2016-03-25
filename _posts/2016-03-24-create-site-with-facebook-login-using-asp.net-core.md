@@ -93,6 +93,8 @@ var email = info.ExternalPrincipal.FindFirstValue(ClaimTypes.Email);
 
 So we're expecting the email address claim ([claims](http://dotnetcodr.com/2013/02/11/introduction-to-claims-based-security-in-net4-5-with-c-part-1/) are how we identify information about users who are trying to log in) but we're not getting it. If you inspect that code in the debugger you can verify that there is no email claim.
 
+## Getting the email address from Facebook
+
 Turns out Facebook doesn't send that to us when the user logs in. I don't know why. But we can explicitly ask Facebook for this information.  To do that we need to make an http request to [Facebook's Graph Api](https://developers.facebook.com/docs/graph-api). The Graph Api lets us access all the information about the user that we had earlier requested access to.
 
 The Graph Api is a REST Api, but in order to avoid the complexities of using it I'll just use the Facebook nuget package. Unfortunately this package does not work on the dnxcore environment, meaning we can only run it on Windows based servers, but you can create your own Facebook Graph Api client if you want to run your site using dnxcore.

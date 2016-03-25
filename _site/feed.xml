@@ -144,7 +144,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2016-03-24T20:53:12-07:00</updated>
+<updated>2016-03-24T20:57:29-07:00</updated>
 <id>/</id>
 <author>
   <name>Zain Rizvi</name>
@@ -263,6 +263,8 @@
 &lt;/div&gt;
 
 &lt;p&gt;So we’re expecting the email address claim (&lt;a href=&quot;http://dotnetcodr.com/2013/02/11/introduction-to-claims-based-security-in-net4-5-with-c-part-1/&quot;&gt;claims&lt;/a&gt; are how we identify information about users who are trying to log in) but we’re not getting it. If you inspect that code in the debugger you can verify that there is no email claim.&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-the-email-address-from-facebook&quot;&gt;Getting the email address from Facebook&lt;/h2&gt;
 
 &lt;p&gt;Turns out Facebook doesn’t send that to us when the user logs in. I don’t know why. But we can explicitly ask Facebook for this information.  To do that we need to make an http request to &lt;a href=&quot;https://developers.facebook.com/docs/graph-api&quot;&gt;Facebook’s Graph Api&lt;/a&gt;. The Graph Api lets us access all the information about the user that we had earlier requested access to.&lt;/p&gt;
 
