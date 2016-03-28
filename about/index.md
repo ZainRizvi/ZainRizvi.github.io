@@ -4,7 +4,7 @@ title: About Me
 tags: [about, Jekyll, theme, responsive]
 modified: 2015-08-01
 image:
-  feature: sample-image-2.jpg
+  feature: sample-image-1.jpg
 ---
 
 I'm Zain Rizvi, a software developer in the [Microsoft Azure Web Apps](http://azure.microsoft.com/en-us/services/websites/) team (formerly known as Azure Websites).
