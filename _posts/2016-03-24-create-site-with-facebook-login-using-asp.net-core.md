@@ -1,5 +1,6 @@
 ---
-title: "Create a site using Facebook authentication on ASP.NET Core"
+title: "Let customers use Facebook authentication to log into your ASP.NET Core site"
+excerpt: "How to setup Facebook authentication in a way that we get access to the person's basic information and their email address when they log in."
 ---
 
 The goal of this post is to setup Facebook authentication in a way that we get access to the person's basic information and their email address when they log in.
@@ -8,7 +9,19 @@ Setting up auth from an external service is hard.  At least it is if the steps a
 
 These instructions assume you've got Visual Studio 2015 RC1 installed. I expect these steps should keep working after VS RTMs as well.
 
-# Getting started
+<section id="table-of-contents" class="toc">
+  <header>
+    <h3>Overview</h3>
+  </header>
+<div id="drawer" markdown="1">
+*  Auto generated table of contents
+{:toc}
+</div>
+</section><!-- /#table-of-contents -->
+
+<hr/>
+
+# Getting started 
 
 The [official docs](http://docs.asp.net/en/latest/security/authentication/sociallogins.html) contain good instructions, but they're not quite complete.  Let's start off by following them and then we'll move forward from there:
 
@@ -26,9 +39,7 @@ The [official docs](http://docs.asp.net/en/latest/security/authentication/social
   
 Herea are the two changes you'll have made to your project:  [adding the Facebook middleware](https://github.com/ZainRizvi/ASP.NET-Core-FacebookAuth/commit/c2472e966c0d24262280691b53ae039ba341eb51) and [adding the reference](https://github.com/ZainRizvi/ASP.NET-Core-FacebookAuth/commit/64d0f89e6644561b154e869c59b19da4f9072534)
 
-# Now for the custom stuff
-
-## Setting up the database 
+# Setting up the database 
 
 If you run your site and try to login with your Facebook account you may notice the following error:
 
@@ -79,7 +90,7 @@ Now when the user tries to register using Facebook auth they'll see something li
 
 When they click Ok you'll have access to read their email address!
 
-# Actually reading the email address
+## Actually reading the email address
 
 Great, we can access the email address, but when we try to register we still get back to the same page as before with a blank email:
 

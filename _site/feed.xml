@@ -144,7 +144,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2016-03-27T20:03:51-07:00</updated>
+<updated>2016-03-28T09:45:18-07:00</updated>
 <id>/</id>
 <author>
   <name>Zain Rizvi</name>
@@ -154,7 +154,7 @@
 
 
 <entry>
-  <title type="html"><![CDATA[Create a site using Facebook authentication on ASP.NET Core]]></title>
+  <title type="html"><![CDATA[Let customers use Facebook authentication to log into your ASP.NET Core site]]></title>
   <link rel="alternate" type="text/html" href="/2016/03/24/create-site-with-facebook-login-using-asp.net-core/" />
   <id>/2016/03/24/create-site-with-facebook-login-using-asp.net-core</id>
   <published>2016-03-24T00:00:00-07:00</published>
@@ -170,6 +170,30 @@
 &lt;p&gt;Setting up auth from an external service is hard.  At least it is if the steps aren’t really documented.  I’m sharing the steps I followed to get Facebook auth working for a brand new ASP.NET Core site.&lt;/p&gt;
 
 &lt;p&gt;These instructions assume you’ve got Visual Studio 2015 RC1 installed. I expect these steps should keep working after VS RTMs as well.&lt;/p&gt;
+
+&lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
+  &lt;header&gt;
+    &lt;h3&gt;Overview&lt;/h3&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#getting-started&quot; id=&quot;markdown-toc-getting-started&quot;&gt;Getting started&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#setting-up-the-database&quot; id=&quot;markdown-toc-setting-up-the-database&quot;&gt;Setting up the database&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#getting-access-to-the-users-email&quot; id=&quot;markdown-toc-getting-access-to-the-users-email&quot;&gt;Getting access to the User’s Email&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#actually-reading-the-email-address&quot; id=&quot;markdown-toc-actually-reading-the-email-address&quot;&gt;Actually reading the email address&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#getting-the-email-address-from-facebook&quot; id=&quot;markdown-toc-getting-the-email-address-from-facebook&quot;&gt;Getting the email address from Facebook&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#getting-the-user-name-from-facebook-and-getting-rid-of-the-extra-registration-page&quot; id=&quot;markdown-toc-getting-the-user-name-from-facebook-and-getting-rid-of-the-extra-registration-page&quot;&gt;Getting the User Name from Facebook and getting rid of the extra Registration page&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#poking-around-the-database&quot; id=&quot;markdown-toc-poking-around-the-database&quot;&gt;Poking around the database&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-end&quot; id=&quot;markdown-toc-the-end&quot;&gt;The End&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;!-- /#table-of-contents --&gt;
+
+&lt;hr /&gt;
 
 &lt;h1 id=&quot;getting-started&quot;&gt;Getting started&lt;/h1&gt;
 
@@ -197,9 +221,7 @@
 
 &lt;p&gt;Herea are the two changes you’ll have made to your project:  &lt;a href=&quot;https://github.com/ZainRizvi/ASP.NET-Core-FacebookAuth/commit/c2472e966c0d24262280691b53ae039ba341eb51&quot;&gt;adding the Facebook middleware&lt;/a&gt; and &lt;a href=&quot;https://github.com/ZainRizvi/ASP.NET-Core-FacebookAuth/commit/64d0f89e6644561b154e869c59b19da4f9072534&quot;&gt;adding the reference&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&quot;now-for-the-custom-stuff&quot;&gt;Now for the custom stuff&lt;/h1&gt;
-
-&lt;h2 id=&quot;setting-up-the-database&quot;&gt;Setting up the database&lt;/h2&gt;
+&lt;h1 id=&quot;setting-up-the-database&quot;&gt;Setting up the database&lt;/h1&gt;
 
 &lt;p&gt;If you run your site and try to login with your Facebook account you may notice the following error:&lt;/p&gt;
 
@@ -250,7 +272,7 @@
 
 &lt;p&gt;When they click Ok you’ll have access to read their email address!&lt;/p&gt;
 
-&lt;h1 id=&quot;actually-reading-the-email-address&quot;&gt;Actually reading the email address&lt;/h1&gt;
+&lt;h2 id=&quot;actually-reading-the-email-address&quot;&gt;Actually reading the email address&lt;/h2&gt;
 
 &lt;p&gt;Great, we can access the email address, but when we try to register we still get back to the same page as before with a blank email:&lt;/p&gt;
 
@@ -439,7 +461,7 @@
 
 &lt;p&gt;That’s it for this post. Hope you guys were able to follow all the steps.  Shout out in the comments if you found this stuff helpful or if you run into any problems.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;/2016/03/24/create-site-with-facebook-login-using-asp.net-core/&quot;&gt;Create a site using Facebook authentication on ASP.NET Core&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on March 24, 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;/2016/03/24/create-site-with-facebook-login-using-asp.net-core/&quot;&gt;Let customers use Facebook authentication to log into your ASP.NET Core site&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on March 24, 2016.&lt;/p&gt;
   </content>
 </entry>
 

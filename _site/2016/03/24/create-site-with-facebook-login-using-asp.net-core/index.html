@@ -5,18 +5,14 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Create a site using Facebook authentication on ASP.NET Core &#8211; Zain Rizvi</title>
-<meta name="description" content="The goal of this post is to setup Facebook authentication in a way that we get access to the person’s basic information and their email address when they log in.
-
-">
+<title>Let customers use Facebook authentication to log into your ASP.NET Core site &#8211; Zain Rizvi</title>
+<meta name="description" content="How to setup Facebook authentication in a way that we get access to the person's basic information and their email address when they log in.">
 <meta name="keywords" content="">
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Create a site using Facebook authentication on ASP.NET Core">
-<meta name="twitter:description" content="The goal of this post is to setup Facebook authentication in a way that we get access to the person’s basic information and their email address when they log in.
-
-">
+<meta name="twitter:title" content="Let customers use Facebook authentication to log into your ASP.NET Core site">
+<meta name="twitter:description" content="How to setup Facebook authentication in a way that we get access to the person's basic information and their email address when they log in.">
 
 
 
@@ -26,10 +22,8 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Create a site using Facebook authentication on ASP.NET Core">
-<meta property="og:description" content="The goal of this post is to setup Facebook authentication in a way that we get access to the person’s basic information and their email address when they log in.
-
-">
+<meta property="og:title" content="Let customers use Facebook authentication to log into your ASP.NET Core site">
+<meta property="og:description" content="How to setup Facebook authentication in a way that we get access to the person's basic information and their email address when they log in.">
 <meta property="og:url" content="/2016/03/24/create-site-with-facebook-login-using-asp.net-core/">
 <meta property="og:site_name" content="Zain Rizvi">
 
@@ -181,7 +175,7 @@
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="/2016/03/24/create-site-with-facebook-login-using-asp.net-core/" rel="bookmark" title="Create a site using Facebook authentication on ASP.NET Core">Create a site using Facebook authentication on ASP.NET Core</a></h1>
+        <h1><a href="/2016/03/24/create-site-with-facebook-login-using-asp.net-core/" rel="bookmark" title="Let customers use Facebook authentication to log into your ASP.NET Core site">Let customers use Facebook authentication to log into your ASP.NET Core site</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
@@ -190,6 +184,30 @@
 <p>Setting up auth from an external service is hard.  At least it is if the steps aren’t really documented.  I’m sharing the steps I followed to get Facebook auth working for a brand new ASP.NET Core site.</p>
 
 <p>These instructions assume you’ve got Visual Studio 2015 RC1 installed. I expect these steps should keep working after VS RTMs as well.</p>
+
+<section id="table-of-contents" class="toc">
+  <header>
+    <h3>Overview</h3>
+  </header>
+<div id="drawer">
+<ul id="markdown-toc">
+  <li><a href="#getting-started" id="markdown-toc-getting-started">Getting started</a></li>
+  <li><a href="#setting-up-the-database" id="markdown-toc-setting-up-the-database">Setting up the database</a></li>
+  <li><a href="#getting-access-to-the-users-email" id="markdown-toc-getting-access-to-the-users-email">Getting access to the User’s Email</a>    <ul>
+      <li><a href="#actually-reading-the-email-address" id="markdown-toc-actually-reading-the-email-address">Actually reading the email address</a></li>
+      <li><a href="#getting-the-email-address-from-facebook" id="markdown-toc-getting-the-email-address-from-facebook">Getting the email address from Facebook</a></li>
+    </ul>
+  </li>
+  <li><a href="#getting-the-user-name-from-facebook-and-getting-rid-of-the-extra-registration-page" id="markdown-toc-getting-the-user-name-from-facebook-and-getting-rid-of-the-extra-registration-page">Getting the User Name from Facebook and getting rid of the extra Registration page</a></li>
+  <li><a href="#poking-around-the-database" id="markdown-toc-poking-around-the-database">Poking around the database</a></li>
+  <li><a href="#the-end" id="markdown-toc-the-end">The End</a></li>
+</ul>
+
+  </div>
+</section>
+<!-- /#table-of-contents -->
+
+<hr />
 
 <h1 id="getting-started">Getting started</h1>
 
@@ -217,9 +235,7 @@
 
 <p>Herea are the two changes you’ll have made to your project:  <a href="https://github.com/ZainRizvi/ASP.NET-Core-FacebookAuth/commit/c2472e966c0d24262280691b53ae039ba341eb51">adding the Facebook middleware</a> and <a href="https://github.com/ZainRizvi/ASP.NET-Core-FacebookAuth/commit/64d0f89e6644561b154e869c59b19da4f9072534">adding the reference</a></p>
 
-<h1 id="now-for-the-custom-stuff">Now for the custom stuff</h1>
-
-<h2 id="setting-up-the-database">Setting up the database</h2>
+<h1 id="setting-up-the-database">Setting up the database</h1>
 
 <p>If you run your site and try to login with your Facebook account you may notice the following error:</p>
 
@@ -270,7 +286,7 @@
 
 <p>When they click Ok you’ll have access to read their email address!</p>
 
-<h1 id="actually-reading-the-email-address">Actually reading the email address</h1>
+<h2 id="actually-reading-the-email-address">Actually reading the email address</h2>
 
 <p>Great, we can access the email address, but when we try to register we still get back to the same page as before with a blank email:</p>
 
@@ -507,7 +523,7 @@
     </li>
   </ul>
 </div><!-- /.social-share -->
-        <p class="byline"><strong>Create a site using Facebook authentication on ASP.NET Core</strong> was published on <time datetime="2016-03-24T00:00:00-07:00">March 24, 2016</time>.</p>
+        <p class="byline"><strong>Let customers use Facebook authentication to log into your ASP.NET Core site</strong> was published on <time datetime="2016-03-24T00:00:00-07:00">March 24, 2016</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
     

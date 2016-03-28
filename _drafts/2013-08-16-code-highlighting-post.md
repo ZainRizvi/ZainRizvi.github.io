@@ -118,4 +118,5 @@ end
 
 An example of a Gist embed below.
 
-#{% gist mmistakes/6589546 %}
+<!--Gists don't work without some fancy shmancy cert that you get by running "setenv.bat" -->
+#{% gist mmistakes/6589546 %} -->
