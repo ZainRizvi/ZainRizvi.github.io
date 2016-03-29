@@ -1,0 +1,9 @@
+# Site navigation links
+
+default:
+  message: Want to learn about building web apps? Sign up here and get new posts delivered straight to your inbox
+  submitText: Count me in!
+  
+codealong:
+  message: Want to learn about building web apps? Sign up here to get the latest updates delivered straight to your inbox for free
+  submitText: Count me in!

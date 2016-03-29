@@ -6,6 +6,12 @@
   {% assign author = site.data.authors[page.author] %}{% else %}{% assign author = site.owner %}
 {% endif %}
 
+{% if page.campaign %}
+  {% assign campaign = site.data.campaigns[page.campaign] %}
+{% else %}
+    {% assign campaign = site.data.campaigns["default"]  %}
+{% endif %}
+
 {% include _open-graph.html %}
 
 {% if site.owner.google.verify %}<!-- Webmaster Tools verfication -->
