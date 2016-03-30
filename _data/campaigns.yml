@@ -1,9 +1,10 @@
 # Campaign related customizations
+# Get posts by email
 
 default:
-  message: Want to learn about building web apps? Sign up here and get new posts delivered straight to your inbox
+  message: Like what you're reading? Sign up here and get new posts delivered to your inbox
   submitText: Count me in!
   
 codealong:
-  message: Want to learn about building web apps? Sign up here to get the latest updates delivered straight to your inbox for free
+  message: Want to learn more about building web apps? Sign up here to get the latest posts delivered straight to your inbox
   submitText: Count me in!
