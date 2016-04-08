@@ -269,13 +269,137 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2016-04-06T16:03:51-07:00</updated>
+<updated>2016-04-08T16:37:08-07:00</updated>
 <id>/</id>
 <author>
   <name>Zain Rizvi</name>
   <uri>/</uri>
   
 </author>
+
+
+<entry>
+  <title type="html"><![CDATA[How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps]]></title>
+  <link rel="alternate" type="text/html" href="/2016/04/07/block-default-azure-websites-domain/" />
+  <id>/2016/04/07/block-default-azure-websites-domain</id>
+  <published>2016-04-07T00:00:00-07:00</published>
+  <updated>2016-04-07T00:00:00-07:00</updated>
+  <author>
+    <name>Zain Rizvi</name>
+    <uri></uri>
+    
+  </author>
+  <content type="html">
+    &lt;p&gt;When you create a new website using &lt;a href=&quot;https://azure.microsoft.com/en-us/services/app-service/web/&quot;&gt;Azure Web Apps&lt;/a&gt; you get a default &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;sitename&amp;gt;.azurewebsites.net&lt;/code&gt; domain assigned to your site.  That’s great, but what if you add a custom host name to your site and don’t want people to be able to access your default *.azurewebsites.net domain anymore? (You paid good money for that custom domain.)  This post explains how to redirect all traffic aimed at your site’s default domain to your custom domain instead.&lt;/p&gt;
+
+&lt;p&gt;It’s really simple. You just need to add a redirect rule to your site’s web.config file.  You can do that by adding the following rewrite rule to the web.config file in your wwwroot folder.  If you don’t have a web.config file, then you can create one and just paste the text below into it, just change the host names to match your site’s host names:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+  &amp;lt;system.webServer&amp;gt;  
+    &amp;lt;rewrite&amp;gt;  
+        &amp;lt;rules&amp;gt;  
+          &amp;lt;rule name=&quot;Redirect rquests to default azure websites domain&quot; stopProcessing=&quot;true&quot;&amp;gt;
+            &amp;lt;match url=&quot;(.*)&quot; /&amp;gt;  
+            &amp;lt;conditions logicalGrouping=&quot;MatchAny&quot;&amp;gt;
+              &amp;lt;add input=&quot;{HTTP_HOST}&quot; pattern=&quot;^yoursite\.azurewebsites\.net$&quot; /&amp;gt;
+            &amp;lt;/conditions&amp;gt;
+            &amp;lt;action type=&quot;Redirect&quot; url=&quot;http://www.yoursite.com/{R:0}&quot; /&amp;gt;  
+          &amp;lt;/rule&amp;gt;  
+        &amp;lt;/rules&amp;gt;  
+    &amp;lt;/rewrite&amp;gt;  
+  &amp;lt;/system.webServer&amp;gt;  
+&amp;lt;/configuration&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Basically we’re telling IIS to take any request where the host name matches the RegEx pattern “^yoursite.azurewebsites.net$” and return an HTTP 301 response. The response will include the originally requested url, except it’ll be pointing to your custom “www.yoursite.com” domain instead.  When the user’s browser reads that 301 response and the new url, it will automatically load that new url instead. It’ll even change the address the user sees in the address bar.&lt;/p&gt;
+
+&lt;p&gt;That’s great, so how do we parse the above code exactly?  I’m not a fan of copying code unless I know exactly what it’s doing.&lt;/p&gt;
+
+&lt;p&gt;So let’s see what’s going on here:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+  &amp;lt;system.webServer&amp;gt;  
+  ...
+  &amp;lt;/system.webServer&amp;gt;  
+&amp;lt;/configuration&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;This part tells IIS that we’re modifying the web server’s configuration settings. The next section is where it starts to get tricky:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;rewrite&amp;gt;  
+    &amp;lt;rules&amp;gt; 
+    ... 
+    &amp;lt;/rules&amp;gt;  
+&amp;lt;/rewrite&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;rewrite&amp;gt;&lt;/code&gt; tag tells IIS that the elements it encloses are settings for the the &lt;a href=&quot;http://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module&quot;&gt;URL Rewrite&lt;/a&gt; module.  The &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;rules&amp;gt;&lt;/code&gt; tag lists all the rules that we want that module to follow.   In our case, we want it to follow a rule that will return a HTTP 301 redirect response to the client (the user’s web browser).&lt;/p&gt;
+
+&lt;p&gt;Now for the actual rule:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;rule name=&quot;Redirect rquests to default azure websites domain&quot; stopProcessing=&quot;true&quot;&amp;gt;
+  &amp;lt;match url=&quot;(.*)&quot; /&amp;gt;  
+  &amp;lt;conditions logicalGrouping=&quot;MatchAny&quot;&amp;gt;
+    &amp;lt;add input=&quot;{HTTP_HOST}&quot; pattern=&quot;^yoursite\.azurewebsites\.net$&quot; /&amp;gt;
+  &amp;lt;/conditions&amp;gt;
+  &amp;lt;action type=&quot;Redirect&quot; url=&quot;http://www.yoursite.com/{R:0}&quot; /&amp;gt;  
+&amp;lt;/rule&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;The “name” attribute is just for human readability. It doesn’t affect execution at all. StopProcessing=”true” tells the rewrite module that if this rule applies to the incomming request, then not to bother processing any other rules  after this one becuase they won’t matter.  In our case we only have one rule, so this tag doesn’t do anything, but it can save you some CPU if you have more rules defined.&lt;/p&gt;
+
+&lt;p&gt;Next is the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;match url=&quot;(.*)&quot; /&amp;gt;&lt;/code&gt; section. That’s a regEx pattern inside, and since this regEx covers all possible inputs, it tells IIS to apply this rule to all requests, no matter what their url is.&lt;/p&gt;
+
+&lt;p&gt;Then comes the conditions section. We set &lt;code class=&quot;highlighter-rouge&quot;&gt;logicalGrouping=&quot;MatchAny&quot;&lt;/code&gt; to tell IIS to execute the rule if any of the following conditions hold true.  Right now we only have one condition, so again it doesn’t matter, but if you had multiple conditions (for example, multiple domain names you wanted to forward to your custom domain name) then you could list them all here. Alternatively, you could set it to “MatchAll” to tell IIS to only run the action if it matches all the conditons given.&lt;/p&gt;
+
+&lt;p&gt;Here’s the condition we used:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;add input=&quot;{HTTP_HOST}&quot; pattern=&quot;^yoursite\.azurewebsites\.net$&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;It says to look at the http host and evaluate the condition as true if the host matches the given regEx pattern, which we set to your default azure domain name.&lt;/p&gt;
+
+&lt;p&gt;The last bit is the action, the meat of the whole rule:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;action type=&quot;Redirect&quot; url=&quot;http://www.yoursite.com/{R:0}&quot; /&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here we’re telling the Rewrite module what action to take (what it’s actually supposed to do) when a request matches the above rules.  The action we want is “Redirect”, which is where it’ll return the HTTP 301 to the client, and when it returns a 301 we need to tell the client what url it should be redirected to. That’s how we get to specify our desired domain name.&lt;/p&gt;
+
+&lt;p&gt;But we don’t want to send the user to the root of the domain name, so we add in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/{R:0}&lt;/code&gt; bit, which (put simply) says “Look at the orignal url we matched against in the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;match&amp;gt;&lt;/code&gt; tag, and stick that in.”  A more thorough description is that we ran a regex expression in the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;match&amp;gt;&lt;/code&gt; tag, and this &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;R:0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; returns the first RegEx group.&lt;/p&gt;
+
+&lt;p&gt;And there you have it, that’s how you can redirect all request for your default azure domain to your custom domain.&lt;/p&gt;
+
+&lt;p&gt;As a final example, here’s web.config file’s conent for my site:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+  &amp;lt;system.webServer&amp;gt;  
+    &amp;lt;rewrite&amp;gt;  
+        &amp;lt;rules&amp;gt;  
+          &amp;lt;rule name=&quot;Redirect rquests to default azure websites domain&quot; stopProcessing=&quot;true&quot;&amp;gt;
+            &amp;lt;match url=&quot;(.*)&quot; /&amp;gt;  
+            &amp;lt;conditions logicalGrouping=&quot;MatchAny&quot;&amp;gt;
+              &amp;lt;add input=&quot;{HTTP_HOST}&quot; pattern=&quot;^zainrizvi\.azurewebsites\.net$&quot; /&amp;gt;
+            &amp;lt;/conditions&amp;gt;
+            &amp;lt;action type=&quot;Redirect&quot; url=&quot;http://www.zainrizvi.io/{R:0}&quot; /&amp;gt;  
+          &amp;lt;/rule&amp;gt;  
+        &amp;lt;/rules&amp;gt;  
+    &amp;lt;/rewrite&amp;gt;  
+  &amp;lt;/system.webServer&amp;gt;  
+&amp;lt;/configuration&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+    &lt;p&gt;&lt;a href=&quot;/2016/04/07/block-default-azure-websites-domain/&quot;&gt;How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on April 07, 2016.&lt;/p&gt;
+  </content>
+</entry>
 
 
 <entry>

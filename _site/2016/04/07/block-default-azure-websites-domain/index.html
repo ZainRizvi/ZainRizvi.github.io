@@ -5,20 +5,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Backup just the Important Parts of your Site with Azure Web Apps &#8211; Zain Rizvi</title>
-<meta name="description" content="Introducting a way to backup just the parts of your website that matter most.
-
-">
-<meta name="keywords" content="">
+<title>How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps &#8211; Zain Rizvi</title>
+<meta name="description" content="What if you add a custom host name to your Azure Web App and don't want people to be able to access the default *.azurewebsites.net domain anymore?">
+<meta name="keywords" content="Tutorial">
 
 
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Backup just the Important Parts of your Site with Azure Web Apps">
-<meta name="twitter:description" content="Introducting a way to backup just the parts of your website that matter most.
-
-">
+<meta name="twitter:title" content="How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps">
+<meta name="twitter:description" content="What if you add a custom host name to your Azure Web App and don't want people to be able to access the default *.azurewebsites.net domain anymore?">
 
 
 
@@ -28,11 +24,9 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Backup just the Important Parts of your Site with Azure Web Apps">
-<meta property="og:description" content="Introducting a way to backup just the parts of your website that matter most.
-
-">
-<meta property="og:url" content="/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/">
+<meta property="og:title" content="How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps">
+<meta property="og:description" content="What if you add a custom host name to your Azure Web App and don't want people to be able to access the default *.azurewebsites.net domain anymore?">
+<meta property="og:url" content="/2016/04/07/block-default-azure-websites-domain/">
 <meta property="og:site_name" content="Zain Rizvi">
 
 <meta property="og:image" content="/images/default-thumb.png">
@@ -42,7 +36,7 @@
 
 
 
-<link rel="canonical" href="/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/">
+<link rel="canonical" href="/2016/04/07/block-default-azure-websites-domain/">
 <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -269,129 +263,115 @@
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/" rel="bookmark" title="Backup just the Important Parts of your Site with Azure Web Apps">Backup just the Important Parts of your Site with Azure Web Apps</a></h1>
+        <h1><a href="/2016/04/07/block-default-azure-websites-domain/" rel="bookmark" title="How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps">How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>Introducting a way to backup just the parts of your website that matter most.</p>
+      <p>When you create a new website using <a href="https://azure.microsoft.com/en-us/services/app-service/web/">Azure Web Apps</a> you get a default <code class="highlighter-rouge">&lt;sitename&gt;.azurewebsites.net</code> domain assigned to your site.  That’s great, but what if you add a custom host name to your site and don’t want people to be able to access your default *.azurewebsites.net domain anymore? (You paid good money for that custom domain.)  This post explains how to redirect all traffic aimed at your site’s default domain to your custom domain instead.</p>
 
-<h1 id="introduction">Introduction</h1>
+<p>It’s really simple. You just need to add a redirect rule to your site’s web.config file.  You can do that by adding the following rewrite rule to the web.config file in your wwwroot folder.  If you don’t have a web.config file, then you can create one and just paste the text below into it, just change the host names to match your site’s host names:</p>
 
-<p>Azure Web Apps provides powerful <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/">backup/restore functionality</a>. (Because disasters can <a href="http://blog.codinghorror.com/international-backup-awareness-day/">happen to anyone</a>)</p>
-
-<p>However, sometimes you don’t want to backup everything on your site, especially if you backup your site regularly, or if your site has over 10GB of content (that’s the max amount you can backup at a time).</p>
-
-<p>For example, you probably don’t want to back up the log files. Or if you <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/#configure-automated-backups">setup weekly backups</a> you won’t want to fill up your storage account with static content that never changes like old blog posts or images.</p>
-
-<p>Partial backups will let you choose exactly which files you want to back up.</p>
-
-<h1 id="specify-the-files-you-dont-want-to-backup">Specify the files you don’t want to backup</h1>
-
-<p>You can create a list of files and folders to exclude from the backup.</p>
-
-<p>You save the list as a text file called _backup.filter in the wwwroot folder of your site. An easy way to access this is through the <a href="https://github.com/projectkudu/kudu/wiki/Kudu-console">Kudu Console</a> at <code class="highlighter-rouge">http://{yoursite}.scm.azurewebsites.net/DebugConsole</code>.</p>
-
-<p>The instructions below will be using the Kudu Console to create the _backup.filter file, but you can use your favorite deployment method to put the file there.</p>
-
-<h2 id="what-to-do">What to do</h2>
-
-<p>I’ve got a site that contains log files and static images from past years that are never going to change.</p>
-
-<p>I already have a full backup of the site which includes the old images. Now I want to backup the site every day, but I don’t want to pay for storing log files or the static image files that never change.</p>
-
-<p><img src="/images/2015/06/Logs-1.PNG" alt="Log files directory" /> <img src="/images/2015/06/Images-2.PNG" alt="Images directory" /></p>
-
-<p>The below steps show how I’d exclude those files from the backup.</p>
-
-<h3 id="identify-the-files-and-folders-you-dont-want-to-backup">Identify the files and folders you don’t want to backup</h3>
-
-<p>This is easy. I already know I don’t want to backup any log files, so I want to exclude <code class="highlighter-rouge">D:\home\site\wwwroot\Logs</code>.</p>
-
-<p>There’s another log file folder that all Azure Web Apps have at <code class="highlighter-rouge">D:\home\LogFiles</code>. Let’s exclude that too.</p>
-
-<p>I also don’t want to backup the images from previous years over and over again. So lets add <code class="highlighter-rouge">D:\home\site\wwwroot\Images\2013</code> and <code class="highlighter-rouge">D:\home\site\wwwroot\Images\2014</code> to the list as well.</p>
-
-<p>Finally, let’s not backup the brand.png file in the Images folder either, just to show we can blacklist individual files as well. It’s located at <code class="highlighter-rouge">D:\home\site\wwwroot\Images\brand.png</code></p>
-
-<p>This gives us the following folders that we don’t want to backup:</p>
-
-<ul>
-  <li>D:\home\site\wwwroot\Logs</li>
-  <li>D:\home\LogFiles</li>
-  <li>D:\home\site\wwwroot\Images\2013</li>
-  <li>D:\home\site\wwwroot\Images\2014</li>
-  <li>D:\home\site\wwwroot\Images\brand.png</li>
-</ul>
-
-<h3 id="create-the-exclusion-list">Create the exclusion list</h3>
-
-<p>You save the blacklist of files and folders that you don’t want to backup in  a special file called _backup.filter.  Create the file and place it at <code class="highlighter-rouge">D:\home\site\wwwroot\_backup.filter</code>.</p>
-
-<p>List all the files and folders you don’t want to backup in the _backup.filter file. You add the full path relative to D:\home of the folder or file that you want to exclude from the backup, one path per line.</p>
-
-<p>So for my site, <code class="highlighter-rouge">D:\home\site\wwwroot\Logs</code> becomes <code class="highlighter-rouge">\site\wwwroot\Logs</code>, <code class="highlighter-rouge">D:\home\LogFiles</code> becomes <code class="highlighter-rouge">\LogFiles</code>, so on and so forth, resulting in the following contents for my _backup.filter:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>\site\wwwroot\Logs
-\LogFiles
-\site\wwwroot\Images\2013
-\site\wwwroot\Images\2014
-\site\wwwroot\Images\brand.png
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;configuration&gt;
+  &lt;system.webServer&gt;  
+    &lt;rewrite&gt;  
+        &lt;rules&gt;  
+          &lt;rule name="Redirect rquests to default azure websites domain" stopProcessing="true"&gt;
+            &lt;match url="(.*)" /&gt;  
+            &lt;conditions logicalGrouping="MatchAny"&gt;
+              &lt;add input="{HTTP_HOST}" pattern="^yoursite\.azurewebsites\.net$" /&gt;
+            &lt;/conditions&gt;
+            &lt;action type="Redirect" url="http://www.yoursite.com/{R:0}" /&gt;  
+          &lt;/rule&gt;  
+        &lt;/rules&gt;  
+    &lt;/rewrite&gt;  
+  &lt;/system.webServer&gt;  
+&lt;/configuration&gt;  
 </code></pre>
 </div>
 
-<p>Note the starting <code class="highlighter-rouge">\</code> at the beginning of each line. That’s important.</p>
+<p>Basically we’re telling IIS to take any request where the host name matches the RegEx pattern “^yoursite.azurewebsites.net$” and return an HTTP 301 response. The response will include the originally requested url, except it’ll be pointing to your custom “www.yoursite.com” domain instead.  When the user’s browser reads that 301 response and the new url, it will automatically load that new url instead. It’ll even change the address the user sees in the address bar.</p>
 
-<h1 id="run-a-backup">Run a backup</h1>
+<p>That’s great, so how do we parse the above code exactly?  I’m not a fan of copying code unless I know exactly what it’s doing.</p>
 
-<p>Now you can run backups the same way you would normally do it. <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/#create-a-manual-backup">Manually</a>, <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/#configure-automated-backups">automatically</a>, either way is fine.</p>
+<p>So let’s see what’s going on here:</p>
 
-<p>Any files and folders that fall under the filters listed in the _backup.filter will be excluded from the backup. This means now the log files and the 2013 and 2014 image files will no longer be backed up.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;configuration&gt;
+  &lt;system.webServer&gt;  
+  ...
+  &lt;/system.webServer&gt;  
+&lt;/configuration&gt;  
+</code></pre>
+</div>
 
-<h1 id="restoring-your-backed-up-site">Restoring your backed up site</h1>
+<p>This part tells IIS that we’re modifying the web server’s configuration settings. The next section is where it starts to get tricky:</p>
 
-<p>You restore partial backups of your site the same way you would <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-restore/">restore a regular backup</a>. It’ll do the right thing.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;rewrite&gt;  
+    &lt;rules&gt; 
+    ... 
+    &lt;/rules&gt;  
+&lt;/rewrite&gt;  
+</code></pre>
+</div>
 
-<h4 id="the-technical-details">The technical details</h4>
+<p>The <code class="highlighter-rouge">&lt;rewrite&gt;</code> tag tells IIS that the elements it encloses are settings for the the <a href="http://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module">URL Rewrite</a> module.  The <code class="highlighter-rouge">&lt;rules&gt;</code> tag lists all the rules that we want that module to follow.   In our case, we want it to follow a rule that will return a HTTP 301 redirect response to the client (the user’s web browser).</p>
 
-<p>With full (non-partial) backups normally all content on the site is replaced with whatever is in the backup.  If a file is on the site but not in the backup it gets deleted.</p>
+<p>Now for the actual rule:</p>
 
-<p>But when restoring partial backups though any content that is located in one of the blacklisted folders (like <code class="highlighter-rouge">D:\home\site\wwwroot\images\2014</code> for my site) will be left as is. And if individual files were black listed then they’ll also be left alone during the restore.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;rule name="Redirect rquests to default azure websites domain" stopProcessing="true"&gt;
+  &lt;match url="(.*)" /&gt;  
+  &lt;conditions logicalGrouping="MatchAny"&gt;
+    &lt;add input="{HTTP_HOST}" pattern="^yoursite\.azurewebsites\.net$" /&gt;
+  &lt;/conditions&gt;
+  &lt;action type="Redirect" url="http://www.yoursite.com/{R:0}" /&gt;  
+&lt;/rule&gt;  
+</code></pre>
+</div>
 
-<h1 id="best-practices">Best Practices</h1>
+<p>The “name” attribute is just for human readability. It doesn’t affect execution at all. StopProcessing=”true” tells the rewrite module that if this rule applies to the incomming request, then not to bother processing any other rules  after this one becuase they won’t matter.  In our case we only have one rule, so this tag doesn’t do anything, but it can save you some CPU if you have more rules defined.</p>
 
-<p>What do you do when disaster strikes and you have to restore your site?  Make sure you’re prepared beforehand.</p>
+<p>Next is the <code class="highlighter-rouge">&lt;match url="(.*)" /&gt;</code> section. That’s a regEx pattern inside, and since this regEx covers all possible inputs, it tells IIS to apply this rule to all requests, no matter what their url is.</p>
 
-<p>Yeah, you have partial backups, but take at least one full backup of the site first so that you have all your site’s contents backed up (this is worst case scenario planning).  Then when you’re restoring your backups you can first restore the full backup of the site, and then restore the latest partial backup on top of it.</p>
+<p>Then comes the conditions section. We set <code class="highlighter-rouge">logicalGrouping="MatchAny"</code> to tell IIS to execute the rule if any of the following conditions hold true.  Right now we only have one condition, so again it doesn’t matter, but if you had multiple conditions (for example, multiple domain names you wanted to forward to your custom domain name) then you could list them all here. Alternatively, you could set it to “MatchAll” to tell IIS to only run the action if it matches all the conditons given.</p>
 
-<p>Here’s why: it lets you use <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/">Deployment Slots</a> to test your restored site. You can even test the restore process without ever touching your production site. And testing your restore process is a <a href="http://axcient.com/blog/one-thing-can-derail-disaster-recovery-plan/">Very Good Thing</a>.  You never know when you might run into some subtle gotcha like I did when I tried restoring my blog and end up losing half your content.</p>
+<p>Here’s the condition we used:</p>
 
-<h2 id="my-horror-story">My horror story</h2>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;add input="{HTTP_HOST}" pattern="^yoursite\.azurewebsites\.net$" /&gt;
+</code></pre>
+</div>
 
-<p>My blog is powered by the <a href="https://ghost.org/">Ghost</a> blogging platform.  Like a responsible dev I created a backup of my site and everything was great. Then one day I got a message saying that there was a new version of Ghost available and I could upgrade my blog to it. Great!</p>
+<p>It says to look at the http host and evaluate the condition as true if the host matches the given regEx pattern, which we set to your default azure domain name.</p>
 
-<p>I created one more backup of my site to backup the latest blog posts, and proceeded to upgrade Ghost.</p>
+<p>The last bit is the action, the meat of the whole rule:</p>
 
-<p>On my production site.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;action type="Redirect" url="http://www.yoursite.com/{R:0}" /&gt;  
+</code></pre>
+</div>
 
-<p>Bad mistake.</p>
+<p>Here we’re telling the Rewrite module what action to take (what it’s actually supposed to do) when a request matches the above rules.  The action we want is “Redirect”, which is where it’ll return the HTTP 301 to the client, and when it returns a 301 we need to tell the client what url it should be redirected to. That’s how we get to specify our desired domain name.</p>
 
-<p>Something went wrong with the upgrade, my home screen just showed a blank screen.  “No problem” I thought, “I’ll simply restore the backup I just took.”</p>
+<p>But we don’t want to send the user to the root of the domain name, so we add in the <code class="highlighter-rouge">/{R:0}</code> bit, which (put simply) says “Look at the orignal url we matched against in the <code class="highlighter-rouge">&lt;match&gt;</code> tag, and stick that in.”  A more thorough description is that we ran a regex expression in the <code class="highlighter-rouge">&lt;match&gt;</code> tag, and this <code class="highlighter-rouge"><span class="p">{</span><span class="err">R:0</span><span class="p">}</span></code> returns the first RegEx group.</p>
 
-<p>I restored the upgrade, saw everything come back…except the blog posts.</p>
+<p>And there you have it, that’s how you can redirect all request for your default azure domain to your custom domain.</p>
 
-<p>WHAT???</p>
+<p>As a final example, here’s web.config file’s conent for my site:</p>
 
-<p>Turns out, in the <a href="http://support.ghost.org/how-to-upgrade/">Ghost upgrade notes</a> there’s this warning:</p>
-
-<p><img src="/images/2015/06/Ghost--upgrade-warning.PNG" alt="You can take a copy of your database from content/data but you  should not do this while Ghost is runing. Please stop it first" /></p>
-
-<p>If you try to backup the data while Ghost is running…the data doesn’t actually get backed up.</p>
-
-<p>Bummer.</p>
-
-<p>If I had tried the restore on a test slot first I would have seen this issue and not lost all my posts.</p>
-
-<p>Such is life. It can happen to <a href="http://blog.codinghorror.com/international-backup-awareness-day/">the best of us</a>.</p>
+<div class="highlighter-rouge"><pre class="highlight"><code>&lt;configuration&gt;
+  &lt;system.webServer&gt;  
+    &lt;rewrite&gt;  
+        &lt;rules&gt;  
+          &lt;rule name="Redirect rquests to default azure websites domain" stopProcessing="true"&gt;
+            &lt;match url="(.*)" /&gt;  
+            &lt;conditions logicalGrouping="MatchAny"&gt;
+              &lt;add input="{HTTP_HOST}" pattern="^zainrizvi\.azurewebsites\.net$" /&gt;
+            &lt;/conditions&gt;
+            &lt;action type="Redirect" url="http://www.zainrizvi.io/{R:0}" /&gt;  
+          &lt;/rule&gt;  
+        &lt;/rules&gt;  
+    &lt;/rewrite&gt;  
+  &lt;/system.webServer&gt;  
+&lt;/configuration&gt;  
+</code></pre>
+</div>
 
 
       <hr />
@@ -526,17 +506,17 @@
   <h5>Thanks for reading! If you found this post valuable, please help share it with others</h5>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=/2016/04/07/block-default-azure-websites-domain/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=/2016/04/07/block-default-azure-websites-domain/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=/2016/04/07/block-default-azure-websites-domain/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
-        <p class="byline"><strong>Backup just the Important Parts of your Site with Azure Web Apps</strong> was published on <time datetime="2015-06-05T00:00:00-07:00">June 05, 2015</time>.</p>
+        <p class="byline"><strong>How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps</strong> was published on <time datetime="2016-04-07T00:00:00-07:00">April 07, 2016</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
     
@@ -553,11 +533,11 @@
   <h4>You might also enjoy <small class="pull-right">(<a href="/blog/">View all posts</a>)</small></h4>
     <ul>
     
-      <li><a href="/2016/04/07/block-default-azure-websites-domain/" title="How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps">How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps</a></li>
-    
       <li><a href="/2016/03/24/create-site-with-facebook-login-using-asp.net-core/" title="Let customers use Facebook authentication to log into your ASP.NET Core site">Let customers use Facebook authentication to log into your ASP.NET Core site</a></li>
     
       <li><a href="/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps/" title="Deploy statically generated sites to Azure Web Apps">Deploy statically generated sites to Azure Web Apps</a></li>
+    
+      <li><a href="/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/" title="Backup just the Important Parts of your Site with Azure Web Apps">Backup just the Important Parts of your Site with Azure Web Apps</a></li>
     
     </ul>
     <hr />
