@@ -39,6 +39,8 @@ GEM
       pathutil (~> 0.9)
       rouge (~> 1.7)
       safe_yaml (~> 1.0)
+    jekyll-compose (0.5.0)
+      jekyll (>= 3.0.0)
     jekyll-gist (1.4.1)
       octokit (~> 4.2)
     jekyll-sass-converter (1.5.0)
@@ -105,6 +107,7 @@ PLATFORMS
 DEPENDENCIES
   html-proofer
   jekyll (~> 3.0)
+  jekyll-compose
   jekyll-gist
   jekyll-sitemap
   octopress

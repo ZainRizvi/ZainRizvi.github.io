@@ -5,3 +5,4 @@ gem "jekyll-sitemap"
 gem "jekyll-gist"
 gem "octopress"
 gem "html-proofer"
+gem 'jekyll-compose', group: [:jekyll_plugins]
