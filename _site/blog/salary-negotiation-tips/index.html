@@ -5,120 +5,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Deploy statically generated sites to Azure Web Apps &#8211; Zain Rizvi</title>
-<meta name="description" content="There are a lot of awesome static site generators out there.  It’s not always easy to figure out how to setup continuous deployment for them though.
-
-This post will describe how to deploy a statically generated site using yeoman angular to Azure Web Apps, but these steps can be applied to deploy any statically generated site to Azure Web Apps.
-
-
-
-Deploying the initial site
-I tried using yeoman’s gulp-angular generator.  I made a quick site following their tutorial, setup continuous deployment via github, navigated to the newly deployed site and I saw…huh?
-
-
-
-What’s going on here?
-
-Using Kudu for debugging
-Luckily all Azure Web Apps come with a handy Kudu site that gives you command line access to your site. You can get to it at https://&lt;yourSiteName&gt;.scm.azurewebsites.net\DebugConsole.
-
-
-
-I navigated to the site’s D:\home\site\wwwroot folder and saw all the content was there.  And that’s when I face-palmed and realized that statically generated site is saved to the dist folder, and that’s not even part of the deployment!!!
-
-Luckily, that’s easy enough to fix.
-
-Check the static site into the source code
-First issue was to include the dist folder in the source code. You just need to exclude the /dist line from the .gitignore file for that. Easy enough.
-
-Now when you deploy your site to Azure Web Apps your site exists in the new D:\home\site\wwwroot\dist folder!
-
-
-(Fyi, with yo angular you have to run grunt once first before you check in your code to actually generate the dist folder).
-
-But your site still doesn’t work…because Azure Web Apps is expecting the site’s content to be in D:\home\site\wwwroot.
-
-Darn.
-
-Custom deployment settings to the rescue!
-
-Add a .deployment file to the root folder of your code and paste the below inside:
-
-[config]
-project = dist
-
-
-
-This will tell Azure Web Sits that the root folder for your site is the dist folder. Now your sites will be hosted from the D:\home\site\wwwroot\dist folder. If your static site generator puts your site in some other folder, set project to that folder’s name.
-
-Check in the file, deploy it to Azure Web Apps, and see the magic happen.
-
-
-
-You can find a full copy of the sample code here on Github, with check-ins corresponding to each step of this tutorial: https://github.com/ZainRizvi/YoAngularOnAzureWebApps
-
-You can see the final working site here: http://yoangularonazurewebapps.azurewebsites.net
-">
-<meta name="keywords" content="">
+<title>Salary Negotiation Tips for Your New Job &#8211; Zain Rizvi</title>
+<meta name="description" content="Tips for negotiating your salary once you get a job offer">
+<meta name="keywords" content="Salary Negotiation">
 
 
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Deploy statically generated sites to Azure Web Apps">
-<meta name="twitter:description" content="There are a lot of awesome static site generators out there.  It’s not always easy to figure out how to setup continuous deployment for them though.
-
-This post will describe how to deploy a statically generated site using yeoman angular to Azure Web Apps, but these steps can be applied to deploy any statically generated site to Azure Web Apps.
-
-
-
-Deploying the initial site
-I tried using yeoman’s gulp-angular generator.  I made a quick site following their tutorial, setup continuous deployment via github, navigated to the newly deployed site and I saw…huh?
-
-
-
-What’s going on here?
-
-Using Kudu for debugging
-Luckily all Azure Web Apps come with a handy Kudu site that gives you command line access to your site. You can get to it at https://&lt;yourSiteName&gt;.scm.azurewebsites.net\DebugConsole.
-
-
-
-I navigated to the site’s D:\home\site\wwwroot folder and saw all the content was there.  And that’s when I face-palmed and realized that statically generated site is saved to the dist folder, and that’s not even part of the deployment!!!
-
-Luckily, that’s easy enough to fix.
-
-Check the static site into the source code
-First issue was to include the dist folder in the source code. You just need to exclude the /dist line from the .gitignore file for that. Easy enough.
-
-Now when you deploy your site to Azure Web Apps your site exists in the new D:\home\site\wwwroot\dist folder!
-
-
-(Fyi, with yo angular you have to run grunt once first before you check in your code to actually generate the dist folder).
-
-But your site still doesn’t work…because Azure Web Apps is expecting the site’s content to be in D:\home\site\wwwroot.
-
-Darn.
-
-Custom deployment settings to the rescue!
-
-Add a .deployment file to the root folder of your code and paste the below inside:
-
-[config]
-project = dist
-
-
-
-This will tell Azure Web Sits that the root folder for your site is the dist folder. Now your sites will be hosted from the D:\home\site\wwwroot\dist folder. If your static site generator puts your site in some other folder, set project to that folder’s name.
-
-Check in the file, deploy it to Azure Web Apps, and see the magic happen.
-
-
-
-You can find a full copy of the sample code here on Github, with check-ins corresponding to each step of this tutorial: https://github.com/ZainRizvi/YoAngularOnAzureWebApps
-
-You can see the final working site here: http://yoangularonazurewebapps.azurewebsites.net
-">
+<meta name="twitter:title" content="Salary Negotiation Tips for Your New Job">
+<meta name="twitter:description" content="Tips for negotiating your salary once you get a job offer">
 
 
 
@@ -128,61 +24,9 @@ You can see the final working site here: http://yoangularonazurewebapps.azureweb
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Deploy statically generated sites to Azure Web Apps">
-<meta property="og:description" content="There are a lot of awesome static site generators out there.  It’s not always easy to figure out how to setup continuous deployment for them though.
-
-This post will describe how to deploy a statically generated site using yeoman angular to Azure Web Apps, but these steps can be applied to deploy any statically generated site to Azure Web Apps.
-
-
-
-Deploying the initial site
-I tried using yeoman’s gulp-angular generator.  I made a quick site following their tutorial, setup continuous deployment via github, navigated to the newly deployed site and I saw…huh?
-
-
-
-What’s going on here?
-
-Using Kudu for debugging
-Luckily all Azure Web Apps come with a handy Kudu site that gives you command line access to your site. You can get to it at https://&lt;yourSiteName&gt;.scm.azurewebsites.net\DebugConsole.
-
-
-
-I navigated to the site’s D:\home\site\wwwroot folder and saw all the content was there.  And that’s when I face-palmed and realized that statically generated site is saved to the dist folder, and that’s not even part of the deployment!!!
-
-Luckily, that’s easy enough to fix.
-
-Check the static site into the source code
-First issue was to include the dist folder in the source code. You just need to exclude the /dist line from the .gitignore file for that. Easy enough.
-
-Now when you deploy your site to Azure Web Apps your site exists in the new D:\home\site\wwwroot\dist folder!
-
-
-(Fyi, with yo angular you have to run grunt once first before you check in your code to actually generate the dist folder).
-
-But your site still doesn’t work…because Azure Web Apps is expecting the site’s content to be in D:\home\site\wwwroot.
-
-Darn.
-
-Custom deployment settings to the rescue!
-
-Add a .deployment file to the root folder of your code and paste the below inside:
-
-[config]
-project = dist
-
-
-
-This will tell Azure Web Sits that the root folder for your site is the dist folder. Now your sites will be hosted from the D:\home\site\wwwroot\dist folder. If your static site generator puts your site in some other folder, set project to that folder’s name.
-
-Check in the file, deploy it to Azure Web Apps, and see the magic happen.
-
-
-
-You can find a full copy of the sample code here on Github, with check-ins corresponding to each step of this tutorial: https://github.com/ZainRizvi/YoAngularOnAzureWebApps
-
-You can see the final working site here: http://yoangularonazurewebapps.azurewebsites.net
-">
-<meta property="og:url" content="http://localhost:4000/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps/">
+<meta property="og:title" content="Salary Negotiation Tips for Your New Job">
+<meta property="og:description" content="Tips for negotiating your salary once you get a job offer">
+<meta property="og:url" content="http://localhost:4000/blog/salary-negotiation-tips/">
 <meta property="og:site_name" content="Zain Rizvi">
 
 <meta property="og:image" content="http://localhost:4000/images/default-thumb.png">
@@ -192,7 +36,7 @@ You can see the final working site here: http://yoangularonazurewebapps.azureweb
 
 
 
-<link rel="canonical" href="http://localhost:4000/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps/">
+<link rel="canonical" href="http://localhost:4000/blog/salary-negotiation-tips/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -419,62 +263,170 @@ You can see the final working site here: http://yoangularonazurewebapps.azureweb
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://localhost:4000/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps/" rel="bookmark" title="Deploy statically generated sites to Azure Web Apps">Deploy statically generated sites to Azure Web Apps</a></h1>
+        <h1><a href="http://localhost:4000/blog/salary-negotiation-tips/" rel="bookmark" title="Salary Negotiation Tips for Your New Job">Salary Negotiation Tips for Your New Job</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>There are a lot of awesome static site generators out there.  It’s not always easy to figure out how to setup continuous deployment for them though.</p>
+      <h1 id="resources">Resources</h1>
 
-<p>This post will describe how to deploy a statically generated site using yeoman angular to Azure Web Apps, but these steps can be applied to deploy any statically generated site to Azure Web Apps.</p>
+<h3 id="word-for-word-scripts-on-what-to-say-during-the-negotiation-and-why-they-work">Word-for-Word Scripts on What to Say During the Negotiation and Why they Work</h3>
+<p><a href="http://haseebq.com/my-ten-rules-for-negotiating-a-job-offer">10 rules for negotiating a job offer</a></p>
 
-<hr />
+<p><a href="http://haseebq.com/how-not-to-bomb-your-offer-negotiation">How not to Bomb your Offer Negotiation</a></p>
 
-<h4 id="deploying-the-initial-site">Deploying the initial site</h4>
-<p>I tried using yeoman’s gulp-angular generator.  I made a quick site following their <a href="http://yeoman.io/codelab/index.html">tutorial</a>, setup <a href="https://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/">continuous deployment via github</a>, navigated to the newly deployed site and I saw…huh?</p>
+<h3 id="negotiation-video-including-scripts-on-what-to-say-and-why-it-works">Negotiation Video, Including Scripts on What to Say and Why it Works</h3>
+<p>Ramit Sethi: <a href="http://www.iwillteachyoutoberich.com/guides/ultimate-guide-to-asking-for-a-raise-and-negotiating-salary/part-3/">How to Negotiate Your Salary</a></p>
 
-<p><img src="/images/2015/10/01-No-permission-to-site.png" alt="img" /></p>
+<h1 id="16-principles-to-remember-during-a-negotiation">16 Principles to Remember during a Negotiation</h1>
+<p>The above resources were good, but I feel like this is the best one:</p>
 
-<p>What’s going on here?</p>
+<p>Harvard Business School’s Prof. Deepak Malhotra:
+<a href="https://www.youtube.com/watch?v=km2Hd_xgo9Q">How to Negotiate Your Job Offer</a></p>
 
-<h4 id="using-kudu-for-debugging">Using Kudu for debugging</h4>
-<p>Luckily all Azure Web Apps come with a handy <a href="https://github.com/projectkudu/kudu/wiki">Kudu site</a> that gives you command line access to your site. You can get to it at <code class="highlighter-rouge">https://&lt;yourSiteName&gt;.scm.azurewebsites.net\DebugConsole</code>.</p>
+<h3 id="16-principals-summary">16 Principals Summary:</h3>
 
-<p><img src="/images/2015/10/02-Kudu-console.png" alt="alt" /></p>
-
-<p>I navigated to the site’s <code class="highlighter-rouge">D:\home\site\wwwroot</code> folder and saw all the content was there.  And that’s when I face-palmed and realized <em>that statically generated site is saved to the <code class="highlighter-rouge">dist</code> folder, and that’s not even part of the deployment!!!</em></p>
-
-<p>Luckily, that’s easy enough to fix.</p>
-
-<h4 id="check-the-static-site-into-the-source-code">Check the static site into the source code</h4>
-<p>First issue was to include the <code class="highlighter-rouge">dist</code> folder in the source code. You just need to exclude the <code class="highlighter-rouge">/dist</code> line from the .gitignore file for that. <a href="https://github.com/ZainRizvi/YoAngularOnAzureWebApps/commit/3fc3040eb65699295e85c151f339dc30aae6c971#diff-a084b794bc0759e7a6b77810e01874f2">Easy enough</a>.</p>
-
-<p>Now when you deploy your site to Azure Web Apps your site exists in the new <code class="highlighter-rouge">D:\home\site\wwwroot\dist</code> folder!</p>
-
-<p><img src="/images/2015/10/03-Dist-folder-appears.png" alt="alt" />
-(Fyi, with <code class="highlighter-rouge">yo angular</code> you have to run <code class="highlighter-rouge">grunt</code> once first before you check in your code to actually generate the <code class="highlighter-rouge">dist</code> folder).</p>
-
-<p>But your site still doesn’t work…because Azure Web Apps is expecting the site’s content to be in <code class="highlighter-rouge">D:\home\site\wwwroot</code>.</p>
-
-<p>Darn.</p>
-
-<h4 id="custom-deployment-settings-to-the-rescue">Custom deployment settings to the rescue!</h4>
-
-<p>Add a <code class="highlighter-rouge">.deployment</code> <a href="https://github.com/ZainRizvi/YoAngularOnAzureWebApps/commit/9be9a4b503a86678d85e3a4287fa26cce1f175b7">file</a> to the root folder of your code and paste the below inside:</p>
-
-<div class="highlighter-rouge"><pre class="highlight"><code>[config]
-project = dist
-</code></pre>
-</div>
-
-<p>This will tell Azure Web Sits that the root folder for your site is the <code class="highlighter-rouge">dist</code> folder. Now your sites will be hosted from the <code class="highlighter-rouge">D:\home\site\wwwroot\dist</code> folder. If your static site generator puts your site in some other folder, set project to that folder’s name.</p>
-
-<p>Check in the file, deploy it to Azure Web Apps, and see the magic happen.</p>
-
-<p><img src="/images/2015/10/04-Working-site.png" alt="alt" /></p>
-
-<p>You can find a full copy of the sample code here on Github, with check-ins corresponding to each step of this tutorial: https://github.com/ZainRizvi/YoAngularOnAzureWebApps</p>
-
-<p>You can see the final working site here: http://yoangularonazurewebapps.azurewebsites.net</p>
+<ol>
+  <li>They need to like you
+    <ul>
+      <li>If you get an offer, these people like you and want to keep liking you (but you’re not the only person in their life)</li>
+    </ul>
+  </li>
+  <li>They have to believe that you deserve it
+    <ul>
+      <li>Don’t ever ask for something without saying why you deserve it</li>
+      <li>Sometimes saying why you deserve it might make them like you less (#1) so be careful</li>
+    </ul>
+  </li>
+  <li>They need to be able to justify and act on it internally
+    <ul>
+      <li>Need to figure out where they’re flexible and where they are not flexible
+        <ol>
+          <li>You need to be flexible about which currency they pay you in</li>
+        </ol>
+      </li>
+      <li>You shouldn’t care about salary, bonus, options, city, etc. Should focus on value of entire deal</li>
+      <li>The more ways you give them to pay you, the more likely you are to get paid</li>
+      <li>Including perhaps not rewarding you today, but rewarding you later on</li>
+      <li>They need to believe that they can get you
+        <ul>
+          <li>People won’t go fight for you and spend political capital for you if they think you’re going to refuse at the end of the day</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Don’t negotiate just to negotiate
+    <ul>
+      <li>Think about the interests that are really important to you, but not haggle over every little thing (you don’t want to sour the negotiation and make them not like you: see point #1)</li>
+    </ul>
+  </li>
+  <li>Try to learn as much as you can at every moment.
+    <ul>
+      <li>Need to understand the person across the table from you</li>
+      <li>Learn as much as you can before the negotiation</li>
+      <li>What do they want, need?
+        <ul>
+          <li>Talk to folks in the organization, friends interviewing there, etc</li>
+        </ul>
+      </li>
+      <li>Anytime someone says something you didn’t expect or is ambiguous, try to figure out what is going on so you know which world you’re in.</li>
+    </ul>
+  </li>
+  <li>Negotiate multiple issues simultaneously
+    <ul>
+      <li>e.g. if there are multiple things you don’t like about the offer, mention all those things at once
+        <ul>
+          <li>Don’t do: Hey, can you fix this one thing? “ok” Great, can you do this too? “alright” Cool, can you do this too please?</li>
+        </ul>
+      </li>
+      <li>When you mention the few things that you need, it’s important to signal to them what’s most important and what’s less important
+        <ul>
+          <li>If you don’t they may pick the two things that are easy for them but less important to you. They may think they’re meeting you half way when you’re not really satisfied</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>What is not negotiable today may be negotiable tomorrow
+    <ul>
+      <li>Today they may be hiring 20 people just like you and they have a hard time differing between you. But 6 months down the line they might be convinced that you’re different, or they’re in a different phase of employment and they have more flexibility</li>
+      <li>What may not be negotiable on day 1 of the interview process may be negotiable on day 3
+        <ul>
+          <li>E.g., if they tell you we can’t delay the deadline date for you to respond to our offer. But as the deadline gets closer, at that point they may be able to change the deadline later on</li>
+        </ul>
+      </li>
+      <li>When they say “no” to something, ask them “Can you help me understand why that is hard to do?”
+        <ul>
+          <li>“Under what circumstances would you be able to do this?”</li>
+          <li>“Have you ever done something like this for a person”</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Stay at the table
+    <ul>
+      <li>Stay in touch</li>
+      <li>Perhaps things they couldn’t share with you before the offer, they can share with you after the offer. Or after you have the job, or after you’ve worked there for 3 months, etc</li>
+    </ul>
+  </li>
+  <li>Sometimes the other side might bring up something that you wish they didn’t
+    <ul>
+      <li>Examples:
+        <ul>
+          <li>Do you have an alternate job offer?</li>
+          <li>Did your summer internship give you a job offer?</li>
+        </ul>
+      </li>
+      <li>Instead of hoping they don’t ask those questions, prepare in advance to answer those toughest questions</li>
+      <li>What could they ask to put you in a defensive position?</li>
+      <li>When they ask you questions you wish they hadn’t asked?
+        <ul>
+          <li>Don’t get stuck on what they’re asking you. Try to figure out you why they’re asking you that?
+            <ul>
+              <li>What is the intent of the question? Where are they going with this?</li>
+              <li>Step back, ask them “Can you help me understand where you’re going with this?”</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>Avoid/ignore/downplay ultimatums of any kind (in either direction)
+    <ul>
+      <li>Don’t make them either</li>
+      <li>If they make one, pretend it was never said
+        <ul>
+          <li>It’s possible that at some point they themselves will realize that the position they took will result in no deal, and the last thing you want is for them to feel like they’ve painted themselves into a corner without losing face. The only way to give them a way out is to pretend it wasn’t even said.</li>
+        </ul>
+      </li>
+      <li>If it’s a real ultimatum, they’ll let you know (they’ll repeat it multiple times)</li>
+    </ul>
+  </li>
+  <li>Companies don’t negotiate, people negotiate
+    <ul>
+      <li>Negotiating with your future boss is different from negotiating with HR</li>
+      <li>It’s okay if HR is slightly annoyed with you, your boss being annoyed may be a problem</li>
+      <li>HR is hiring 100s of people, your boss is hiring very few people and may be willing to go fight to get you</li>
+      <li>Don’t let one person in the company ruin your view of the company</li>
+    </ul>
+  </li>
+  <li>Don’t be in a mad rush to get offers
+    <ul>
+      <li>Sometimes you want the interview process to be a bit slow so that you have time to interview other places</li>
+      <li>You have to think about the portfolio of deals you’re negotiating, try to see if you can have the offers come in closer to each other</li>
+    </ul>
+  </li>
+  <li>Tell the truth</li>
+  <li>Shoot for an 11 out of 10
+    <ul>
+      <li>After the negotiation with you, your boss is going to think about how much do they look forward to working with you. You want them to think you’re an 11/10, not even a 10/10.</li>
+      <li>Negotiate in a way, openly, honestly, with empathy, with give and take, that afterwards they like you even more than they did before</li>
+    </ul>
+  </li>
+  <li>If you’re thinking about how happy you’ll be in life, how you negotiate is not very important
+    <ul>
+      <li>The job you choose, the industry you go into, etc are all much more important</li>
+    </ul>
+  </li>
+</ol>
 
       <hr />
       
@@ -608,17 +560,17 @@ project = dist
   <h5>Thanks for reading! If you found this post valuable, please help share it with others</h5>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/salary-negotiation-tips/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/salary-negotiation-tips/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://localhost:4000/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=http://localhost:4000/blog/salary-negotiation-tips/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
-        <p class="byline"><strong>Deploy statically generated sites to Azure Web Apps</strong> was published on <time datetime="2015-10-13T00:00:00-07:00">October 13, 2015</time>.</p>
+        <p class="byline"><strong>Salary Negotiation Tips for Your New Job</strong> was published on <time datetime="2018-07-20T00:00:00-07:00">July 20, 2018</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
     
@@ -630,6 +582,20 @@ project = dist
 </div><!-- /#main -->
 
 <div class="footer-wrap">
+  
+  <div class="related-articles">
+  <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h4>
+    <ul>
+    
+      <li><a href="http://localhost:4000/blog/block-default-azure-websites-domain/" title="How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps">How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps</a></li>
+    
+      <li><a href="http://localhost:4000/blog/create-site-with-facebook-login-using-asp.net-core/" title="Let customers use Facebook authentication to log into your ASP.NET Core site">Let customers use Facebook authentication to log into your ASP.NET Core site</a></li>
+    
+      <li><a href="http://localhost:4000/blog/deploy-statically-generated-sites-to-azure-web-apps/" title="Deploy statically generated sites to Azure Web Apps">Deploy statically generated sites to Azure Web Apps</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
   
   <footer>
     

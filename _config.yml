@@ -28,7 +28,7 @@ defaults:
       layout: "page"
       comments: false
       
-permalink:   pretty #/:categories/:title/
+permalink:   /blog/:categories/:title/ #pretty #/:categories/:title/
 markdown:    kramdown
 highlighter: rouge
 sass:
