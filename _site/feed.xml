@@ -19,25 +19,25 @@
 
 
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://localhost:4000/images/default-thumb.png">
+<meta name="twitter:image" content="/images/default-thumb.png">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Zain Rizvi">
 
-<meta property="og:url" content="http://localhost:4000/feed.xml">
+<meta property="og:url" content="/feed.xml">
 <meta property="og:site_name" content="Zain Rizvi">
 
-<meta property="og:image" content="http://localhost:4000/images/default-thumb.png">
+<meta property="og:image" content="/images/default-thumb.png">
 
 
 
 
 
 
-<link rel="canonical" href="http://localhost:4000/feed.xml">
-<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi Feed">
+<link rel="canonical" href="/feed.xml">
+<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -45,34 +45,34 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- For all browsers -->
-<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css">
+<link rel="stylesheet" href="/assets/css/main.css">
 
 <meta http-equiv="cleartype" content="on">
 
 <!-- HTML5 Shiv and Media Query Support -->
 <!--[if lt IE 9]>
-	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
-	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+	<script src="/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="/assets/js/vendor/respond.min.js"></script>
 <![endif]-->
 
 <!-- Modernizr -->
-<script src="http://localhost:4000/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
 
 <link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
 
 <!-- Icons -->
 <!-- 16x16 -->
-<link rel="shortcut icon" href="http://localhost:4000/favicon.ico">
+<link rel="shortcut icon" href="/favicon.ico">
 <!-- 32x32 -->
-<link rel="shortcut icon" href="http://localhost:4000/favicon.png">
+<link rel="shortcut icon" href="/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png">
+<link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png">
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png">
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png">
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png">
 
 </head>
 
@@ -82,17 +82,17 @@
 
 <div class="navigation-wrapper">
 	<div class="site-name">
-		<a href="http://localhost:4000/">Zain Rizvi</a>
+		<a href="/">Zain Rizvi</a>
 	</div><!-- /.site-name -->
 	<div class="top-navigation">
 		<nav id="site-nav" class="nav">
 		    <ul>
 		        
 				    
-				    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+				    <li><a href="/blog/" >Blog</a></li>
 				
 				    
-				    <li><a href="http://localhost:4000/about/" >About</a></li>
+				    <li><a href="/about/" >About</a></li>
 				
 		    </ul>
 		</nav>
@@ -109,7 +109,7 @@
 <div itemscope itemtype="http://schema.org/Person">
 
 
-	<img src="http://localhost:4000/images/bio-photo.png" class="bio-photo" alt="Zain Rizvi bio photo">
+	<img src="/images/bio-photo.png" class="bio-photo" alt="Zain Rizvi bio photo">
 
 
   <h3 itemprop="name">Zain Rizvi</h3>
@@ -267,26 +267,58 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
 <title type="text">Zain Rizvi</title>
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="http://localhost:4000/feed.xml" />
-<link rel="alternate" type="text/html" href="http://localhost:4000" />
-<updated>2018-07-21T14:23:40-07:00</updated>
-<id>http://localhost:4000/</id>
+<link rel="self" type="application/atom+xml" href="/feed.xml" />
+<link rel="alternate" type="text/html" href="" />
+<updated>2018-08-28T19:32:32-07:00</updated>
+<id>/</id>
 <author>
   <name>Zain Rizvi</name>
-  <uri>http://localhost:4000/</uri>
+  <uri>/</uri>
   
 </author>
 
 
 <entry>
+  <title type="html"><![CDATA[5 Habits for Better Learning]]></title>
+  <link rel="alternate" type="text/html" href="/blog/five-habits-for-better-learning/" />
+  <id>/blog/five-habits-for-better-learning</id>
+  <published>2018-08-28T00:00:00-07:00</published>
+  <updated>2018-08-28T00:00:00-07:00</updated>
+  <author>
+    <name>Zain Rizvi</name>
+    <uri></uri>
+    
+  </author>
+  <content type="html">
+    &lt;p&gt;These mental habits were developed to teach school children how to think critically and become problems solvers. It’s a valuable skill for adults to learn as well.&lt;/p&gt;
+
+&lt;p&gt;When presented with any new information think about:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Evidence&lt;/strong&gt;: Why do you think this information is true or false? What should count? What do you think you know and why?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Viewpoints&lt;/strong&gt;: How would this look from other perspectives? How would other people or companies think about this differently?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Connections&lt;/strong&gt;: Noticing any patterns? Have you seen something like this before?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Conjecture&lt;/strong&gt;: What if something about this was different? How would that impact things?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Relevance&lt;/strong&gt;: Why does this matter?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;(Source: &lt;a href=&quot;https://www.amazon.com/More-Beautiful-Question-Inquiry-Breakthrough/dp/1632861054/&quot;&gt;A More Beautiful Question&lt;/a&gt; by Warren Berger)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;These tips will help you get a deeper understanding of whatever you’re studying, be it something technical, political, social, etc.&lt;/p&gt;
+
+    &lt;p&gt;&lt;a href=&quot;/blog/five-habits-for-better-learning/&quot;&gt;5 Habits for Better Learning&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on August 28, 2018.&lt;/p&gt;
+  </content>
+</entry>
+
+
+<entry>
   <title type="html"><![CDATA[Salary Negotiation Tips for Your New Job]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/salary-negotiation-tips/" />
-  <id>http://localhost:4000/blog/salary-negotiation-tips</id>
+  <link rel="alternate" type="text/html" href="/blog/salary-negotiation-tips/" />
+  <id>/blog/salary-negotiation-tips</id>
   <published>2018-07-20T00:00:00-07:00</published>
   <updated>2018-07-20T00:00:00-07:00</updated>
   <author>
     <name>Zain Rizvi</name>
-    <uri>http://localhost:4000</uri>
+    <uri></uri>
     
   </author>
   <content type="html">
@@ -450,20 +482,20 @@
   &lt;li&gt;The job you choose, the industry you go into, etc are all much more important&lt;/li&gt;
 &lt;/ul&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/salary-negotiation-tips/&quot;&gt;Salary Negotiation Tips for Your New Job&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;http://localhost:4000&quot;&gt;Zain Rizvi&lt;/a&gt; on July 20, 2018.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;/blog/salary-negotiation-tips/&quot;&gt;Salary Negotiation Tips for Your New Job&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on July 20, 2018.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/block-default-azure-websites-domain/" />
-  <id>http://localhost:4000/blog/block-default-azure-websites-domain</id>
+  <link rel="alternate" type="text/html" href="/blog/block-default-azure-websites-domain/" />
+  <id>/blog/block-default-azure-websites-domain</id>
   <published>2016-04-07T00:00:00-07:00</published>
   <updated>2016-04-07T00:00:00-07:00</updated>
   <author>
     <name>Zain Rizvi</name>
-    <uri>http://localhost:4000</uri>
+    <uri></uri>
     
   </author>
   <content type="html">
@@ -574,20 +606,20 @@
 &lt;/div&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/block-default-azure-websites-domain/&quot;&gt;How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;http://localhost:4000&quot;&gt;Zain Rizvi&lt;/a&gt; on April 07, 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;/blog/block-default-azure-websites-domain/&quot;&gt;How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on April 07, 2016.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Let customers use Facebook authentication to log into your ASP.NET Core site]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/create-site-with-facebook-login-using-asp.net-core/" />
-  <id>http://localhost:4000/blog/create-site-with-facebook-login-using-asp.net-core</id>
+  <link rel="alternate" type="text/html" href="/blog/create-site-with-facebook-login-using-asp.net-core/" />
+  <id>/blog/create-site-with-facebook-login-using-asp.net-core</id>
   <published>2016-03-24T00:00:00-07:00</published>
   <updated>2016-03-24T00:00:00-07:00</updated>
   <author>
     <name>Zain Rizvi</name>
-    <uri>http://localhost:4000</uri>
+    <uri></uri>
     
   </author>
   <content type="html">
@@ -887,20 +919,20 @@
 
 &lt;p&gt;That’s it for this post. Hope you guys were able to follow all the steps.  Shout out in the comments if you found this stuff helpful or if you run into any problems.&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/create-site-with-facebook-login-using-asp.net-core/&quot;&gt;Let customers use Facebook authentication to log into your ASP.NET Core site&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;http://localhost:4000&quot;&gt;Zain Rizvi&lt;/a&gt; on March 24, 2016.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;/blog/create-site-with-facebook-login-using-asp.net-core/&quot;&gt;Let customers use Facebook authentication to log into your ASP.NET Core site&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on March 24, 2016.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Deploy statically generated sites to Azure Web Apps]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/deploy-statically-generated-sites-to-azure-web-apps/" />
-  <id>http://localhost:4000/blog/deploy-statically-generated-sites-to-azure-web-apps</id>
+  <link rel="alternate" type="text/html" href="/blog/deploy-statically-generated-sites-to-azure-web-apps/" />
+  <id>/blog/deploy-statically-generated-sites-to-azure-web-apps</id>
   <published>2015-10-13T00:00:00-07:00</published>
   <updated>2015-10-13T00:00:00-07:00</updated>
   <author>
     <name>Zain Rizvi</name>
-    <uri>http://localhost:4000</uri>
+    <uri></uri>
     
   </author>
   <content type="html">
@@ -957,20 +989,20 @@ project = dist
 
 &lt;p&gt;You can see the final working site here: http://yoangularonazurewebapps.azurewebsites.net&lt;/p&gt;
 
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/deploy-statically-generated-sites-to-azure-web-apps/&quot;&gt;Deploy statically generated sites to Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;http://localhost:4000&quot;&gt;Zain Rizvi&lt;/a&gt; on October 13, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;/blog/deploy-statically-generated-sites-to-azure-web-apps/&quot;&gt;Deploy statically generated sites to Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on October 13, 2015.&lt;/p&gt;
   </content>
 </entry>
 
 
 <entry>
   <title type="html"><![CDATA[Backup just the Important Parts of your Site with Azure Web Apps]]></title>
-  <link rel="alternate" type="text/html" href="http://localhost:4000/blog/creating-partial-backups-of-your-site-with-azure-web-apps/" />
-  <id>http://localhost:4000/blog/creating-partial-backups-of-your-site-with-azure-web-apps</id>
+  <link rel="alternate" type="text/html" href="/blog/creating-partial-backups-of-your-site-with-azure-web-apps/" />
+  <id>/blog/creating-partial-backups-of-your-site-with-azure-web-apps</id>
   <published>2015-06-05T00:00:00-07:00</published>
   <updated>2015-06-05T00:00:00-07:00</updated>
   <author>
     <name>Zain Rizvi</name>
-    <uri>http://localhost:4000</uri>
+    <uri></uri>
     
   </author>
   <content type="html">
@@ -1095,7 +1127,7 @@ project = dist
 &lt;p&gt;Such is life. It can happen to &lt;a href=&quot;http://blog.codinghorror.com/international-backup-awareness-day/&quot;&gt;the best of us&lt;/a&gt;.&lt;/p&gt;
 
 
-    &lt;p&gt;&lt;a href=&quot;http://localhost:4000/blog/creating-partial-backups-of-your-site-with-azure-web-apps/&quot;&gt;Backup just the Important Parts of your Site with Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;http://localhost:4000&quot;&gt;Zain Rizvi&lt;/a&gt; on June 05, 2015.&lt;/p&gt;
+    &lt;p&gt;&lt;a href=&quot;/blog/creating-partial-backups-of-your-site-with-azure-web-apps/&quot;&gt;Backup just the Important Parts of your Site with Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on June 05, 2015.&lt;/p&gt;
   </content>
 </entry>
 
@@ -1107,13 +1139,13 @@ project = dist
   <h5>Thanks for reading! If you found this post valuable, please help share it with others</h5>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/feed.xml" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=/feed.xml" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/feed.xml" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=/feed.xml" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
     <li>
-      <a href="https://plus.google.com/share?url=http://localhost:4000/feed.xml" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
+      <a href="https://plus.google.com/share?url=/feed.xml" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
     </li>
   </ul>
 </div><!-- /.social-share -->
@@ -1133,8 +1165,8 @@ project = dist
 </div><!-- /.footer-wrap -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="http://localhost:4000/assets/js/scripts.min.js"></script>
+<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
 
 
 <script>
