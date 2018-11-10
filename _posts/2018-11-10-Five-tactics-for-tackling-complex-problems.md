@@ -46,7 +46,7 @@ Now that you've spent so much time researching the problem you'll probably find 
 
 This eureka moment might happen a week or two (or more) after you've started implementing your previous ideas. Don't be afraid to throw those old ones away in favor one something you now know is better!
 
-# Conclusion
+# The Real Secret
 The common theme here is to develop a deep understanding of the problem you're working on, which can lead to fresh insights others may not have.  The above tactics give you that understanding by forcing you to look at the issue from different angles.
 
 But undoubtedly there are other ways to achieve that understanding as well. If you use different tactics to achive this understanding I'd love to hear them!
