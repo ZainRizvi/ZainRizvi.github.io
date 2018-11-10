@@ -5,7 +5,7 @@ excerpt: "Tips for negotiating your salary once you get a job offer"
 tags: [Salary Negotiation]
 ---
 
-# Resources
+When I was applying for a new job in 2017 I did a lot of research on salary negotiation (something [every employee](https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/) should know).  I found some pretty useful information others had shared and want to pay that favor forward.  Here's the compilation and summary of a lot of the key resources:
 
 ### Word-for-Word Scripts on What to Say During the Negotiation and Why they Work
 [10 rules for negotiating a job offer](http://haseebq.com/my-ten-rules-for-negotiating-a-job-offer)
