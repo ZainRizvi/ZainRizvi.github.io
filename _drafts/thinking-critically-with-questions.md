@@ -15,3 +15,18 @@ What about in this era of alternative facts, where you can find "facts" to suppo
 In the age of automation, with AI just around the corner, is there a way to stay gainfully employed doing something that won't simply be taken over by AI?
 
 Building the muscles to ask better questions will help you think through problems from more angles, evaluate information you're presented with more critically, and inspire you with the creativity to change the world (or at least your corner of it).
+
+Being able to ask questions is now more imporant than "knowing" the answer. And the question asking process begins with the question "Why?"
+
+# The Inquisitive Process
+
+The process starts with you noticing a problem and asking the question **Why?**. You then move on to coming up with ideas for solutions, wondering **What If?**. Next you try to see **How?** you could implment one of those ideas, repeating those last two steps until you finally arrive at a **Solution**.
+
+## 1. Why
+Here you're learning about the problem.
+
+## 2.  What If?
+Generating ideas for solutions to the problem
+
+## 3. How? 
+How can you implement one of those ideas?
