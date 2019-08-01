@@ -16,6 +16,6 @@ tags:
 - self development
 - career
 image:
-  feature: bio-photo.png
+  feature: sample-image-1.jpg
 
 ---
