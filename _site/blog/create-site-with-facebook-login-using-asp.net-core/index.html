@@ -333,13 +333,12 @@
 
 <p>When you installed Visual Studio 2015, you also got a copy of sqllocaldb installed on your computer. That lets your computer act as a local Sql Server instance and you can create and access databases on it.  If you look in your site’s appsettings.json file you’ll see something similar to the following setting that sets your connection string:</p>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="w"> </span><span class="s2">"Data"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"DefaultConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"ConnectionString"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Server=(localdb)\\mssqllocaldb;Database=aspnet5-FacebookAuthSite-1746853f-78c4-4424-8598-a8e8d950b167;Trusted_Connection=True;MultipleActiveResultSets=true"</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="nl">"Data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"DefaultConnection"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"ConnectionString"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Server=(localdb)</span><span class="se">\\</span><span class="s2">mssqllocaldb;Database=aspnet5-FacebookAuthSite-1746853f-78c4-4424-8598-a8e8d950b167;Trusted_Connection=True;MultipleActiveResultSets=true"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <p>That’s says where your database is.  This is great for testing, but once you’re ready to host your site in the cloud you’ll want to change that connection string to point to a database on Azure SQL Server or some other cloud server. You don’t need to worry abou this right now, but when you’re ready to change the connection string you can use the <a href="http://docs.asp.net/en/latest/security/authentication/sociallogins.html#use-secretmanager-to-store-facebook-appid-and-appsecret">SecretManager</a> on your local computer to hold the connection string for the local sql db, while use a different type of configuration (like an App Setting if you’re hosting your site on Azure Web Apps) to store your production database’s connection string.</p>
 
@@ -357,7 +356,7 @@
 
 <p>We add these permissions by to the options we send in to the UseFacebookAuthentication middleware.  In Startup.cs, in the Configure method, change the call to UseFacebookAuthentication to:</p>
 
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="nf">UseFacebookAuthentication</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="nf">UseFacebookAuthentication</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
 <span class="p">{</span>
     <span class="n">options</span><span class="p">.</span><span class="n">AppId</span> <span class="p">=</span> <span class="n">Configuration</span><span class="p">[</span><span class="s">"Authentication:Facebook:AppId"</span><span class="p">];</span>
     <span class="n">options</span><span class="p">.</span><span class="n">AppSecret</span> <span class="p">=</span> <span class="n">Configuration</span><span class="p">[</span><span class="s">"Authentication:Facebook:AppSecret"</span><span class="p">];</span>
@@ -365,8 +364,7 @@
     <span class="n">options</span><span class="p">.</span><span class="n">Scope</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"public_profile"</span><span class="p">);</span>
     <span class="n">options</span><span class="p">.</span><span class="n">Scope</span><span class="p">.</span><span class="nf">Add</span><span class="p">(</span><span class="s">"email"</span><span class="p">);</span>
 <span class="p">});</span> 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Now when the user tries to register using Facebook auth they’ll see something like this if they click the ‘Edit the info you provide’ button on Facebook.</p>
 
@@ -382,9 +380,8 @@
 
 <p>What gives?  Let’s take a look at the code. The route we’re hitting is “Account/ExternalLoginCallback”, so let’s look at the Account controller class, ExternalLoginCallback method. Near the bottom of that method is the code</p>
 
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">email</span> <span class="p">=</span> <span class="n">info</span><span class="p">.</span><span class="n">ExternalPrincipal</span><span class="p">.</span><span class="nf">FindFirstValue</span><span class="p">(</span><span class="n">ClaimTypes</span><span class="p">.</span><span class="n">Email</span><span class="p">);</span>
-</code></pre>
-</div>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">email</span> <span class="p">=</span> <span class="n">info</span><span class="p">.</span><span class="n">ExternalPrincipal</span><span class="p">.</span><span class="nf">FindFirstValue</span><span class="p">(</span><span class="n">ClaimTypes</span><span class="p">.</span><span class="n">Email</span><span class="p">);</span>
+</code></pre></div></div>
 
 <p>So we’re expecting the email address claim (<a href="http://dotnetcodr.com/2013/02/11/introduction-to-claims-based-security-in-net4-5-with-c-part-1/">claims</a> are how we identify information about users who are trying to log in) but we’re not getting it. If you inspect that code in the debugger you can verify that there is no email claim.</p>
 
@@ -396,21 +393,20 @@
 
 <p>Let’s install the Facebook nuget package by modifying the frameworks element in your project.json file to like like the following:</p>
 
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="s2">"frameworks"</span><span class="err">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-  </span><span class="nt">"dnx451"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nt">"Facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.0.6"</span><span class="w">
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nl">"frameworks"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+  </span><span class="nl">"dnx451"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nl">"dependencies"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nl">"Facebook"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7.0.6"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+</span></code></pre></div></div>
 
 <p>We had to remove the dnxcore framework since we will no longer support it, and we’re marking the Facebook package explicitly as a dnx451 only package.</p>
 
 <p>Now to actually use the Graph Api lets go back to the Startup.cs class -&gt; Configure method -&gt; UseFacebookAuthentication middleware.  We want to configure the options to say that whenever a user logs in, call the Facebook Graph Api and get the user’s email address, and add that as the email claim.  You’ll use the following code to do that (intellisense will prompt you to add some dependency references and using statements as well):</p>
 
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="nf">UseFacebookAuthentication</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">app</span><span class="p">.</span><span class="nf">UseFacebookAuthentication</span><span class="p">(</span><span class="n">options</span> <span class="p">=&gt;</span>
 <span class="p">{</span>
     <span class="n">options</span><span class="p">.</span><span class="n">AppId</span> <span class="p">=</span> <span class="n">Configuration</span><span class="p">[</span><span class="s">"Authentication:Facebook:AppId"</span><span class="p">];</span>
     <span class="n">options</span><span class="p">.</span><span class="n">AppSecret</span> <span class="p">=</span> <span class="n">Configuration</span><span class="p">[</span><span class="s">"Authentication:Facebook:AppSecret"</span><span class="p">];</span>
@@ -421,9 +417,9 @@
     <span class="n">options</span><span class="p">.</span><span class="n">Events</span> <span class="p">=</span> <span class="k">new</span> <span class="n">OAuthEvents</span>
     <span class="p">{</span>
         <span class="n">OnCreatingTicket</span> <span class="p">=</span> <span class="n">context</span> <span class="p">=&gt;</span> <span class="p">{</span>
-            <span class="c1">// Use the Facebook Graph Api to get the user's email address
-</span>            <span class="c1">// and add it to the email claim
-</span>
+            <span class="c1">// Use the Facebook Graph Api to get the user's email address</span>
+            <span class="c1">// and add it to the email claim</span>
+
             <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="nf">FacebookClient</span><span class="p">(</span><span class="n">context</span><span class="p">.</span><span class="n">AccessToken</span><span class="p">);</span>
             <span class="kt">dynamic</span> <span class="n">info</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="nf">Get</span><span class="p">(</span><span class="s">"me"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">fields</span> <span class="p">=</span> <span class="s">"name,id,email"</span> <span class="p">});</span>
 
@@ -432,8 +428,7 @@
         <span class="p">}</span>
     <span class="p">};</span>
 <span class="p">});</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>(Fyi, the team managing the Facebook package has vanished into the netherwebs, but you can find a [cached copy of their documentation here] (http://web.archive.org/web/20150317045522/http://facebooksdk.net/docs/web/getting-started/))</p>
 
@@ -459,13 +454,12 @@
 
 <p>In fact, if you look at the ExternalLoginConfirmation method, they set the user’s email as the user name as well. Let’s fix that too while we’re at it.</p>
 
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ApplicationUser</span> <span class="p">{</span> <span class="n">UserName</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">Email</span><span class="p">,</span> <span class="n">Email</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">Email</span> <span class="p">};</span>
-</code></pre>
-</div>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ApplicationUser</span> <span class="p">{</span> <span class="n">UserName</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">Email</span><span class="p">,</span> <span class="n">Email</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">Email</span> <span class="p">};</span>
+</code></pre></div></div>
 
 <p>The first step will be to extend our ExternalLoginConfirmationViewModel to add a UserName property.  Edit ViewModels\ExternalLoginConfirmationViewModel.cs to look like the following:</p>
 
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">ExternalLoginConfirmationViewModel</span>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">ExternalLoginConfirmationViewModel</span>
 <span class="p">{</span>
     <span class="p">[</span><span class="n">Required</span><span class="p">]</span>
     <span class="p">[</span><span class="n">EmailAddress</span><span class="p">]</span>
@@ -475,15 +469,14 @@
     <span class="p">[</span><span class="n">EmailAddress</span><span class="p">]</span>
     <span class="k">public</span> <span class="kt">string</span> <span class="n">UserName</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Now, in our AccountController’s ExternalLoginCallback method, change the last else statement (where it calls the ExternalLoginConfirmation View) to match the below code. We’re specifying the UserName using the Name claim and passing that directly to the ExternalLoginConfirmation method instead of invoking a View.  The ExternalLoginConfirmation will generate and return the regisration completed view directly.</p>
 
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">else</span>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">else</span>
 <span class="p">{</span>
-    <span class="c1">// If the user does not have an account, then ask the user to create an account.
-</span>    <span class="n">ViewData</span><span class="p">[</span><span class="s">"ReturnUrl"</span><span class="p">]</span> <span class="p">=</span> <span class="n">returnUrl</span><span class="p">;</span>
+    <span class="c1">// If the user does not have an account, then ask the user to create an account.</span>
+    <span class="n">ViewData</span><span class="p">[</span><span class="s">"ReturnUrl"</span><span class="p">]</span> <span class="p">=</span> <span class="n">returnUrl</span><span class="p">;</span>
     <span class="n">ViewData</span><span class="p">[</span><span class="s">"LoginProvider"</span><span class="p">]</span> <span class="p">=</span> <span class="n">info</span><span class="p">.</span><span class="n">LoginProvider</span><span class="p">;</span>
     <span class="kt">var</span> <span class="n">email</span> <span class="p">=</span> <span class="n">info</span><span class="p">.</span><span class="n">ExternalPrincipal</span><span class="p">.</span><span class="nf">FindFirstValue</span><span class="p">(</span><span class="n">ClaimTypes</span><span class="p">.</span><span class="n">Email</span><span class="p">);</span>
     <span class="kt">var</span> <span class="n">name</span> <span class="p">=</span> <span class="n">info</span><span class="p">.</span><span class="n">ExternalPrincipal</span><span class="p">.</span><span class="nf">FindFirstValue</span><span class="p">(</span><span class="n">ClaimTypes</span><span class="p">.</span><span class="n">Name</span><span class="p">);</span>
@@ -491,33 +484,30 @@
     <span class="k">return</span> <span class="k">await</span> <span class="nf">ExternalLoginConfirmation</span><span class="p">(</span><span class="k">new</span> <span class="n">ExternalLoginConfirmationViewModel</span> <span class="p">{</span> <span class="n">Email</span> <span class="p">=</span> <span class="n">email</span><span class="p">,</span> <span class="n">UserName</span> <span class="p">=</span> <span class="n">name</span> <span class="p">});</span>
     <span class="n">name</span> <span class="p">});</span>
 <span class="p">}</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>We also need to modify the ExternalLoginConfirmation to actually read the UserName from the model:</p>
 
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">ExternalLoginConfirmation</span><span class="p">(</span><span class="n">ExternalLoginConfirmationViewModel</span> <span class="n">model</span><span class="p">,</span> <span class="kt">string</span> <span class="n">returnUrl</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">async</span> <span class="n">Task</span><span class="p">&lt;</span><span class="n">IActionResult</span><span class="p">&gt;</span> <span class="nf">ExternalLoginConfirmation</span><span class="p">(</span><span class="n">ExternalLoginConfirmationViewModel</span> <span class="n">model</span><span class="p">,</span> <span class="kt">string</span> <span class="n">returnUrl</span> <span class="p">=</span> <span class="k">null</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="p">...</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="n">ModelState</span><span class="p">.</span><span class="n">IsValid</span><span class="p">)</span>
     <span class="p">{</span>
-        <span class="c1">// Get the information about the user from the external login provider
-</span>        <span class="kt">var</span> <span class="n">info</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_signInManager</span><span class="p">.</span><span class="nf">GetExternalLoginInfoAsync</span><span class="p">();</span>
+        <span class="c1">// Get the information about the user from the external login provider</span>
+        <span class="kt">var</span> <span class="n">info</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_signInManager</span><span class="p">.</span><span class="nf">GetExternalLoginInfoAsync</span><span class="p">();</span>
         <span class="k">if</span> <span class="p">(</span><span class="n">info</span> <span class="p">==</span> <span class="k">null</span><span class="p">)</span>
         <span class="p">{</span>
             <span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="s">"ExternalLoginFailure"</span><span class="p">);</span>
         <span class="p">}</span>
         <span class="kt">var</span> <span class="n">user</span> <span class="p">=</span> <span class="k">new</span> <span class="n">ApplicationUser</span> <span class="p">{</span> <span class="n">UserName</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">UserName</span><span class="p">,</span> <span class="n">Email</span> <span class="p">=</span> <span class="n">model</span><span class="p">.</span><span class="n">Email</span> <span class="p">};</span>
         <span class="kt">var</span> <span class="n">result</span> <span class="p">=</span> <span class="k">await</span> <span class="n">_userManager</span><span class="p">.</span><span class="nf">CreateAsync</span><span class="p">(</span><span class="n">user</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>And finally we need to modify the last line of ExternalLoginConfirmation, where it returns the view, to explicitly mention the name of the view:</p>
 
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="s">"ExternalLoginConfirmation"</span><span class="p">,</span> <span class="n">model</span><span class="p">);</span>
-</code></pre>
-</div>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">return</span> <span class="nf">View</span><span class="p">(</span><span class="s">"ExternalLoginConfirmation"</span><span class="p">,</span> <span class="n">model</span><span class="p">);</span>
+</code></pre></div></div>
 
 <p>Without that line, when ExternalLoginCallback calls ExternalLoginConfirmation, the View method would look for a view named ExternalLoginCallback, which doesn’t exist.</p>
 
@@ -529,13 +519,12 @@
 
 <p>This setting resides back in Startup.cs, but this time we’ll go to the ConfigureServices method, which is where all the dependency injection gets setup.  We’ll modify the <code class="highlighter-rouge">services.AddIdentity()</code> method to pass in the below options:</p>
 
-<div class="language-csharp highlighter-rouge"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="n">AddIdentity</span><span class="p">&lt;</span><span class="n">ApplicationUser</span><span class="p">,</span> <span class="n">IdentityRole</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">services</span><span class="p">.</span><span class="n">AddIdentity</span><span class="p">&lt;</span><span class="n">ApplicationUser</span><span class="p">,</span> <span class="n">IdentityRole</span><span class="p">&gt;(</span><span class="n">options</span> <span class="p">=&gt;</span> <span class="p">{</span>
     <span class="n">options</span><span class="p">.</span><span class="n">User</span><span class="p">.</span><span class="n">AllowedUserNameCharacters</span> <span class="p">=</span> <span class="s">"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._' "</span><span class="p">;</span>
 <span class="p">})</span>
 <span class="p">.</span><span class="n">AddEntityFrameworkStores</span><span class="p">&lt;</span><span class="n">ApplicationDbContext</span><span class="p">&gt;()</span>
 <span class="p">.</span><span class="nf">AddDefaultTokenProviders</span><span class="p">();</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This expands our list of allwed characters in the user name to include a space, and I also threw in a few extra characters for good measure.  It’s not perfect, but it’ll at least protect us from some of the <a href="http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/">falsehoods developers believe about names</a>.</p>
 
@@ -735,7 +724,7 @@
   <footer>
     
 
-<span>&copy; 2018 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+<span>&copy; 2019 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
 
   </footer>
 </div><!-- /.footer-wrap -->

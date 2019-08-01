@@ -271,7 +271,7 @@
 
 <p>It’s really simple. You just need to add a redirect rule to your site’s web.config file.  You can do that by adding the following rewrite rule to the web.config file in your wwwroot folder.  If you don’t have a web.config file, then you can create one and just paste the text below into it, just change the host names to match your site’s host names:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;configuration&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;configuration&gt;
   &lt;system.webServer&gt;  
     &lt;rewrite&gt;  
         &lt;rules&gt;  
@@ -286,8 +286,7 @@
     &lt;/rewrite&gt;  
   &lt;/system.webServer&gt;  
 &lt;/configuration&gt;  
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>Basically we’re telling IIS to take any request where the host name matches the RegEx pattern “^yoursite.azurewebsites.net$” and return an HTTP 301 response. The response will include the originally requested url, except it’ll be pointing to your custom “www.yoursite.com” domain instead.  When the user’s browser reads that 301 response and the new url, it will automatically load that new url instead. It’ll even change the address the user sees in the address bar.</p>
 
@@ -295,37 +294,34 @@
 
 <p>So let’s see what’s going on here:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;configuration&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;configuration&gt;
   &lt;system.webServer&gt;  
   ...
   &lt;/system.webServer&gt;  
 &lt;/configuration&gt;  
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>This part tells IIS that we’re modifying the web server’s configuration settings. The next section is where it starts to get tricky:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;rewrite&gt;  
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;rewrite&gt;  
     &lt;rules&gt; 
     ... 
     &lt;/rules&gt;  
 &lt;/rewrite&gt;  
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">&lt;rewrite&gt;</code> tag tells IIS that the elements it encloses are settings for the the <a href="http://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module">URL Rewrite</a> module.  The <code class="highlighter-rouge">&lt;rules&gt;</code> tag lists all the rules that we want that module to follow.   In our case, we want it to follow a rule that will return a HTTP 301 redirect response to the client (the user’s web browser).</p>
 
 <p>Now for the actual rule:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;rule name="Redirect rquests to default azure websites domain" stopProcessing="true"&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;rule name="Redirect rquests to default azure websites domain" stopProcessing="true"&gt;
   &lt;match url="(.*)" /&gt;  
   &lt;conditions logicalGrouping="MatchAny"&gt;
     &lt;add input="{HTTP_HOST}" pattern="^yoursite\.azurewebsites\.net$" /&gt;
   &lt;/conditions&gt;
   &lt;action type="Redirect" url="http://www.yoursite.com/{R:0}" /&gt;  
 &lt;/rule&gt;  
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>The “name” attribute is just for human readability. It doesn’t affect execution at all. StopProcessing=”true” tells the rewrite module that if this rule applies to the incomming request, then not to bother processing any other rules  after this one becuase they won’t matter.  In our case we only have one rule, so this tag doesn’t do anything, but it can save you some CPU if you have more rules defined.</p>
 
@@ -335,27 +331,25 @@
 
 <p>Here’s the condition we used:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;add input="{HTTP_HOST}" pattern="^yoursite\.azurewebsites\.net$" /&gt;
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;add input="{HTTP_HOST}" pattern="^yoursite\.azurewebsites\.net$" /&gt;
+</code></pre></div></div>
 
 <p>It says to look at the http host and evaluate the condition as true if the host matches the given regEx pattern, which we set to your default azure domain name.</p>
 
 <p>The last bit is the action, the meat of the whole rule:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;action type="Redirect" url="http://www.yoursite.com/{R:0}" /&gt;  
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;action type="Redirect" url="http://www.yoursite.com/{R:0}" /&gt;  
+</code></pre></div></div>
 
 <p>Here we’re telling the Rewrite module what action to take (what it’s actually supposed to do) when a request matches the above rules.  The action we want is “Redirect”, which is where it’ll return the HTTP 301 to the client, and when it returns a 301 we need to tell the client what url it should be redirected to. That’s how we get to specify our desired domain name.</p>
 
-<p>But we don’t want to send the user to the root of the domain name, so we add in the <code class="highlighter-rouge">/{R:0}</code> bit, which (put simply) says “Look at the orignal url we matched against in the <code class="highlighter-rouge">&lt;match&gt;</code> tag, and stick that in.”  A more thorough description is that we ran a regex expression in the <code class="highlighter-rouge">&lt;match&gt;</code> tag, and this <code class="highlighter-rouge"><span class="p">{</span><span class="err">R:0</span><span class="p">}</span></code> returns the first RegEx group.</p>
+<p>But we don’t want to send the user to the root of the domain name, so we add in the <code class="highlighter-rouge">/{R:0}</code> bit, which (put simply) says “Look at the orignal url we matched against in the <code class="highlighter-rouge">&lt;match&gt;</code> tag, and stick that in.”  A more thorough description is that we ran a regex expression in the <code class="highlighter-rouge">&lt;match&gt;</code> tag, and this <code class="highlighter-rouge">{R:0}</code> returns the first RegEx group.</p>
 
 <p>And there you have it, that’s how you can redirect all request for your default azure domain to your custom domain.</p>
 
 <p>As a final example, here’s web.config file’s conent for my site:</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>&lt;configuration&gt;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;configuration&gt;
   &lt;system.webServer&gt;  
     &lt;rewrite&gt;  
         &lt;rules&gt;  
@@ -370,8 +364,7 @@
     &lt;/rewrite&gt;  
   &lt;/system.webServer&gt;  
 &lt;/configuration&gt;  
-</code></pre>
-</div>
+</code></pre></div></div>
 
 
       <hr />
@@ -546,7 +539,7 @@
   <footer>
     
 
-<span>&copy; 2018 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+<span>&copy; 2019 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
 
   </footer>
 </div><!-- /.footer-wrap -->
