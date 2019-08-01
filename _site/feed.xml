@@ -230,35 +230,22 @@
     We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 </style>
 <!-- Begin MailChimp Signup Form -->
-<div class="mc_embed_signup" id="mc_embed_signup">
-<form action="//zainrizvi.us11.list-manage.com/subscribe/post?u=dbda45480a7b2dbd7af5b784e&amp;id=3978b7c9c7" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-    <div id="mc_embed_signup_scroll">
-    <h2>
-    Like what you're reading? Sign up here and get new posts delivered to your inbox
-    </h2>
-<div class="mc-field-group">
-    <label for="mce-FNAME">First Name </label>
-    <input type="text" value="" name="FNAME" class="" id="mce-FNAME">
+<div>
+ <form  
+       action="https://tinyletter.com/ZainRizvi"
+       method="post" target="popupwindow"
+       onsubmit="window.open('https://tinyletter.com/ZainRizvi', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
+     <p>
+         <label for="tlemail">Did you like this post?  If so then enter your email below to get new articles on technology, machine learning, self improvement, and career tips when the come out!</label></p>
+     <p>
+         <input type="text" style="width:200px" name="email" />
+         <input type="hidden" value="1" name="embed"/>
+         <input type="submit" value="Sign me up!" />
+     </p>
+    </form>
 </div>
-<div class="mc-field-group">
-    <label for="mce-LNAME">Last Name </label>
-    <input type="text" value="" name="LNAME" class="" id="mce-LNAME">
-</div>
-<div class="mc-field-group">
-    <label for="mce-EMAIL">Email Address </label>
-    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
-</div>
-    <div id="mce-responses" class="clear">
-        <div class="response" id="mce-error-response" style="display:none"></div>
-        <div class="response" id="mce-success-response" style="display:none"></div>
-    </div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_dbda45480a7b2dbd7af5b784e_3978b7c9c7" tabindex="-1" value=""></div>
-    <div class="clear"><input type="submit" value="Count me in!" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-    </div>
-</form>
-</div>
-<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
 <!--End mc_embed_signup-->
+
   </div>
   <article class="page">
     <h1></h1>
@@ -269,7 +256,7 @@
 <generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
 <link rel="self" type="application/atom+xml" href="/feed.xml" />
 <link rel="alternate" type="text/html" href="" />
-<updated>2019-07-31T19:09:19-07:00</updated>
+<updated>2019-07-31T19:27:29-07:00</updated>
 <id>/</id>
 <author>
   <name>Zain Rizvi</name>
@@ -388,39 +375,46 @@
     
   </author>
   <content type="html">
-    &lt;p&gt;When I was applying for a new job in 2017 I did a lot of research on salary negotiation (something &lt;a href=&quot;https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/&quot;&gt;every employee&lt;/a&gt; should know).  I found some pretty useful information others had shared and want to pay that favor forward.  Here’s the compilation and summary of a lot of the key resources:&lt;/p&gt;
+    &lt;p&gt;When I was applying for a new job a couple years ago I did a lot of research on salary negotiation (something &lt;a href=&quot;https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/&quot;&gt;every employee&lt;/a&gt; should know).  I found some pretty useful information others had shared and want to pay that favor forward.  Here’s the compilation and summary of a lot of the key resources:&lt;/p&gt;
 
 &lt;h3 id=&quot;word-for-word-scripts-on-what-to-say-during-the-negotiation-and-why-they-work&quot;&gt;Word-for-Word Scripts on What to Say During the Negotiation and Why they Work&lt;/h3&gt;
+
 &lt;p&gt;&lt;a href=&quot;http://haseebq.com/my-ten-rules-for-negotiating-a-job-offer&quot;&gt;10 rules for negotiating a job offer&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;http://haseebq.com/how-not-to-bomb-your-offer-negotiation&quot;&gt;How not to Bomb your Offer Negotiation&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;negotiation-video-including-scripts-on-what-to-say-and-why-it-works&quot;&gt;Negotiation Video, Including Scripts on What to Say and Why it Works&lt;/h3&gt;
+
 &lt;p&gt;Ramit Sethi: &lt;a href=&quot;http://www.iwillteachyoutoberich.com/guides/ultimate-guide-to-asking-for-a-raise-and-negotiating-salary/part-3/&quot;&gt;How to Negotiate Your Salary&lt;/a&gt;&lt;/p&gt;
 
 &lt;h1 id=&quot;16-principles-to-remember-during-a-negotiation&quot;&gt;16 Principles to Remember during a Negotiation&lt;/h1&gt;
+
 &lt;p&gt;The above resources were good, but I feel like this is the best one:&lt;/p&gt;
 
 &lt;p&gt;Full lecture by Harvard Business School’s Prof. Deepak Malhotra:
 &lt;a href=&quot;https://www.youtube.com/watch?v=km2Hd_xgo9Q&quot;&gt;How to Negotiate Your Job Offer&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;1-they-need-to-like-you&quot;&gt;1. They need to like you&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;If you get an offer, these people like you and want to keep liking you (but you’re not the only person in their life)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;2--they-have-to-believe-that-you-deserve-it&quot;&gt;2.  They have to believe that you deserve it&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Don’t ever ask for something without saying why you deserve it&lt;/li&gt;
   &lt;li&gt;Sometimes saying why you deserve it might make them like you less (#1) so be careful&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;3-they-need-to-be-able-to-justify-and-act-on-it-internally&quot;&gt;3. They need to be able to justify and act on it internally&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Need to figure out where they’re flexible and where they are not flexible&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;4-you-need-to-be-flexible-about-which-currency-they-pay-you-in&quot;&gt;4. You need to be flexible about which currency they pay you in&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;You shouldn’t care about salary, bonus, options, city, etc. Should focus on value of entire deal&lt;/li&gt;
   &lt;li&gt;The more ways you give them to pay you, the more likely you are to get paid&lt;/li&gt;
@@ -433,11 +427,13 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;5-dont-negotiate-just-to-negotiate&quot;&gt;5. Don’t negotiate just to negotiate&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Think about the interests that are really important to you, but not haggle over every little thing (you don’t want to sour the negotiation and make them not like you: see point #1)&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;6-try-to-learn-as-much-as-you-can-at-every-moment&quot;&gt;6. Try to learn as much as you can at every moment.&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Need to understand the person across the table from you&lt;/li&gt;
   &lt;li&gt;Learn as much as you can before the negotiation&lt;/li&gt;
@@ -450,6 +446,7 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;7-negotiate-multiple-issues-simultaneously&quot;&gt;7. Negotiate multiple issues simultaneously&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;For example, if there are multiple things you don’t like about the offer, mention all those things at once
     &lt;ul&gt;
@@ -464,6 +461,7 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;8-what-is-not-negotiable-today-may-be-negotiable-tomorrow&quot;&gt;8. What is not negotiable today may be negotiable tomorrow&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Today they may be hiring 20 people just like you and they have a hard time differing between you. But 6 months down the line they might be convinced that you’re different, or they’re in a different phase of employment and they have more flexibility&lt;/li&gt;
   &lt;li&gt;What may not be negotiable on day 1 of the interview process may be negotiable on day 3
@@ -480,12 +478,14 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;9-stay-at-the-table&quot;&gt;9. Stay at the table&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Stay in touch&lt;/li&gt;
   &lt;li&gt;Perhaps things they couldn’t share with you before the offer, they can share with you after the offer. Or after you have the job, or after you’ve worked there for 3 months, etc&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;10-sometimes-the-other-side-might-bring-up-something-that-you-wish-they-didnt&quot;&gt;10. Sometimes the other side might bring up something that you wish they didn’t&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Examples:
     &lt;ul&gt;
@@ -508,6 +508,7 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;11-avoidignoredownplay-ultimatums-of-any-kind-in-either-direction&quot;&gt;11. Avoid/ignore/downplay ultimatums of any kind (in either direction)&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Don’t make them either&lt;/li&gt;
   &lt;li&gt;If they make one, pretend it was never said
@@ -519,6 +520,7 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;12-companies-dont-negotiate-people-negotiate&quot;&gt;12. Companies don’t negotiate, people negotiate&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Negotiating with your future boss is different from negotiating with HR&lt;/li&gt;
   &lt;li&gt;It’s okay if HR is slightly annoyed with you, your boss being annoyed may be a problem&lt;/li&gt;
@@ -527,23 +529,27 @@
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;13-dont-be-in-a-mad-rush-to-get-offers&quot;&gt;13. Don’t be in a mad rush to get offers&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Sometimes you want the interview process to be a bit slow so that you have time to interview other places&lt;/li&gt;
   &lt;li&gt;You have to think about the portfolio of deals you’re negotiating, try to see if you can have the offers come in closer to each other&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;14-tell-the-truth&quot;&gt;14. Tell the truth&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;Deception isn’t worth it&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;15-shoot-for-an-11-out-of-10&quot;&gt;15. Shoot for an 11 out of 10&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;After the negotiation with you, your boss is going to think about how much do they look forward to working with you. You want them to think you’re an 11/10, not even a 10/10.&lt;/li&gt;
   &lt;li&gt;Negotiate in a way, openly, honestly, with empathy, with give and take, that afterwards they like you even more than they did before&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;16-if-youre-thinking-about-how-happy-youll-be-in-life-how-you-negotiate-is-not-very-important&quot;&gt;16. If you’re thinking about how happy you’ll be in life, how you negotiate is not very important&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;The job you choose, the industry you go into, etc are all much more important&lt;/li&gt;
 &lt;/ul&gt;
