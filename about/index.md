@@ -1,15 +1,19 @@
 ---
 layout: page
 title: About Me
-tags: [about, Jekyll, theme, responsive]
+tags:
+- about
+- Jekyll
+- theme
+- responsive
 modified: 2015-08-01
 image:
   feature: sample-image-1.jpg
+
 ---
+I'm Zain Rizvi, a Software Engineer at Google working on the [Google Cloud Platform](https://cloud.google.com/)'s [AI Platform Notebooks](https://cloud.google.com/ai-platform-notebooks/). Previously I was part of the the [Microsoft Azure App Services](https://azure.microsoft.com/en-us/services/app-service/web/) team.
 
-I'm Zain Rizvi, a Software Engineer at Google working on the [Google Cloud Platform](https://cloud.google.com/). Previously I was part of the the [Microsoft Azure App Services](https://azure.microsoft.com/en-us/services/app-service/web/) team.
-
-I'm interested in web development and work hard to be a [Lazy developer](http://blog.codinghorror.com/how-to-be-lazy-dumb-and-successful/). In case you couldn't tell I'm a big fan of [Jeff Atwood](http://blog.codinghorror.com/).
+I'm interested in cloud services, AI/ML, finding creative ways to solve customer problems, and work hard to be a [Lazy developer](http://blog.codinghorror.com/how-to-be-lazy-dumb-and-successful/). In case you couldn't tell I'm a big fan of [Jeff Atwood](http://blog.codinghorror.com/).
 
 Shout out in the comments if you have topics about Google Cloud, Azure Web Apps or cloud computing in general that you'd like to hear more about.
 
