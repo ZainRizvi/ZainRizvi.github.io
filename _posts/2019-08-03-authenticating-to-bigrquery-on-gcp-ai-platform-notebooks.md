@@ -31,6 +31,8 @@ Since neither of the normal ways to authenticate yourself will work, this post d
 
 # Prereq: Create an AI Platform Notebook for R
 
+First create a new AI Platform notebook. This notebook is where you'll be trying to use BigRQuery
+
 1. Go to [http://console.cloud.google.com/mlengine/notebooks/instances](http://console.cloud.google.com/mlengine/notebooks/instances "http://console.cloud.google.com/mlengine/notebooks/instances")
 2. Select 'New Instance' -> 'R 3.x' -> Create
 3. Wait for the notebook to be created and click "OPEN JUPYTERLAB"
