@@ -65,7 +65,7 @@ You'll get the output:
     'help.start()' for an HTML browser interface to help.
     Type 'q()' to quit R.
 
-3. Install the required packages
+1. Install the required packages
 
 As of this writing, BigRQuery needs the dev version of gargle for this authentication to work.  Later you shouldn't need to explicitly install gargle.
 
@@ -77,7 +77,7 @@ As of this writing, BigRQuery needs the dev version of gargle for this authentic
 
 The above packages will take \~10 minutes to install
 
-4. Import the required libraries and Authenticate yourself by running the command `bq``_auth(use_``oob = TRUE)` (correct your email address as appropriate)
+1. Import the required libraries and Authenticate yourself by running the command `bq``_auth(use_``oob = TRUE)` (correct your email address as appropriate)
 
 Commands to run:
 
@@ -86,7 +86,7 @@ Commands to run:
     library(bigrquery)
     bq_auth(use_oob = TRUE)
 
-5. Say yes when it asks about caching the OAuth credentials.
+1. Say yes when it asks about caching the OAuth credentials.
 
 You'll see an error like the following
 
@@ -95,10 +95,10 @@ You'll see an error like the following
     > library(bigrquery)
     > bq_auth(use_oob = TRUE)
     > Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
-
+    
     1: Yes
     2: No
-
+    
     Selection: 1
     Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
     /usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
@@ -108,4 +108,59 @@ You'll see an error like the following
     /usr/bin/xdg-open: 778: /usr/bin/xdg-open: w3m: not found
     xdg-open: no method available for opening 'https://accounts.google.com/o/oauth2/auth?client_id=603366585132-0l3n5tr582q443rnomebdeeo0156b2bc.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fbigquery%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code'
 
-1. Here's where it gets tricky.  It'll look like it's only giving a list of errors. But if you look closely the error contains a url you
+1. Here's where it gets tricky.  It'll look like it's only giving a list of errors. But if you look closely the error contains a url you see an https://accounts.google.com url in their.  Copy/paste that url into a new window and you'll see the usual Google Auth page.
+
+![](https://screenshot.googleplex.com/xKJ3Q9OjNgO.png)
+
+Log in and give Tidyverse the permissions it's requesting.  It'll take you to a screen giving you a secret code:
+
+![](https://screenshot.googleplex.com/UuESiW9q3Je.png)
+
+Copy that code and paste  it into your JupyterLab terminal and hit Enter.  
+
+I know, it doesn't look like the terminal is waiting for any kind of input, but it actually is (hopefully gargle will fix this soon).
+
+Sample output:
+
+    > library(httpuv)
+    > library(gargle)
+    > library(bigrquery)
+    > bq_auth(use_oob = TRUE)
+    Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
+    
+    1: Yes
+    2: No
+    
+    Selection: 1
+    Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
+    /usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
+    /usr/bin/xdg-open: 778: /usr/bin/xdg-open: elinks: not found
+    /usr/bin/xdg-open: 778: /usr/bin/xdg-open: links: not found
+    /usr/bin/xdg-open: 778: /usr/bin/xdg-open: lynx: not found
+    /usr/bin/xdg-open: 778: /usr/bin/xdg-open: w3m: not found
+    xdg-open: no method available for opening 'https://accounts.google.com/o/oauth2/auth?client_id=603366585132-0l3n5tr582q443rnomebdeeo0156b2bc.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fbigquery%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code'
+    4/lgjskDFGSjkwETSgsjGSKEJTssfgKWlgjskDFGSjkwETSgsjGSKEJTssfgKWlgjsk <===== the GCP auth code I copy/pasted in
+    > 
+
+  
+Now you can verify that your credentials have actually been cached.
+
+    > bq_auth(use_oob = TRUE) <===== retrying the auth to see if it worked
+    The bigrquery package is requesting access to your Google account. Select a pre-authorised account or enter '0' to obtaina new token. Press Esc/Ctrl + C to abort.
+    
+    1: xxxxxxx@gmail.com  <===== The auth credentials were cached
+    
+    Selection: 1
+
+If you now try to authenticate to bigrquery using your email, it'll work (if bq_auth() returns with no message then that means it worked. Not the most intuitive, I know)
+
+    > bq_auth(email="xxxxxxx@gmail.com")
+    >
+
+Now you can create a new R notebook within Jupyter lab and authenticate yourself!
+
+Create a new R notebook:
+
+![](https://screenshot.googleplex.com/u6aCRNRXKwX.png)
+
+Run the following code within your notebook and watch the query work:
