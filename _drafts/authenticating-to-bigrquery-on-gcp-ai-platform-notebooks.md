@@ -69,13 +69,15 @@ You'll get the output:
 
 As of this writing, BigRQuery needs the dev version of gargle for this authentication to work.  Later you shouldn't need to explicitly install gargle.
 
+Run the following commands to install the packages:
+
     install.packages("httpuv")
     install.packages("devtools") 
     devtools::install_github("r-lib/gargle") # get the dev version of gargle
     install.packages("bigrquery") 
     install.packages("readr") # To read BigQuery results
 
-The above packages will take \~10 minutes to install
+Those packages will take \~10 minutes to install
 
 1. Import the required libraries and Authenticate yourself by running the command `bq``_auth(use_``oob = TRUE)` (correct your email address as appropriate)
 
@@ -164,3 +166,22 @@ Create a new R notebook:
 ![](https://screenshot.googleplex.com/u6aCRNRXKwX.png)
 
 Run the following code within your notebook and watch the query work:
+
+    library(httpuv)
+    library(gargle)
+    library(bigrquery)
+    
+    bq_auth(email="xxxxxxx@gmail.com")
+    
+    project_id <- 'my-project-id'
+    test_query_text <- "SELECT * FROM `bigquery-public-data.usa_names.usa_1910_current` LIMIT 10"
+    
+    test_results <- query_exec(test_query_text, project_id, use_legacy_sql = FALSE)
+    
+    test_results # print the results
+
+## Option 2: Authenticate using a Service Account
+
+Instructions for using this method are available here:
+
+[https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key](https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key "https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key")
