@@ -43,7 +43,9 @@ This method uses the Jupter Lab terminal to run the interactive commands and cac
    ![](https://screenshot.googleplex.com/qhRWn3FT0ZY.png)
 2. Start R
 
-    jupyter@r-20190802-172922:~$ R
+You'll get the output:
+
+    jupyter@r-20190802-172922:\~$ R
     
     R version 3.6.1 (2019-07-05) -- "Action of the Toes"
     Copyright (C) 2019 The R Foundation for Statistical Computing
@@ -53,7 +55,7 @@ This method uses the Jupter Lab terminal to run the interactive commands and cac
     You are welcome to redistribute it under certain conditions.
     Type 'license()' or 'licence()' for distribution details.
     
-      Natural language support but running in an English locale
+    Natural language support but running in an English locale
     
     R is a collaborative project with many contributors.
     Type 'contributors()' for more information and
@@ -62,8 +64,6 @@ This method uses the Jupter Lab terminal to run the interactive commands and cac
     Type 'demo()' for some demos, 'help()' for on-line help, or
     'help.start()' for an HTML browser interface to help.
     Type 'q()' to quit R.
-    
-    >
 
 3. Install the required packages
 
@@ -77,25 +77,28 @@ As of this writing, BigRQuery needs the dev version of gargle for this authentic
 
 The above packages will take \~10 minutes to install
 
-4. Import the required libraries
-5. Authenticate yourself by running the command `bq``_auth(use_``oob = TRUE)` (correct your email address as appropriate). 
+4. Import the required libraries and Authenticate yourself by running the command `bq``_auth(use_``oob = TRUE)` (correct your email address as appropriate)
+
+Commands to run:
 
     library(httpuv)
     library(gargle)
     library(bigrquery)
     bq_auth(use_oob = TRUE)
 
-6. Say yes when it asks about caching the OAuth credentials. You'll see an error like the following
+5. Say yes when it asks about caching the OAuth credentials.
+
+You'll see an error like the following
 
     > library(httpuv)
     > library(gargle)
     > library(bigrquery)
     > bq_auth(use_oob = TRUE)
-    Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
-    
+    > Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
+
     1: Yes
     2: No
-    
+
     Selection: 1
     Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
     /usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
@@ -104,6 +107,5 @@ The above packages will take \~10 minutes to install
     /usr/bin/xdg-open: 778: /usr/bin/xdg-open: lynx: not found
     /usr/bin/xdg-open: 778: /usr/bin/xdg-open: w3m: not found
     xdg-open: no method available for opening 'https://accounts.google.com/o/oauth2/auth?client_id=603366585132-0l3n5tr582q443rnomebdeeo0156b2bc.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fbigquery%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code'
-    
 
-7. Here's where it gets tricky.  It'll look like it's only giving a list of errors. But if you look closely the error contains a url yo
+1. Here's where it gets tricky.  It'll look like it's only giving a list of errors. But if you look closely the error contains a url you
