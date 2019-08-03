@@ -1,9 +1,8 @@
 ---
 layout: post
-title: Authenticating to BigRQuery on GCP AI Platform Notebooks (or any remote Jupyter
-  Lab instance)
+title: 'BigRQuery Authentication on GCP AI Platform Notebooks '
 excerpt: When you're using Jupyter Notebooks with R, authenticating with BigQuery
-  can be tricky.  Here's how you can do it
+  can be tricky.  Here's how you can do it.
 tags:
 - BigRQuery
 - BigQuery
@@ -12,7 +11,9 @@ tags:
 - Google Cloud Platform
 
 ---
-GCP AI Platform Notebooks makes it really easy to run notebooks on Jupyter Lab and even offers R language notebooks.  R is great for crunching large data sets, and a popular place for people to store their data is on BigQuery.
+Note: These instructions can be used whenever you're using Jupyter Lab on a remote machine
+
+[GCP AI Platform Notebooks](https://cloud.google.com/ai-platform-notebooks/) makes it really easy to run notebooks on Jupyter Lab and even offers R language notebooks.  R is great for crunching large data sets, and a popular place for people to store their data is on BigQuery.
 
 The most popular library for accessing BigQuery in R is the open source library [BigRQuery](https://github.com/r-dbi/bigrquery).  It's an extremely useful library, but it has the downside that the authentication step will try one of two things:
 
@@ -40,7 +41,7 @@ This method uses the Jupter Lab terminal to run the interactive commands and cac
 
 In Jupyer Lab open a new terminal (open a new launcher and click 'Terminal')
 
-   ![](https://screenshot.googleplex.com/qhRWn3FT0ZY.png)
+![](https://screenshot.googleplex.com/qhRWn3FT0ZY.png)
 
 Start R
 
@@ -119,7 +120,7 @@ Log in and give Tidyverse the permissions it's requesting.  It'll take you to a 
 
 ![](https://screenshot.googleplex.com/UuESiW9q3Je.png)
 
-Copy that code and paste  it into your JupyterLab terminal and hit Enter.  
+Copy that code and paste  it into your JupyterLab terminal and hit Enter.
 
 I know, it doesn't look like the terminal is waiting for any kind of input, but it actually is (hopefully gargle will fix this soon).
 
@@ -145,7 +146,6 @@ Sample output:
     4/lgjskDFGSjkwETSgsjGSKEJTssfgKWlgjskDFGSjkwETSgsjGSKEJTssfgKWlgjsk <===== the GCP auth code I copy/pasted in
     > 
 
-  
 Now you can verify that your credentials have actually been cached.
 
     > bq_auth(use_oob = TRUE) <===== retrying the auth to see if it worked
