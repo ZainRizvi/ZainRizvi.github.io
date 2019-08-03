@@ -159,13 +159,13 @@ If you now try to authenticate to bigrquery using your email, it'll work (if bq_
     > bq_auth(email="xxxxxxx@gmail.com")
     >
 
-Now you can create a new R notebook within Jupyter lab and authenticate yourself!
+Now you can create a new R notebook within Jupyter Lab and authenticate yourself!
 
 Create a new R notebook:
 
 ![](https://screenshot.googleplex.com/u6aCRNRXKwX.png)
 
-Run the following code within your notebook and watch the query work:
+Run the following code within your notebook. It'll pull the authentication credentials for the given email addresses from the cache saved earlier:
 
     library(httpuv)
     library(gargle)
