@@ -17,6 +17,6 @@ fields:
   name: tags
   label: tags
 pages:
-- _posts/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks.md
+- _posts/2019-08-03-authenticating-to-bigrquery-on-gcp-ai-platform-notebooks.md
 - _posts/using-bigquery-with-r-on-gcp-ai-platform-notebooks.md
 - _posts/test-post.md
