@@ -38,10 +38,11 @@ Since neither of the normal ways to authenticate yourself will work, this post d
 
 This method uses the Jupter Lab terminal to run the interactive commands and cache the credentials. Once you're authenticated, you can switch to a notebook and it'll use the credentials in the cache.
 
-1. In Jupyer Lab open a new terminal (open a new launcher and click 'Terminal')
+In Jupyer Lab open a new terminal (open a new launcher and click 'Terminal')
 
    ![](https://screenshot.googleplex.com/qhRWn3FT0ZY.png)
-2. Start R
+
+Start R
 
 You'll get the output:
 
@@ -65,7 +66,7 @@ You'll get the output:
     'help.start()' for an HTML browser interface to help.
     Type 'q()' to quit R.
 
-1. Install the required packages
+Install the required packages
 
 As of this writing, BigRQuery needs the dev version of gargle for this authentication to work.  Later you shouldn't need to explicitly install gargle.
 
@@ -79,7 +80,7 @@ Run the following commands to install the packages:
 
 Those packages will take \~10 minutes to install
 
-1. Import the required libraries and Authenticate yourself by running the command `bq``_auth(use_``oob = TRUE)` (correct your email address as appropriate)
+Import the required libraries and Authenticate yourself by running the command `bq``_auth(use_``oob = TRUE)` (correct your email address as appropriate)
 
 Commands to run:
 
@@ -88,7 +89,7 @@ Commands to run:
     library(bigrquery)
     bq_auth(use_oob = TRUE)
 
-1. Say yes when it asks about caching the OAuth credentials.
+Say yes when it asks about caching the OAuth credentials.
 
 You'll see an error like the following
 
@@ -180,7 +181,7 @@ Run the following code within your notebook. It'll pull the authentication crede
     
     test_results # print the results
 
-## Option 2: Authenticate using a Service Account
+# Option 2: Authenticate using a Service Account
 
 Instructions for using this method are available here:
 
