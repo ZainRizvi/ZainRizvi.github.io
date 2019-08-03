@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Thinking Critically with Questions
----
+title: Thinking Critically by Questioning
 
+---
 How to use questions to learn deeply, think critically, and be creative.
 
 This is post is meant to extract the real juice out of Warren Berger's excellent book _A More Beautiful Question_.  Almost everything in this article was sourced from that book with some analysis/ideas of my own sprinkled in.
