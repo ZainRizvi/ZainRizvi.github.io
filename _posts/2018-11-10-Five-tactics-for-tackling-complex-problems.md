@@ -1,8 +1,12 @@
 ---
 layout: post
-title: "Five Tactics for Developers to Tackle Complex Problems at Work"
-excerpt: "Albert Einstein once said “The definition of genius is taking the complex and making it simple.”  But how can someone actually do that? Below are some tactics I've used that can make a big difference."
-tags: [Salary Negotiation]
+title: Five Tactics for Tackling Complex Problems at Work
+excerpt: Albert Einstein once said “The definition of genius is taking the complex
+  and making it simple.”  But how can someone actually do that? Below are some tactics
+  I've used that can make a big difference.
+tags:
+- Salary Negotiation
+
 ---
 > “The definition of genius is taking the complex and making it simple.” --Albert Einstein 
 
