@@ -24,7 +24,7 @@ The most popular library for accessing BigQuery in R is the open source library 
 
 \#2 won't work if you're connected to Jupyter Lab on a remote machine (the http://localhost will point you to the wrong VM!)
 
-Since neither of the normal ways to authenticate yourself will work, this post describes two different methods you can use to authenticate yourself to BigQuery within a AI Platform Notebook:
+Since neither of the normal ways to authenticate yourself will work [just yet](https://github.com/r-dbi/bigrquery/issues/340), this post describes two different methods you can use to authenticate yourself to BigQuery within a AI Platform Notebook:
 
 1. Authenticate using your normal GCP user credentials
 2. Authenticate using a service account
