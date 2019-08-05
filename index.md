@@ -1,7 +1,7 @@
 ---
 layout: home
-excerpt: Discoveries on Technology, Cloud, ML/AI, Productivity, Self Development tactics,
-  and Career tips.  Sharing interesting tips  and tricks as I learn them
+excerpt: Technology, Cloud, ML/AI, Productivity, Self Development tactics,
+  and Career tips.  Sharing interesting tips and tricks as I learn them
 tags:
 - zain rizvi
 - gcp
