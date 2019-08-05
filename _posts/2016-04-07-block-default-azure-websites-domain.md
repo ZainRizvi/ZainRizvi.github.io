@@ -1,10 +1,13 @@
 ---
 layout: post
-title: "How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps"
-excerpt: "What if you add a custom host name to your Azure Web App and don't want people to be able to access the default *.azurewebsites.net domain anymore?"
-tags: [Tutorial]
----
+title: 'How to: Redirect the default *.azurewebsites.net domain to your custom domain
+  on Azure Web Apps'
+excerpt: Here's how you can block people from using your default *.azurewebsites.net
+  domain.  Do this after you've added a custom domain name.
+tags:
+- Tutorial
 
+---
 When you create a new website using [Azure Web Apps](https://azure.microsoft.com/en-us/services/app-service/web/) you get a default `<sitename>.azurewebsites.net` domain assigned to your site.  That's great, but what if you add a custom host name to your site and don't want people to be able to access your default *.azurewebsites.net domain anymore? (You paid good money for that custom domain.)  This post explains how to redirect all traffic aimed at your site's default domain to your custom domain instead.
 
 It's really simple. You just need to add a redirect rule to your site's web.config file.  You can do that by adding the following rewrite rule to the web.config file in your wwwroot folder.  If you don't have a web.config file, then you can create one and just paste the text below into it, just change the host names to match your site's host names:
@@ -110,4 +113,3 @@ As a final example, here's web.config file's conent for my site:
   </system.webServer>  
 </configuration>  
 ```
-
