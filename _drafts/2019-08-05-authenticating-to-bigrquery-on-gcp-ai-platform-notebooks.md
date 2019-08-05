@@ -41,35 +41,35 @@ First create a new AI Platform notebook. This notebook is where you'll be trying
 
 This method uses the Jupter Lab terminal to run the interactive commands and cache the credentials. Once you're authenticated, you can switch to a notebook and it'll use the credentials in the cache.
 
-In Jupyer Lab open a new terminal (open a new launcher and click 'Terminal')
+First, start R in a Terminal
 
-![](https://screenshot.googleplex.com/qhRWn3FT0ZY.png)
+![](/media/2019-08-05-b1.png)
 
-Start R
+Run `R`
 
 You'll get the output:
 
     jupyter@r-20190802-172922:\~$ R
-
+    
     R version 3.6.1 (2019-07-05) -- "Action of the Toes"
     Copyright (C) 2019 The R Foundation for Statistical Computing
     Platform: x86_64-pc-linux-gnu (64-bit)
-
+    
     R is free software and comes with ABSOLUTELY NO WARRANTY.
     You are welcome to redistribute it under certain conditions.
     Type 'license()' or 'licence()' for distribution details.
-
+    
     Natural language support but running in an English locale
-
+    
     R is a collaborative project with many contributors.
     Type 'contributors()' for more information and
     'citation()' on how to cite R or R packages in publications.
-
+    
     Type 'demo()' for some demos, 'help()' for on-line help, or
     'help.start()' for an HTML browser interface to help.
     Type 'q()' to quit R.
 
-Install the required packages
+Next we install the required packages
 
 As of this writing, BigRQuery needs the dev version of gargle for this authentication to work.  Later you shouldn't need to explicitly install gargle.
 
@@ -101,10 +101,10 @@ You'll see an error like the following
     > library(bigrquery)
     > bq_auth(use_oob = TRUE)
     > Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
-
+    
     1: Yes
     2: No
-
+    
     Selection: 1
     Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
     /usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
@@ -116,11 +116,11 @@ You'll see an error like the following
 
 1. Here's where it gets tricky.  It'll look like it's only giving a list of errors. But if you look closely the error contains a url you see an https://accounts.google.com url in their.  Copy/paste that url into a new window and you'll see the usual Google Auth page.
 
-![](https://screenshot.googleplex.com/xKJ3Q9OjNgO.png)
+   ![](/media/2019-08-05-b2.png)
 
 Log in and give Tidyverse the permissions it's requesting.  It'll take you to a screen giving you a secret code:
 
-![](https://screenshot.googleplex.com/UuESiW9q3Je.png)
+![](/media/2019-08-05-b3.png)
 
 Copy that code and paste  it into your JupyterLab terminal and hit Enter.
 
@@ -133,10 +133,10 @@ Sample output:
     > library(bigrquery)
     > bq_auth(use_oob = TRUE)
     Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
-
+    
     1: Yes
     2: No
-
+    
     Selection: 1
     Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
     /usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
@@ -152,9 +152,9 @@ Now you can verify that your credentials have actually been cached.
 
     > bq_auth(use_oob = TRUE) <===== retrying the auth to see if it worked
     The bigrquery package is requesting access to your Google account. Select a pre-authorised account or enter '0' to obtaina new token. Press Esc/Ctrl + C to abort.
-
+    
     1: xxxxxxx@gmail.com  <===== The auth credentials were cached
-
+    
     Selection: 1
 
 If you now try to authenticate to bigrquery using your email, it'll work (if bq_auth() returns with no message then that means it worked. Not the most intuitive, I know)
@@ -166,25 +166,27 @@ Now you can create a new R notebook within Jupyter Lab and authenticate yourself
 
 Create a new R notebook:
 
-![](https://screenshot.googleplex.com/u6aCRNRXKwX.png)
+![](/media/2019-08-05-b4.png)
 
 Run the following code within your notebook. It'll pull the authentication credentials for the given email addresses from the cache saved earlier:
 
     library(httpuv)
     library(gargle)
     library(bigrquery)
-
+    
     bq_auth(email="xxxxxxx@gmail.com")
-
+    
     project_id <- 'my-project-id'
     test_query_text <- "SELECT * FROM `bigquery-public-data.usa_names.usa_1910_current` LIMIT 10"
-
+    
     test_results <- query_exec(test_query_text, project_id, use_legacy_sql = FALSE)
-
+    
     test_results # print the results
 
 # Option 2: Authenticate using a Service Account
 
-Instructions for using this method are available here:
+This method involves creating a new service account in GCP, saving the key for that service account on your notebook, and using that key to authenticate to GCP.
+
+Full instructions for using this method are available here:
 
 [https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key](https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key "https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key")
