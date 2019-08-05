@@ -50,21 +50,21 @@ Start R
 You'll get the output:
 
     jupyter@r-20190802-172922:\~$ R
-    
+
     R version 3.6.1 (2019-07-05) -- "Action of the Toes"
     Copyright (C) 2019 The R Foundation for Statistical Computing
     Platform: x86_64-pc-linux-gnu (64-bit)
-    
+
     R is free software and comes with ABSOLUTELY NO WARRANTY.
     You are welcome to redistribute it under certain conditions.
     Type 'license()' or 'licence()' for distribution details.
-    
+
     Natural language support but running in an English locale
-    
+
     R is a collaborative project with many contributors.
     Type 'contributors()' for more information and
     'citation()' on how to cite R or R packages in publications.
-    
+
     Type 'demo()' for some demos, 'help()' for on-line help, or
     'help.start()' for an HTML browser interface to help.
     Type 'q()' to quit R.
@@ -76,9 +76,9 @@ As of this writing, BigRQuery needs the dev version of gargle for this authentic
 Run the following commands to install the packages:
 
     install.packages("httpuv")
-    install.packages("devtools") 
+    install.packages("devtools")
     devtools::install_github("r-lib/gargle") # get the dev version of gargle
-    install.packages("bigrquery") 
+    install.packages("bigrquery")
     install.packages("readr") # To read BigQuery results
 
 Those packages will take \~10 minutes to install
@@ -101,10 +101,10 @@ You'll see an error like the following
     > library(bigrquery)
     > bq_auth(use_oob = TRUE)
     > Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
-    
+
     1: Yes
     2: No
-    
+
     Selection: 1
     Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
     /usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
@@ -133,10 +133,10 @@ Sample output:
     > library(bigrquery)
     > bq_auth(use_oob = TRUE)
     Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
-    
+
     1: Yes
     2: No
-    
+
     Selection: 1
     Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
     /usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
@@ -146,15 +146,15 @@ Sample output:
     /usr/bin/xdg-open: 778: /usr/bin/xdg-open: w3m: not found
     xdg-open: no method available for opening 'https://accounts.google.com/o/oauth2/auth?client_id=603366585132-0l3n5tr582q443rnomebdeeo0156b2bc.apps.googleusercontent.com&scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fbigquery%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&response_type=code'
     4/lgjskDFGSjkwETSgsjGSKEJTssfgKWlgjskDFGSjkwETSgsjGSKEJTssfgKWlgjsk <===== the GCP auth code I copy/pasted in
-    > 
+    >
 
 Now you can verify that your credentials have actually been cached.
 
     > bq_auth(use_oob = TRUE) <===== retrying the auth to see if it worked
     The bigrquery package is requesting access to your Google account. Select a pre-authorised account or enter '0' to obtaina new token. Press Esc/Ctrl + C to abort.
-    
+
     1: xxxxxxx@gmail.com  <===== The auth credentials were cached
-    
+
     Selection: 1
 
 If you now try to authenticate to bigrquery using your email, it'll work (if bq_auth() returns with no message then that means it worked. Not the most intuitive, I know)
@@ -173,14 +173,14 @@ Run the following code within your notebook. It'll pull the authentication crede
     library(httpuv)
     library(gargle)
     library(bigrquery)
-    
+
     bq_auth(email="xxxxxxx@gmail.com")
-    
+
     project_id <- 'my-project-id'
     test_query_text <- "SELECT * FROM `bigquery-public-data.usa_names.usa_1910_current` LIMIT 10"
-    
+
     test_results <- query_exec(test_query_text, project_id, use_legacy_sql = FALSE)
-    
+
     test_results # print the results
 
 # Option 2: Authenticate using a Service Account
