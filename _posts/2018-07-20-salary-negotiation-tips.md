@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Salary Negotiation Tips for Your New Job
+title: Salary Negotiation Tips for Your New Job Offer
 excerpt: Tips for negotiating your salary once you get a job offer
 tags:
 - Salary Negotiation
