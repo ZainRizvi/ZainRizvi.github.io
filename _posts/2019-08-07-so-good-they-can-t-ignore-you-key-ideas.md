@@ -11,7 +11,9 @@ These are my notes from Cal Newport's book [So Good They Can't Ignore You: Why S
 
 I'm going to skip the persuasive arguments that Cal listed and jump straight to the conclusions that resonated with me
 
-# "Discover your Passion" is a Lie
+# Value your Autonomy 
+
+"Find your Passion" is a lie.  That's not how humans work
 
 Reality: We become passionate about any work that can meet certain requirements
 
@@ -23,15 +25,17 @@ The Three Keys to Enjoying Work (from Self Determination Theory):
 
 You're likely to enjoy any work that gives you the above three.
 
-Going deeper, great work tends to have the following traits (note that each of these falls under one of the above three keys):
+Going deeper, great work tends to have the following traits:
 
 * It lets you be **Creative**
 * The work has **Impact**
 * You can **Control** what you do
 
-# Develop Rare Skills to become Valuable 
+Note that each of these falls under one of the above three keys
 
-Develop rare and valuable skills to stand out in your job.  
+# Develop Rare Skills to become Valuable
+
+Develop rare and valuable skills to stand out in your job.
 
 Cal calls these skills "capital" since these are the "money" that you can use to "purchase/acquire" higher value positions.
 
@@ -47,15 +51,15 @@ Steps to stretch your skill:
 
 There are two traps that you might fall into as you try to advance in your career:
 
-### Control Trap #1: Grabbing too much responsibility 
+### Control Trap #1: Grabbing too much responsibility
 
-You can't sustain control without having the skills/capital to back it up.  You won't be able to deliver on your promises and will fail.  
+You can't sustain control without having the skills/capital to back it up.  You won't be able to deliver on your promises and will fail.
 
 Of course, it's hard to know when you're really ready for the next stage.  So this really becomes a judgement call
 
 ### Control Trap #2: Trading away freedom for other rewards
 
-When you become more valuable, employers will want to offer you incentives to get you to keep providing value for them.  
+When you become more valuable, employers will want to offer you incentives to get you to keep providing value for them.
 
 This could be a good thing. You may be happy with the extra money, etc. But this may also reduce your freedom & your control over your own life.
 
