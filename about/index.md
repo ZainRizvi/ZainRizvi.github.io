@@ -9,6 +9,7 @@ tags:
 modified: 2015-08-01
 image:
   feature: sample-image-1.jpg
+share: false
 
 ---
 I'm Zain Rizvi, a Software Engineer at Google working on the [Google Cloud Platform](https://cloud.google.com/)'s [AI Platform Notebooks](https://cloud.google.com/ai-platform-notebooks/). Previously I was part of the the [Microsoft Azure App Services](https://azure.microsoft.com/en-us/services/app-service/web/) team.
