@@ -16,3 +16,5 @@ fields:
 - type: list
   name: tags
   label: tags
+pages:
+- _posts/so-good-they-can-t-ignore-you-key-ideas.md
