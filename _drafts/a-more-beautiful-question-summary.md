@@ -9,7 +9,7 @@ tags:
 - book reviews
 
 ---
-> These are notes on the key lessons I discovered while reading Warren Berger's [A More Beautiful Question](https://www.amazon.com/More-Beautiful-Question-Inquiry-Breakthrough/dp/1632861054/)
+> These are notes on the key lessons I discovered while reading Warren Berger's [A More Beautiful Question](https://www.amazon.com/More-Beautiful-Question-Inquiry-Breakthrough/dp/1632861054/). Most material is directly from the book with a few of my own ideas interspersed
 
 # Why do we need to ask questions?
 
@@ -63,45 +63,6 @@ When you learn anything new, ask for the following:
 * Why do I want to spend more time thinking about this?
 
 When you have a question, let it brew in your head.  It'll lead you to [combinatorial thinking](https://www.brainpickings.org/2013/08/14/how-einstein-thought-combinatorial-creativity/) where you draw connections between it and other things you know or learn.
-
-* Can a school be built on questions?
-* Can we teach ourselves to question?
-* How can we make "being wrong" less threatening?
-
-Interesting Teaching Style: Activity-Permissive Education by Mayo Clinic.  Lets kids move as they learn
-
-## How can parents teach their kids to question?
-
-* Ask the kids open ended questions
-* Get the kids to ask you questions (and guide them to certain questions)
-  * Don't answer those questions. Instead explore through experiments or personal experience and have the kid form a hypothesis about the answer
-* When kids come home from school, ask them "Did you ask a good question today?"
-
-## Question Formulation Training
-
-This is a strategy that has been successfully used in classrooms
-
-1. Give a premise (e.g. "torture can be justified")
-2. **Stage 1**: Divide people into groups to **Brainstorm** questions
-3. Rules:
-   1. Write each question down
-   2. Don't debate or try to answer questions
-   3. Just keep trying to think of more questions
-4. **Stage 2**: **Improve** the questions by converting open questions to closed and vice versa. For example you'd change between "why is torture effective" <==> "is torture effective"
-   * This shows that the same question asked differently can make you think in a different space
-5. **Stage 3**: **Prioritize**. Identify the top 3 questions to move the discussion forwards
-   * It Teaches: How to analyze questions and find ones to pursue further
-
-**Question Teaching Process**
-
-1. Teachers design a focus for the questions
-2. Students produce questions
-3. Students improve their questions (open vs closed)
-4. Students prioritize their questions (top 3)
-5. Students and teachers decide on next steps for acting on those questions
-6. Students reflect on what they've learned
-
-**Imagine**: What if the teacher was willing to ask questions that they themselves don't know the answer to?  If the class is interested then..."Lets figure this out together"
 
 # Breaking Down the Innovation Question Process
 
@@ -268,11 +229,52 @@ Questions belong to everyone
 > "It's easier to act your way into a new way of thinking than to think your way into a new way of acting"
 
 * Fake it till you make it
-* \[Zain aside: I'm not sure how true this statement is. It seems to apply to certain types of things\]
+* _\[Zain aside: I'm not sure how true this statement is. It seems to apply only to certain types of things\]_
 
 If we can't agree on an answer, can we instead agree on a question?
 
-# Other thoughts:
+# Teaching to Question
+
+* Can a school be built on questions?
+* Can we teach ourselves to question?
+* How can we make "being wrong" less threatening?
+
+Interesting Teaching Style: Activity-Permissive Education by Mayo Clinic.  Lets kids move as they learn
+
+### How can parents teach their kids to question?
+
+* Ask the kids open ended questions
+* Get the kids to ask you questions (and guide them to certain questions)
+  * Don't answer those questions. Instead explore through experiments or personal experience and have the kid form a hypothesis about the answer
+* When kids come home from school, ask them "Did you ask a good question today?"
+
+### Question Formulation Training
+
+This is a strategy that has been successfully used in classrooms
+
+1. Give a premise (e.g. "torture can be justified")
+2. **Stage 1**: Divide people into groups to **Brainstorm** questions
+3. Rules:
+   1. Write each question down
+   2. Don't debate or try to answer questions
+   3. Just keep trying to think of more questions
+4. **Stage 2**: **Improve** the questions by converting open questions to closed and vice versa. For example you'd change between "why is torture effective" <==> "is torture effective"
+   * This shows that the same question asked differently can make you think in a different space
+5. **Stage 3**: **Prioritize**. Identify the top 3 questions to move the discussion forwards
+   * It Teaches: How to analyze questions and find ones to pursue further
+
+### Question Teaching Process
+
+1. Teachers design a focus for the questions
+2. Students produce questions
+3. Students improve their questions (open vs closed)
+4. Students prioritize their questions (top 3)
+5. Students and teachers decide on next steps for acting on those questions
+6. Students reflect on what they've learned
+
+**Imagine**: What if the teacher was willing to ask questions that they themselves don't know the answer to?  If the class is interested then..."Lets figure this out together"
+
+# Other thoughts
 
 How do you reward questioning in others or in children to encourage this behavior?
 
