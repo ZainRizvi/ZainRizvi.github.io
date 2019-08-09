@@ -26,6 +26,8 @@ The economic model of the world is shifting. The nature of knowledge, work, and 
 
 Everything starts with "why?"
 
+![](/media/2019-08-08-question stages.jpg)
+
 ## A Questions Life cycle
 
 1. **Stage 1: Why** is something the way it is? Learn about the problem
@@ -33,9 +35,9 @@ Everything starts with "why?"
 3. **Stage 3: How** can this idea be implemented?
 4. **Implement** the solution
 
-![](/media/2019-08-08-question stages.jpg)
-
 These are described in more detail further down
+
+![](/media/2019-08-09-surrounded.jpg)
 
 # Fighting Information Overload
 
