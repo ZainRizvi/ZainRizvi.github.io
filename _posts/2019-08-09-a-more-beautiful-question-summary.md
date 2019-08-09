@@ -74,6 +74,8 @@ When you have a question, let it brew in your head.  It'll lead you to [combinat
 
 Why? => What if? => How?
 
+![](/media/2019-08-09-question-mark-2123967_1920.jpg)
+
 ## Stage 1: Why?
 
 ### How to get a Good **Why** Question?
@@ -111,6 +113,8 @@ This requires your decision to be committed to this question. Otherwise you won'
 Actively pursuing a question. You'll start thinking of it all the time.
 
 This gradually leads you to the **"What If?"** stage
+
+![](/media/2019-08-09-brainstorm-4222728_1920.jpg)
 
 ## Stage 2: What If?
 
@@ -155,6 +159,8 @@ What impact would that have?
 **"How Might We...?"** - This tends to open up the thinking process better than the question "How can we?"
 
 **Perspective Shift**: Ask questions from the perspective of another person ("How would Hollywood address this?")
+
+![](/media/2019-08-09-experiment.png)
 
 ## Stage 3: How?
 
@@ -201,6 +207,8 @@ Questions belong to everyone
 
 > "Share your question in hope of you getting something new: solution, perspective, insight, purpose, etc.  That thing will be yours"
 
+![](/media/2019-08-09-meeting.png)
+
 # Questioning in Business
 
 * Why are we in business? And what business are we _really_ in?
@@ -208,6 +216,8 @@ Questions belong to everyone
 * How can we make a better experiment?
 * Should mission statements be mission questions?
 * How might we create a culture of inquiry?
+
+![](/media/2019-08-09-peace.jpg)
 
 # Living Better by Asking the Right Questions
 
@@ -238,6 +248,8 @@ Questions belong to everyone
 * _\[Zain aside: I'm not sure how true this statement is. It seems to apply only to certain types of things\]_
 
 If we can't agree on an answer, can we instead agree on a question?
+
+![](/media/2019-08-09-The-Classroom-Teacher-Teach-Blackboard-Clipart-2799822.jpg)
 
 # Teaching to Question
 
