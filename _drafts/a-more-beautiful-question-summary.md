@@ -31,7 +31,7 @@ Everything starts with "why?"
 3. **Stage 3: How** can this idea be implemented?
 4. **Implement** the solution
 
-## ![](/media/2019-08-08-question stages.jpg)
+![](/media/2019-08-08-question stages.jpg)
 
 # Fighting Information Overload
 
