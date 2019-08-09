@@ -11,30 +11,49 @@ tags:
 ---
 > These are notes on the key lessons I discovered while reading Warren Berger's [A More Beautiful Question](https://www.amazon.com/More-Beautiful-Question-Inquiry-Breakthrough/dp/1632861054/)
 
-# Why do we need to as questions?
+# Why do we need to ask questions?
 
 The economic model of the world is shifting. The nature of knowledge, work, and employment is changing.
 
-* What business are we in now? Is there still a job for me?
+* What business are we in now?
+* Will my jobs still be needed in a few years?
 * Is "knowing" obsolete in the age of Google?
 * How do you move from asking to action?
 
+**The Power of Inquiry:** Asking questions is now more important than knowing
+
+Everything starts with "why?"
+
 ## A Questions Life cycle
 
-1. **Why** is something the way it is? Learn about the problem
-2. **What If** something was done differently? Generate ideas for improvements or solutions
-3. **How** can this idea be implemented?
+1. **Stage 1: Why** is something the way it is? Learn about the problem
+2. **Stage 2: What If** something was done differently? Generate ideas for improvements or solutions
+3. **Stage 3: How** can this idea be implemented?
 4. **Implement** the solution
 
 ## ![](/media/2019-08-08-question stages.jpg)
 
-# The Power of Inquiry
+# Fighting Information Overload
 
-Asking questions is now more important than knowing
+With Information Overload we need to **Focus on the Context** (tips from [John Seely Brown](http://www.johnseelybrown.com/))
 
-Everything starts with "why?"
+* How valid are these beliefs?
+* Is there an agenda behind this information?
+* Is the data stale? Out of date?
+* How does it relate to other information I have?
+* What assumptions am I (or the others) making?
 
-# Stage 1: Why?
+### 5 Learning Skills and Habits
+
+When you learn anything new, ask for the following:
+
+1. **Evidence** - What's true? How trustworthy is the info?
+2. **Viewpoints** - How would this look from other perspectives? 
+3. **Connection** - Noticing any patterns? Have you seem something similar before?
+4. **Conjecture** - What if this information was different? What implications would it have?
+5. **Relevance** - Why does this matter? (Did I just waste my time reading that?)
+
+# Learning to ask "Why?"
 
 * Why does this situation exist?
 * Why is it a problem?
@@ -45,8 +64,6 @@ Everything starts with "why?"
 
 When you have a question, let it brew in your head.  It'll lead you to [combinatorial thinking](https://www.brainpickings.org/2013/08/14/how-einstein-thought-combinatorial-creativity/) where you draw connections between it and other things you know or learn.
 
-# Learning to Question. Teaching to Question.
-
 * Can a school be built on questions?
 * Can we teach ourselves to question?
 * How can we make "being wrong" less threatening?
@@ -56,7 +73,7 @@ Teaching Style: Activity-Permissive Education
 * by Mayo Clinic
 * Lets kids move as they learn
 
-## How parents can teach their kids to question
+## How can parents teach their kids to question?
 
 * Ask the kids open ended questions
 * Get the kids to ask you questions (and guide them to certain questions)
@@ -78,7 +95,7 @@ This is a strategy that has been successfully used in classrooms
 5. Stage 3: **Prioritize**. Identify the top 3 questions to move the discussion forwards
    1. It Teaches: How to analyze questions and find ones to pursue further
 
-Question Teaching Process
+**Question Teaching Process**
 
 1. Teachers design a focus for the questions
 2. Students produce questions
@@ -87,15 +104,15 @@ Question Teaching Process
 5. Students and teachers decide on next steps for acting on those questions
 6. Students reflect on what they've learned
 
-Imagine: What if the teacher was willing to ask questions that they themselves don't know the answer to?  If the class is interested then..."Lets figure this out together"
+**Imagine**: What if the teacher was willing to ask questions that they themselves don't know the answer to?  If the class is interested then..."Lets figure this out together"
 
 # Breaking Down the Innovation Question Process
 
-Why? What if? How?
+Why? => What if? => How?
 
 ## Stage 1: Why?
 
-### To get a Good **Why** Question
+### How to get a Good **Why** Question?
 
 1. Step back
 2. Notice what others miss
@@ -137,7 +154,7 @@ Here are some tactics that can help you come up with ideas when you're in the "W
 
 ### Connective Inquiry
 
-* Studying various fields and letting it peculate in your head
+* Study various fields and let it peculate in your head
 * Boost: Take a few disparate resources/facts/tools and see how they could be used to solve a problem
 
 ### Thinking Wrong
@@ -165,22 +182,39 @@ What if restaurants gave you a menu only when you left?
 
 What impact would that have?
 
+### Idea Storming
+
+* Come up with at least 50 questions about the problem
+* Be sure to push yourself to 50 questions. That's around when the best questions come
+* This is an alternative to brainstorming
+
+**"How Might We...?"** - This tends to open up the thinking process better than the question "How can we?"
+
+**Perspective Shift**: Ask questions from the perspective of another person ("How would Hollywood address this?")
+
 ## Stage 3: How?
 
-Chose one idea to pursue. It's time for [convergent thinking](https://www.youtube.com/watch?v=cmBf1fBRXms)
+You came up with many ideas in Step 2. Now chose one idea to pursue. It's time for [convergent thinking](https://www.youtube.com/watch?v=cmBf1fBRXms)
 
-Now you need to get feedback on your idea, and get it fast.
+### Quickly Identify Bad Ideas via Feedback
+
+You need to get feedback on your idea, and get it fast.  There are multiple ways to do this
 
 One tactic: **Share the idea** to get feedback.  Something like a napkin sketch and asking "what do you think of..." could be a good quick protype to use
 
-**Rapid experimentation** find the smallest possible experiment that you can run to validate or invalidate your idea.  This is a form of creating a **Minimum Viable Product**
+**Rapid experimentation:** find the smallest possible experiment that you can run to validate or invalidate your idea.  This is a form of creating a [Minimum Viable Product](https://twitter.com/ZainRzv/status/1060941595879456768)
 
-Note: this will lead to many failures and disappointments
+In every experiment you must ask: **What will I Learn?**
+
+* Then work backwards to the simplest experiment which will teach you that.  This is the real MVP
+
+Note: experimenting will lead to many failures and disappointments
 
 * Instead of focusing on the failure, focus on the whys behind that failure and what you can learn from it
 * Note what went right
 * Ask "Am I failing differently each time?"
 * Remember, you're much better off if you fail after a few hours or days of effort instead of after many months of effort!
+* Edison said "I have not failed. I've just found 10,000 ways that won't work."
 
 Learn to note when you or others are experiencing [Cognitive Dissonance](https://www.simplypsychology.org/cognitive-dissonance.html), a mental discomfort when facing conflicting attitudes, beliefs, or behaviors
 
@@ -189,7 +223,8 @@ Learn to note when you or others are experiencing [Cognitive Dissonance](https:/
 
 ### Collaborative Inquiry
 
-* Get help from others!
+Get help from others!
+
 * "Do you find this interesting? Want to join me and try to answer it?"
 * To the internet!
   * [Not Impossible Labs](https://www.notimpossible.com/) - A site to find others
@@ -209,22 +244,6 @@ Questions belong to everyone
 * How can we make a better experiment?
 * Should mission statements be mission questions?
 * How might we create a culture of inquiry?
-
-In every experiment you must ask: **What will we Learn?**
-
-* Then work backwards to the simplest experiment which will teach you that.  This is the real MVP
-
-### Idea Storming
-
-* Come up with at least 50 questions about the problem
-* Be sure to push yourself to 50 questions. That's around when the best questions come
-* This is an alternative to brainstorming
-
-**"How Might We...?"** - This tends to open up the thinking process better than the question "How can we?"
-
-**Perspective Shift**: Ask questions from the perspective of another person ("How would Hollywood address this?")
-
-Mission Statement or Mission Question?
 
 # Living Better by Asking the Right Questions
 
