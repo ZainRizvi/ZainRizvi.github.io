@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A More Beautiful Question - Summary
+title: A More Beautiful Question - Key Insights
 excerpt: |-
   Better critical thinking and problem solving by asking questions, and fighting information overload.
 
