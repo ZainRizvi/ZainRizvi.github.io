@@ -1,8 +1,10 @@
 ---
 layout: post
 title: A More Beautiful Question - Summary
-excerpt: Asking questions is more important than knowing.  These are my reading notes
-  from the book "A More Beautiful Question" by Warren Berger
+excerpt: |-
+  Better critical thinking and problem solving by asking questions, and fighting information overload.
+
+  My reading notes from the book "A More Beautiful Question" by Warren Berger
 tags:
 - critical thinking
 - questions
@@ -32,6 +34,8 @@ Everything starts with "why?"
 4. **Implement** the solution
 
 ![](/media/2019-08-08-question stages.jpg)
+
+These are described in more detail further down
 
 # Fighting Information Overload
 
