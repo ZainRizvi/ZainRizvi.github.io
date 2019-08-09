@@ -47,9 +47,9 @@ With Information Overload we need to **Focus on the Context** (tips from [John S
 
 When you learn anything new, ask for the following:
 
-1. **Evidence** - What's true? How trustworthy is the info?
-2. **Viewpoints** - How would this look from other perspectives? 
-3. **Connection** - Noticing any patterns? Have you seem something similar before?
+1. **Evidence** - Is it true? How trustworthy is this info?
+2. **Viewpoints** - How would this look from other perspectives?
+3. **Connection** - Noticing any patterns? Have I seem something similar before?
 4. **Conjecture** - What if this information was different? What implications would it have?
 5. **Relevance** - Why does this matter? (Did I just waste my time reading that?)
 
@@ -68,10 +68,7 @@ When you have a question, let it brew in your head.  It'll lead you to [combinat
 * Can we teach ourselves to question?
 * How can we make "being wrong" less threatening?
 
-Teaching Style: Activity-Permissive Education
-
-* by Mayo Clinic
-* Lets kids move as they learn
+Interesting Teaching Style: Activity-Permissive Education by Mayo Clinic.  Lets kids move as they learn
 
 ## How can parents teach their kids to question?
 
@@ -85,15 +82,15 @@ Teaching Style: Activity-Permissive Education
 This is a strategy that has been successfully used in classrooms
 
 1. Give a premise (e.g. "torture can be justified")
-2. Stage 1: Divide people into groups to **Brainstorm** questions
+2. **Stage 1**: Divide people into groups to **Brainstorm** questions
 3. Rules:
    1. Write each question down
    2. Don't debate or try to answer questions
    3. Just keep trying to think of more questions
-4. Stage 2: **Improve** the questions by converting open questions to closed and vice versa. For example you'd change between "why is torture effective" <==> "is torture effective"
-   1. This shows that the same question asked differently can make you think in a different space
-5. Stage 3: **Prioritize**. Identify the top 3 questions to move the discussion forwards
-   1. It Teaches: How to analyze questions and find ones to pursue further
+4. **Stage 2**: **Improve** the questions by converting open questions to closed and vice versa. For example you'd change between "why is torture effective" <==> "is torture effective"
+   * This shows that the same question asked differently can make you think in a different space
+5. **Stage 3**: **Prioritize**. Identify the top 3 questions to move the discussion forwards
+   * It Teaches: How to analyze questions and find ones to pursue further
 
 **Question Teaching Process**
 
@@ -231,7 +228,7 @@ Get help from others!
 
 > "Many more people are drawn to an existing idea they can join in on & help to improve or advance, rather than starting from scratch on their own."
 
-You are inviting collaborators as **equals** on a project. "Your" question becomes theirs too. 
+You are inviting collaborators as **equals** on a project. "Your" question becomes theirs too.
 
 Questions belong to everyone
 
