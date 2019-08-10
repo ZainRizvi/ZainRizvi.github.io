@@ -11,7 +11,7 @@ tags:
 - book reviews
 
 ---
-> These are notes on the key lessons I discovered while reading Warren Berger's [A More Beautiful Question](https://www.amazon.com/More-Beautiful-Question-Inquiry-Breakthrough/dp/1632861054/). Most material is directly from the book with a few of my own ideas interspersed
+> These are the key lessons I discovered while reading Warren Berger's [A More Beautiful Question](https://www.amazon.com/More-Beautiful-Question-Inquiry-Breakthrough/dp/1632861054/). Most material is directly from the book with a few of my own ideas interspersed
 
 ![](/media/2019-08-10-book question details-2.jpg)
 
