@@ -2,7 +2,7 @@
 layout: post
 title: A More Beautiful Question - Key Insights
 excerpt: |-
-  Better critical thinking and problem solving by asking questions, and fighting information overload.
+  Find Innovative Business Ideas by Asking Questions. Develop better critical thinking and problem solving skills, and fight information overload.
 
   My reading notes from the book "A More Beautiful Question" by Warren Berger
 tags:
