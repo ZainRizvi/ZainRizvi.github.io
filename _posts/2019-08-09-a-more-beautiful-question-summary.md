@@ -26,8 +26,6 @@ The economic model of the world is shifting. The nature of knowledge, work, and 
 
 Everything starts with "why?"
 
-![](/media/2019-08-08-question stages.jpg)
-
 ## A Questions Life cycle
 
 1. **Stage 1: Why** is something the way it is? Learn about the problem
@@ -35,11 +33,13 @@ Everything starts with "why?"
 3. **Stage 3: How** can this idea be implemented?
 4. **Implement** the solution
 
+![](/media/2019-08-08-question stages.jpg)
+
 These are described in more detail further down
 
-![](/media/2019-08-09-surrounded.jpg)
-
 # Fighting Information Overload
+
+![](/media/2019-08-09-surrounded.jpg)
 
 With Information Overload we need to **Focus on the Context** (tips from [John Seely Brown](http://www.johnseelybrown.com/))
 
@@ -72,7 +72,7 @@ When you have a question, let it brew in your head.  It'll lead you to [combinat
 
 # Breaking Down the Innovation Question Process
 
-Why? => What if? => How?
+Start with **Why**? => Ask **What if**? => Figure out **How**?
 
 ![](/media/2019-08-09-question-mark-2123967_1920.jpg)
 
@@ -114,11 +114,11 @@ Actively pursuing a question. You'll start thinking of it all the time.
 
 This gradually leads you to the **"What If?"** stage
 
-![](/media/2019-08-09-brainstorm-4222728_1920.jpg)
-
 ## Stage 2: What If?
 
 Here are some tactics that can help you come up with ideas when you're in the "What If" stage
+
+![](/media/2019-08-09-brainstorm-4222728_1920.jpg)
 
 ### Connective Inquiry
 
@@ -160,11 +160,11 @@ What impact would that have?
 
 **Perspective Shift**: Ask questions from the perspective of another person ("How would Hollywood address this?")
 
-![](/media/2019-08-09-experiment.png)
-
-## Stage 3: How?
+# Stage 3: How?
 
 You came up with many ideas in Step 2. Now chose one idea to pursue. It's time for [convergent thinking](https://www.youtube.com/watch?v=cmBf1fBRXms)
+
+![](/media/2019-08-10-construction.png)
 
 ### Quickly Identify Bad Ideas via Feedback
 
@@ -207,9 +207,7 @@ Questions belong to everyone
 
 > "Share your question in hope of you getting something new: solution, perspective, insight, purpose, etc.  That thing will be yours"
 
-![](/media/2019-08-09-meeting.png)
-
-# Questioning in Business
+# Questioning in Business![](/media/2019-08-09-meeting.png)
 
 * Why are we in business? And what business are we _really_ in?
 * What if our company didn't exist?
@@ -217,9 +215,9 @@ Questions belong to everyone
 * Should mission statements be mission questions?
 * How might we create a culture of inquiry?
 
-![](/media/2019-08-09-peace.jpg)
-
 # Living Better by Asking the Right Questions
+
+![](/media/2019-08-09-peace.jpg)
 
 * What if we start with what we already have?
 * What if you made one small change?
@@ -249,8 +247,6 @@ Questions belong to everyone
 
 If we can't agree on an answer, can we instead agree on a question?
 
-![](/media/2019-08-09-The-Classroom-Teacher-Teach-Blackboard-Clipart-2799822.jpg)
-
 # Teaching to Question
 
 * Can a school be built on questions?
@@ -258,6 +254,8 @@ If we can't agree on an answer, can we instead agree on a question?
 * How can we make "being wrong" less threatening?
 
 Interesting Teaching Style: Activity-Permissive Education by Mayo Clinic.  Lets kids move as they learn
+
+![](/media/2019-08-09-The-Classroom-Teacher-Teach-Blackboard-Clipart-2799822.jpg)
 
 ### How can parents teach their kids to question?
 
@@ -270,16 +268,23 @@ Interesting Teaching Style: Activity-Permissive Education by Mayo Clinic.  Lets 
 
 This is a strategy that has been successfully used in classrooms
 
-1. Give a premise (e.g. "torture can be justified")
-2. **Stage 1**: Divide people into groups to **Brainstorm** questions
-3. Rules:
-   1. Write each question down
-   2. Don't debate or try to answer questions
-   3. Just keep trying to think of more questions
-4. **Stage 2**: **Improve** the questions by converting open questions to closed and vice versa. For example you'd change between "why is torture effective" <==> "is torture effective"
-   * This shows that the same question asked differently can make you think in a different space
-5. **Stage 3**: **Prioritize**. Identify the top 3 questions to move the discussion forwards
-   * It Teaches: How to analyze questions and find ones to pursue further
+First offer a premise (e.g. "torture can be justified")
+
+**Stage 1**: Divide people into groups to **Brainstorm** questions
+
+Rules:
+
+* Write each question down
+* Don't debate or try to answer questions
+* Just keep trying to think of more questions
+
+**Stage 2**: **Improve** the questions by converting open questions to closed and vice versa. For example you'd change between "why is torture effective" <==> "is torture effective"
+
+* This shows that the same question asked differently can make you think in a different space
+
+**Stage 3**: **Prioritize**. Identify the top 3 questions to move the discussion forwards
+
+* It teaches them how to analyze questions and find ones to pursue further
 
 ### Question Teaching Process
 
@@ -296,7 +301,7 @@ This is a strategy that has been successfully used in classrooms
 
 How do you reward questioning in others or in children to encourage this behavior?
 
-* Perhaps the process of discover will be it's own reward
+* Would the process of discovery will be it's own reward?
 
 Ideas for a game based on asking questions:
 
