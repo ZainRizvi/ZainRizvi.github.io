@@ -3,7 +3,7 @@
 title:            Zain Rizvi
 locale:           en_US
 url:              https://www.zainrizvi.io
-description:      Sharing interesting things I'm learning about Software, Psychology, Self Improvment, and Business
+description:      Zain Rizvi's blog. Sharing interesting things I'm learning about Software, Psychology, Self Improvment, and Business
 
 # Jekyll configuration
 defaults:
@@ -37,6 +37,7 @@ sass:
 plugins:
   - jekyll-sitemap
   - jekyll-gist
+  - jekyll-feed
 
 kramdown:
   auto_ids: true
