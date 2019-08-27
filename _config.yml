@@ -1,9 +1,13 @@
 # Site wide configuration
 
-title:            Zain Rizvi
+title:            Zain Rizvi's blog
 locale:           en_US
 url:              https://www.zainrizvi.io
 description:      Zain Rizvi's blog. Sharing interesting things I'm learning about Software, Psychology, Self Improvment, and Business
+
+author:
+  twitter: zainrzv
+  picture: bio-photo.png
 
 # Jekyll configuration
 defaults:
