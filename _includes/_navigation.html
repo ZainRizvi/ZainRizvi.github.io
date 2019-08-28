@@ -1,7 +1,6 @@
 <div class="navigation-wrapper">
 	<div class="site-name">
 		<a href="{{ site.url }}/">{{ site.title }}</a>
-		<a href="{{ domain }}/feed.xml"><img src="images/rss.png" alt="rss feed" height=42 width=42/></a>
 	</div><!-- /.site-name -->
 	<div class="top-navigation">
 		<nav id="site-nav" class="nav">
@@ -14,6 +13,9 @@
 				    {% endif %}
 				    <li><a href="{{ domain }}{{ link.url }}" {% if link.url contains 'http' %}target="_blank"{% endif %}>{{ link.title }}</a></li>
 				{% endfor %}
+				<li>
+					<a href="{{ domain }}/feed.xml"><img src="images/rss.png" alt="rss feed" height=20 width=20/></a>
+				</li>
 		    </ul>
 		</nav>
 	</div><!-- /.top-navigation -->
