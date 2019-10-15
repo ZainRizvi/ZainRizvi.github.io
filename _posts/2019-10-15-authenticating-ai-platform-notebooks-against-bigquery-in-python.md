@@ -3,6 +3,7 @@ layout: post
 title: Authenticating AI Platform Notebooks against BigQuery in Python
 excerpt: How to authenticate with BigQuery (in Python) when using AI Platform Notebooks
 tags:
+- technical
 - GCP
 - AI Platform Notebooks
 - BigQuery
