@@ -30,7 +30,7 @@ Instead, you need to create a credential object containing your user credentials
        )
 4. When you execute the above cell you'll see an output with an authentication link and a text box
 
-   ![](https://screenshot.googleplex.com/KJ13JmkmkLd.png) 
+   ![](https://screenshot.googleplex.com/KJ13JmkmkLd.png)
 5. Copy that link, paste it into a browser, and authenticate with google.  You'll see an authorization code similar to the below:
 
    ![](https://screenshot.googleplex.com/1g35DesEv29.png)
@@ -42,5 +42,11 @@ Instead, you need to create a credential object containing your user credentials
        %reload_ext google.cloud.bigquery
        from google.cloud.bigquery import magics
        magics.context.credentials = credentials
+8. Now when you use the bigquery magic it'll use your personal credentials:
 
-8.
+    %%bigquery
+    SELECT name, SUM(number) as count
+    FROM `my-private-project.usa_names.usa_1910_current`
+    GROUP BY name
+    ORDER BY count DESC
+    LIMIT 10
