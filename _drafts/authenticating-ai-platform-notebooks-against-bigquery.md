@@ -37,4 +37,10 @@ Instead, you need to create a credential object containing your user credentials
 6. Copy that code and paste it into the authentication code input box you saw in your notebook
 
    ![](https://screenshot.googleplex.com/v6cAGhKSn3S.png)
-7. 
+7. Next you'll want to reload the bigquery magic in your notebook:
+
+       %reload_ext google.cloud.bigquery
+       from google.cloud.bigquery import magics
+       magics.context.credentials = credentials
+
+8.
