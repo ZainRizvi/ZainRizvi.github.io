@@ -5,7 +5,8 @@ title: 'How to: Redirect the default *.azurewebsites.net domain to your custom d
 excerpt: Here's how you can block people from using your default *.azurewebsites.net
   domain.  Do this after you've added a custom domain name.
 tags:
-- Tutorial
+- technical
+- 'Azure '
 
 ---
 When you create a new website using [Azure Web Apps](https://azure.microsoft.com/en-us/services/app-service/web/) you get a default `<sitename>.azurewebsites.net` domain assigned to your site.  That's great, but what if you add a custom host name to your site and don't want people to be able to access your default *.azurewebsites.net domain anymore? (You paid good money for that custom domain.)  This post explains how to redirect all traffic aimed at your site's default domain to your custom domain instead.

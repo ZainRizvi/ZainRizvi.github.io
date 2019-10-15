@@ -9,6 +9,7 @@ tags:
 - Jupyter Lab
 - R
 - Google Cloud Platform
+- technical
 
 ---
 Note: These instructions can be used whenever you're using Jupyter Lab on a remote machine
