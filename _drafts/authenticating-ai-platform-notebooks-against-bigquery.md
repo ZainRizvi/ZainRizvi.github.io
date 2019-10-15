@@ -28,4 +28,10 @@ Instead, you need to create a credential object containing your user credentials
        credentials = pydata_google_auth.get_user_credentials(
            ['https://www.googleapis.com/auth/bigquery'],
        )
-4. When you execute the above cell you'll see an output with a 
+4. When you execute the above cell you'll see an output with an authentication link and a text box
+
+   ![](https://screenshot.googleplex.com/KJ13JmkmkLd.png) 
+5. Copy that link, paste it into a browser, and authenticate with google.  You'll see an authorization code similar to the below:
+
+   ![](https://screenshot.googleplex.com/1g35DesEv29.png)
+6. Copy that code and paste it into the authentication code input box you saw in your notebook
