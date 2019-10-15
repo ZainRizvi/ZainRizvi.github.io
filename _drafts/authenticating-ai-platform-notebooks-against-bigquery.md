@@ -10,4 +10,22 @@ tags:
 ---
 When you use [AI Platform Notebooks](https://cloud.google.com/ai-platform-notebooks/) by default any API calls you make to GCP use the default compute service account that your notebook runs under.  This makes it easy to start getting stuff done, but sometimes you may want to use BigQuery to query data that your service account doesn't have access to.
 
-The below instructions describe how to 
+The below instructions describe how to use your personal account to authenticate with BigQuery.  This specifically applies to authentication when using a python based notebook.  If you want to authenticate on a R based notebook you can find [instructions for that here](https://www.zainrizvi.io/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks/).
+
+Normally you would use `gcloud auth login` from the jupyer lab terminal to login to your personal user account and call Google apis, but the BigQuery library auth works differently for some reason.
+
+Instead, you need to create a credential object containing your user credentials and pass that to the bigquery library.
+
+1. Install the `pydata_google_auth` package:
+
+   `%pip install pydata_goog_auth`
+2. Restart the kernel: Kernel -> Resart Kernel
+
+   ![](https://screenshot.googleplex.com/SXzOG3pCaBk.png)
+3. Import the library and create your credentials:
+
+       import pydata_google_auth
+       credentials = pydata_google_auth.get_user_credentials(
+           ['https://www.googleapis.com/auth/bigquery'],
+       )
+4. When you execute the above cell you'll see an output with a 
