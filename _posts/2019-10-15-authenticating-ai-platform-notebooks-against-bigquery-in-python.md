@@ -52,3 +52,5 @@ Instead, you need to create a credential object containing your user credentials
    LIMIT 10
 
 And that's all there is to it!
+
+_Thanks to Anthony Brown for_ [_sharing instructions_](https://medium.com/john-lewis-software-engineering/authenticating-jupyter-notebook-against-bigquery-957884f78527) _on how to use BigQuery with Jupyter Notebooks_
