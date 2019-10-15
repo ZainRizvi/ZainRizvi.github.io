@@ -42,7 +42,7 @@ Instead, you need to create a credential object containing your user credentials
        %reload_ext google.cloud.bigquery
        from google.cloud.bigquery import magics
        magics.context.credentials = credentials
-8. Now when you use the bigquery magic it'll use your personal credentials:
+8. Now when you use the bigquery magic it'll use your personal credentials instead of the service account ones:
 
    %%bigquery
    SELECT name, SUM(number) as count
