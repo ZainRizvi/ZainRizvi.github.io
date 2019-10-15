@@ -53,4 +53,9 @@ Instead, you need to create a credential object containing your user credentials
 
 And that's all there is to it!
 
-_Thanks to Anthony Brown for_ [_sharing instructions_](https://medium.com/john-lewis-software-engineering/authenticating-jupyter-notebook-against-bigquery-957884f78527) _on how to use BigQuery with Jupyter Notebooks_
+If you'd rather use the python code than invoke the bigquery magic just create a client with the user credentials and query away!
+
+    from google.cloud import bigquery as bq
+    client = bq.Client(project="project-name", credentials=credentials)
+
+Thanks to Anthony Brown for [sharing instructions](https://medium.com/john-lewis-software-engineering/authenticating-jupyter-notebook-against-bigquery-957884f78527) on how to use BigQuery with Jupyter Notebooks
