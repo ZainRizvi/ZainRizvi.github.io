@@ -35,3 +35,6 @@ Instead, you need to create a credential object containing your user credentials
 
    ![](https://screenshot.googleplex.com/1g35DesEv29.png)
 6. Copy that code and paste it into the authentication code input box you saw in your notebook
+
+   ![](https://screenshot.googleplex.com/v6cAGhKSn3S.png)
+7. 
