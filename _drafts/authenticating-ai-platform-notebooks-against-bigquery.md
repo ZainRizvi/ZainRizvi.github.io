@@ -44,9 +44,11 @@ Instead, you need to create a credential object containing your user credentials
        magics.context.credentials = credentials
 8. Now when you use the bigquery magic it'll use your personal credentials:
 
-    %%bigquery
-    SELECT name, SUM(number) as count
-    FROM `my-private-project.usa_names.usa_1910_current`
-    GROUP BY name
-    ORDER BY count DESC
-    LIMIT 10
+   %%bigquery
+   SELECT name, SUM(number) as count
+   FROM `my-private-project.usa_names.usa_1910_current`
+   GROUP BY name
+   ORDER BY count DESC
+   LIMIT 10
+
+And that's all there is to it!
