@@ -1,5 +1,9 @@
 ---
 title: "Deploy statically generated sites to Azure Web Apps"
+excerpt: |-
+  There are a lot of awesome static site generators out there. It’s not always easy to figure out how to setup continuous deployment for them though.
+
+  This post will describe how to deploy a statically generated site using yeoman angular to Azure Web Apps, but these steps can be applied to deploy any statically generated site to Azure Web Apps.
 ---
 There are a lot of awesome static site generators out there.  It's not always easy to figure out how to setup continuous deployment for them though.
 
