@@ -17,6 +17,5 @@ fields:
   name: tags
   label: tags
 pages:
-- _posts/authenticating-ai-platform-notebooks-against-bigquery-in-python.md
-- _posts/2019-08-07-so-good-they-can-t-ignore-you-key-ideas.md
 - _posts/2019-08-09-a-more-beautiful-question-summary.md
+- _posts/2019-08-07-so-good-they-can-t-ignore-you-key-ideas.md
