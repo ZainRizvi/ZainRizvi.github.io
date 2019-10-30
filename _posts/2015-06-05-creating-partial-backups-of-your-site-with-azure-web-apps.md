@@ -1,5 +1,7 @@
 ---
 title: "Backup just the Important Parts of your Site with Azure Web Apps"
+excerpt: |-
+  Introducting a way to backup just the parts of your website that matter most.
 ---
 
 Introducting a way to backup just the parts of your website that matter most.
