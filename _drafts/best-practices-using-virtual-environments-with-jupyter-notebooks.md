@@ -59,11 +59,11 @@ After running the above code, you'll need to **refresh your JupyterLab tab for t
 
 # The Results
 
-Here's my launcher after I added two customized environments (“myenv” and “zainsenv”)
+Here's my launcher after I added two customized environments (“myenv” and “zainsenv”).
 
-![](https://lh4.googleusercontent.com/gwVz5kutuzIM11pup-uC6t9PJ-mUDpEA6B_1sdO9jKV8Xd5SXoDWhqHwlNoaHWk4InO_ePwB718v2gsErLHwXVcRX1wMtv7ftDeDugafmYt7C9J6MsOK8C9bFEueqkwupMjt9cG5 =534x361)
+![](/media/2019-11-08-launcher.png)
 
-And within a notebook, in the kernel selection menu you can now select your custom virtual environments as "kernels"
+And if you try to switch kernels from within a notebook, you'll see the virtual environments availalbe as kernels for you to use
 
 ![](/media/2019-11-08-kernels.png)
 
