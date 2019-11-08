@@ -16,7 +16,7 @@ Using Virtual Environments has become a standard best practice in the Python com
 
 By following these steps, you'll be able to have multiple notebooks running on the same machine in Jupyter Lab where each notebook uses own versions of potentially conflicting python packages.
 
-This will be accomplished by creating multiple python virtual environments (which are isolated from each other) and having different notebooks run inside their own environment.
+You'll do this by creating multiple python virtual environments (which are isolated from each other) and having different notebooks run inside their own environment.
 
 # Why does it matter?
 
