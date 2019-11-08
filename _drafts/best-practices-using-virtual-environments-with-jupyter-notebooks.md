@@ -29,11 +29,14 @@ First you'll need a Jupyter Lab notebook environment.  If you don't have one alr
 Go to your Jupyter Lab notebook and in it's terminal enter the following (replacing "myenv" with whatever name you want to give your environment):
 
     # You only need to run this command once per-VM
-    sudo apt-get install python3-venv 
+    sudo apt-get install python3-venv -y
     
     # The rest of theses steps should be run every time you create
-    #  a new virtual environment
+    #  a new notebook (and want a virutal environment for it)
     
+    cd the/directory/your/notebook/will/be/in
+    
+    # Create the virtual environment
     # The '--system-site-packages' flag allows the python packages 
     #  we installed by default to remain accessible in the virtual 
     #  environment.  It's best to use this flag if you're doing this
@@ -53,3 +56,13 @@ Go to your Jupyter Lab notebook and in it's terminal enter the following (replac
 Launcher after I added two customized environments (“myenv” and “zainsenv”)
 
 ![](https://lh4.googleusercontent.com/gwVz5kutuzIM11pup-uC6t9PJ-mUDpEA6B_1sdO9jKV8Xd5SXoDWhqHwlNoaHWk4InO_ePwB718v2gsErLHwXVcRX1wMtv7ftDeDugafmYt7C9J6MsOK8C9bFEueqkwupMjt9cG5 =534x361)
+
+# See it in Action
+
+I installed a pytube package in one environment
+
+![](https://lh5.googleusercontent.com/1ibE1TMsbXqOo-fCoFtqvzNcqbJ1nyjoo5z-3YFkgRoEuBH82CcqXyL4yNu1o13DQ6k_7np19U450PZBynZHbVdu5jRWBGs8GaJg9_a7xg1LDtMHAkYX3sFLOA7BF9pPVhc8eXhk =566x457)
+
+That package was not visible in the other environment. Then I installed an older version of the same package in the second environment. The first environment kept using the later version of the package
+
+![](https://lh4.googleusercontent.com/x7yX89GMMkLpWHHvuWewCfwmkpo53q3dBojS0OckIwiK91LwzOwlipB5zbv4lqNDpYSo3mMzFXVi_MQz8R4Bzk0ILMrzcxELGZ7DcNLYx50EAkjbPcVkZzJJUpdM_huNA1gGZCjN =584x483)
