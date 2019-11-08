@@ -17,6 +17,6 @@ fields:
   name: tags
   label: tags
 pages:
-- _posts/2019-11-08-best-practices-using-virtual-environments-with-jupyter-notebooks.md
+- _posts/using-virtual-environments-with-jupyter-notebooks.md
 - _posts/2019-08-07-so-good-they-can-t-ignore-you-key-ideas.md
 - _posts/2019-08-09-a-more-beautiful-question-summary.md
