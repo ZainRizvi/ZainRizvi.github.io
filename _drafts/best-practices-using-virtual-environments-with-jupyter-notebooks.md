@@ -10,7 +10,7 @@ tags:
 - technical
 
 ---
-Using Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven't yet caught on in Python notebooks.  However, they're easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them.  
+Using Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven't yet caught on in Python notebooks.  However, they're easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them.
 
 # What will this enable you to do?
 
@@ -71,10 +71,10 @@ And if you try to switch kernels from within a notebook, you'll see the virtual 
 
 Here you can see I installed the pytube package in one environment
 
-![](https://lh5.googleusercontent.com/1ibE1TMsbXqOo-fCoFtqvzNcqbJ1nyjoo5z-3YFkgRoEuBH82CcqXyL4yNu1o13DQ6k_7np19U450PZBynZHbVdu5jRWBGs8GaJg9_a7xg1LDtMHAkYX3sFLOA7BF9pPVhc8eXhk =566x457)
+![](/media/2019-11-08-pasted image 0.png)
 
 That package was not visible in the other environment.  And then when I installed an older version of the same package in the second environment (let's pretend it needed the older version). The first environment kept using the newer version of the package
 
-![](https://lh4.googleusercontent.com/x7yX89GMMkLpWHHvuWewCfwmkpo53q3dBojS0OckIwiK91LwzOwlipB5zbv4lqNDpYSo3mMzFXVi_MQz8R4Bzk0ILMrzcxELGZ7DcNLYx50EAkjbPcVkZzJJUpdM_huNA1gGZCjN =584x483)
+![](/media/2019-11-08-pasted image 0 (1).png)
 
 And there you have it.  You can now create virtual environments on your Jupyter Lab notebooks
