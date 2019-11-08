@@ -20,7 +20,7 @@ By following these steps, you can have multiple notebooks running on the same ma
 
 We'll do this by creating an isolated python virtual environment for each notebook, so that each notebooks runs inside it's own environment.
 
-If you're using AI Platform Notebooks, the scripts below will allow you to keep using the awesome deep learning packages that come pre-installed on them, while isolating your different notebooks from any new packages you install for any of them.
+If you're using Google's [AI Platform Notebooks](https://cloud.google.com/ai-platform-notebooks/), the scripts below will allow you to keep using the awesome deep learning packages that come pre-installed on them, while isolating your different notebooks from any new packages you install for any of them.
 
 # Why does it matter?
 
