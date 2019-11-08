@@ -10,13 +10,15 @@ tags:
 - technical
 
 ---
-Using Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven't yet caught on in Python notebooks.  However, they're easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them
+Using Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven't yet caught on in Python notebooks.  However, they're easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them.  
 
 # What will this enable you to do?
 
 By following these steps, you'll be able to have multiple notebooks running on the same machine in Jupyter Lab where each notebook uses own versions of potentially conflicting python packages.
 
 You'll do this by creating multiple python virtual environments (which are isolated from each other) and having different notebooks run inside their own environment.
+
+If you're using AI Platform Notebooks, the scripts below will allow you to keep using the awesome deep learning packages that come pre-installed on them, while isolating your different notebooks from any new packages you install for any of them.
 
 # Why does it matter?
 
@@ -53,16 +55,26 @@ Go to your Jupyter Lab notebook and in it's terminal enter the following (replac
     #  this environment_
     deactivate # exit the virtual env
 
-Launcher after I added two customized environments (“myenv” and “zainsenv”)
+After running the above code, you'll need to **refresh your JupyterLab tab for the changes to be visible**
+
+# The Results
+
+Here's my launcher after I added two customized environments (“myenv” and “zainsenv”)
 
 ![](https://lh4.googleusercontent.com/gwVz5kutuzIM11pup-uC6t9PJ-mUDpEA6B_1sdO9jKV8Xd5SXoDWhqHwlNoaHWk4InO_ePwB718v2gsErLHwXVcRX1wMtv7ftDeDugafmYt7C9J6MsOK8C9bFEueqkwupMjt9cG5 =534x361)
 
+And within a notebook, in the kernel selection menu you can now select your custom virtual environments as "kernels"
+
+![](/media/2019-11-08-kernels.png)
+
 # See it in Action
 
-I installed a pytube package in one environment
+Here you can see I installed the pytube package in one environment
 
 ![](https://lh5.googleusercontent.com/1ibE1TMsbXqOo-fCoFtqvzNcqbJ1nyjoo5z-3YFkgRoEuBH82CcqXyL4yNu1o13DQ6k_7np19U450PZBynZHbVdu5jRWBGs8GaJg9_a7xg1LDtMHAkYX3sFLOA7BF9pPVhc8eXhk =566x457)
 
-That package was not visible in the other environment. Then I installed an older version of the same package in the second environment. The first environment kept using the later version of the package
+That package was not visible in the other environment.  And then when I installed an older version of the same package in the second environment (let's pretend it needed the older version). The first environment kept using the newer version of the package
 
 ![](https://lh4.googleusercontent.com/x7yX89GMMkLpWHHvuWewCfwmkpo53q3dBojS0OckIwiK91LwzOwlipB5zbv4lqNDpYSo3mMzFXVi_MQz8R4Bzk0ILMrzcxELGZ7DcNLYx50EAkjbPcVkZzJJUpdM_huNA1gGZCjN =584x483)
+
+And there you have it.  You can now create virtual environments on your Jupyter Lab notebooks
