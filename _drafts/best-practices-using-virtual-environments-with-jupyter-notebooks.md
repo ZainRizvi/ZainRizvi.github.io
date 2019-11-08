@@ -28,7 +28,11 @@ First you'll need a Jupyter Lab notebook environment.  If you don't have one alr
 
 Go to your Jupyter Lab notebook and in it's terminal enter the following (replacing "myenv" with whatever name you want to give your environment):
 
-    sudo apt-get install python3-venv
+    # You only need to run this command once per-VM
+    sudo apt-get install python3-venv 
+    
+    # The rest of theses steps should be run every time you create
+    #  a new virtual environment
     
     # The '--system-site-packages' flag allows the python packages 
     #  we installed by default to remain accessible in the virtual 
@@ -39,11 +43,11 @@ Go to your Jupyter Lab notebook and in it's terminal enter the following (replac
     source myenv/bin/activate #activate the virtual env
     
     # Register this env with jupyter lab. It’ll now show up in the
-    #   launcher & kernels list once you refresh the page
+    #  launcher & kernels list once you refresh the page
     python -m ipykernel install --user --name=myenv
     
     # Any python packages you pip install now will persist only in
-    #   this environment_
+    #  this environment_
     deactivate # exit the virtual env
 
 Launcher after I added two customized environments (“myenv” and “zainsenv”)
