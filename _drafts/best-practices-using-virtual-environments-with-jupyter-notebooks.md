@@ -51,3 +51,5 @@ Go to your Jupyter Lab notebook and in it's terminal enter the following (replac
     deactivate # exit the virtual env
 
 Launcher after I added two customized environments (“myenv” and “zainsenv”)
+
+![](https://lh4.googleusercontent.com/gwVz5kutuzIM11pup-uC6t9PJ-mUDpEA6B_1sdO9jKV8Xd5SXoDWhqHwlNoaHWk4InO_ePwB718v2gsErLHwXVcRX1wMtv7ftDeDugafmYt7C9J6MsOK8C9bFEueqkwupMjt9cG5 =534x361)
