@@ -6,6 +6,8 @@ excerpt: Bring the best practices established by the Python community to your Ju
   it's own environment.  This post goes into detail explaining exactly how you can
   add virtual environments to your own notebooks on Google Cloud's AI Platform Notebooks
 tags:
+- Python
+- Virtual Environments
 - Jupyter Lab
 - technical
 
