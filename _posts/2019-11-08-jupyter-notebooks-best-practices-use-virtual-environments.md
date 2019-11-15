@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Jupyter Notebooks Best Practices: Use Virtual Environments'
+title: Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab - Best Practices
 excerpt: Bring the best practices established by the Python community to your Jupyter
   Notebooks.  You can add virtual environments to Jupyter Lab, giving each notebook
   it's own environment.  This post goes into detail explaining exactly how you can
