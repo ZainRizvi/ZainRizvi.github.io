@@ -5,16 +5,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Five Tactics for Tackling Complex Problems at Work &#8211; Zain Rizvi's blog</title>
-<meta name="description" content="Albert Einstein once said “The definition of genius is taking the complex and making it simple.”  But how can someone actually do that? Below are some tactics I've used that can make a big difference.">
-<meta name="keywords" content="Salary Negotiation">
+<title>Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices] &#8211; Zain Rizvi's blog</title>
+<meta name="description" content="Bring the best practices established by the Python community to your Jupyter Notebooks.  You can add virtual environments to Jupyter Lab, giving each notebook it's own environment.  This post goes into detail explaining exactly how you can add virtual environments to your own notebooks on Google Cloud's AI Platform Notebooks">
+<meta name="keywords" content="Python, Virtual Environments, Jupyter Lab, technical">
 
 
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Five Tactics for Tackling Complex Problems at Work">
-<meta name="twitter:description" content="Albert Einstein once said “The definition of genius is taking the complex and making it simple.”  But how can someone actually do that? Below are some tactics I've used that can make a big difference.">
+<meta name="twitter:title" content="Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]">
+<meta name="twitter:description" content="Bring the best practices established by the Python community to your Jupyter Notebooks.  You can add virtual environments to Jupyter Lab, giving each notebook it's own environment.  This post goes into detail explaining exactly how you can add virtual environments to your own notebooks on Google Cloud's AI Platform Notebooks">
 <meta name="twitter:site" content="@zainrzv">
 <meta name="twitter:creator" content="@zainrzv">
 
@@ -24,9 +24,9 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Five Tactics for Tackling Complex Problems at Work">
-<meta property="og:description" content="Albert Einstein once said “The definition of genius is taking the complex and making it simple.”  But how can someone actually do that? Below are some tactics I've used that can make a big difference.">
-<meta property="og:url" content="http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/">
+<meta property="og:title" content="Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]">
+<meta property="og:description" content="Bring the best practices established by the Python community to your Jupyter Notebooks.  You can add virtual environments to Jupyter Lab, giving each notebook it's own environment.  This post goes into detail explaining exactly how you can add virtual environments to your own notebooks on Google Cloud's AI Platform Notebooks">
+<meta property="og:url" content="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/">
 <meta property="og:site_name" content="Zain Rizvi's blog">
 
 <meta property="og:image" content="http://localhost:4000/images/default-thumb.png">
@@ -36,7 +36,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/">
+<link rel="canonical" href="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi's blog Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -175,58 +175,79 @@
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/" rel="bookmark" title="Five Tactics for Tackling Complex Problems at Work">Five Tactics for Tackling Complex Problems at Work</a></h1>
+        <h1><a href="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/" rel="bookmark" title="Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]">Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <blockquote>
-  <p>“The definition of genius is taking the complex and making it simple.” –Albert Einstein</p>
-</blockquote>
+      <p>iUsing Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven’t yet caught on in Python notebooks.  However, they’re easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them.</p>
 
-<p>In today’s world the most valuable employees are the ones who can tackle complex problems.  And the best of those are the ones who can make the complex problems look simple.</p>
+<h1 id="what-will-this-enable-you-to-do">What will this enable you to do?</h1>
 
-<p>But how can someone actually do that? Below are some tactics I’ve used which can make a big difference.</p>
+<p>By following these steps, you can have multiple notebooks running on the same machine in Jupyter Lab, where each notebook uses own versions of potentially conflicting python packages.</p>
 
-<p>These tactics are designed to get me thinking about the problem space in different ways. The different perspectives often yield insights that help separate the core components into smaller, more manageable units (and of course this list is always a work in progress)</p>
+<p>We’ll do this by creating an isolated python virtual environment for each notebook, so that each notebooks runs inside it’s own environment.</p>
 
-<h1 id="1-ask-questions-and-challenge-assumptions">1. Ask Questions and Challenge Assumptions</h1>
-<p>Questions are at the heart of discovery.  Every step here requires asking questions and striving to find the answers.  One question you should be asking yourself is “What assumptions can I challenge?”</p>
+<p>If you’re using Google’s <a href="https://cloud.google.com/ai-platform-notebooks/">AI Platform Notebooks</a>, the scripts below will allow you to keep using the awesome deep learning packages that come pre-installed on them, while isolating each of your notebooks from any new packages you install for any other notebook.</p>
 
-<p>Note: Challenging assumptions includes challenging your own assumptions.  The mere act of trying to discover what assumptions you and others are making can give you a new perspective on your project.</p>
+<h1 id="why-does-it-matter">Why does it matter?</h1>
 
-<h1 id="2-discover-the-core-problem">2. Discover the Core Problem</h1>
-<p>What is the core problem(s) your boss (or whoever gave you this task) is trying to solve? What are your customer’s <a href="https://growthlab.com/how-do-i-create-and-sell-online-courses/">burning pains</a>? 
-<em>Note: Your customer is whoever will use the thing you’re making. It could be your boss, your IT department, or your company’s customers.</em></p>
+<p><strong>Benefit from established Python best practices!</strong>  Having each project in a separate virtual environment is an existing best practice for python projects, so it seems logical to extend this behavior to python notebooks as well.   Of course, this will only apply to Python notebooks and not notebooks using other languages</p>
 
-<p>Go beyond the mere features being asked for and get to the heart of the problem.  This is the difference between “I need a SQL database” and “I need a reliable was to access and modify my business critical data”.  Perhaps you can think of a better way to solve the problem.</p>
+<h1 id="how-do-you-set-it-up">How do you set it up?</h1>
 
-<p>Ask questions like: Who cares about this problem? Why is it important to them? If there are no good answers to these questions, is the problem even worth working on? Maybe this is an opportunity to <a href="https://www.reddit.com/r/lectures/comments/1nbwfv/quit_early_quit_often_prof_deepak_malhotra_harvard/">quit early</a></p>
+<p>First you’ll need a Jupyter Lab notebook environment.  If you don’t have one already you can quickly create one us Google Cloud’s <a href="https://cloud.google.com/ai-platform-notebooks/">AI Platform Notebooks</a></p>
 
-<p>Understanding the burning pains often involves talking to stakeholders and customers. It’s hard to understate <a href="https://training.kalzumeus.com/newsletters/archive/validating_product_ideas">how valuable</a> the insights you’ll get with this step can be</p>
+<p>Go to your Jupyter Lab notebook and in it’s terminal enter the following (replacing “myenv” with whatever name you want to give your environment):</p>
 
-<h1 id="3-componentize-your-solution">3. Componentize your Solution</h1>
-<p>You should have some idea for a solution at this point.  If you don’t, take some time to come up with one.</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># You only need to run this command once per-VM
+sudo apt-get install python3-venv -y
 
-<p>Take a close look at that solution. Which pieces could be split into separate modules or components? Can any of those components provide value independently? If not, can any be tweaked so that they do provide independent value?</p>
+# The rest of theses steps should be run every time you create
+#  a new notebook (and want a virutal environment for it)
 
-<h1 id="4-find-your-mvp">4. Find your MVP</h1>
-<p>Think about what would make a good <a href="http://ask.leanstack.com/lean-startup-fundamentals/what-is-a-minimum-viable-product-mvp">MVP (Minimum Viable Product)</a> for your product. Remember, the goal of the MVP is to <em>learn information</em> that will affect the design of the final product. Try to Identify at least three different questions you want answered and what MVPs you could create to answer them (hint: the same MVP is unlikely to answer all your question)</p>
+cd the/directory/your/notebook/will/be/in
 
-<p>Get creative in what you consider an MVP.  Maybe showing random strangers at Starbucks a napkin drawing of your app’s layout would be good enough.</p>
+# Create the virtual environment
+# The '--system-site-packages' flag allows the python packages 
+#  we installed by default to remain accessible in the virtual 
+#  environment.  It's best to use this flag if you're doing this
+#  on AI Platform Notebooks so that you keep all the pre-baked 
+#  goodness
+python3 -m venv myenv --system-site-packages
+source myenv/bin/activate #activate the virtual env
 
-<h1 id="5-let-your-subconscious-work">5. Let your Subconscious Work</h1>
-<p>If you follow steps 1-4 then you will most likely develop a much better understanding of your problem and already developed a bunch of insights.</p>
+# Register this env with jupyter lab. It’ll now show up in the
+#  launcher &amp; kernels list once you refresh the page
+python -m ipykernel install --user --name=myenv
 
-<p>Great, go work on them!</p>
+# Any python packages you pip install now will persist only in
+#  this environment_
+deactivate # exit the virtual env
+</code></pre></div></div>
 
-<p>Now that you’ve spent so much time researching the problem you’ll probably find yourself also thinking about it in your spare time, when you’re in the shower, driving, etc.  This is when all the different pieces you’ve been studying for so long can suddenly click together in a new way, giving you a fresh insight.</p>
+<p>After running the above code, you’ll need to <strong>refresh your JupyterLab tab for the changes to be visible</strong></p>
 
-<p>This eureka moment might happen a week or two (or more) after you’ve started implementing your previous ideas. Don’t be afraid to throw those old ones away in favor one something you now know is better!</p>
+<h1 id="the-results">The Results</h1>
 
-<h1 id="the-real-secret">The Real Secret</h1>
-<p>The common theme here is to develop a deep understanding of the problem you’re working on, which can lead to fresh insights others may not have.  The above tactics give you that understanding by forcing you to look at the issue from different angles.</p>
+<p>Here’s my launcher after I added two customized environments (“myenv” and “zainsenv”).</p>
 
-<p>But undoubtedly there are other ways to achieve that understanding as well. If you use different tactics to achive this understanding I’d love to hear them!</p>
+<p><img src="/media/2019-11-08-launcher.png" alt="" /></p>
+
+<p>And if you try to switch kernels from within a notebook, you’ll see the virtual environments availalbe as kernels for you to use</p>
+
+<p><img src="/media/2019-11-08-kernels.png" alt="" /></p>
+
+<h1 id="see-it-in-action">See it in Action</h1>
+
+<p>Here you can see I installed the pytube package in one environment</p>
+
+<p><img src="/media/2019-11-08-pasted image 0.png" alt="" /></p>
+
+<p>That package was not visible in the other environment.  And then when I installed an older version of the same package in the second environment (let’s pretend it needed the older version). The first environment kept using the newer version of the package</p>
+
+<p><img src="/media/2019-11-08-pasted image 0 (1).png" alt="" /></p>
+
+<p>And there you have it.  You can now create virtual environments on your Jupyter Lab notebooks</p>
 
       <hr />
       <br/>
@@ -252,17 +273,17 @@
   <h5>Thanks for reading! If you found this post valuable, your followers might also like it</h5>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
   </ul>
 </div>
 -->
 <!-- /.social-share -->
 
-        <p class="byline"><strong>Five Tactics for Tackling Complex Problems at Work</strong> was published on <time datetime="2018-11-10T00:00:00-08:00">November 10, 2018</time>.</p>
+        <p class="byline"><strong>Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]</strong> was published on <time datetime="2019-11-08T00:00:00-08:00">November 08, 2019</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
 
@@ -279,11 +300,11 @@
   <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h4>
     <ul>
     
-      <li><a href="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/" title="Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]">Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]</a></li>
-    
       <li><a href="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/" title="Authenticating AI Platform Notebooks against BigQuery in Python">Authenticating AI Platform Notebooks against BigQuery in Python</a></li>
     
       <li><a href="http://localhost:4000/blog/a-more-beautiful-question-summary/" title="A More Beautiful Question - Key Insights">A More Beautiful Question - Key Insights</a></li>
+    
+      <li><a href="http://localhost:4000/blog/so-good-they-can-t-ignore-you-key-ideas/" title="So Good They Can't Ignore You - Key Ideas">So Good They Can't Ignore You - Key Ideas</a></li>
     
     </ul>
     <hr />

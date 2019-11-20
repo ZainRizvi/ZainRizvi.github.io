@@ -5,16 +5,16 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Five Tactics for Tackling Complex Problems at Work &#8211; Zain Rizvi's blog</title>
-<meta name="description" content="Albert Einstein once said “The definition of genius is taking the complex and making it simple.”  But how can someone actually do that? Below are some tactics I've used that can make a big difference.">
-<meta name="keywords" content="Salary Negotiation">
+<title>Authenticating AI Platform Notebooks against BigQuery in Python &#8211; Zain Rizvi's blog</title>
+<meta name="description" content="How to authenticate with BigQuery (in Python) when using AI Platform Notebooks">
+<meta name="keywords" content="technical, GCP, AI Platform Notebooks, BigQuery">
 
 
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="Five Tactics for Tackling Complex Problems at Work">
-<meta name="twitter:description" content="Albert Einstein once said “The definition of genius is taking the complex and making it simple.”  But how can someone actually do that? Below are some tactics I've used that can make a big difference.">
+<meta name="twitter:title" content="Authenticating AI Platform Notebooks against BigQuery in Python">
+<meta name="twitter:description" content="How to authenticate with BigQuery (in Python) when using AI Platform Notebooks">
 <meta name="twitter:site" content="@zainrzv">
 <meta name="twitter:creator" content="@zainrzv">
 
@@ -24,9 +24,9 @@
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Five Tactics for Tackling Complex Problems at Work">
-<meta property="og:description" content="Albert Einstein once said “The definition of genius is taking the complex and making it simple.”  But how can someone actually do that? Below are some tactics I've used that can make a big difference.">
-<meta property="og:url" content="http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/">
+<meta property="og:title" content="Authenticating AI Platform Notebooks against BigQuery in Python">
+<meta property="og:description" content="How to authenticate with BigQuery (in Python) when using AI Platform Notebooks">
+<meta property="og:url" content="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/">
 <meta property="og:site_name" content="Zain Rizvi's blog">
 
 <meta property="og:image" content="http://localhost:4000/images/default-thumb.png">
@@ -36,7 +36,7 @@
 
 
 
-<link rel="canonical" href="http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/">
+<link rel="canonical" href="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/">
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi's blog Feed">
 
 <!-- http://t.co/dKP3o1e -->
@@ -175,58 +175,82 @@
   <article class="post">
     <div class="headline-wrap">
       
-        <h1><a href="http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/" rel="bookmark" title="Five Tactics for Tackling Complex Problems at Work">Five Tactics for Tackling Complex Problems at Work</a></h1>
+        <h1><a href="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/" rel="bookmark" title="Authenticating AI Platform Notebooks against BigQuery in Python">Authenticating AI Platform Notebooks against BigQuery in Python</a></h1>
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <blockquote>
-  <p>“The definition of genius is taking the complex and making it simple.” –Albert Einstein</p>
-</blockquote>
+      <p>When you use <a href="https://cloud.google.com/ai-platform-notebooks/">AI Platform Notebooks</a> by default any API calls you make to GCP use the default compute service account that your notebook runs under.  This makes it easy to start getting stuff done, but sometimes you may want to use BigQuery to query data that your service account doesn’t have access to.</p>
 
-<p>In today’s world the most valuable employees are the ones who can tackle complex problems.  And the best of those are the ones who can make the complex problems look simple.</p>
+<p>The below instructions describe how to use your personal account to authenticate with BigQuery.  This specifically applies to authentication when using a python based notebook.  If you want to authenticate on a R based notebook you can find <a href="https://www.zainrizvi.io/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks/">instructions for that here</a>.</p>
 
-<p>But how can someone actually do that? Below are some tactics I’ve used which can make a big difference.</p>
+<p>Normally you would use <code class="highlighter-rouge">gcloud auth login</code> from the jupyer lab terminal to login to your personal user account and call Google apis, but the BigQuery library auth works differently for some reason.</p>
 
-<p>These tactics are designed to get me thinking about the problem space in different ways. The different perspectives often yield insights that help separate the core components into smaller, more manageable units (and of course this list is always a work in progress)</p>
+<p>Instead, you need to create a credential object containing your user credentials and pass that to the bigquery library.</p>
 
-<h1 id="1-ask-questions-and-challenge-assumptions">1. Ask Questions and Challenge Assumptions</h1>
-<p>Questions are at the heart of discovery.  Every step here requires asking questions and striving to find the answers.  One question you should be asking yourself is “What assumptions can I challenge?”</p>
+<ol>
+  <li>
+    <p>Install the <code class="highlighter-rouge">pydata_google_auth</code> package:</p>
 
-<p>Note: Challenging assumptions includes challenging your own assumptions.  The mere act of trying to discover what assumptions you and others are making can give you a new perspective on your project.</p>
+    <p><code class="highlighter-rouge">%pip install pydata_goog_auth</code></p>
+  </li>
+  <li>
+    <p>Restart the kernel: Kernel -&gt; Resart Kernel</p>
 
-<h1 id="2-discover-the-core-problem">2. Discover the Core Problem</h1>
-<p>What is the core problem(s) your boss (or whoever gave you this task) is trying to solve? What are your customer’s <a href="https://growthlab.com/how-do-i-create-and-sell-online-courses/">burning pains</a>? 
-<em>Note: Your customer is whoever will use the thing you’re making. It could be your boss, your IT department, or your company’s customers.</em></p>
+    <p><img src="https://screenshot.googleplex.com/SXzOG3pCaBk.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Import the library and create your credentials:</p>
 
-<p>Go beyond the mere features being asked for and get to the heart of the problem.  This is the difference between “I need a SQL database” and “I need a reliable was to access and modify my business critical data”.  Perhaps you can think of a better way to solve the problem.</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import pydata_google_auth
+credentials = pydata_google_auth.get_user_credentials(
+    ['https://www.googleapis.com/auth/bigquery'],
+)
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>When you execute the above cell you’ll see an output with an authentication link and a text box</p>
 
-<p>Ask questions like: Who cares about this problem? Why is it important to them? If there are no good answers to these questions, is the problem even worth working on? Maybe this is an opportunity to <a href="https://www.reddit.com/r/lectures/comments/1nbwfv/quit_early_quit_often_prof_deepak_malhotra_harvard/">quit early</a></p>
+    <p><img src="https://screenshot.googleplex.com/KJ13JmkmkLd.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Copy that link, paste it into a browser, and authenticate with google.  You’ll see an authorization code similar to the below:</p>
 
-<p>Understanding the burning pains often involves talking to stakeholders and customers. It’s hard to understate <a href="https://training.kalzumeus.com/newsletters/archive/validating_product_ideas">how valuable</a> the insights you’ll get with this step can be</p>
+    <p><img src="https://screenshot.googleplex.com/1g35DesEv29.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Copy that code and paste it into the authentication code input box you saw in your notebook</p>
 
-<h1 id="3-componentize-your-solution">3. Componentize your Solution</h1>
-<p>You should have some idea for a solution at this point.  If you don’t, take some time to come up with one.</p>
+    <p><img src="https://screenshot.googleplex.com/v6cAGhKSn3S.png" alt="" /></p>
+  </li>
+  <li>
+    <p>Next you’ll want to reload the bigquery magic in your notebook.  You ‘reload’ instead of ‘load’ because AI Platform Notebooks already loads the bigquery magic for you by default:</p>
 
-<p>Take a close look at that solution. Which pieces could be split into separate modules or components? Can any of those components provide value independently? If not, can any be tweaked so that they do provide independent value?</p>
+    <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>%reload_ext google.cloud.bigquery
+from google.cloud.bigquery import magics
+magics.context.credentials = credentials
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Now when you use the bigquery magic it’ll use your personal credentials instead of the service account ones:</p>
 
-<h1 id="4-find-your-mvp">4. Find your MVP</h1>
-<p>Think about what would make a good <a href="http://ask.leanstack.com/lean-startup-fundamentals/what-is-a-minimum-viable-product-mvp">MVP (Minimum Viable Product)</a> for your product. Remember, the goal of the MVP is to <em>learn information</em> that will affect the design of the final product. Try to Identify at least three different questions you want answered and what MVPs you could create to answer them (hint: the same MVP is unlikely to answer all your question)</p>
+    <p>%%bigquery
+SELECT name, SUM(number) as count
+FROM <code class="highlighter-rouge">my-private-project.usa_names.usa_1910_current</code>
+GROUP BY name
+ORDER BY count DESC
+LIMIT 10</p>
+  </li>
+</ol>
 
-<p>Get creative in what you consider an MVP.  Maybe showing random strangers at Starbucks a napkin drawing of your app’s layout would be good enough.</p>
+<p>And that’s all there is to it!</p>
 
-<h1 id="5-let-your-subconscious-work">5. Let your Subconscious Work</h1>
-<p>If you follow steps 1-4 then you will most likely develop a much better understanding of your problem and already developed a bunch of insights.</p>
+<p>If you’d rather use the python code than invoke the bigquery magic just create a client with the user credentials and query away!</p>
 
-<p>Great, go work on them!</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from google.cloud import bigquery as bq
+client = bq.Client(project="project-name", credentials=credentials)
+</code></pre></div></div>
 
-<p>Now that you’ve spent so much time researching the problem you’ll probably find yourself also thinking about it in your spare time, when you’re in the shower, driving, etc.  This is when all the different pieces you’ve been studying for so long can suddenly click together in a new way, giving you a fresh insight.</p>
-
-<p>This eureka moment might happen a week or two (or more) after you’ve started implementing your previous ideas. Don’t be afraid to throw those old ones away in favor one something you now know is better!</p>
-
-<h1 id="the-real-secret">The Real Secret</h1>
-<p>The common theme here is to develop a deep understanding of the problem you’re working on, which can lead to fresh insights others may not have.  The above tactics give you that understanding by forcing you to look at the issue from different angles.</p>
-
-<p>But undoubtedly there are other ways to achieve that understanding as well. If you use different tactics to achive this understanding I’d love to hear them!</p>
+<p>Thanks to Anthony Brown for <a href="https://medium.com/john-lewis-software-engineering/authenticating-jupyter-notebook-against-bigquery-957884f78527">sharing instructions</a> on how to use BigQuery with Jupyter Notebooks</p>
 
       <hr />
       <br/>
@@ -252,17 +276,17 @@
   <h5>Thanks for reading! If you found this post valuable, your followers might also like it</h5>
   <ul>
     <li>
-      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
     </li>
     <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
     </li>
   </ul>
 </div>
 -->
 <!-- /.social-share -->
 
-        <p class="byline"><strong>Five Tactics for Tackling Complex Problems at Work</strong> was published on <time datetime="2018-11-10T00:00:00-08:00">November 10, 2018</time>.</p>
+        <p class="byline"><strong>Authenticating AI Platform Notebooks against BigQuery in Python</strong> was published on <time datetime="2019-10-15T00:00:00-07:00">October 15, 2019</time>.</p>
       </footer>
     </div><!-- /.article-wrap -->
 
@@ -281,9 +305,9 @@
     
       <li><a href="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/" title="Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]">Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]</a></li>
     
-      <li><a href="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/" title="Authenticating AI Platform Notebooks against BigQuery in Python">Authenticating AI Platform Notebooks against BigQuery in Python</a></li>
-    
       <li><a href="http://localhost:4000/blog/a-more-beautiful-question-summary/" title="A More Beautiful Question - Key Insights">A More Beautiful Question - Key Insights</a></li>
+    
+      <li><a href="http://localhost:4000/blog/so-good-they-can-t-ignore-you-key-ideas/" title="So Good They Can't Ignore You - Key Ideas">So Good They Can't Ignore You - Key Ideas</a></li>
     
     </ul>
     <hr />

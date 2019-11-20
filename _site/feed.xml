@@ -1,283 +1,788 @@
-<!doctype html>
-<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
-<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
-<head>
-<meta charset="utf-8">
-<title>Zain Rizvi</title>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-19T17:56:18-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Zain Rizvi’s blog</title><subtitle>Zain Rizvi's blog. Sharing interesting things I'm learning about Software, Psychology, Self Improvment, and Business</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><entry><title type="html">Use Virtual Environments Inside Jupyter Notebooks &amp;amp; Jupter Lab [Best Practices]</title><link href="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/" rel="alternate" type="text/html" title="Use Virtual Environments Inside Jupyter Notebooks &amp; Jupter Lab [Best Practices]" /><published>2019-11-08T00:00:00-08:00</published><updated>2019-11-08T00:00:00-08:00</updated><id>http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments</id><content type="html" xml:base="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/">&lt;p&gt;iUsing Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven’t yet caught on in Python notebooks.  However, they’re easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them.&lt;/p&gt;
 
-<meta name="keywords" content="">
+&lt;h1 id=&quot;what-will-this-enable-you-to-do&quot;&gt;What will this enable you to do?&lt;/h1&gt;
 
+&lt;p&gt;By following these steps, you can have multiple notebooks running on the same machine in Jupyter Lab, where each notebook uses own versions of potentially conflicting python packages.&lt;/p&gt;
 
+&lt;p&gt;We’ll do this by creating an isolated python virtual environment for each notebook, so that each notebooks runs inside it’s own environment.&lt;/p&gt;
 
+&lt;p&gt;If you’re using Google’s &lt;a href=&quot;https://cloud.google.com/ai-platform-notebooks/&quot;&gt;AI Platform Notebooks&lt;/a&gt;, the scripts below will allow you to keep using the awesome deep learning packages that come pre-installed on them, while isolating each of your notebooks from any new packages you install for any other notebook.&lt;/p&gt;
 
-<!-- Twitter Cards -->
-<meta name="twitter:title" content="Zain Rizvi">
+&lt;h1 id=&quot;why-does-it-matter&quot;&gt;Why does it matter?&lt;/h1&gt;
 
-<meta name="twitter:site" content="@zainrzv">
-<meta name="twitter:creator" content="@zainrzv">
+&lt;p&gt;&lt;strong&gt;Benefit from established Python best practices!&lt;/strong&gt;  Having each project in a separate virtual environment is an existing best practice for python projects, so it seems logical to extend this behavior to python notebooks as well.   Of course, this will only apply to Python notebooks and not notebooks using other languages&lt;/p&gt;
 
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="/images/default-thumb.png">
+&lt;h1 id=&quot;how-do-you-set-it-up&quot;&gt;How do you set it up?&lt;/h1&gt;
 
-<!-- Open Graph -->
-<meta property="og:locale" content="en_US">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Zain Rizvi">
+&lt;p&gt;First you’ll need a Jupyter Lab notebook environment.  If you don’t have one already you can quickly create one us Google Cloud’s &lt;a href=&quot;https://cloud.google.com/ai-platform-notebooks/&quot;&gt;AI Platform Notebooks&lt;/a&gt;&lt;/p&gt;
 
-<meta property="og:url" content="/feed.xml">
-<meta property="og:site_name" content="Zain Rizvi">
+&lt;p&gt;Go to your Jupyter Lab notebook and in it’s terminal enter the following (replacing “myenv” with whatever name you want to give your environment):&lt;/p&gt;
 
-<meta property="og:image" content="/images/default-thumb.png">
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# You only need to run this command once per-VM
+sudo apt-get install python3-venv -y
 
+# The rest of theses steps should be run every time you create
+#  a new notebook (and want a virutal environment for it)
 
+cd the/directory/your/notebook/will/be/in
 
+# Create the virtual environment
+# The '--system-site-packages' flag allows the python packages 
+#  we installed by default to remain accessible in the virtual 
+#  environment.  It's best to use this flag if you're doing this
+#  on AI Platform Notebooks so that you keep all the pre-baked 
+#  goodness
+python3 -m venv myenv --system-site-packages
+source myenv/bin/activate #activate the virtual env
 
+# Register this env with jupyter lab. It’ll now show up in the
+#  launcher &amp;amp; kernels list once you refresh the page
+python -m ipykernel install --user --name=myenv
 
+# Any python packages you pip install now will persist only in
+#  this environment_
+deactivate # exit the virtual env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-<link rel="canonical" href="/feed.xml">
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi Feed">
+&lt;p&gt;After running the above code, you’ll need to &lt;strong&gt;refresh your JupyterLab tab for the changes to be visible&lt;/strong&gt;&lt;/p&gt;
 
-<!-- http://t.co/dKP3o1e -->
-<meta name="HandheldFriendly" content="True">
-<meta name="MobileOptimized" content="320">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+&lt;h1 id=&quot;the-results&quot;&gt;The Results&lt;/h1&gt;
 
-<!-- For all browsers -->
-<link rel="stylesheet" href="/assets/css/main.css">
+&lt;p&gt;Here’s my launcher after I added two customized environments (“myenv” and “zainsenv”).&lt;/p&gt;
 
-<meta http-equiv="cleartype" content="on">
+&lt;p&gt;&lt;img src=&quot;/media/2019-11-08-launcher.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-<!-- HTML5 Shiv and Media Query Support -->
-<!--[if lt IE 9]>
-	<script src="/assets/js/vendor/html5shiv.min.js"></script>
-	<script src="/assets/js/vendor/respond.min.js"></script>
-<![endif]-->
+&lt;p&gt;And if you try to switch kernels from within a notebook, you’ll see the virtual environments availalbe as kernels for you to use&lt;/p&gt;
 
-<!-- Modernizr -->
-<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+&lt;p&gt;&lt;img src=&quot;/media/2019-11-08-kernels.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+&lt;h1 id=&quot;see-it-in-action&quot;&gt;See it in Action&lt;/h1&gt;
 
-<!-- Icons -->
-<!-- 16x16 -->
-<link rel="shortcut icon" href="/favicon.ico">
-<!-- 32x32 -->
-<link rel="shortcut icon" href="/favicon.png">
-<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<!-- <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"> -->
-<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png"> -->
-<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png"> -->
-<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png"> -->
+&lt;p&gt;Here you can see I installed the pytube package in one environment&lt;/p&gt;
 
-</head>
+&lt;p&gt;&lt;img src=&quot;/media/2019-11-08-pasted image 0.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-<body class="page">
+&lt;p&gt;That package was not visible in the other environment.  And then when I installed an older version of the same package in the second environment (let’s pretend it needed the older version). The first environment kept using the newer version of the package&lt;/p&gt;
 
-<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+&lt;p&gt;&lt;img src=&quot;/media/2019-11-08-pasted image 0 (1).png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
-<div class="navigation-wrapper">
-	<div class="site-name">
-		<a href="/">Zain Rizvi</a>
-	</div><!-- /.site-name -->
-	<div class="top-navigation">
-		<nav id="site-nav" class="nav">
-		    <ul>
-		        
-				    
-				    <li><a href="/blog/" >Blog</a></li>
-				
-				    
-				    <li><a href="/about/" >About</a></li>
-				
-		    </ul>
-		</nav>
-	</div><!-- /.top-navigation -->
-</div><!-- /.navigation-wrapper -->
+&lt;p&gt;And there you have it.  You can now create virtual environments on your Jupyter Lab notebooks&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="Python" /><category term="Virtual Environments" /><category term="Jupyter Lab" /><category term="technical" /><summary type="html">Bring the best practices established by the Python community to your Jupyter Notebooks. You can add virtual environments to Jupyter Lab, giving each notebook it's own environment. This post goes into detail explaining exactly how you can add virtual environments to your own notebooks on Google Cloud's AI Platform Notebooks</summary></entry><entry><title type="html">Authenticating AI Platform Notebooks against BigQuery in Python</title><link href="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/" rel="alternate" type="text/html" title="Authenticating AI Platform Notebooks against BigQuery in Python" /><published>2019-10-15T00:00:00-07:00</published><updated>2019-10-15T00:00:00-07:00</updated><id>http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python</id><content type="html" xml:base="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/">&lt;p&gt;When you use &lt;a href=&quot;https://cloud.google.com/ai-platform-notebooks/&quot;&gt;AI Platform Notebooks&lt;/a&gt; by default any API calls you make to GCP use the default compute service account that your notebook runs under.  This makes it easy to start getting stuff done, but sometimes you may want to use BigQuery to query data that your service account doesn’t have access to.&lt;/p&gt;
 
+&lt;p&gt;The below instructions describe how to use your personal account to authenticate with BigQuery.  This specifically applies to authentication when using a python based notebook.  If you want to authenticate on a R based notebook you can find &lt;a href=&quot;https://www.zainrizvi.io/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks/&quot;&gt;instructions for that here&lt;/a&gt;.&lt;/p&gt;
 
+&lt;p&gt;Normally you would use &lt;code class=&quot;highlighter-rouge&quot;&gt;gcloud auth login&lt;/code&gt; from the jupyer lab terminal to login to your personal user account and call Google apis, but the BigQuery library auth works differently for some reason.&lt;/p&gt;
 
+&lt;p&gt;Instead, you need to create a credential object containing your user credentials and pass that to the bigquery library.&lt;/p&gt;
 
-<div id="main" role="main">
-  <div class="article-author-side">
-    
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install the &lt;code class=&quot;highlighter-rouge&quot;&gt;pydata_google_auth&lt;/code&gt; package:&lt;/p&gt;
 
-<div itemscope itemtype="http://schema.org/Person">
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;%pip install pydata_goog_auth&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Restart the kernel: Kernel -&amp;gt; Resart Kernel&lt;/p&gt;
 
+    &lt;p&gt;&lt;img src=&quot;https://screenshot.googleplex.com/SXzOG3pCaBk.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Import the library and create your credentials:&lt;/p&gt;
 
-	<img src="/images/bio-photo.png" class="bio-photo" alt="Zain Rizvi bio photo">
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import pydata_google_auth
+credentials = pydata_google_auth.get_user_credentials(
+    ['https://www.googleapis.com/auth/bigquery'],
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;When you execute the above cell you’ll see an output with an authentication link and a text box&lt;/p&gt;
 
+    &lt;p&gt;&lt;img src=&quot;https://screenshot.googleplex.com/KJ13JmkmkLd.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy that link, paste it into a browser, and authenticate with google.  You’ll see an authorization code similar to the below:&lt;/p&gt;
 
-  <h3 itemprop="name">Zain Rizvi</h3>
-  <p>Softare Engineer, Experimenter, Life-long Student. Working at Google improving GCP AI Platform Notebooks</p>
-  
-  <a href="http://twitter.com/zainrzv" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
-  
-  
-  
-  
-  
-  
-  <a href="http://github.com/ZainRizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
-  <a href="http://stackoverflow.com/users/21539/zain-rizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> Stackoverflow</a>
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-</div>
+    &lt;p&gt;&lt;img src=&quot;https://screenshot.googleplex.com/1g35DesEv29.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy that code and paste it into the authentication code input box you saw in your notebook&lt;/p&gt;
 
-    <hr />
-    <!--<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">-->
-<style type="text/css">
-    /* MailChimp Form Embed Code - Classic - 12/17/2015 v10.7 */
-    #mc_embed_signup form {display:block; position:relative; text-align:left; padding:5px 0 5px 3%}
-    #mc_embed_signup h2 {font-weight:bold; padding:0; margin:15px 0; font-size:1.4em;}
-    #mc_embed_signup input {border: 1px solid #ABB0B2; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
-    #mc_embed_signup input[type=checkbox]{-webkit-appearance:checkbox;}
-    #mc_embed_signup input[type=radio]{-webkit-appearance:radio;}
-    #mc_embed_signup input:focus {border-color:#333;}
-    #mc_embed_signup .small-meta {font-size: 11px;}
-    #mc_embed_signup .nowrap {white-space:nowrap;}
+    &lt;p&gt;&lt;img src=&quot;https://screenshot.googleplex.com/v6cAGhKSn3S.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Next you’ll want to reload the bigquery magic in your notebook.  You ‘reload’ instead of ‘load’ because AI Platform Notebooks already loads the bigquery magic for you by default:&lt;/p&gt;
 
-    #mc_embed_signup .mc-field-group {clear:left; position:relative; width:96%; padding-bottom:3%; min-height:50px;}
-    #mc_embed_signup .size1of2 {clear:none; float:left; display:inline-block; width:46%; margin-right:4%;}
-    * html #mc_embed_signup .size1of2 {margin-right:2%; /* Fix for IE6 double margins. */}
-    #mc_embed_signup .mc-field-group label {display:block; margin-bottom:3px;}
-    #mc_embed_signup .mc-field-group input {display:block; width:100%; padding:8px 0; text-indent:2%;}
-    #mc_embed_signup .mc-field-group select {display:inline-block; width:99%; padding:5px 0; margin-bottom:2px;}
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%reload_ext google.cloud.bigquery
+from google.cloud.bigquery import magics
+magics.context.credentials = credentials
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now when you use the bigquery magic it’ll use your personal credentials instead of the service account ones:&lt;/p&gt;
 
-    #mc_embed_signup .datefield, #mc_embed_signup .phonefield-us{padding:5px 0;}
-    #mc_embed_signup .datefield input, #mc_embed_signup .phonefield-us input{display:inline; width:60px; margin:0 2px; letter-spacing:1px; text-align:center; padding:5px 0 2px 0;}
-    #mc_embed_signup .phonefield-us .phonearea input, #mc_embed_signup .phonefield-us .phonedetail1 input{width:40px;}
-    #mc_embed_signup .datefield .monthfield input, #mc_embed_signup .datefield .dayfield input{width:30px;}
-    #mc_embed_signup .datefield label, #mc_embed_signup .phonefield-us label{display:none;}
+    &lt;p&gt;%%bigquery
+SELECT name, SUM(number) as count
+FROM &lt;code class=&quot;highlighter-rouge&quot;&gt;my-private-project.usa_names.usa_1910_current&lt;/code&gt;
+GROUP BY name
+ORDER BY count DESC
+LIMIT 10&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
 
-    #mc_embed_signup .indicates-required {text-align:right; font-size:11px; margin-right:4%;}
-    #mc_embed_signup .asterisk {color:#e85c41; font-size:150%; font-weight:normal; position:relative; top:5px;}     
-    #mc_embed_signup .clear {clear:both;}
+&lt;p&gt;And that’s all there is to it!&lt;/p&gt;
 
-    #mc_embed_signup .mc-field-group.input-group ul {margin:0; padding:5px 0; list-style:none;}
-    #mc_embed_signup .mc-field-group.input-group ul li {display:block; padding:3px 0; margin:0;}
-    #mc_embed_signup .mc-field-group.input-group label {display:inline;}
-    #mc_embed_signup .mc-field-group.input-group input {display:inline; width:auto; border:none;}
+&lt;p&gt;If you’d rather use the python code than invoke the bigquery magic just create a client with the user credentials and query away!&lt;/p&gt;
 
-    #mc_embed_signup div#mce-responses {float:left; top:-1.4em; padding:0em .5em 0em .5em; overflow:hidden; width:90%; margin: 0 5%; clear: both;}
-    #mc_embed_signup div.response {margin:1em 0; padding:1em .5em .5em 0; font-weight:bold; float:left; top:-1.5em; z-index:1; width:80%;}
-    #mc_embed_signup #mce-error-response {display:none;}
-    #mc_embed_signup #mce-success-response {color:#529214; display:none;}
-    #mc_embed_signup label.error {display:block; float:none; width:auto; margin-left:1.05em; text-align:left; padding:.5em 0;}
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from google.cloud import bigquery as bq
+client = bq.Client(project=&quot;project-name&quot;, credentials=credentials)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-    #mc-embedded-subscribe {clear:both; width:auto; display:block; margin:1em 0 1em 5%;}
-    #mc_embed_signup #num-subscribers {font-size:1.1em;}
-    #mc_embed_signup #num-subscribers span {padding:.5em; border:1px solid #ccc; margin-right:.5em; font-weight:bold;}
+&lt;p&gt;Thanks to Anthony Brown for &lt;a href=&quot;https://medium.com/john-lewis-software-engineering/authenticating-jupyter-notebook-against-bigquery-957884f78527&quot;&gt;sharing instructions&lt;/a&gt; on how to use BigQuery with Jupyter Notebooks&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="technical" /><category term="GCP" /><category term="AI Platform Notebooks" /><category term="BigQuery" /><summary type="html">How to authenticate with BigQuery (in Python) when using AI Platform Notebooks</summary></entry><entry><title type="html">A More Beautiful Question - Key Insights</title><link href="http://localhost:4000/blog/a-more-beautiful-question-summary/" rel="alternate" type="text/html" title="A More Beautiful Question - Key Insights" /><published>2019-08-09T00:00:00-07:00</published><updated>2019-08-09T00:00:00-07:00</updated><id>http://localhost:4000/blog/a-more-beautiful-question-summary</id><content type="html" xml:base="http://localhost:4000/blog/a-more-beautiful-question-summary/">&lt;blockquote&gt;
+  &lt;p&gt;These are the key lessons I discovered while reading Warren Berger’s &lt;a href=&quot;https://www.amazon.com/More-Beautiful-Question-Inquiry-Breakthrough/dp/1632861054/&quot;&gt;A More Beautiful Question&lt;/a&gt;. Most material is directly from the book with a few of my own ideas interspersed&lt;/p&gt;
+&lt;/blockquote&gt;
 
-    #mc_embed_signup #mc-embedded-subscribe-form div.mce_inline_error {display:inline-block; margin:2px 0 1em 0; padding:5px 10px; background-color:rgba(255,255,255,0.85); -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; font-size:14px; font-weight:normal; z-index:1; color:#e85c41;}
-    #mc_embed_signup #mc-embedded-subscribe-form input.mce_inline_error {border:2px solid #e85c41;}
-    
-    div.mc_embed_signup{
-        background: #9ce8ff; 
-        clear:left;
-        font:14px Helvetica,Arial,sans-serif;
-        padding: 0px 10px;
-        border-style: solid;
-        border-color: #29bbff;
-        border-radius: 10px
-    }
-    /*#mc_embed_signup .button {
-        background-color:#7DABD4;
-    }
-    #mc_embed_signup .button:hover {
-        background-color:#777;
-    }*/
-    #mc_embed_signup .button {
-        -moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
-        -webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
-        box-shadow:inset 0px -3px 7px 0px #29bbff;
-        background-color:#2dabf9;
-        -moz-border-radius:3px;
-        -webkit-border-radius:3px;
-        border-radius:3px;
-        border:1px solid #0b0e07;
-        display:inline-block;
-        cursor:pointer;
-        color:#ffffff;
-        font-family:Arial;
-        font-size:15px;
-        padding:9px 23px;
-        text-decoration:none;
-        text-shadow:0px 1px 0px #263666;
-    }
-    #mc_embed_signup .button:hover {
-        background-color:#0688fa;
-    }
-    #mc_embed_signup .button:active {
-        position:relative;
-        top:1px;
-    }
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-10-book question details-2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
 
+&lt;h1 id=&quot;why-do-we-need-to-ask-questions&quot;&gt;Why do we need to ask questions?&lt;/h1&gt;
 
-    /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-    We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-</style>
-<!-- Begin MailChimp Signup Form -->
-<div>
- <form  
-       action="https://tinyletter.com/ZainRizvi"
-       method="post" target="popupwindow"
-       onsubmit="window.open('https://tinyletter.com/ZainRizvi', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
-     <p>
-         <label for="tlemail">Did you like this post?  If so then enter your email below to get new articles on technology, machine learning, self improvement, and career tips when the come out!</label></p>
-     <p>
-         <input type="text" style="width:200px" name="email" />
-         <input type="hidden" value="1" name="embed"/>
-         <input type="submit" value="Sign me up!" />
-     </p>
-    </form>
-</div>
-<!--End mc_embed_signup-->
+&lt;p&gt;The economic model of the world is shifting. The nature of knowledge, work, and employment is changing.&lt;/p&gt;
 
-  </div>
-  <article class="page">
-    <h1></h1>
-    <div class="article-wrap">
-      <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-<title type="text">Zain Rizvi</title>
-<generator uri="https://github.com/jekyll/jekyll">Jekyll</generator>
-<link rel="self" type="application/atom+xml" href="/feed.xml" />
-<link rel="alternate" type="text/html" href="" />
-<updated>2019-07-31T19:27:29-07:00</updated>
-<id>/</id>
-<author>
-  <name>Zain Rizvi</name>
-  <uri>/</uri>
-  
-</author>
+&lt;ul&gt;
+  &lt;li&gt;What business are we in now?&lt;/li&gt;
+  &lt;li&gt;Will my jobs still be needed in a few years?&lt;/li&gt;
+  &lt;li&gt;Is “knowing” obsolete in the age of Google?&lt;/li&gt;
+  &lt;li&gt;How do you move from asking to action?&lt;/li&gt;
+&lt;/ul&gt;
 
+&lt;p&gt;&lt;strong&gt;The Power of Inquiry:&lt;/strong&gt; Asking questions is now more important than knowing&lt;/p&gt;
 
-<entry>
-  <title type="html"><![CDATA[Five Tactics for Developers to Tackle Complex Problems at Work]]></title>
-  <link rel="alternate" type="text/html" href="/blog/Five-tactics-for-tackling-complex-problems/" />
-  <id>/blog/Five-tactics-for-tackling-complex-problems</id>
-  <published>2018-11-10T00:00:00-08:00</published>
-  <updated>2018-11-10T00:00:00-08:00</updated>
-  <author>
-    <name>Zain Rizvi</name>
-    <uri></uri>
-    
-  </author>
-  <content type="html">
-    &lt;blockquote&gt;
+&lt;p&gt;Everything starts with “why?”&lt;/p&gt;
+
+&lt;h2 id=&quot;a-questions-life-cycle&quot;&gt;A Questions Life cycle&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Stage 1: Why&lt;/strong&gt; is something the way it is? Learn about the problem&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Stage 2: What If&lt;/strong&gt; something was done differently? Generate ideas for improvements or solutions&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Stage 3: How&lt;/strong&gt; can this idea be implemented?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Implement&lt;/strong&gt; the solution&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-08-question stages.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;These are described in more detail further down&lt;/p&gt;
+
+&lt;h1 id=&quot;fighting-information-overload&quot;&gt;Fighting Information Overload&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-09-surrounded.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;With Information Overload we need to &lt;strong&gt;Focus on the Context&lt;/strong&gt; (tips from &lt;a href=&quot;http://www.johnseelybrown.com/&quot;&gt;John Seely Brown&lt;/a&gt;)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How valid are these beliefs?&lt;/li&gt;
+  &lt;li&gt;Is there an agenda behind this information?&lt;/li&gt;
+  &lt;li&gt;Is the data stale? Out of date?&lt;/li&gt;
+  &lt;li&gt;How does it relate to other information I have?&lt;/li&gt;
+  &lt;li&gt;What assumptions am I (or the others) making?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;5-learning-skills-and-habits&quot;&gt;5 Learning Skills and Habits&lt;/h3&gt;
+
+&lt;p&gt;When you learn anything new, ask for the following:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Evidence&lt;/strong&gt; - Is it true? How trustworthy is this info?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Viewpoints&lt;/strong&gt; - How would this look from other perspectives?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Connection&lt;/strong&gt; - Noticing any patterns? Have I seem something similar before?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Conjecture&lt;/strong&gt; - What if this information was different? What implications would it have?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Relevance&lt;/strong&gt; - Why does this matter? (Did I just waste my time reading that?)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;learning-to-ask-why&quot;&gt;Learning to ask “Why?”&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Why does this situation exist?&lt;/li&gt;
+  &lt;li&gt;Why is it a problem?&lt;/li&gt;
+  &lt;li&gt;Why does it create a need or opportunity?&lt;/li&gt;
+  &lt;li&gt;Who is it a need/opportunity for?&lt;/li&gt;
+  &lt;li&gt;Why has no one addressed this yet?&lt;/li&gt;
+  &lt;li&gt;Why do I want to spend more time thinking about this?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When you have a question, let it brew in your head.  It’ll lead you to &lt;a href=&quot;https://www.brainpickings.org/2013/08/14/how-einstein-thought-combinatorial-creativity/&quot;&gt;combinatorial thinking&lt;/a&gt; where you draw connections between it and other things you know or learn.&lt;/p&gt;
+
+&lt;h1 id=&quot;breaking-down-the-innovation-question-process&quot;&gt;Breaking Down the Innovation Question Process&lt;/h1&gt;
+
+&lt;p&gt;Start with &lt;strong&gt;Why&lt;/strong&gt;? =&amp;gt; Ask &lt;strong&gt;What if&lt;/strong&gt;? =&amp;gt; Figure out &lt;strong&gt;How&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-09-question-mark-2123967_1920.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;stage-1-why&quot;&gt;Stage 1: Why?&lt;/h2&gt;
+
+&lt;h3 id=&quot;how-to-get-a-good-why-question&quot;&gt;How to get a Good &lt;strong&gt;Why&lt;/strong&gt; Question?&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Step back&lt;/li&gt;
+  &lt;li&gt;Notice what others miss&lt;/li&gt;
+  &lt;li&gt;Challenge assumptions (including your own)&lt;/li&gt;
+  &lt;li&gt;Get a deeper understanding of the situation/problem through contextual inquiry&lt;/li&gt;
+  &lt;li&gt;Question the questions being asked (including your own)&lt;/li&gt;
+  &lt;li&gt;Take ownership of a particular question&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;questioning-the-questions&quot;&gt;Questioning the Questions&lt;/h3&gt;
+
+&lt;p&gt;Your questions can be biased&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Why did I come up with that question?&lt;/li&gt;
+  &lt;li&gt;What assumptions does that question make?&lt;/li&gt;
+  &lt;li&gt;Is there a different question I should ask?&lt;/li&gt;
+  &lt;li&gt;Repeat the above until you get a good answer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tools-for-improving-questions&quot;&gt;Tools for Improving Questions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Shrink or Grow the question in scope (“is X true for the world?” vs “is X true for my city?”)&lt;/li&gt;
+  &lt;li&gt;Open or Close the questions to catch assumptions (“Why is X true?” vs “Is X true?”)&lt;/li&gt;
+  &lt;li&gt;Tailor questions to the specific relevant context, aka &lt;strong&gt;Contextual Inquiry&lt;/strong&gt; (“Is X true in India?”)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;contextual-inquiry&quot;&gt;Contextual Inquiry&lt;/h3&gt;
+
+&lt;p&gt;Talk to actual people and listen to their stories, problems, situations, etc&lt;/p&gt;
+
+&lt;p&gt;This requires your decision to be committed to this question. Otherwise you won’t bother doing this&lt;/p&gt;
+
+&lt;h3 id=&quot;productive-obsession&quot;&gt;Productive Obsession&lt;/h3&gt;
+
+&lt;p&gt;Actively pursuing a question. You’ll start thinking of it all the time.&lt;/p&gt;
+
+&lt;p&gt;This gradually leads you to the &lt;strong&gt;“What If?”&lt;/strong&gt; stage&lt;/p&gt;
+
+&lt;h2 id=&quot;stage-2-what-if&quot;&gt;Stage 2: What If?&lt;/h2&gt;
+
+&lt;p&gt;Here are some tactics that can help you come up with ideas when you’re in the “What If” stage&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-09-brainstorm-4222728_1920.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;connective-inquiry&quot;&gt;Connective Inquiry&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Study various fields and let it peculate in your head&lt;/li&gt;
+  &lt;li&gt;Boost: Take a few disparate resources/facts/tools and see how they could be used to solve a problem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;thinking-wrong&quot;&gt;Thinking Wrong&lt;/h3&gt;
+
+&lt;p&gt;Thinking in ways that have nothing to do with the problem you’re trying to solve. Mixing and matching random things&lt;/p&gt;
+
+&lt;p&gt;This is a form of &lt;a href=&quot;https://www.youtube.com/watch?v=cmBf1fBRXms&quot;&gt;Divergent Thinking&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Connection Exercise&lt;/strong&gt; (page 113 of the book)&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Take a random word and think of ideas around it. You can rearrange letters to get other words, etc.&lt;/li&gt;
+  &lt;li&gt;Take a 2nd random word and do the same&lt;/li&gt;
+  &lt;li&gt;Can you combine both words?&lt;/li&gt;
+  &lt;li&gt;Do it in the context of the problem you want to solve&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Random Connections&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Try to connect random, nonsensical things&lt;/li&gt;
+  &lt;li&gt;An oven that doesn’t heat. What can you do with that?&lt;/li&gt;
+  &lt;li&gt;A car that doesn’t move&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Invert Reality&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;What if restaurants gave you a menu only when you left?&lt;/p&gt;
+
+&lt;p&gt;What impact would that have?&lt;/p&gt;
+
+&lt;h3 id=&quot;idea-storming&quot;&gt;Idea Storming&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Come up with at least 50 questions about the problem&lt;/li&gt;
+  &lt;li&gt;Be sure to push yourself to 50 questions. That’s around when the best questions come&lt;/li&gt;
+  &lt;li&gt;This is an alternative to brainstorming&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;“How Might We…?”&lt;/strong&gt; - This tends to open up the thinking process better than the question “How can we?”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Perspective Shift&lt;/strong&gt;: Ask questions from the perspective of another person (“How would Hollywood address this?”)&lt;/p&gt;
+
+&lt;h1 id=&quot;stage-3-how&quot;&gt;Stage 3: How?&lt;/h1&gt;
+
+&lt;p&gt;You came up with many ideas in Step 2. Now chose one idea to pursue. It’s time for &lt;a href=&quot;https://www.youtube.com/watch?v=cmBf1fBRXms&quot;&gt;convergent thinking&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-10-construction.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;quickly-identify-bad-ideas-via-feedback&quot;&gt;Quickly Identify Bad Ideas via Feedback&lt;/h3&gt;
+
+&lt;p&gt;You need to get feedback on your idea, and get it fast.  There are multiple ways to do this&lt;/p&gt;
+
+&lt;p&gt;One tactic: &lt;strong&gt;Share the idea&lt;/strong&gt; to get feedback.  Something like a napkin sketch and asking “what do you think of…” could be a good quick protype to use&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rapid experimentation:&lt;/strong&gt; find the smallest possible experiment that you can run to validate or invalidate your idea.  This is a form of creating a &lt;a href=&quot;https://twitter.com/ZainRzv/status/1060941595879456768&quot;&gt;Minimum Viable Product&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In every experiment you must ask: &lt;strong&gt;What will I Learn?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Then work backwards to the simplest experiment which will teach you that.  This is the real MVP&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note: experimenting will lead to many failures and disappointments&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Instead of focusing on the failure, focus on the whys behind that failure and what you can learn from it&lt;/li&gt;
+  &lt;li&gt;Note what went right&lt;/li&gt;
+  &lt;li&gt;Ask “Am I failing differently each time?”&lt;/li&gt;
+  &lt;li&gt;Remember, you’re much better off if you fail after a few hours or days of effort instead of after many months of effort!&lt;/li&gt;
+  &lt;li&gt;Edison said “I have not failed. I’ve just found 10,000 ways that won’t work.”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Learn to note when you or others are experiencing &lt;a href=&quot;https://www.simplypsychology.org/cognitive-dissonance.html&quot;&gt;Cognitive Dissonance&lt;/a&gt;, a mental discomfort when facing conflicting attitudes, beliefs, or behaviors&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This is a sign that you are doing something new&lt;/li&gt;
+  &lt;li&gt;This is for getting early feedback on your idea&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;collaborative-inquiry&quot;&gt;Collaborative Inquiry&lt;/h3&gt;
+
+&lt;p&gt;Get help from others!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“Do you find this interesting? Want to join me and try to answer it?”&lt;/li&gt;
+  &lt;li&gt;To the internet!
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.notimpossible.com/&quot;&gt;Not Impossible Labs&lt;/a&gt; - A site to find others&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Many more people are drawn to an existing idea they can join in on &amp;amp; help to improve or advance, rather than starting from scratch on their own.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;You are inviting collaborators as &lt;strong&gt;equals&lt;/strong&gt; on a project. “Your” question becomes theirs too.&lt;/p&gt;
+
+&lt;p&gt;Questions belong to everyone&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Share your question in hope of you getting something new: solution, perspective, insight, purpose, etc.  That thing will be yours”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;questioning-in-business&quot;&gt;Questioning in Business&lt;img src=&quot;/media/2019-08-09-meeting.png&quot; alt=&quot;&quot; /&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Why are we in business? And what business are we &lt;em&gt;really&lt;/em&gt; in?&lt;/li&gt;
+  &lt;li&gt;What if our company didn’t exist?&lt;/li&gt;
+  &lt;li&gt;How can we make a better experiment?&lt;/li&gt;
+  &lt;li&gt;Should mission statements be mission questions?&lt;/li&gt;
+  &lt;li&gt;How might we create a culture of inquiry?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;living-better-by-asking-the-right-questions&quot;&gt;Living Better by Asking the Right Questions&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-09-peace.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What if we start with what we already have?&lt;/li&gt;
+  &lt;li&gt;What if you made one small change?&lt;/li&gt;
+  &lt;li&gt;What if you could not fail?&lt;/li&gt;
+  &lt;li&gt;How will you find your beautiful question?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;What is your goal/purpose in life?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Your mission should fit in one sentence&lt;/li&gt;
+  &lt;li&gt;This is a mountain you are climbing. Why are you climbing it?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;How can I develop a sense of community?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Family&lt;/li&gt;
+  &lt;li&gt;Friends&lt;/li&gt;
+  &lt;li&gt;Neighbors&lt;/li&gt;
+  &lt;li&gt;Block party?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;What did I love doing as a child? Can I still do any of it?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What are you doing when you feel most beautiful/happy?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“It’s easier to act your way into a new way of thinking than to think your way into a new way of acting”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fake it till you make it&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;[Zain aside: I’m not sure how true this statement is. It seems to apply only to certain types of things]&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If we can’t agree on an answer, can we instead agree on a question?&lt;/p&gt;
+
+&lt;h1 id=&quot;teaching-to-question&quot;&gt;Teaching to Question&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Can a school be built on questions?&lt;/li&gt;
+  &lt;li&gt;Can we teach ourselves to question?&lt;/li&gt;
+  &lt;li&gt;How can we make “being wrong” less threatening?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Interesting Teaching Style: Activity-Permissive Education by Mayo Clinic.  Lets kids move as they learn&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-09-The-Classroom-Teacher-Teach-Blackboard-Clipart-2799822.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;how-can-parents-teach-their-kids-to-question&quot;&gt;How can parents teach their kids to question?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ask the kids open ended questions&lt;/li&gt;
+  &lt;li&gt;Get the kids to ask you questions (and guide them to certain questions)
+    &lt;ul&gt;
+      &lt;li&gt;Don’t answer those questions. Instead explore through experiments or personal experience and have the kid form a hypothesis about the answer&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;When kids come home from school, ask them “Did you ask a good question today?”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;question-formulation-training&quot;&gt;Question Formulation Training&lt;/h3&gt;
+
+&lt;p&gt;This is a strategy that has been successfully used in classrooms&lt;/p&gt;
+
+&lt;p&gt;First offer a premise (e.g. “torture can be justified”)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Stage 1&lt;/strong&gt;: Divide people into groups to &lt;strong&gt;Brainstorm&lt;/strong&gt; questions&lt;/p&gt;
+
+&lt;p&gt;Rules:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Write each question down&lt;/li&gt;
+  &lt;li&gt;Don’t debate or try to answer questions&lt;/li&gt;
+  &lt;li&gt;Just keep trying to think of more questions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Stage 2&lt;/strong&gt;: &lt;strong&gt;Improve&lt;/strong&gt; the questions by converting open questions to closed and vice versa. For example you’d change between “why is torture effective” &amp;lt;==&amp;gt; “is torture effective”&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This shows that the same question asked differently can make you think in a different space&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Stage 3&lt;/strong&gt;: &lt;strong&gt;Prioritize&lt;/strong&gt;. Identify the top 3 questions to move the discussion forwards&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It teaches them how to analyze questions and find ones to pursue further&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;question-teaching-process&quot;&gt;Question Teaching Process&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Teachers design a focus for the questions&lt;/li&gt;
+  &lt;li&gt;Students produce questions&lt;/li&gt;
+  &lt;li&gt;Students improve their questions (open vs closed)&lt;/li&gt;
+  &lt;li&gt;Students prioritize their questions (top 3)&lt;/li&gt;
+  &lt;li&gt;Students and teachers decide on next steps for acting on those questions&lt;/li&gt;
+  &lt;li&gt;Students reflect on what they’ve learned&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Imagine&lt;/strong&gt;: What if the teacher was willing to ask questions that they themselves don’t know the answer to?  If the class is interested then…“Lets figure this out together”&lt;/p&gt;
+
+&lt;h1 id=&quot;other-thoughts&quot;&gt;Other thoughts&lt;/h1&gt;
+
+&lt;p&gt;How do you reward questioning in others or in children to encourage this behavior?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Would the process of discovery will be it’s own reward?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ideas for a game based on asking questions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Learn to ask better questions via proposing and improving questions on a given prompt&lt;/li&gt;
+  &lt;li&gt;Example prompt: Given some set of random resources, how can you solve problem X?&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="critical thinking" /><category term="questions" /><category term="book reviews" /><summary type="html">Find Innovative Business Ideas by Asking Questions. Develop better critical thinking and problem solving skills, and fight information overload. My reading notes from the book &quot;A More Beautiful Question&quot; by Warren Berger</summary></entry><entry><title type="html">So Good They Can’t Ignore You - Key Ideas</title><link href="http://localhost:4000/blog/so-good-they-can-t-ignore-you-key-ideas/" rel="alternate" type="text/html" title="So Good They Can't Ignore You - Key Ideas" /><published>2019-08-07T00:00:00-07:00</published><updated>2019-08-07T00:00:00-07:00</updated><id>http://localhost:4000/blog/so-good-they-can-t-ignore-you-key-ideas</id><content type="html" xml:base="http://localhost:4000/blog/so-good-they-can-t-ignore-you-key-ideas/">&lt;p&gt;These are my notes from Cal Newport’s book &lt;a href=&quot;https://www.amazon.com/dp/B0076DDBJ6/&quot;&gt;So Good They Can’t Ignore You: Why Skills Trump Passion in the Quest for Work You Love&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I’m going to skip the persuasive arguments that Cal listed and jump straight to the conclusions that resonated with me&lt;/p&gt;
+
+&lt;h1 id=&quot;value-your-autonomy&quot;&gt;Value your Autonomy&lt;/h1&gt;
+
+&lt;p&gt;“Find your Passion” is a lie.  That’s not how humans work&lt;/p&gt;
+
+&lt;p&gt;Reality: We become passionate about any work that can meet certain requirements&lt;/p&gt;
+
+&lt;p&gt;The Three Keys to Enjoying Work (from Self Determination Theory):&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Autonomy - You have control and make your own decisions&lt;/li&gt;
+  &lt;li&gt;Competence - You’re good at it&lt;/li&gt;
+  &lt;li&gt;Social Connections - You’re connected to others&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You’re likely to enjoy any work that gives you the above three.&lt;/p&gt;
+
+&lt;p&gt;Going deeper, great work tends to have the following traits:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It lets you be &lt;strong&gt;Creative&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;The work has &lt;strong&gt;Impact&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;You can &lt;strong&gt;Control&lt;/strong&gt; what you do&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note that each of these falls under one of the above three keys&lt;/p&gt;
+
+&lt;h1 id=&quot;develop-rare-skills-to-become-valuable&quot;&gt;Develop Rare Skills to become Valuable&lt;/h1&gt;
+
+&lt;p&gt;Develop rare and valuable skills to stand out in your job.&lt;/p&gt;
+
+&lt;p&gt;Cal calls these skills “capital” since these are the “money” that you can use to “purchase/acquire” higher value positions.&lt;/p&gt;
+
+&lt;p&gt;Developing these rare skills/capital requires stretching your skills and developing rapid feedback loops so you can improve faster.&lt;/p&gt;
+
+&lt;p&gt;Steps to stretch your skill:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Identify the skill/capital you’re going after&lt;/li&gt;
+  &lt;li&gt;Define a “good” level of that skill (your goal)&lt;/li&gt;
+  &lt;li&gt;Stretch yourself in that skill via deliberate practice&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;traps-to-avoid&quot;&gt;Traps to Avoid&lt;/h1&gt;
+
+&lt;p&gt;There are two traps that you might fall into as you try to advance in your career:&lt;/p&gt;
+
+&lt;h3 id=&quot;control-trap-1-grabbing-too-much-responsibility&quot;&gt;Control Trap #1: Grabbing too much responsibility&lt;/h3&gt;
+
+&lt;p&gt;You can’t sustain control without having the skills/capital to back it up.  You won’t be able to deliver on your promises and will fail.&lt;/p&gt;
+
+&lt;p&gt;Of course, it’s hard to know when you’re really ready for the next stage.  So this really becomes a judgement call&lt;/p&gt;
+
+&lt;h3 id=&quot;control-trap-2-trading-away-freedom-for-other-rewards&quot;&gt;Control Trap #2: Trading away freedom for other rewards&lt;/h3&gt;
+
+&lt;p&gt;When you become more valuable, employers will want to offer you incentives to get you to keep providing value for them.&lt;/p&gt;
+
+&lt;p&gt;This could be a good thing. You may be happy with the extra money, etc. But this may also reduce your freedom &amp;amp; your control over your own life.&lt;/p&gt;
+
+&lt;p&gt;The lesson here is to be conscious of the trade-off you’re making so that you know you’re doing what’s best for you&lt;/p&gt;
+
+&lt;h1 id=&quot;make-your-work-remarkable&quot;&gt;Make your work Remarkable&lt;/h1&gt;
+
+&lt;p&gt;A great project will be based on a mission.  But in order to be successful, that project and mission need to be &lt;strong&gt;remarkable&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;What is meant by remarkable?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;People will talk about it (remark) in casual conversation (“you have to see this”, viral messages, etc)
+    &lt;ul&gt;
+      &lt;li&gt;Controversial things also fall into this bucket.  Use this knowledge with caution&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tactic for increasing your product’s chances to be remarked upon:&lt;/p&gt;
+
+&lt;p&gt;Spread the word about your project in a &lt;strong&gt;venue&lt;/strong&gt; which supports those remarks.  “Supports” could refer to a venue filled with people interested in the project, a venue that makes sharing easy etc. (e.g. a social media forum focused on an area related to your project)&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="book reviews" /><category term="career" /><summary type="html">How to have a career you enjoy and traps to avoid</summary></entry><entry><title type="html">Using BigRQuery on GCP AI Platform Notebooks</title><link href="http://localhost:4000/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks/" rel="alternate" type="text/html" title="Using BigRQuery on GCP AI Platform Notebooks " /><published>2019-08-05T00:00:00-07:00</published><updated>2019-08-05T00:00:00-07:00</updated><id>http://localhost:4000/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks</id><content type="html" xml:base="http://localhost:4000/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks/">&lt;p&gt;Note: These instructions can be used whenever you’re using Jupyter Lab on a remote machine&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cloud.google.com/ai-platform-notebooks/&quot;&gt;GCP AI Platform Notebooks&lt;/a&gt; makes it really easy to run notebooks on Jupyter Lab and even offers R language notebooks.  R is great for crunching large data sets, and a popular place for people to store their data is on BigQuery.&lt;/p&gt;
+
+&lt;p&gt;The most popular library for accessing BigQuery in R is the open source library &lt;a href=&quot;https://github.com/r-dbi/bigrquery&quot;&gt;BigRQuery&lt;/a&gt;.  It’s an extremely useful library, but it has the downside that the authentication step will try one of two things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;It either will prompt people for extra input on the command line&lt;/li&gt;
+  &lt;li&gt;Or open up a port on http://localhost to listen for GCP authentication&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;#1 doesn’t work with any Jupter  Notebook since they are not designed to accept extra commands in the middle of an execution&lt;/p&gt;
+
+&lt;p&gt;#2 won’t work if you’re connected to Jupyter Lab on a remote machine (the http://localhost will point you to the wrong VM!)&lt;/p&gt;
+
+&lt;p&gt;Since neither of the normal ways to authenticate yourself will work &lt;a href=&quot;https://github.com/r-dbi/bigrquery/issues/340&quot;&gt;just yet&lt;/a&gt;, this post describes two different methods you can use to authenticate yourself to BigQuery within a AI Platform Notebook:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Authenticate using your normal GCP user credentials&lt;/li&gt;
+  &lt;li&gt;Authenticate using a service account&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;prereq-create-an-ai-platform-notebook-for-r&quot;&gt;Prereq: Create an AI Platform Notebook for R&lt;/h1&gt;
+
+&lt;p&gt;First create a new AI Platform notebook. This notebook is where you’ll be trying to use BigRQuery&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Go to &lt;a href=&quot;http://console.cloud.google.com/mlengine/notebooks/instances&quot; title=&quot;http://console.cloud.google.com/mlengine/notebooks/instances&quot;&gt;http://console.cloud.google.com/mlengine/notebooks/instances&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Select ‘New Instance’ -&amp;gt; ‘R 3.x’ -&amp;gt; Create&lt;/li&gt;
+  &lt;li&gt;Wait for the notebook to be created and click “OPEN JUPYTERLAB”&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;option-1-authenticating-using-your-gcp-user-credentials&quot;&gt;Option #1: Authenticating using your GCP user credentials&lt;/h1&gt;
+
+&lt;p&gt;This method uses the Jupter Lab terminal to run the interactive commands and cache the credentials. Once you’re authenticated, you can switch to a notebook and it’ll use the credentials in the cache.&lt;/p&gt;
+
+&lt;p&gt;First, start R in a Terminal&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-05-b1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;R&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You’ll get the output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jupyter@r-20190802-172922:\~$ R
+
+R version 3.6.1 (2019-07-05) -- &quot;Action of the Toes&quot;
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Next we install the required packages&lt;/p&gt;
+
+&lt;p&gt;As of this writing, BigRQuery needs the dev version of gargle for this authentication to work.  Later you shouldn’t need to explicitly install gargle.&lt;/p&gt;
+
+&lt;p&gt;Run the following commands to install the packages:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;install.packages(&quot;httpuv&quot;)
+install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;r-lib/gargle&quot;) # get the dev version of gargle
+install.packages(&quot;bigrquery&quot;)
+install.packages(&quot;readr&quot;) # To read BigQuery results
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Those packages will take ~10 minutes to install&lt;/p&gt;
+
+&lt;p&gt;Import the required libraries and Authenticate yourself by running the command &lt;code class=&quot;highlighter-rouge&quot;&gt;bq&lt;/code&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_auth(use_&lt;/code&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oob = TRUE)&lt;/code&gt; (correct your email address as appropriate)&lt;/p&gt;
+
+&lt;p&gt;Commands to run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;library(httpuv)
+library(gargle)
+library(bigrquery)
+bq_auth(use_oob = TRUE)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Say yes when it asks about caching the OAuth credentials.&lt;/p&gt;
+
+&lt;p&gt;You’ll see an error like the following&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; library(httpuv)
+&amp;gt; library(gargle)
+&amp;gt; library(bigrquery)
+&amp;gt; bq_auth(use_oob = TRUE)
+&amp;gt; Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
+
+1: Yes
+2: No
+
+Selection: 1
+Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: elinks: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: links: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: lynx: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: w3m: not found
+xdg-open: no method available for opening 'https://accounts.google.com/o/oauth2/auth?client_id=603366585132-0l3n5tr582q443rnomebdeeo0156b2bc.apps.googleusercontent.com&amp;amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fbigquery%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&amp;amp;redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&amp;amp;response_type=code'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Here’s where it gets tricky.  It’ll look like it’s only giving a list of errors. But if you look closely the error contains a url you see an https://accounts.google.com url in their.  Copy/paste that url into a new window and you’ll see the usual Google Auth page.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/media/2019-08-05-b2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Log in and give Tidyverse the permissions it’s requesting.  It’ll take you to a screen giving you a secret code:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-05-b3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Copy that code and paste  it into your JupyterLab terminal and hit Enter.&lt;/p&gt;
+
+&lt;p&gt;I know, it doesn’t look like the terminal is waiting for any kind of input, but it actually is (hopefully gargle will fix this soon).&lt;/p&gt;
+
+&lt;p&gt;Sample output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; library(httpuv)
+&amp;gt; library(gargle)
+&amp;gt; library(bigrquery)
+&amp;gt; bq_auth(use_oob = TRUE)
+Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
+
+1: Yes
+2: No
+
+Selection: 1
+Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: elinks: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: links: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: lynx: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: w3m: not found
+xdg-open: no method available for opening 'https://accounts.google.com/o/oauth2/auth?client_id=603366585132-0l3n5tr582q443rnomebdeeo0156b2bc.apps.googleusercontent.com&amp;amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fbigquery%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&amp;amp;redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&amp;amp;response_type=code'
+4/lgjskDFGSjkwETSgsjGSKEJTssfgKWlgjskDFGSjkwETSgsjGSKEJTssfgKWlgjsk &amp;lt;===== the GCP auth code I copy/pasted in
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now you can verify that your credentials have actually been cached.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; bq_auth(use_oob = TRUE) &amp;lt;===== retrying the auth to see if it worked
+The bigrquery package is requesting access to your Google account. Select a pre-authorised account or enter '0' to obtaina new token. Press Esc/Ctrl + C to abort.
+
+1: xxxxxxx@gmail.com  &amp;lt;===== The auth credentials were cached
+
+Selection: 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you now try to authenticate to bigrquery using your email, it’ll work (if bq_auth() returns with no message then that means it worked. Not the most intuitive, I know)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; bq_auth(email=&quot;xxxxxxx@gmail.com&quot;)
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now you can create a new R notebook within Jupyter Lab and authenticate yourself!&lt;/p&gt;
+
+&lt;p&gt;Create a new R notebook:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-05-b4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Run the following code within your notebook. It’ll pull the authentication credentials for the given email addresses from the cache saved earlier:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;library(httpuv)
+library(gargle)
+library(bigrquery)
+
+bq_auth(email=&quot;xxxxxxx@gmail.com&quot;)
+
+project_id &amp;lt;- 'my-project-id'
+test_query_text &amp;lt;- &quot;SELECT * FROM `bigquery-public-data.usa_names.usa_1910_current` LIMIT 10&quot;
+
+test_results &amp;lt;- query_exec(test_query_text, project_id, use_legacy_sql = FALSE)
+
+test_results # print the results
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;option-2-authenticate-using-a-service-account&quot;&gt;Option 2: Authenticate using a Service Account&lt;/h1&gt;
+
+&lt;p&gt;This method involves creating a new service account in GCP, saving the key for that service account on your notebook, and using that key to authenticate to GCP.&lt;/p&gt;
+
+&lt;p&gt;Full instructions for using this method are available here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key&quot; title=&quot;https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key&quot;&gt;https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key&lt;/a&gt;&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="BigRQuery" /><category term="BigQuery" /><category term="Jupyter Lab" /><category term="R" /><category term="Google Cloud Platform" /><category term="technical" /><summary type="html">When you're using Jupyter Notebooks with R, authenticating with BigQuery can be tricky. Here's how to do it.</summary></entry><entry><title type="html">Five Tactics for Tackling Complex Problems at Work</title><link href="http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/" rel="alternate" type="text/html" title="Five Tactics for Tackling Complex Problems at Work" /><published>2018-11-10T00:00:00-08:00</published><updated>2018-11-10T00:00:00-08:00</updated><id>http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems</id><content type="html" xml:base="http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/">&lt;blockquote&gt;
   &lt;p&gt;“The definition of genius is taking the complex and making it simple.” –Albert Einstein&lt;/p&gt;
 &lt;/blockquote&gt;
 
@@ -324,26 +829,7 @@
 &lt;h1 id=&quot;the-real-secret&quot;&gt;The Real Secret&lt;/h1&gt;
 &lt;p&gt;The common theme here is to develop a deep understanding of the problem you’re working on, which can lead to fresh insights others may not have.  The above tactics give you that understanding by forcing you to look at the issue from different angles.&lt;/p&gt;
 
-&lt;p&gt;But undoubtedly there are other ways to achieve that understanding as well. If you use different tactics to achive this understanding I’d love to hear them!&lt;/p&gt;
-
-    &lt;p&gt;&lt;a href=&quot;/blog/Five-tactics-for-tackling-complex-problems/&quot;&gt;Five Tactics for Developers to Tackle Complex Problems at Work&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on November 10, 2018.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[5 Habits for Better Learning]]></title>
-  <link rel="alternate" type="text/html" href="/blog/five-habits-for-better-learning/" />
-  <id>/blog/five-habits-for-better-learning</id>
-  <published>2018-08-28T00:00:00-07:00</published>
-  <updated>2018-08-28T00:00:00-07:00</updated>
-  <author>
-    <name>Zain Rizvi</name>
-    <uri></uri>
-    
-  </author>
-  <content type="html">
-    &lt;p&gt;These mental habits were developed to teach school children how to think critically and become problems solvers. It’s a valuable skill for adults to learn as well.&lt;/p&gt;
+&lt;p&gt;But undoubtedly there are other ways to achieve that understanding as well. If you use different tactics to achive this understanding I’d love to hear them!&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="Salary Negotiation" /><summary type="html">Albert Einstein once said “The definition of genius is taking the complex and making it simple.” But how can someone actually do that? Below are some tactics I've used that can make a big difference.</summary></entry><entry><title type="html">5 Habits for Better Learning</title><link href="http://localhost:4000/blog/five-habits-for-better-learning/" rel="alternate" type="text/html" title="5 Habits for Better Learning" /><published>2018-08-28T00:00:00-07:00</published><updated>2018-08-28T00:00:00-07:00</updated><id>http://localhost:4000/blog/five-habits-for-better-learning</id><content type="html" xml:base="http://localhost:4000/blog/five-habits-for-better-learning/">&lt;p&gt;These mental habits were developed to teach school children how to think critically and become problems solvers. It’s a valuable skill for adults to learn as well.&lt;/p&gt;
 
 &lt;p&gt;When presented with any new information think about:&lt;/p&gt;
 &lt;ol&gt;
@@ -356,26 +842,7 @@
 
 &lt;p&gt;&lt;em&gt;(Source: &lt;a href=&quot;https://www.amazon.com/More-Beautiful-Question-Inquiry-Breakthrough/dp/1632861054/&quot;&gt;A More Beautiful Question&lt;/a&gt; by Warren Berger)&lt;/em&gt;&lt;/p&gt;
 
-&lt;p&gt;These tips will help you get a deeper understanding of whatever you’re studying, be it something technical, political, social, etc.&lt;/p&gt;
-
-    &lt;p&gt;&lt;a href=&quot;/blog/five-habits-for-better-learning/&quot;&gt;5 Habits for Better Learning&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on August 28, 2018.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Salary Negotiation Tips for Your New Job]]></title>
-  <link rel="alternate" type="text/html" href="/blog/salary-negotiation-tips/" />
-  <id>/blog/salary-negotiation-tips</id>
-  <published>2018-07-20T00:00:00-07:00</published>
-  <updated>2018-07-20T00:00:00-07:00</updated>
-  <author>
-    <name>Zain Rizvi</name>
-    <uri></uri>
-    
-  </author>
-  <content type="html">
-    &lt;p&gt;When I was applying for a new job a couple years ago I did a lot of research on salary negotiation (something &lt;a href=&quot;https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/&quot;&gt;every employee&lt;/a&gt; should know).  I found some pretty useful information others had shared and want to pay that favor forward.  Here’s the compilation and summary of a lot of the key resources:&lt;/p&gt;
+&lt;p&gt;These tips will help you get a deeper understanding of whatever you’re studying, be it something technical, political, social, etc.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><summary type="html">These mental habits were developed to teach school children how to think critically and become problems solvers. It’s a valuable skill for adults to learn as well. When presented with any new information think about: Evidence: Why do you think this information is true or false? What should count? What do you think you know and why? Viewpoints: How would this look from other perspectives? How would other people or companies think about this differently? Connections: Noticing any patterns? Have you seen something like this before? Conjecture: What if something about this was different? How would that impact things? Relevance: Why does this matter? (Source: A More Beautiful Question by Warren Berger) These tips will help you get a deeper understanding of whatever you’re studying, be it something technical, political, social, etc.</summary></entry><entry><title type="html">Salary Negotiation Tips for Your New Job Offer</title><link href="http://localhost:4000/blog/salary-negotiation-tips/" rel="alternate" type="text/html" title="Salary Negotiation Tips for Your New Job Offer" /><published>2018-07-20T00:00:00-07:00</published><updated>2018-07-20T00:00:00-07:00</updated><id>http://localhost:4000/blog/salary-negotiation-tips</id><content type="html" xml:base="http://localhost:4000/blog/salary-negotiation-tips/">&lt;p&gt;When I was applying for a new job a couple years ago I did a lot of research on salary negotiation (something &lt;a href=&quot;https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/&quot;&gt;every employee&lt;/a&gt; should know).  I found some pretty useful information others had shared and want to pay that favor forward.  Here’s the compilation and summary of a lot of the key resources:&lt;/p&gt;
 
 &lt;h3 id=&quot;word-for-word-scripts-on-what-to-say-during-the-negotiation-and-why-they-work&quot;&gt;Word-for-Word Scripts on What to Say During the Negotiation and Why they Work&lt;/h3&gt;
 
@@ -552,26 +1019,7 @@
 
 &lt;ul&gt;
   &lt;li&gt;The job you choose, the industry you go into, etc are all much more important&lt;/li&gt;
-&lt;/ul&gt;
-
-    &lt;p&gt;&lt;a href=&quot;/blog/salary-negotiation-tips/&quot;&gt;Salary Negotiation Tips for Your New Job&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on July 20, 2018.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps]]></title>
-  <link rel="alternate" type="text/html" href="/blog/block-default-azure-websites-domain/" />
-  <id>/blog/block-default-azure-websites-domain</id>
-  <published>2016-04-07T00:00:00-07:00</published>
-  <updated>2016-04-07T00:00:00-07:00</updated>
-  <author>
-    <name>Zain Rizvi</name>
-    <uri></uri>
-    
-  </author>
-  <content type="html">
-    &lt;p&gt;When you create a new website using &lt;a href=&quot;https://azure.microsoft.com/en-us/services/app-service/web/&quot;&gt;Azure Web Apps&lt;/a&gt; you get a default &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;sitename&amp;gt;.azurewebsites.net&lt;/code&gt; domain assigned to your site.  That’s great, but what if you add a custom host name to your site and don’t want people to be able to access your default *.azurewebsites.net domain anymore? (You paid good money for that custom domain.)  This post explains how to redirect all traffic aimed at your site’s default domain to your custom domain instead.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="Salary Negotiation" /><summary type="html">Tips for negotiating your salary once you get a job offer</summary></entry><entry><title type="html">How to: Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps</title><link href="http://localhost:4000/blog/block-default-azure-websites-domain/" rel="alternate" type="text/html" title="How to: Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps" /><published>2016-04-07T00:00:00-07:00</published><updated>2016-04-07T00:00:00-07:00</updated><id>http://localhost:4000/blog/block-default-azure-websites-domain</id><content type="html" xml:base="http://localhost:4000/blog/block-default-azure-websites-domain/">&lt;p&gt;When you create a new website using &lt;a href=&quot;https://azure.microsoft.com/en-us/services/app-service/web/&quot;&gt;Azure Web Apps&lt;/a&gt; you get a default &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;sitename&amp;gt;.azurewebsites.net&lt;/code&gt; domain assigned to your site.  That’s great, but what if you add a custom host name to your site and don’t want people to be able to access your default *.azurewebsites.net domain anymore? (You paid good money for that custom domain.)  This post explains how to redirect all traffic aimed at your site’s default domain to your custom domain instead.&lt;/p&gt;
 
 &lt;p&gt;It’s really simple. You just need to add a redirect rule to your site’s web.config file.  You can do that by adding the following rewrite rule to the web.config file in your wwwroot folder.  If you don’t have a web.config file, then you can create one and just paste the text below into it, just change the host names to match your site’s host names:&lt;/p&gt;
 
@@ -668,27 +1116,7 @@
     &amp;lt;/rewrite&amp;gt;  
   &amp;lt;/system.webServer&amp;gt;  
 &amp;lt;/configuration&amp;gt;  
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-
-    &lt;p&gt;&lt;a href=&quot;/blog/block-default-azure-websites-domain/&quot;&gt;How to Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on April 07, 2016.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Let customers use Facebook authentication to log into your ASP.NET Core site]]></title>
-  <link rel="alternate" type="text/html" href="/blog/create-site-with-facebook-login-using-asp.net-core/" />
-  <id>/blog/create-site-with-facebook-login-using-asp.net-core</id>
-  <published>2016-03-24T00:00:00-07:00</published>
-  <updated>2016-03-24T00:00:00-07:00</updated>
-  <author>
-    <name>Zain Rizvi</name>
-    <uri></uri>
-    
-  </author>
-  <content type="html">
-    &lt;p&gt;The goal of this post is to setup Facebook authentication in a way that we get access to the person’s basic information and their email address when they log in.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="technical" /><category term="Azure " /><summary type="html">Here's how you can block people from using your default *.azurewebsites.net domain. Do this after you've added a custom domain name.</summary></entry><entry><title type="html">Let customers use Facebook authentication to log into your ASP.NET Core site</title><link href="http://localhost:4000/blog/create-site-with-facebook-login-using-asp.net-core/" rel="alternate" type="text/html" title="Let customers use Facebook authentication to log into your ASP.NET Core site" /><published>2016-03-24T00:00:00-07:00</published><updated>2016-03-24T00:00:00-07:00</updated><id>http://localhost:4000/blog/create-site-with-facebook-login-using-asp.net-core</id><content type="html" xml:base="http://localhost:4000/blog/create-site-with-facebook-login-using-asp.net-core/">&lt;p&gt;The goal of this post is to setup Facebook authentication in a way that we get access to the person’s basic information and their email address when they log in.&lt;/p&gt;
 
 &lt;p&gt;Setting up auth from an external service is hard.  At least it is if the steps aren’t really documented.  I’m sharing the steps I followed to get Facebook auth working for a brand new ASP.NET Core site.&lt;/p&gt;
 
@@ -971,267 +1399,4 @@
 
 &lt;h1 id=&quot;the-end&quot;&gt;The End&lt;/h1&gt;
 
-&lt;p&gt;That’s it for this post. Hope you guys were able to follow all the steps.  Shout out in the comments if you found this stuff helpful or if you run into any problems.&lt;/p&gt;
-
-    &lt;p&gt;&lt;a href=&quot;/blog/create-site-with-facebook-login-using-asp.net-core/&quot;&gt;Let customers use Facebook authentication to log into your ASP.NET Core site&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on March 24, 2016.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Deploy statically generated sites to Azure Web Apps]]></title>
-  <link rel="alternate" type="text/html" href="/blog/deploy-statically-generated-sites-to-azure-web-apps/" />
-  <id>/blog/deploy-statically-generated-sites-to-azure-web-apps</id>
-  <published>2015-10-13T00:00:00-07:00</published>
-  <updated>2015-10-13T00:00:00-07:00</updated>
-  <author>
-    <name>Zain Rizvi</name>
-    <uri></uri>
-    
-  </author>
-  <content type="html">
-    &lt;p&gt;There are a lot of awesome static site generators out there.  It’s not always easy to figure out how to setup continuous deployment for them though.&lt;/p&gt;
-
-&lt;p&gt;This post will describe how to deploy a statically generated site using yeoman angular to Azure Web Apps, but these steps can be applied to deploy any statically generated site to Azure Web Apps.&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;h4 id=&quot;deploying-the-initial-site&quot;&gt;Deploying the initial site&lt;/h4&gt;
-&lt;p&gt;I tried using yeoman’s gulp-angular generator.  I made a quick site following their &lt;a href=&quot;http://yeoman.io/codelab/index.html&quot;&gt;tutorial&lt;/a&gt;, setup &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-publish-source-control/&quot;&gt;continuous deployment via github&lt;/a&gt;, navigated to the newly deployed site and I saw…huh?&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2015/10/01-No-permission-to-site.png&quot; alt=&quot;img&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;What’s going on here?&lt;/p&gt;
-
-&lt;h4 id=&quot;using-kudu-for-debugging&quot;&gt;Using Kudu for debugging&lt;/h4&gt;
-&lt;p&gt;Luckily all Azure Web Apps come with a handy &lt;a href=&quot;https://github.com/projectkudu/kudu/wiki&quot;&gt;Kudu site&lt;/a&gt; that gives you command line access to your site. You can get to it at &lt;code class=&quot;highlighter-rouge&quot;&gt;https://&amp;lt;yourSiteName&amp;gt;.scm.azurewebsites.net\DebugConsole&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2015/10/02-Kudu-console.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;I navigated to the site’s &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot&lt;/code&gt; folder and saw all the content was there.  And that’s when I face-palmed and realized &lt;em&gt;that statically generated site is saved to the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist&lt;/code&gt; folder, and that’s not even part of the deployment!!!&lt;/em&gt;&lt;/p&gt;
-
-&lt;p&gt;Luckily, that’s easy enough to fix.&lt;/p&gt;
-
-&lt;h4 id=&quot;check-the-static-site-into-the-source-code&quot;&gt;Check the static site into the source code&lt;/h4&gt;
-&lt;p&gt;First issue was to include the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist&lt;/code&gt; folder in the source code. You just need to exclude the &lt;code class=&quot;highlighter-rouge&quot;&gt;/dist&lt;/code&gt; line from the .gitignore file for that. &lt;a href=&quot;https://github.com/ZainRizvi/YoAngularOnAzureWebApps/commit/3fc3040eb65699295e85c151f339dc30aae6c971#diff-a084b794bc0759e7a6b77810e01874f2&quot;&gt;Easy enough&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;Now when you deploy your site to Azure Web Apps your site exists in the new &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\dist&lt;/code&gt; folder!&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2015/10/03-Dist-folder-appears.png&quot; alt=&quot;alt&quot; /&gt;
-(Fyi, with &lt;code class=&quot;highlighter-rouge&quot;&gt;yo angular&lt;/code&gt; you have to run &lt;code class=&quot;highlighter-rouge&quot;&gt;grunt&lt;/code&gt; once first before you check in your code to actually generate the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist&lt;/code&gt; folder).&lt;/p&gt;
-
-&lt;p&gt;But your site still doesn’t work…because Azure Web Apps is expecting the site’s content to be in &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;Darn.&lt;/p&gt;
-
-&lt;h4 id=&quot;custom-deployment-settings-to-the-rescue&quot;&gt;Custom deployment settings to the rescue!&lt;/h4&gt;
-
-&lt;p&gt;Add a &lt;code class=&quot;highlighter-rouge&quot;&gt;.deployment&lt;/code&gt; &lt;a href=&quot;https://github.com/ZainRizvi/YoAngularOnAzureWebApps/commit/9be9a4b503a86678d85e3a4287fa26cce1f175b7&quot;&gt;file&lt;/a&gt; to the root folder of your code and paste the below inside:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[config]
-project = dist
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;This will tell Azure Web Sits that the root folder for your site is the &lt;code class=&quot;highlighter-rouge&quot;&gt;dist&lt;/code&gt; folder. Now your sites will be hosted from the &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\dist&lt;/code&gt; folder. If your static site generator puts your site in some other folder, set project to that folder’s name.&lt;/p&gt;
-
-&lt;p&gt;Check in the file, deploy it to Azure Web Apps, and see the magic happen.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2015/10/04-Working-site.png&quot; alt=&quot;alt&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;You can find a full copy of the sample code here on Github, with check-ins corresponding to each step of this tutorial: https://github.com/ZainRizvi/YoAngularOnAzureWebApps&lt;/p&gt;
-
-&lt;p&gt;You can see the final working site here: http://yoangularonazurewebapps.azurewebsites.net&lt;/p&gt;
-
-    &lt;p&gt;&lt;a href=&quot;/blog/deploy-statically-generated-sites-to-azure-web-apps/&quot;&gt;Deploy statically generated sites to Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on October 13, 2015.&lt;/p&gt;
-  </content>
-</entry>
-
-
-<entry>
-  <title type="html"><![CDATA[Backup just the Important Parts of your Site with Azure Web Apps]]></title>
-  <link rel="alternate" type="text/html" href="/blog/creating-partial-backups-of-your-site-with-azure-web-apps/" />
-  <id>/blog/creating-partial-backups-of-your-site-with-azure-web-apps</id>
-  <published>2015-06-05T00:00:00-07:00</published>
-  <updated>2015-06-05T00:00:00-07:00</updated>
-  <author>
-    <name>Zain Rizvi</name>
-    <uri></uri>
-    
-  </author>
-  <content type="html">
-    &lt;p&gt;Introducting a way to backup just the parts of your website that matter most.&lt;/p&gt;
-
-&lt;h1 id=&quot;introduction&quot;&gt;Introduction&lt;/h1&gt;
-
-&lt;p&gt;Azure Web Apps provides powerful &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/&quot;&gt;backup/restore functionality&lt;/a&gt;. (Because disasters can &lt;a href=&quot;http://blog.codinghorror.com/international-backup-awareness-day/&quot;&gt;happen to anyone&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;However, sometimes you don’t want to backup everything on your site, especially if you backup your site regularly, or if your site has over 10GB of content (that’s the max amount you can backup at a time).&lt;/p&gt;
-
-&lt;p&gt;For example, you probably don’t want to back up the log files. Or if you &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/#configure-automated-backups&quot;&gt;setup weekly backups&lt;/a&gt; you won’t want to fill up your storage account with static content that never changes like old blog posts or images.&lt;/p&gt;
-
-&lt;p&gt;Partial backups will let you choose exactly which files you want to back up.&lt;/p&gt;
-
-&lt;h1 id=&quot;specify-the-files-you-dont-want-to-backup&quot;&gt;Specify the files you don’t want to backup&lt;/h1&gt;
-
-&lt;p&gt;You can create a list of files and folders to exclude from the backup.&lt;/p&gt;
-
-&lt;p&gt;You save the list as a text file called _backup.filter in the wwwroot folder of your site. An easy way to access this is through the &lt;a href=&quot;https://github.com/projectkudu/kudu/wiki/Kudu-console&quot;&gt;Kudu Console&lt;/a&gt; at &lt;code class=&quot;highlighter-rouge&quot;&gt;http://{yoursite}.scm.azurewebsites.net/DebugConsole&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;The instructions below will be using the Kudu Console to create the _backup.filter file, but you can use your favorite deployment method to put the file there.&lt;/p&gt;
-
-&lt;h2 id=&quot;what-to-do&quot;&gt;What to do&lt;/h2&gt;
-
-&lt;p&gt;I’ve got a site that contains log files and static images from past years that are never going to change.&lt;/p&gt;
-
-&lt;p&gt;I already have a full backup of the site which includes the old images. Now I want to backup the site every day, but I don’t want to pay for storing log files or the static image files that never change.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2015/06/Logs-1.PNG&quot; alt=&quot;Log files directory&quot; /&gt; &lt;img src=&quot;/images/2015/06/Images-2.PNG&quot; alt=&quot;Images directory&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;The below steps show how I’d exclude those files from the backup.&lt;/p&gt;
-
-&lt;h3 id=&quot;identify-the-files-and-folders-you-dont-want-to-backup&quot;&gt;Identify the files and folders you don’t want to backup&lt;/h3&gt;
-
-&lt;p&gt;This is easy. I already know I don’t want to backup any log files, so I want to exclude &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\Logs&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;There’s another log file folder that all Azure Web Apps have at &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\LogFiles&lt;/code&gt;. Let’s exclude that too.&lt;/p&gt;
-
-&lt;p&gt;I also don’t want to backup the images from previous years over and over again. So lets add &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\Images\2013&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\Images\2014&lt;/code&gt; to the list as well.&lt;/p&gt;
-
-&lt;p&gt;Finally, let’s not backup the brand.png file in the Images folder either, just to show we can blacklist individual files as well. It’s located at &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\Images\brand.png&lt;/code&gt;&lt;/p&gt;
-
-&lt;p&gt;This gives us the following folders that we don’t want to backup:&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;D:\home\site\wwwroot\Logs&lt;/li&gt;
-  &lt;li&gt;D:\home\LogFiles&lt;/li&gt;
-  &lt;li&gt;D:\home\site\wwwroot\Images\2013&lt;/li&gt;
-  &lt;li&gt;D:\home\site\wwwroot\Images\2014&lt;/li&gt;
-  &lt;li&gt;D:\home\site\wwwroot\Images\brand.png&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h3 id=&quot;create-the-exclusion-list&quot;&gt;Create the exclusion list&lt;/h3&gt;
-
-&lt;p&gt;You save the blacklist of files and folders that you don’t want to backup in  a special file called _backup.filter.  Create the file and place it at &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\_backup.filter&lt;/code&gt;.&lt;/p&gt;
-
-&lt;p&gt;List all the files and folders you don’t want to backup in the _backup.filter file. You add the full path relative to D:\home of the folder or file that you want to exclude from the backup, one path per line.&lt;/p&gt;
-
-&lt;p&gt;So for my site, &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\Logs&lt;/code&gt; becomes &lt;code class=&quot;highlighter-rouge&quot;&gt;\site\wwwroot\Logs&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\LogFiles&lt;/code&gt; becomes &lt;code class=&quot;highlighter-rouge&quot;&gt;\LogFiles&lt;/code&gt;, so on and so forth, resulting in the following contents for my _backup.filter:&lt;/p&gt;
-
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;\site\wwwroot\Logs
-\LogFiles
-\site\wwwroot\Images\2013
-\site\wwwroot\Images\2014
-\site\wwwroot\Images\brand.png
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Note the starting &lt;code class=&quot;highlighter-rouge&quot;&gt;\&lt;/code&gt; at the beginning of each line. That’s important.&lt;/p&gt;
-
-&lt;h1 id=&quot;run-a-backup&quot;&gt;Run a backup&lt;/h1&gt;
-
-&lt;p&gt;Now you can run backups the same way you would normally do it. &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/#create-a-manual-backup&quot;&gt;Manually&lt;/a&gt;, &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-backup/#configure-automated-backups&quot;&gt;automatically&lt;/a&gt;, either way is fine.&lt;/p&gt;
-
-&lt;p&gt;Any files and folders that fall under the filters listed in the _backup.filter will be excluded from the backup. This means now the log files and the 2013 and 2014 image files will no longer be backed up.&lt;/p&gt;
-
-&lt;h1 id=&quot;restoring-your-backed-up-site&quot;&gt;Restoring your backed up site&lt;/h1&gt;
-
-&lt;p&gt;You restore partial backups of your site the same way you would &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-restore/&quot;&gt;restore a regular backup&lt;/a&gt;. It’ll do the right thing.&lt;/p&gt;
-
-&lt;h4 id=&quot;the-technical-details&quot;&gt;The technical details&lt;/h4&gt;
-
-&lt;p&gt;With full (non-partial) backups normally all content on the site is replaced with whatever is in the backup.  If a file is on the site but not in the backup it gets deleted.&lt;/p&gt;
-
-&lt;p&gt;But when restoring partial backups though any content that is located in one of the blacklisted folders (like &lt;code class=&quot;highlighter-rouge&quot;&gt;D:\home\site\wwwroot\images\2014&lt;/code&gt; for my site) will be left as is. And if individual files were black listed then they’ll also be left alone during the restore.&lt;/p&gt;
-
-&lt;h1 id=&quot;best-practices&quot;&gt;Best Practices&lt;/h1&gt;
-
-&lt;p&gt;What do you do when disaster strikes and you have to restore your site?  Make sure you’re prepared beforehand.&lt;/p&gt;
-
-&lt;p&gt;Yeah, you have partial backups, but take at least one full backup of the site first so that you have all your site’s contents backed up (this is worst case scenario planning).  Then when you’re restoring your backups you can first restore the full backup of the site, and then restore the latest partial backup on top of it.&lt;/p&gt;
-
-&lt;p&gt;Here’s why: it lets you use &lt;a href=&quot;https://azure.microsoft.com/en-us/documentation/articles/web-sites-staged-publishing/&quot;&gt;Deployment Slots&lt;/a&gt; to test your restored site. You can even test the restore process without ever touching your production site. And testing your restore process is a &lt;a href=&quot;http://axcient.com/blog/one-thing-can-derail-disaster-recovery-plan/&quot;&gt;Very Good Thing&lt;/a&gt;.  You never know when you might run into some subtle gotcha like I did when I tried restoring my blog and end up losing half your content.&lt;/p&gt;
-
-&lt;h2 id=&quot;my-horror-story&quot;&gt;My horror story&lt;/h2&gt;
-
-&lt;p&gt;My blog is powered by the &lt;a href=&quot;https://ghost.org/&quot;&gt;Ghost&lt;/a&gt; blogging platform.  Like a responsible dev I created a backup of my site and everything was great. Then one day I got a message saying that there was a new version of Ghost available and I could upgrade my blog to it. Great!&lt;/p&gt;
-
-&lt;p&gt;I created one more backup of my site to backup the latest blog posts, and proceeded to upgrade Ghost.&lt;/p&gt;
-
-&lt;p&gt;On my production site.&lt;/p&gt;
-
-&lt;p&gt;Bad mistake.&lt;/p&gt;
-
-&lt;p&gt;Something went wrong with the upgrade, my home screen just showed a blank screen.  “No problem” I thought, “I’ll simply restore the backup I just took.”&lt;/p&gt;
-
-&lt;p&gt;I restored the upgrade, saw everything come back…except the blog posts.&lt;/p&gt;
-
-&lt;p&gt;WHAT???&lt;/p&gt;
-
-&lt;p&gt;Turns out, in the &lt;a href=&quot;http://support.ghost.org/how-to-upgrade/&quot;&gt;Ghost upgrade notes&lt;/a&gt; there’s this warning:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/2015/06/Ghost--upgrade-warning.PNG&quot; alt=&quot;You can take a copy of your database from content/data but you  should not do this while Ghost is runing. Please stop it first&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;If you try to backup the data while Ghost is running…the data doesn’t actually get backed up.&lt;/p&gt;
-
-&lt;p&gt;Bummer.&lt;/p&gt;
-
-&lt;p&gt;If I had tried the restore on a test slot first I would have seen this issue and not lost all my posts.&lt;/p&gt;
-
-&lt;p&gt;Such is life. It can happen to &lt;a href=&quot;http://blog.codinghorror.com/international-backup-awareness-day/&quot;&gt;the best of us&lt;/a&gt;.&lt;/p&gt;
-
-
-    &lt;p&gt;&lt;a href=&quot;/blog/creating-partial-backups-of-your-site-with-azure-web-apps/&quot;&gt;Backup just the Important Parts of your Site with Azure Web Apps&lt;/a&gt; was originally published by Zain Rizvi at &lt;a href=&quot;&quot;&gt;Zain Rizvi&lt;/a&gt; on June 05, 2015.&lt;/p&gt;
-  </content>
-</entry>
-
-</feed>
-
-      
-        <hr />
-        <div class="social-share">
-  <h5>Thanks for reading! If you found this post valuable, please help share it with others</h5>
-  <ul>
-    <li>
-      <a href="https://twitter.com/intent/tweet?text=/feed.xml" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
-    </li>
-    <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=/feed.xml" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
-    </li>
-    <li>
-      <a href="https://plus.google.com/share?url=/feed.xml" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
-    </li>
-  </ul>
-</div><!-- /.social-share -->
-      
-    </div><!-- /.article-wrap -->
-    
-  </article>
-</div><!-- /#index -->
-
-<div class="footer-wrap">
-  <footer>
-    
-
-<span>&copy; 2019 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
-
-  </footer>
-</div><!-- /.footer-wrap -->
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
-<script src="/assets/js/scripts.min.js"></script>
-
-
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-63901701-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
-
-
-</body>
-</html>
+&lt;p&gt;That’s it for this post. Hope you guys were able to follow all the steps.  Shout out in the comments if you found this stuff helpful or if you run into any problems.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><summary type="html">How to setup Facebook authentication in a way that we get access to the person's basic information and their email address when they log in.</summary></entry></feed>

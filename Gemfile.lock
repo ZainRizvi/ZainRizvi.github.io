@@ -49,6 +49,8 @@ GEM
       safe_yaml (~> 1.0)
     jekyll-compose (0.11.0)
       jekyll (>= 3.7, < 5.0)
+    jekyll-feed (0.13.0)
+      jekyll (>= 3.7, < 5.0)
     jekyll-gist (1.5.0)
       octokit (~> 4.2)
     jekyll-sass-converter (1.5.2)
@@ -123,9 +125,10 @@ DEPENDENCIES
   html-proofer
   jekyll (~> 3.0)
   jekyll-compose
+  jekyll-feed
   jekyll-gist
   jekyll-sitemap
   octopress
 
 BUNDLED WITH
-   1.16.3
+   2.0.2

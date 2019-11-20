@@ -5,39 +5,39 @@
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>About Me &#8211; Zain Rizvi</title>
+<title>Who am I? &#8211; Zain Rizvi's blog</title>
 
-<meta name="keywords" content="about, Jekyll, theme, responsive">
+<meta name="keywords" content="about, engineer, google cloud platform, azure">
 
 
 
 
 <!-- Twitter Cards -->
-<meta name="twitter:title" content="About Me">
+<meta name="twitter:title" content="Who am I?">
 
 <meta name="twitter:site" content="@zainrzv">
 <meta name="twitter:creator" content="@zainrzv">
 
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="/images/sample-image-1.jpg">
+<meta name="twitter:image" content="http://localhost:4000/images/sample-image-1.jpg">
 
 <!-- Open Graph -->
 <meta property="og:locale" content="en_US">
 <meta property="og:type" content="article">
-<meta property="og:title" content="About Me">
+<meta property="og:title" content="Who am I?">
 
-<meta property="og:url" content="/about/">
-<meta property="og:site_name" content="Zain Rizvi">
+<meta property="og:url" content="http://localhost:4000/about/">
+<meta property="og:site_name" content="Zain Rizvi's blog">
 
-<meta property="og:image" content="/images/sample-image-1.jpg">
-
-
+<meta property="og:image" content="http://localhost:4000/images/sample-image-1.jpg">
 
 
 
 
-<link rel="canonical" href="/about/">
-<link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi Feed">
+
+
+<link rel="canonical" href="http://localhost:4000/about/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi's blog Feed">
 
 <!-- http://t.co/dKP3o1e -->
 <meta name="HandheldFriendly" content="True">
@@ -51,8 +51,8 @@
 
 <!-- HTML5 Shiv and Media Query Support -->
 <!--[if lt IE 9]>
-	<script src="/assets/js/vendor/html5shiv.min.js"></script>
-	<script src="/assets/js/vendor/respond.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
 <![endif]-->
 
 <!-- Modernizr -->
@@ -66,13 +66,32 @@
 <!-- 32x32 -->
 <link rel="shortcut icon" href="/favicon.png">
 <!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
-<!-- <link rel="apple-touch-icon-precomposed" href="/images/apple-touch-icon-precomposed.png"> -->
+<!-- <link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png"> -->
 <!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
-<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/apple-touch-icon-72x72-precomposed.png"> -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png"> -->
 <!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
-<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/apple-touch-icon-114x114-precomposed.png"> -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png"> -->
 <!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
-<!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/apple-touch-icon-144x144-precomposed.png"> -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png"> -->
+
+<!-- add the applause button style & script -->
+<link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css" />
+<script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
+
+<!-- RSS feed metadata -->
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Zain Rizvi's blog" />
+
+<!-- MailerLite Universal -->
+<script>
+  (function(m,a,i,l,e,r){ m['MailerLiteObject']=e;function f(){
+  var c={ a:arguments,q:[]};var r=this.push(c);return "number"!=typeof r?r:f.bind(c.q);}
+  f.q=f.q||[];m[e]=m[e]||f.bind(f.q);m[e].q=m[e].q||f.q;r=a.createElement(i);
+  var _=a.getElementsByTagName(i)[0];r.async=1;r.src=l+'?v'+(~~(new Date().getTime()/1000000));
+  _.parentNode.insertBefore(r,_);})(window, document, 'script', 'https://static.mailerlite.com/js/universal.js', 'ml');
+
+  var ml_account = ml('accounts', '1765926', 's9l3w3n7b0', 'load');
+</script>
+<!-- End MailerLite Universal -->
 
 </head>
 
@@ -82,18 +101,21 @@
 
 <div class="navigation-wrapper">
 	<div class="site-name">
-		<a href="/">Zain Rizvi</a>
+		<a href="http://localhost:4000/">Zain Rizvi's blog</a>
 	</div><!-- /.site-name -->
 	<div class="top-navigation">
 		<nav id="site-nav" class="nav">
 		    <ul>
 		        
 				    
-				    <li><a href="/blog/" >Blog</a></li>
+				    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
 				
 				    
-				    <li><a href="/about/" >About</a></li>
+				    <li><a href="http://localhost:4000/about/" >About</a></li>
 				
+				<li>
+					<a href="http://localhost:4000/feed.xml"><img src="/images/rss.png" alt="rss feed" height=20 width=20/></a>
+				</li>
 		    </ul>
 		</nav>
 	</div><!-- /.top-navigation -->
@@ -104,9 +126,9 @@
   <div class="image-wrap">
   <img src=
     
-      "/images/sample-image-1.jpg"
+      "http://localhost:4000/images/sample-image-1.jpg"
     
-  alt="About Me feature image">
+  alt="Who am I? feature image">
   
   </div><!-- /.image-wrap -->
 
@@ -118,13 +140,13 @@
 <div itemscope itemtype="http://schema.org/Person">
 
 
-	<img src="/images/bio-photo.png" class="bio-photo" alt="Zain Rizvi bio photo">
+	<img src="http://localhost:4000/images/bio-photo.png" class="bio-photo" alt="Zain Rizvi bio photo">
 
 
   <h3 itemprop="name">Zain Rizvi</h3>
-  <p>Softare Engineer, Experimenter, Life-long Student. Working at Google improving GCP AI Platform Notebooks</p>
+  <p>Software Engineer, Experimenter, Life-long Student. Working at Google improving GCP AI Platform Notebooks</p>
   
-  <a href="http://twitter.com/zainrzv" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  <a href="//twitter.com/zainrzv" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
   
   
   
@@ -132,7 +154,7 @@
   
   
   <a href="http://github.com/ZainRizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
-  <a href="http://stackoverflow.com/users/21539/zain-rizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> Stackoverflow</a>
+  <a href="//stackoverflow.com/users/21539/zain-rizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> Stackoverflow</a>
   
   
   
@@ -143,123 +165,19 @@
   
   
   
+  <a href="//techstuff.buzzsprout.com" class="author-social" target="_blank"><i class="fa fa-fw"></i> Podcast: Tech Stuff</a>
 </div>
-
-    <hr />
-    <!--<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">-->
-<style type="text/css">
-    /* MailChimp Form Embed Code - Classic - 12/17/2015 v10.7 */
-    #mc_embed_signup form {display:block; position:relative; text-align:left; padding:5px 0 5px 3%}
-    #mc_embed_signup h2 {font-weight:bold; padding:0; margin:15px 0; font-size:1.4em;}
-    #mc_embed_signup input {border: 1px solid #ABB0B2; -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px;}
-    #mc_embed_signup input[type=checkbox]{-webkit-appearance:checkbox;}
-    #mc_embed_signup input[type=radio]{-webkit-appearance:radio;}
-    #mc_embed_signup input:focus {border-color:#333;}
-    #mc_embed_signup .small-meta {font-size: 11px;}
-    #mc_embed_signup .nowrap {white-space:nowrap;}
-
-    #mc_embed_signup .mc-field-group {clear:left; position:relative; width:96%; padding-bottom:3%; min-height:50px;}
-    #mc_embed_signup .size1of2 {clear:none; float:left; display:inline-block; width:46%; margin-right:4%;}
-    * html #mc_embed_signup .size1of2 {margin-right:2%; /* Fix for IE6 double margins. */}
-    #mc_embed_signup .mc-field-group label {display:block; margin-bottom:3px;}
-    #mc_embed_signup .mc-field-group input {display:block; width:100%; padding:8px 0; text-indent:2%;}
-    #mc_embed_signup .mc-field-group select {display:inline-block; width:99%; padding:5px 0; margin-bottom:2px;}
-
-    #mc_embed_signup .datefield, #mc_embed_signup .phonefield-us{padding:5px 0;}
-    #mc_embed_signup .datefield input, #mc_embed_signup .phonefield-us input{display:inline; width:60px; margin:0 2px; letter-spacing:1px; text-align:center; padding:5px 0 2px 0;}
-    #mc_embed_signup .phonefield-us .phonearea input, #mc_embed_signup .phonefield-us .phonedetail1 input{width:40px;}
-    #mc_embed_signup .datefield .monthfield input, #mc_embed_signup .datefield .dayfield input{width:30px;}
-    #mc_embed_signup .datefield label, #mc_embed_signup .phonefield-us label{display:none;}
-
-    #mc_embed_signup .indicates-required {text-align:right; font-size:11px; margin-right:4%;}
-    #mc_embed_signup .asterisk {color:#e85c41; font-size:150%; font-weight:normal; position:relative; top:5px;}     
-    #mc_embed_signup .clear {clear:both;}
-
-    #mc_embed_signup .mc-field-group.input-group ul {margin:0; padding:5px 0; list-style:none;}
-    #mc_embed_signup .mc-field-group.input-group ul li {display:block; padding:3px 0; margin:0;}
-    #mc_embed_signup .mc-field-group.input-group label {display:inline;}
-    #mc_embed_signup .mc-field-group.input-group input {display:inline; width:auto; border:none;}
-
-    #mc_embed_signup div#mce-responses {float:left; top:-1.4em; padding:0em .5em 0em .5em; overflow:hidden; width:90%; margin: 0 5%; clear: both;}
-    #mc_embed_signup div.response {margin:1em 0; padding:1em .5em .5em 0; font-weight:bold; float:left; top:-1.5em; z-index:1; width:80%;}
-    #mc_embed_signup #mce-error-response {display:none;}
-    #mc_embed_signup #mce-success-response {color:#529214; display:none;}
-    #mc_embed_signup label.error {display:block; float:none; width:auto; margin-left:1.05em; text-align:left; padding:.5em 0;}
-
-    #mc-embedded-subscribe {clear:both; width:auto; display:block; margin:1em 0 1em 5%;}
-    #mc_embed_signup #num-subscribers {font-size:1.1em;}
-    #mc_embed_signup #num-subscribers span {padding:.5em; border:1px solid #ccc; margin-right:.5em; font-weight:bold;}
-
-    #mc_embed_signup #mc-embedded-subscribe-form div.mce_inline_error {display:inline-block; margin:2px 0 1em 0; padding:5px 10px; background-color:rgba(255,255,255,0.85); -webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius: 3px; font-size:14px; font-weight:normal; z-index:1; color:#e85c41;}
-    #mc_embed_signup #mc-embedded-subscribe-form input.mce_inline_error {border:2px solid #e85c41;}
-    
-    div.mc_embed_signup{
-        background: #9ce8ff; 
-        clear:left;
-        font:14px Helvetica,Arial,sans-serif;
-        padding: 0px 10px;
-        border-style: solid;
-        border-color: #29bbff;
-        border-radius: 10px
-    }
-    /*#mc_embed_signup .button {
-        background-color:#7DABD4;
-    }
-    #mc_embed_signup .button:hover {
-        background-color:#777;
-    }*/
-    #mc_embed_signup .button {
-        -moz-box-shadow:inset 0px -3px 7px 0px #29bbff;
-        -webkit-box-shadow:inset 0px -3px 7px 0px #29bbff;
-        box-shadow:inset 0px -3px 7px 0px #29bbff;
-        background-color:#2dabf9;
-        -moz-border-radius:3px;
-        -webkit-border-radius:3px;
-        border-radius:3px;
-        border:1px solid #0b0e07;
-        display:inline-block;
-        cursor:pointer;
-        color:#ffffff;
-        font-family:Arial;
-        font-size:15px;
-        padding:9px 23px;
-        text-decoration:none;
-        text-shadow:0px 1px 0px #263666;
-    }
-    #mc_embed_signup .button:hover {
-        background-color:#0688fa;
-    }
-    #mc_embed_signup .button:active {
-        position:relative;
-        top:1px;
-    }
-
-
-    /* Add your own MailChimp form style overrides in your site stylesheet or in this style block.
-    We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-</style>
-<!-- Begin MailChimp Signup Form -->
-<div>
- <form  
-       action="https://tinyletter.com/ZainRizvi"
-       method="post" target="popupwindow"
-       onsubmit="window.open('https://tinyletter.com/ZainRizvi', 'popupwindow', 'scrollbars=yes,width=800,height=600');return true">
-     <p>
-         <label for="tlemail">Did you like this post?  If so then enter your email below to get new articles on technology, machine learning, self improvement, and career tips when the come out!</label></p>
-     <p>
-         <input type="text" style="width:200px" name="email" />
-         <input type="hidden" value="1" name="embed"/>
-         <input type="submit" value="Sign me up!" />
-     </p>
-    </form>
+<hr />
+<div class="ml-form-embed"
+  data-account="1765926:s9l3w3n7b0"
+  data-form="1616786:y5z4v2">
 </div>
-<!--End mc_embed_signup-->
 
   </div>
   <article class="page">
-    <h1>About Me</h1>
+    <h1>Who am I?</h1>
     <div class="article-wrap">
-      <p>I’m Zain Rizvi, a Software Engineer at Google working on the <a href="https://cloud.google.com/">Google Cloud Platform</a>’s <a href="https://cloud.google.com/ai-platform-notebooks/">AI Platform Notebooks</a>. Previously I was part of the the <a href="https://azure.microsoft.com/en-us/services/app-service/web/">Microsoft Azure App Services</a> team.</p>
+      <p>I’m Zain Rizvi, a Software Engineer at Google working on the <a href="https://cloud.google.com/">Google Cloud Platform</a>’s <a href="https://cloud.google.com/ai-platform-notebooks/">AI Platform Notebooks</a>. Previously I was part of the the <a href="https://azure.microsoft.com/en-us/services/app-service/web/">Microsoft Azure App Services</a> team, and before that I worked on Windows.</p>
 
 <p>I’m interested in cloud services, AI/ML, finding creative ways to solve customer problems, and work hard to be a <a href="http://blog.codinghorror.com/how-to-be-lazy-dumb-and-successful/">Lazy developer</a>. In case you couldn’t tell I’m a big fan of <a href="http://blog.codinghorror.com/">Jeff Atwood</a>.</p>
 
@@ -267,22 +185,6 @@
 
 <p>You might also find a few interesting projects on my <a href="https://github.com/ZainRizvi">Github</a>.</p>
 
-      
-        <hr />
-        <div class="social-share">
-  <h5>Thanks for reading! If you found this post valuable, please help share it with others</h5>
-  <ul>
-    <li>
-      <a href="https://twitter.com/intent/tweet?text=/about/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
-    </li>
-    <li>
-      <a href="https://www.facebook.com/sharer/sharer.php?u=/about/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
-    </li>
-    <li>
-      <a href="https://plus.google.com/share?url=/about/" class="google-plus" title="Share on Google Plus"><i class="fa fa-google-plus"></i><span> Google+</span></a>
-    </li>
-  </ul>
-</div><!-- /.social-share -->
       
     </div><!-- /.article-wrap -->
     
@@ -299,7 +201,7 @@
 </div><!-- /.footer-wrap -->
 
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
 <script src="/assets/js/scripts.min.js"></script>
 
 
