@@ -12,7 +12,7 @@ tags:
 - technical
 
 ---
-iUsing Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven't yet caught on in Python notebooks.  However, they're easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them.
+Using Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven't yet caught on in Python notebooks.  However, they're easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them.
 
 # What will this enable you to do?
 
