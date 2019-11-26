@@ -17,7 +17,9 @@ tags:
 ---
 Have you ever tried installing drivers for your Nvidia GPUs?  The first time I tried, I spent the better half of an afternoon trying to get that done.
 
-And once I realized I'd also have to recompile a bunch of packages to actually use those GPUs, I was ready to give up.
+And once I realized I'd also have to recompile a bunch of packages to actually use those GPUs, I was one error message away from being this guy:
+
+![Frustration can lead to unfortunate outcomes](/media/2019-11-26-frustration.jpg "I was one error message away from being this guy")
 
 Things have gotten a lot better since then.
 
@@ -176,7 +178,7 @@ The below code sets up a new directory `~/.R/library` to be used as the default 
     
     chmod +x "${R_LIB_SETUP}"
 
-## 6. Compile and install XGBoost
+## 6. Compile and install XGBoost for GPU
 
 This is the most complicated step of the whole process.
 
@@ -206,7 +208,7 @@ The steps are:
 5. Clean up afterwards
 6. Add the new cmake to PATH
 
-And then of course we have to complie xgboost itself:
+And then of course we have to compile xgboost itself:
 
     # Install xgboost
     cd
@@ -266,13 +268,13 @@ Lets reboot your machine now so that script takes effect
     # Reboot so that R user-installed packages path change takes effect
     sudo reboot
 
-# And Done
+# Aaaaaaaand Done
 
-Whew, that was a lot of steps.  It would be a pain to run those every time you create a new VM.  Fortunately you can just download and run [the script](https://github.com/ZainRizvi/UseRWithGpus/edit/master/install-r-gpu.sh) I mentioned earlier, and start using GPUs within your R notebooks.
+Whew, that was a lot of steps.  It would be a pain to run those every time you create a new VM.  Fortunately you can just download and run [the script](https://github.com/ZainRizvi/UseRWithGpus/edit/master/install-r-gpu.sh) I mentioned earlier, and directly start using GPUs within your R notebooks.
 
 # Want to make it even Faster?
 
-The above script is convenient, but it still takes a good amount of time for it to finish running (over X0 minutes).  Personally, I'd rather not wait that long for my notebook to be ready.
+The above script is convenient, but it still takes a good amount of time for it to finish running (around X0 minutes).  Personally, I'd rather not wait that long for my notebook to be ready.
 
 If you'd like to have your notebook be ready in just two minutes instead of twenty, you can create a [Custom Deep Learning container](https://cloud.google.com/blog/products/ai-machine-learning/introducing-deep-learning-containers-consistent-and-portable-environments) with all of the above pre-installed.
 
