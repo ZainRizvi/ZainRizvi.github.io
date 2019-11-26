@@ -66,7 +66,7 @@ Let's take it from the top:
         libxml2 \
         libxml2-dev
 
-We're installing some packages via apt.  These are dependencies of some of the R packages we want.
+We're installing some packages via apt.  These are dependencies for some of the R packages we want.
 
 Seem safe enough
 
@@ -91,7 +91,7 @@ And the code for it:
     apt update
     apt install r-base -y
 
-The steps start to seem a bit iffy here, but these are indeed part of [the official instructions]().  Feels shady, but it's legit. I checked multiple places to make sure.
+The steps start to seem a bit iffy here (add a new key? a new repository?), but these are indeed part of [the official instructions]().  Feels shady, but it's legit. The official docs and various other tutorials all say the same .
 
 ## 3. Integrate with Jupyter Lab/Jupyter Notebooks
 
