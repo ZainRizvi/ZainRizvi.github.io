@@ -75,16 +75,15 @@ Turns out installing R is a little complicated.  You have to:
 3. Tell apt to trust that new repository
 4. Then install r, presumably from that new repository
 
-   # Install the lastest version of R from the offical repository
-
-   apt install apt-transport-https software-properties-common ocl-icd-opencl-dev -y
-   apt install dirmngr --install-recommends -y
-   apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
-
-   add-apt-repository "deb http://cloud.r-project.org/bin/linux/debian stretch-cran35/"
-
-   apt update
-   apt install r-base -y
+    # Install the lastest version of R from the offical repository
+    apt install apt-transport-https software-properties-common ocl-icd-opencl-dev -y
+    apt install dirmngr --install-recommends -y
+    apt-key adv --keyserver keys.gnupg.net --recv-key 'E19F5F87128899B192B1A2C2AD5F960A256A04AF'
+    
+    add-apt-repository "deb http://cloud.r-project.org/bin/linux/debian stretch-cran35/"
+    
+    apt update
+    apt install r-base -y
 
 The steps start to seem a bit iffy here, but these are indeed part of [the official instructions]().
 
