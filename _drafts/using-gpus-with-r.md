@@ -221,7 +221,7 @@ That's another download build and install.
 
 Note that the cmake command takes a bunch of flags.  The current command is optimized for running on AI Platform Notebooks, but you'll want to modify `--DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.1` to instead point to whatever location your own CUDA files are located
 
-## 6. Install rpy2 for Python + R magic
+## 7. Install rpy2 for Python + R magic
 
 Ok, this step isn't strictly necessary, but it lets you do something really cool.  With this you'll be able to create Python notebooks and then call R functions from _inside the Python notebook!!!_
 
@@ -255,7 +255,7 @@ It'll let you use each language for whatever it's best at, using the best tool f
     # 3.0.5 is the last version that works with Python 3.5
     install_pip3_package rpy2==3.0.5 # Code in both Python & R at the same time
 
-## 7. Restart your VM
+## 8. Restart your VM
 
 Remember how in step 5 we created a file to set your environment variable at boot time?  We never actually executed that file.
 
