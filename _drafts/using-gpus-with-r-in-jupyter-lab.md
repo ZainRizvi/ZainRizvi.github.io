@@ -33,7 +33,7 @@ There are three things you need to get going:
 2. Install R and Jupyter Lab
 3. Compile those R packages which require it for use with GPUs
 
-If you use AI Platform Notebooks or GCP's Deep Learning VM images, the Nvidia GPU drivers will be pre-installed for you.  You  be able to find other offerings which also have the drivers pre-installed, taking care of step 1.
+If you use AI Platform Notebooks or GCP's Deep Learning VM images, the Nvidia GPU drivers will be pre-installed for you.  You may be able to find other offerings which also have the drivers pre-installed, taking care of step 1.
 
 Then SSH into your machine, and run the following command:
 
@@ -41,15 +41,15 @@ Then SSH into your machine, and run the following command:
 
 There, one line and you're done.
 
-It downloaded [a script from my GitHub repository](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) and executed it on your machine, handling all the tricky parts. You can now stop reading this article.
+It downloads [a script from my GitHub repository](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) and executs it on your machine, handling all the tricky parts. That's it, you can now stop reading this article.
 
-However, if you're anything like me, you may be a bit wary of running random code from the internet.
+However, if you're anything like me, you may be a _liiiiittle_ bit wary of running random code from the internet.
 
-Lets go deeper into what exactly this script does
+Lets go deeper into what exactly this script does and make sure it's safe to run.
 
 # What's going on here?
 
-I'll walk through the code step by step to explain what it does.  You can [open up the code on GitHub](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) if you'd like to see the full file.
+I'll walk through the code step by step to explain what it does.  You can [open  the code on GitHub](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) if you'd like to see the full file.
 
 ## 1. Install common packages
 
