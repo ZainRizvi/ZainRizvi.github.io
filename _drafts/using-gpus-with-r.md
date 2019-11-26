@@ -39,13 +39,15 @@ Then SSH into your machine, and run the following command:
 
 There, one line and you're done.
 
-It downloaded a script from my GitHub repository and executed it on your machine, handling all the tricky parts. You can now stop reading this article.
+It downloaded [a script from my GitHub repository](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) and executed it on your machine, handling all the tricky parts. You can now stop reading this article.
 
 However, if you're anything like me, you may be a bit wary of running random code from the internet.
 
 Lets go deeper into what exactly this script does
 
 # What's going on here?
+
+I'll walk through the code step by step to explain what it does.  You can [open up the code on GitHub](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) if you'd like to see the full file.
 
 ## 1. Install common packages
 
