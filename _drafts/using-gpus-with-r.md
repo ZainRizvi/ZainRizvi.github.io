@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to Using GPUs with R
+title: How to Use GPUs with R in Jupyter Lab
 excerpt: Setting up R to use GPUs can be a pain, but it doesn't have to be.  Have
   you ever tried installing drivers for your Nvidia GPU?  The first time I tried it
   I spent the better half of an afternoon trying to get that done.  Though once I
