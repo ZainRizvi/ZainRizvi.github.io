@@ -49,11 +49,11 @@ Lets go deeper into what exactly this script does and make sure it's safe to run
 
 # What's going on here?
 
-I'll walk through the code step by step to explain what it does.  You can [open  the code on GitHub](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) if you'd like to see the full file.
+I'll walk through the code step by step to explain what it does.  You can [open up the code on GitHub](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) if you'd like to see the full file.
 
 ## 1. Install common packages
 
-Let's start from the top:
+Let's take it from the top:
 
     #!/bin/bash
     
@@ -66,7 +66,7 @@ Let's start from the top:
         libxml2 \
         libxml2-dev
 
-We're installing some packages from via apt.  These are dependencies of some of the R packages we want.
+We're installing some packages via apt.  These are dependencies of some of the R packages we want.
 
 Seem safe enough
 
