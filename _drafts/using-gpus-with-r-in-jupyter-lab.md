@@ -15,11 +15,11 @@ tags:
 - Jupyter Notebooks
 
 ---
-Have you ever tried installing drivers for your Nvidia GPUs?  The first time I tried, I spent the better half of an afternoon trying to get that done.  
+Have you ever tried installing drivers for your Nvidia GPUs?  The first time I tried, I spent the better half of an afternoon trying to get that done.
 
 And once I realized I'd also have to recompile a bunch of packages to actually use those GPUs, I was ready to give up.
 
-Things have gotten a  better since then.
+Things have gotten a lot better since then.
 
 In this post I'll share an easy way to setup your R language Jupyter Notebooks to use GPUs.  (Though if you prefer to use R outside of a notebook, these steps let you do that too)
 
@@ -27,13 +27,13 @@ These instructions are a deep dive into one slide of [a talk I gave](https://you
 
 # The Easy Way
 
-There are three things you need to get this going:
+There are three things you need to get going:
 
 1. A machine with Nvidia GPU drivers installed
 2. Install R and Jupyter Lab
-3. Compile those R packages which require it to use GPUs
+3. Compile those R packages which require it for use with GPUs
 
-If you use AI Platform Notebooks or GCP's Deep Learning VM images, the Nvidia GPU drivers will be pre-installed for you.  You may be able to find other offerings which also have the drivers pre-installed, taking care of step 1.
+If you use AI Platform Notebooks or GCP's Deep Learning VM images, the Nvidia GPU drivers will be pre-installed for you.  You  be able to find other offerings which also have the drivers pre-installed, taking care of step 1.
 
 Then SSH into your machine, and run the following command:
 
