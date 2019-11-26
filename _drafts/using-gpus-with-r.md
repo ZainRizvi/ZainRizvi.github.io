@@ -274,4 +274,4 @@ The above script is convenient, but it still takes a good amount of time for it 
 
 If you'd like to have your notebook be ready in just two minutes instead of twenty, you can create a [Custom Deep Learning container](https://cloud.google.com/blog/products/ai-machine-learning/introducing-deep-learning-containers-consistent-and-portable-environments) with all of the above pre-installed.
 
-**I'll be writing instructions on how to set up Custom Deep Learning Containers with R soon. Subscribe below to get an email when the article is ready!**
+**I'll be writing instructions on how to set up Custom Deep Learning Containers for GPU-based R projects (coming soon). Subscribe below to get an email when the article is ready!**
