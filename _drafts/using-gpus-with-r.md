@@ -177,7 +177,7 @@ This is the most complicated step of the whole process.
 
 The default xgboost on CRAN doesn't support GPUs, so we have to compile it from scratch.
 
-However, the version of cmake on Ubuntu is too out of date to be able to compile xgboost (at least that's the case on the default image used by AI Platform Notebooks).  
+However, the version of cmake on Ubuntu is too out of date to be able to compile xgboost (at least that's the case on the default image used by AI Platform Notebooks).
 
 A newer version is not available in the repository, so we have to download and install it directly.
 
@@ -214,7 +214,7 @@ And then of course we have to complie xgboost itself:
     sudo make -j4
     sudo make install
 
-That's another download build and install. 
+That's another download build and install.
 
 Note that the cmake command takes a bunch of flags.  The current command is optimized for running on AI Platform Notebooks, but you'll want to modify `--DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.1` to instead point to whatever location your own CUDA files are located
 
@@ -263,4 +263,12 @@ Lets reboot your machine now so that script takes effect
 
 # And Done
 
-There you have it.
+Whew, that was a lot of steps.  It would be a pain to run those every time you create a new VM.  Fortunately you can just download and run [the script](https://github.com/ZainRizvi/UseRWithGpus/edit/master/install-r-gpu.sh) I mentioned earlier, and start using GPUs within your R notebooks.
+
+# Want to make it even Faster?
+
+The above script is convenient, but it still takes a good amount of time for it to finish running (over X0 minutes).  Personally, I'd rather not wait that long for my notebook to be ready.
+
+If you'd like to have your notebook be ready in just two minutes instead of twenty, you can create a Custom DL image with all of the above pre-installed.
+
+I'll be writing instructions on how to set that up soon. Subscribe below to get an email when the article is ready!
