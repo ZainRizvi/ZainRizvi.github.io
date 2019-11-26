@@ -15,7 +15,7 @@ tags:
 - Jupyter Notebooks
 
 ---
-Have you ever tried installing drivers for your Nvidia GPU?  The first time I tried it I spent the better half of an afternoon trying to get that done.  Though once I realized that I had to also recompile a lot of the software I wanted to actually use those GPUs, I was ready to give up.
+Have you ever tried installing drivers for your Nvidia GPU?  The first time I tried it I spent the better half of an afternoon trying to get that done.  And then once I realized I'd also have to recompile various packages to use GPUs, I was ready to give up.
 
 Things have gotten much better now.
 
