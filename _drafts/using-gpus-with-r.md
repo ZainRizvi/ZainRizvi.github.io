@@ -272,6 +272,6 @@ Whew, that was a lot of steps.  It would be a pain to run those every time you c
 
 The above script is convenient, but it still takes a good amount of time for it to finish running (over X0 minutes).  Personally, I'd rather not wait that long for my notebook to be ready.
 
-If you'd like to have your notebook be ready in just two minutes instead of twenty, you can create a Custom DL image with all of the above pre-installed.
+If you'd like to have your notebook be ready in just two minutes instead of twenty, you can create a [Custom Deep Learning container](https://cloud.google.com/blog/products/ai-machine-learning/introducing-deep-learning-containers-consistent-and-portable-environments) with all of the above pre-installed.
 
-I'll be writing instructions on how to set that up soon. Subscribe below to get an email when the article is ready!
+**I'll be writing instructions on how to set up Custom Deep Learning Containers with R soon. Subscribe below to get an email when the article is ready!**
