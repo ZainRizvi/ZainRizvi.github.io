@@ -17,9 +17,9 @@ tags:
 ---
 Have you ever tried installing drivers for your Nvidia GPU?  The first time I tried it I spent the better half of an afternoon trying to get that done.  And then once I realized I'd also have to recompile various packages to use GPUs, I was ready to give up.
 
-Things have gotten much better now.
+Things have gotten much better since then.
 
-In this post I'll be sharing an easy way to setup your R language Jupyter Notebooks to use GPUs.  Though if you prefer to use R outside of a notebook, these instructions will let you do that too (there's just one step you'll want to skip).
+In this post I'll share an easy way to setup your R language Jupyter Notebooks to use GPUs.  (Though if you prefer to use R outside of a notebook, these steps let you do that too)
 
 These instructions are a deep dive into one slide of [a talk I gave](https://youtu.be/FZvdaZ5jpXA) at Nvidia's GTC 2019 conference a few weeks ago.
 
@@ -66,7 +66,7 @@ Let's start from the top:
 
 We're installing some packages from via apt.  These are dependencies of some of the R packages we want.
 
-Safe enough
+Seem safe enough
 
 ## 2. Installing R
 
@@ -89,7 +89,7 @@ And the code for it:
     apt update
     apt install r-base -y
 
-The steps start to seem a bit iffy here, but these are indeed part of [the official instructions]().
+The steps start to seem a bit iffy here, but these are indeed part of [the official instructions]().  Feels shady, but it's legit. I checked multiple places to make sure.
 
 ## 3. Integrate with Jupyter Lab/Jupyter Notebooks
 
