@@ -77,6 +77,8 @@ Turns out installing R is a little complicated.  You have to:
 3. Tell apt to trust that new repository
 4. Then install r, presumably from that new repository
 
+And the code for it:
+
     # Install the lastest version of R from the offical repository
     apt install apt-transport-https software-properties-common ocl-icd-opencl-dev -y
     apt install dirmngr --install-recommends -y
