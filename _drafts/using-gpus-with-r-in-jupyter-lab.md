@@ -15,9 +15,11 @@ tags:
 - Jupyter Notebooks
 
 ---
-Have you ever tried installing drivers for your Nvidia GPU?  The first time I tried it I spent the better half of an afternoon trying to get that done.  And then once I realized I'd also have to recompile various packages to use GPUs, I was ready to give up.
+Have you ever tried installing drivers for your Nvidia GPUs?  The first time I tried, I spent the better half of an afternoon trying to get that done.  
 
-Things have gotten much better since then.
+And once I realized I'd also have to recompile a bunch of packages to actually use those GPUs, I was ready to give up.
+
+Things have gotten a  better since then.
 
 In this post I'll share an easy way to setup your R language Jupyter Notebooks to use GPUs.  (Though if you prefer to use R outside of a notebook, these steps let you do that too)
 
