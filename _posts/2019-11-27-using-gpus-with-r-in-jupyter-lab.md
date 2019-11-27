@@ -17,13 +17,15 @@ tags:
 ---
 Have you ever tried installing drivers for your Nvidia GPUs?  The first time I tried, I spent the better half of an afternoon trying to get that done.
 
-And once I realized I'd also have to recompile a bunch of packages to actually use those GPUs, I was ready to give up.
+And once I realized I also had to recompile multiple packages to actually use those GPUs, I was one error message away from being this guy:
+
+![Frustration can lead to unfortunate outcomes](/media/2019-11-26-frustration.jpg "I was one error message away from being this guy")
 
 Things have gotten a lot better since then.
 
 In this post I'll share an easy way to setup your R language Jupyter Notebooks to use GPUs.  (Though if you prefer to use R outside of a notebook, these steps let you do that too)
 
-These instructions are a deep dive into one slide of [a talk I gave](https://youtu.be/FZvdaZ5jpXA) at Nvidia's GTC 2019 conference a few weeks ago.
+It's a deep dive into one slide of [a talk I gave](https://youtu.be/FZvdaZ5jpXA) at Nvidia's GTC 2019 conference a few weeks ago.
 
 # The Easy Way
 
@@ -33,15 +35,15 @@ There are three things you need to get going:
 2. Install R and Jupyter Lab
 3. Compile those R packages which require it for use with GPUs
 
-If you use AI Platform Notebooks or GCP's Deep Learning VM images, the Nvidia GPU drivers will be pre-installed for you as long as you request a machine with GPUs attached.  You may be able to find other offerings which also have the drivers pre-installed, taking care of step 1.
+If you use AI Platform Notebooks or GCP's Deep Learning VM images, the Nvidia GPU drivers will be pre-installed for you.  You may be able to find other offerings which also have the drivers pre-installed, taking care of step 1.
 
-Then SSH into your machine, and run the following command:
+Once your machine with GPU drivers is ready, SSH into it and run the following command:
 
     sudo -- sh -c 'wget -O - https://raw.githubusercontent.com/ZainRizvi/UseRWithGpus/master/install-r-gpu.sh | bash'
 
 There, one line and you're done.
 
-It downloads [a script from my GitHub repository](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) and executs it on your machine, handling all the tricky parts. That's it, you can now stop reading this article.
+It downloads [a script from my GitHub repository](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) and executes it on your machine, handling all the tricky parts. That's it, you can now stop reading this article.
 
 However, if you're anything like me, you may be a _liiiiittle_ bit wary of running random code from the internet.
 
@@ -76,7 +78,7 @@ Turns out installing R is a little complicated.  You have to:
 
 1. Install additional dependencies
 2. Add a whole new repository to your config
-3. Tell apt to trust that new repository
+3. Tell your computer to trust that new repository
 4. Then install r, presumably from that new repository
 
 And the code for it:
@@ -91,7 +93,11 @@ And the code for it:
     apt update
     apt install r-base -y
 
-The steps start to seem a bit iffy here (add a new key? a new repository?), but these are indeed part of [the official instructions]().  Feels shady, but it's legit. The official docs and various other tutorials all say the same .
+The steps start to seem a bit iffy here (add a new key? a new repository?), but these are indeed part of [the official instructions]().  Feels shady, but it really is legit. The official docs and various other tutorials all say the same.
+
+(Still feels like 👇)
+
+![It's perfectly safe, I assure you](/media/2019-11-27-safe.jpg "It's perfectly safe, I assure you")
 
 ## 3. Integrate with Jupyter Lab/Jupyter Notebooks
 
@@ -176,7 +182,7 @@ The below code sets up a new directory `~/.R/library` to be used as the default 
     
     chmod +x "${R_LIB_SETUP}"
 
-## 6. Compile and install XGBoost
+## 6. Compile and install XGBoost for GPU
 
 This is the most complicated step of the whole process.
 
@@ -206,7 +212,7 @@ The steps are:
 5. Clean up afterwards
 6. Add the new cmake to PATH
 
-And then of course we have to complie xgboost itself:
+And then of course we have to compile xgboost itself:
 
     # Install xgboost
     cd
@@ -266,13 +272,13 @@ Lets reboot your machine now so that script takes effect
     # Reboot so that R user-installed packages path change takes effect
     sudo reboot
 
-# And Done
+# Aaaaaaaand Done
 
-Whew, that was a lot of steps.  It would be a pain to run those every time you create a new VM.  Fortunately you can just download and run [the script](https://github.com/ZainRizvi/UseRWithGpus/edit/master/install-r-gpu.sh) I mentioned earlier, and start using GPUs within your R notebooks.
+Whew, that was a lot of steps.  It would be a pain to run those every time you create a new VM.  Fortunately you can just download and run [the script](https://github.com/ZainRizvi/UseRWithGpus/edit/master/install-r-gpu.sh) I mentioned earlier, and directly start using GPUs within your R notebooks.
 
 # Want to make it even Faster?
 
-The above script is convenient, but it still takes a good amount of time for it to finish running (over X0 minutes).  Personally, I'd rather not wait that long for my notebook to be ready.
+The above script is convenient, but it still takes a good amount of time for it to finish running (around X0 minutes).  Personally, I'd rather not wait that long for my notebook to be ready.
 
 If you'd like to have your notebook be ready in just two minutes instead of twenty, you can create a [Custom Deep Learning container](https://cloud.google.com/blog/products/ai-machine-learning/introducing-deep-learning-containers-consistent-and-portable-environments) with all of the above pre-installed.
 
