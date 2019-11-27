@@ -95,6 +95,8 @@ And the code for it:
 
 The steps start to seem a bit iffy here (add a new key? a new repository?), but these are indeed part of [the official instructions]().  Feels shady, but it really is legit. The official docs and various other tutorials all say the same.
 
+(Still feels like 👇)
+
 ![It's perfectly safe, I assure you](/media/2019-11-27-safe.jpg "It's perfectly safe, I assure you")
 
 ## 3. Integrate with Jupyter Lab/Jupyter Notebooks
