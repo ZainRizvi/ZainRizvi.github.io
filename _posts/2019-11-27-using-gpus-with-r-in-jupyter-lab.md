@@ -35,7 +35,7 @@ There are three things you need to get going:
 2. Install R and Jupyter Lab
 3. Compile those R packages which require it for use with GPUs
 
-If you use [AI Platform Notebooks](https://cloud.google.com/ai-platform-notebooks/) or GCP's Deep Learning VM images, the Nvidia GPU drivers will be pre-installed for you.  You can also find offerings form other companies which also have the drivers pre-installed, taking care of step 1.
+If you use [AI Platform Notebooks](https://cloud.google.com/ai-platform-notebooks/) or [Deep Learning VM images](https://cloud.google.com/deep-learning-vm/), the Nvidia GPU drivers will be pre-installed for you (notebooks will give you the easiest experience).  You can also find offerings form other companies which also have the drivers pre-installed, taking care of step 1.
 
 Once your machine with GPU drivers is ready, SSH into it and run the following command:
 
