@@ -78,7 +78,7 @@ Turns out installing R is a little complicated.  You have to:
 
 1. Install additional dependencies
 2. Add a whole new repository to your config
-3. Tell apt to trust that new repository
+3. Tell your computer to trust that new repository
 4. Then install r, presumably from that new repository
 
 And the code for it:
@@ -93,7 +93,9 @@ And the code for it:
     apt update
     apt install r-base -y
 
-The steps start to seem a bit iffy here (add a new key? a new repository?), but these are indeed part of [the official instructions]().  Feels shady, but it's legit. The official docs and various other tutorials all say the same .
+The steps start to seem a bit iffy here (add a new key? a new repository?), but these are indeed part of [the official instructions]().  Feels shady, but it really is legit. The official docs and various other tutorials all say the same.
+
+![It's perfectly safe, I assure you](/media/2019-11-27-safe.jpg "It's perfectly safe, I assure you")
 
 ## 3. Integrate with Jupyter Lab/Jupyter Notebooks
 
