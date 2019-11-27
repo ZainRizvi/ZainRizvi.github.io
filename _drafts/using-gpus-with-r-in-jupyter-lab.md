@@ -17,7 +17,7 @@ tags:
 ---
 Have you ever tried installing drivers for your Nvidia GPUs?  The first time I tried, I spent the better half of an afternoon trying to get that done.
 
-And once I realized I'd also have to recompile a bunch of packages to actually use those GPUs, I was one error message away from being this guy:
+And once I realized I also had to recompile multiple packages to actually use those GPUs, I was one error message away from being this guy:
 
 ![Frustration can lead to unfortunate outcomes](/media/2019-11-26-frustration.jpg "I was one error message away from being this guy")
 
@@ -25,7 +25,7 @@ Things have gotten a lot better since then.
 
 In this post I'll share an easy way to setup your R language Jupyter Notebooks to use GPUs.  (Though if you prefer to use R outside of a notebook, these steps let you do that too)
 
-These instructions are a deep dive into one slide of [a talk I gave](https://youtu.be/FZvdaZ5jpXA) at Nvidia's GTC 2019 conference a few weeks ago.
+It's a deep dive into one slide of [a talk I gave](https://youtu.be/FZvdaZ5jpXA) at Nvidia's GTC 2019 conference a few weeks ago.
 
 # The Easy Way
 
@@ -37,13 +37,13 @@ There are three things you need to get going:
 
 If you use AI Platform Notebooks or GCP's Deep Learning VM images, the Nvidia GPU drivers will be pre-installed for you.  You may be able to find other offerings which also have the drivers pre-installed, taking care of step 1.
 
-Then SSH into your machine, and run the following command:
+Once your machine with GPU drivers is ready, SSH into it and run the following command:
 
     sudo -- sh -c 'wget -O - https://raw.githubusercontent.com/ZainRizvi/UseRWithGpus/master/install-r-gpu.sh | bash'
 
 There, one line and you're done.
 
-It downloads [a script from my GitHub repository](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) and executs it on your machine, handling all the tricky parts. That's it, you can now stop reading this article.
+It downloads [a script from my GitHub repository](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) and executes it on your machine, handling all the tricky parts. That's it, you can now stop reading this article.
 
 However, if you're anything like me, you may be a _liiiiittle_ bit wary of running random code from the internet.
 
