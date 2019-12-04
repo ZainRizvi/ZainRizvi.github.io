@@ -178,3 +178,28 @@ So that was cool, but we didn't really do anything special. We're not pre-config
 Let's now add some actual customizations to this image
 
 # Customizing your image
+
+Let's extend this Dockerfile to add R support to the Tensorflow notebook.
+
+I've already shared a script on GitHub which can install R onto your AI Platform Notebooks, but that script takes way too long to run to invoke it on every notebook you create.  Let's run it just once when creating the container and use that container for our future notebooks instead.
+
+(You can read more about what the script does **here**)
+
+We'll add two lines to our container to run that script:
+
+    FROM gcr.io/deeplearning-platform-release/tf2-cpu
+    LABEL maintainer="Zain  Rizvi"
+    
+    RUN apt update -y 
+    # Add R support
+    RUN wget -O - https://raw.githubusercontent.com/ZainRizvi/UseRWithGpus/master/install-r-cpu.sh | bash
+
+And now we can run `docker build .` again.  This time the command will take a **long** time to complete (that script takes on the order of X0 minutes to run, and now we're not running inside the fast GCP network).
+
+But once completes, we'll again be given a new image Id similar to the one we saw earlier.  Just tag that and push it to your registry the same way we did before
+
+xxxx instructions xxx
+
+And now your registry is available to use
+
+so
