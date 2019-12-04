@@ -84,10 +84,9 @@ We'll create a super simple image first.  We'll use the Tensorflow 2 CPU image a
 To do this, create a file named "Dockerfile" and give it the following contents:
 
     FROM gcr.io/deeplearning-platform-release/tf2-cpu
-    
     LABEL maintainer="Zain Rizvi"
 
-Now cd to the directory that contains that file and run "docker build ."  And Docker will download that image from the GCP repository, apply your custom label to it, and save the resulting image locally.
+Now cd to the directory that contains that file and run "docker build ."  And Docker will download that image from the GCP repository, apply your custom label to it, and save the resulting image locally. (If you name your dockerfile anything other than "Dockerfile" then you'll need to also specify the file name via a "-f \[filename\]" parameter.)
 
 You'll see something similar to the following
 
@@ -125,15 +124,29 @@ You'll see something similar to the following
      ---> 8cee7adcf9c3
     Successfully built 8cee7adcf9c3
 
-To push your image, you need a registry to push it to.  Docker offers free registries you can use for public images at hub.docker.com.
+Note the id in the last line `Successfully built 8cee7adcf9c3`. That `8cee7adcf9c3` is a local image id, and it will be important when we want to push our image (a couple steps down).
+
+To push your image, you need a registry to push it to.  I'll give you instructions that put your registry on Docker Hub (which is free for public registries) but you can use whatever registry provider you prefer.  For a Docker Hub registry you can go to hub.docker.com and create your public registry (do that now).  You'll need to create an account first though if you don't have one already
 
 Before the push, make sure you're logged into docker from within the console:
 
 docker login --username zainrizvi --password-stdin
 
-Now to push we need to tell docker which image it should be pushing to our new registry
+Now to push we need to tell docker which image it should be pushing to our new registry.  We do this by tagging the image we built with the path of our registry and add an optional tag (yeah, the overload of the word 'tag' is a bit annoying).
 
-    docker push zainrizvi/deeplearning-container-generic
+Remember that image Id I told you to note earlier (mine was `8cee7adcf9c3`), now is when you need that.  We'll tag that Id with the path to the repository we want to use:
+
+    docker tag 8cee7adcf9c3 zainrizvi/deeplearning-container-generic:latest
+
+If you run `docker images` you should now see an image with that repository and tag
+
+    > docker images                                                                           
+    REPOSITORY                                         TAG                 IMAGE ID            CREATED             SIZE      
+    zainrizvi/deeplearning-container-generic           latest              8cee7adcf9c3        4 minutes ago       6.26GB   
+
+However, just because we've tagged the image doesn't mean it actually exists in the repository.  We have to do a docker push to get it in there:
+
+    > docker push zainrizvi/deeplearning-container-generic
     The push refers to repository [docker.io/zainrizvi/deeplearning-container-generic]
     3bc6581319d1: Pushed
     9460d92bb97d: Pushed
@@ -158,4 +171,10 @@ Now to push we need to tell docker which image it should be pushing to our new r
     6cebf3abed5f: Pushed
     latest: digest: sha256:51a109b02534ec04875051cb36cc6ede6d50b9af136f0e2725a77500d7e17852 size: 4717
 
-s
+And now if you go to your docker registry you'll see that the image is there for anyone to view and download
+
+So that was cool, but we didn't really do anything special. We're not pre-configuring any of the packages we really need or anything like that.
+
+Let's now add some actual customizations to this image
+
+# Customizing your image
