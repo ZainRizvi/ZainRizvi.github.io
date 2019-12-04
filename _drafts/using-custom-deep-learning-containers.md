@@ -70,6 +70,92 @@ Currently that command outputs:
     gcr.io/deeplearning-platform-release/tf2-cpu.2-0
     gcr.io/deeplearning-platform-release/tf2-gpu
     gcr.io/deeplearning-platform-release/tf2-gpu.2-0
-    
+
 That's a list of all the different environments available for you to choose from.  You can see Tensorflow, Pytorch, R, and others on the list, and most of them come in both CPU and GPU variations.
 
+We'll take the Tensorflow 2 CPU image and modify it to create our custom environment
+
+# Steps
+
+Create your image
+
+We'll create a super simple image first.  We'll use the Tensorflow 2 CPU image as our base and not change anything other than adding our own name as the maintainer of the new image.
+
+To do this, create a file named "Dockerfile" and give it the following contents:
+
+    FROM gcr.io/deeplearning-platform-release/tf2-cpu
+    
+    LABEL maintainer="Zain Rizvi"
+
+Now cd to the directory that contains that file and run "docker build ."  And Docker will download that image from the GCP repository, apply your custom label to it, and save the resulting image locally.
+
+You'll see something similar to the following
+
+    > docker build .
+    Sending build context to Docker daemon  2.048kB
+    Step 1/2 : FROM gcr.io/deeplearning-platform-release/tf2-cpu
+    latest: Pulling from deeplearning-platform-release/tf2-cpu
+    35c102085707: Already exists
+    251f5509d51d: Already exists
+    8e829fe70a46: Already exists
+    6001e1789921: Already exists
+    1259902c87a2: Already exists
+    83ca0edf82af: Already exists
+    a459cc7a0819: Pull complete                                                                                              
+    7de7778cb300: Pull complete                                                                                              
+    62e0a31a8af6: Pull complete                                                                                              
+    a7785d29f5ab: Pull complete                                                                                              
+    6b76a06da4d7: Pull complete                                                                                              
+    413905cedc93: Pull complete                                                                                              
+    a5d245cced6f: Pull complete                                                                                              
+    8c6be6aa5553: Pull complete                                                                                              
+    1d7154118978: Pull complete                                                                                              
+    1df8626a77b0: Pull complete                                                                                              
+    307ee6add651: Pull complete                                                                                              
+    5347a4f2b51b: Pull complete                                                                                              
+    68eab8b2c13c: Pull complete                                                                                              
+    928e12577c37: Pull complete                                                                                              
+    48d9ceba06f1: Pull complete                                                                                              
+    Digest: sha256:88ae24914e15f2df11a03486668e9051ca85b65f8577358e7d965ce6a146f217
+    Status: Downloaded newer image for gcr.io/deeplearning-platform-release/tf2-cpu:latest
+     ---> e493f17c90d0
+    Step 2/2 : LABEL maintainer="Zain Rizvi"
+     ---> Running in 561cbb80b0c5
+    Removing intermediate container 561cbb80b0c5
+     ---> 8cee7adcf9c3
+    Successfully built 8cee7adcf9c3
+
+To push your image, you need a registry to push it to.  Docker offers free registries you can use for public images at hub.docker.com.
+
+Before the push, make sure you're logged into docker from within the console:
+
+docker login --username zainrizvi --password-stdin
+
+Now to push we need to tell docker which image it should be pushing to our new registry
+
+    docker push zainrizvi/deeplearning-container-generic
+    The push refers to repository [docker.io/zainrizvi/deeplearning-container-generic]
+    3bc6581319d1: Pushed
+    9460d92bb97d: Pushed
+    11e8218cebaf: Pushed
+    918c750480c5: Pushed
+    802f1a04733b: Pushed
+    07a867e0ba2d: Pushed
+    092c50747c65: Pushed
+    d6fb36f9bda1: Pushed
+    f36c7efe6784: Pushed
+    1f3727b0e386: Pushed
+    80824689ea9a: Pushed
+    dae8971c1728: Pushed
+    63b763e1ea3e: Pushed
+    7d412b9c88ab: Pushed
+    4019db0181d2: Pushed
+    5a78197acff6: Pushed
+    804e87810c15: Pushed
+    122be11ab4a2: Pushed
+    7beb13bce073: Pushed
+    f7eae43028b3: Pushed
+    6cebf3abed5f: Pushed
+    latest: digest: sha256:51a109b02534ec04875051cb36cc6ede6d50b9af136f0e2725a77500d7e17852 size: 4717
+
+s
