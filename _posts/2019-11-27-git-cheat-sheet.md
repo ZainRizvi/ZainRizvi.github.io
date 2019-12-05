@@ -78,6 +78,8 @@ For when you want to pull a new branch from your repo origin.  You can replace '
 
     git checkout --track origin/[branch_name]
 
+For more details see [this article](https://stackabuse.com/git-fetch-a-remote-branch/)
+
 # Changing the Branch HEAD
 
 To change the current branch’s head to a different commit
