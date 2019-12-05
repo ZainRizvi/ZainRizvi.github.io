@@ -37,17 +37,17 @@ You may want to do this after you've squashed some commits
 
     git commit --amend --no-edit --date "$(date)"
 
-# Undoing Changes
+# Undoing/Reverting Changes
 
 ## Discard all local changes to tracked files
 
     git reset --hard
 
-## Discard all local changes to a single file
+## Discard all local changes to a single unstaged file
 
     git checkout --[file]
 
-## Discard all changes to untracked (new) files. _This cannot be undone_
+## Discard changes to all untracked/unstaged files. _This cannot be undone_
 
     # first run 'git clean -n' to get a preview of what will be deleted
     git clean -f
