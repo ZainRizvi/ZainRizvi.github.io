@@ -25,7 +25,7 @@ Things have gotten a lot better since then.
 
 In this post I'll share an easy way to setup your R language Jupyter Notebooks to use GPUs.  (Though if you prefer to use R outside of a notebook, these steps let you do that too)
 
-It's a deep dive into one slide of [a talk I gave](https://youtu.be/FZvdaZ5jpXA) at Nvidia's GTC 2019 conference a few weeks ago.
+It's a deep dive into one slide of [a talk I gave](https://on-demand.gputechconf.com/gtcdc/2019/video/dc91511-gpu-powered-computing-for-data-science-with-r-notebooks-on-google-clouds-ai-platform/) at Nvidia's GTC 2019 conference a few weeks ago.
 
 # The Easy Way
 
