@@ -72,6 +72,12 @@ Use when you want to discard any local changes and start over from the remote br
     #   the specific CL you want to set the HEAD to
     git reset --hard origin/master 
 
+# Pull a new remote branch to your existing repo
+
+For when you want to pull a new branch from your repo origin.  You can replace 'origin' with your desired remote branch if you're using something different
+
+    git checkout --track origin/[branch_name]
+
 # Changing the Branch HEAD
 
 To change the current branch’s head to a different commit
