@@ -64,6 +64,14 @@ Note: this leaves the commit in the branch history
 
     git revert [commit-id]
 
+## Revert/Undo changes to a single file in a commit
+
+This will undo the changes to a single file from the given commit id. 
+
+The edited file will be unstaged.
+
+    git show [commit-id] -- [file] | git apply -R
+
 # Set your branch head to the remote branch’s head
 
 Use when you want to discard any local changes and start over from the remote branch state
