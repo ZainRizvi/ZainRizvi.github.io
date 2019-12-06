@@ -208,7 +208,34 @@ And now your registry is available to use
 
 What do you do if you get errors in the middle of your Docker build?  If the console logs don't tell you exactly what's wrong, you can open up your docker image and execute the relevant instructions manually to debug the situation.  That way when you hit the error you can explore the environment and see what it takes to make that error go away.  
 
-The downside to this is that you have to execute all the docker steps 
+Run the following command to get an interactive terminal:
+
+`docker run -it [image_name] /bin/bash`
+
+For example:
+
+`docker run -it gcr.io/deeplearning-platform-release/tf2-cpu /bin/bash`
+
+The downside to this is that you have to execute all the docker steps up till that point, and if your build  process takes a long time (like it does with the script I'm using) that could be a lot of time lost just waiting for a build to run.
+
+There are ways you can reduce the time you spend waiting though.  It depend on how Docker creates images in layers.  Basically, pretty much every line in a Dockerfile results in a new layer being created, and you can see that layer in both the output of your build command and in the output when you run `docker images`
+
+    $ docker build . 
+    Sending build context to Docker daemon  2.048kB
+    Step 1/4 : FROM gcr.io/deeplearning-platform-release/tf2-cpu
+     ---> e493f17c90d0
+    Step 2/4 : LABEL maintainer="Zain  Rizvi"
+     ---> Using cache
+     ---> 5ae08c1b46d1
+    Step 3/4 : RUN apt update -y
+     ---> Using cache
+     ---> c189b73c08b5
+
+When it can, Docker likes to reuse layers from previous runs in order cut down on build times. In the above command you can see that Step 2 and Step 3 are using previously created images from the cache.  
+
+I'm not sure how it decides if it's safe to re-use an old layer, but if we split our installation script into multiple parts and have each part be a separate RUN line in the Dockerfile, it'll cut down on the time it takes to test (and rebuild) our images.
+
+If we split some long, time-intensive step this way then instead of calling `docker run` on the base image we used, we could instead call it on one of the Image Ids from our intermediate stages.
 
 The keen-eyed among you may have noticed that the script I'm running in the above example is install-r-cpu-ubuntu.sh instead of the install-r-cpu.sh script I mentioned in my [original post](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/).  Do you remember that there was a step where we added a new key and a new repository?
 
