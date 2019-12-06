@@ -86,7 +86,7 @@ To do this, create a file named "Dockerfile" and give it the following contents:
     FROM gcr.io/deeplearning-platform-release/tf2-cpu
     LABEL maintainer="Zain Rizvi"
 
-Now cd to the directory that contains that file and run "docker build ."  And Docker will download that image from the GCP repository, apply your custom label to it, and save the resulting image locally. (If you name your dockerfile anything other than "Dockerfile" then you'll need to also specify the file name via a "-f \[filename\]" parameter.)
+Now cd to the directory that contains that file and run `docker build .`  And Docker will download that image from the GCP repository, apply your custom label to it, and save the resulting image locally. (If you named your dockerfile anything other than `Dockerfile` then you'll need to also specify the file name via a `-f [filename]` parameter.)
 
 You'll see something similar to the following
 
@@ -175,7 +175,7 @@ And now if you go to your docker registry you'll see that the image is there for
 
 So that was cool, but we didn't really do anything special. We're not pre-configuring any of the packages we really need or anything like that.
 
-Let's now add some actual customizations to this image
+Let's now actually customize this image
 
 # Customizing your image
 
