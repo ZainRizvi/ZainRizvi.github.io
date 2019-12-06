@@ -86,7 +86,9 @@ To do this, create a file named "Dockerfile" and give it the following contents:
     FROM gcr.io/deeplearning-platform-release/tf2-cpu
     LABEL maintainer="Zain Rizvi"
 
-Now cd to the directory that contains that file and run `docker build .`  And Docker will download that image from the GCP repository, apply your custom label to it, and save the resulting image locally. (If you named your dockerfile anything other than `Dockerfile` then you'll need to also specify the file name via a `-f [filename]` parameter.)
+Now cd to the directory that contains that file and run `docker build .`  And Docker will download that image from the GCP repository, apply your custom label to it, and save the resulting image locally.
+
+_Note: If you name your dockerfile anything other than "Dockerfile" then you'll need to also specify the file name via a_ `_-f \[filename\]_` _parameter, so your command would look like_ `_docker build . -f \[filename\]_`
 
 You'll see something similar to the following
 
@@ -175,7 +177,7 @@ And now if you go to your docker registry you'll see that the image is there for
 
 So that was cool, but we didn't really do anything special. We're not pre-configuring any of the packages we really need or anything like that.
 
-Let's now actually customize this image
+Let's now add some actual customizations to this image
 
 # Customizing your image
 
@@ -192,9 +194,9 @@ We'll add two lines to our container to run that script:
     
     RUN apt update -y 
     # Add R support
-    RUN wget -O - https://raw.githubusercontent.com/ZainRizvi/UseRWithGpus/master/install-r-cpu.sh | bash
+    RUN wget -O - https://raw.githubusercontent.com/ZainRizvi/UseRWithGpus/master/install-r-cpu-ubuntu.sh | bash
 
-And now we can run `docker build .` again.  This time the command will take a **long** time to complete (that script takes on the order of X0 minutes to run, and now we're not running inside the fast GCP network).
+And now we can run `docker build .` again.  This time the command will take a **long** time to complete (that script takes a little under an hour to run, and we're no longer running inside the fast GCP network which would at least improve our download speeds).
 
 But once completes, we'll again be given a new image Id similar to the one we saw earlier.  Just tag that and push it to your registry the same way we did before
 
@@ -202,4 +204,18 @@ xxxx instructions xxx
 
 And now your registry is available to use
 
-so
+# When things go wrong
+
+What do you do if you get errors in the middle of your Docker build?  If the console logs don't tell you exactly what's wrong, you can open up your docker image and execute the relevant instructions manually to debug the situation.  That way when you hit the error you can explore the environment and see what it takes to make that error go away.  
+
+The downside to this is that you have to execute all the docker steps 
+
+The keen-eyed among you may have noticed that the script I'm running in the above example is install-r-cpu-ubuntu.sh instead of the install-r-cpu.sh script I mentioned in my [original post](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/).  Do you remember that there was a step where we added a new key and a new repository?
+
+> The steps start to seem a bit iffy here (add a new key? a new repository?), but these are indeed part of [the official instructions](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/). Feels shady, but it really is legit. The official docs and various other tutorials all say the same.
+>
+> (Still feels like 👇)
+>
+> ![It's perfectly safe, I assure you](https://zainrizvi.io/media/2019-11-27-safe.jpg "It's perfectly safe, I assure you")
+
+So it turns out every distro (and every version of each distro) needs it's own repository and it's own key.  And while AI Platform Notebook images run on a Debian OS, the Deep Learning Container Images are built with an Ubuntu base, so we have to point to the Ubuntu repository instead (twenty minutes spent debugging and testing that problem... ಠ_ಠ)
