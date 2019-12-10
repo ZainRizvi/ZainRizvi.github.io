@@ -56,7 +56,8 @@ You may want to do this after you've squashed some commits
 
 Combine the above to get:
 
-    git reset --hardgit clean -f 
+    git reset --hard
+    git clean -f 
 
 ## Revert/Undo an Entire Commit
 
@@ -66,7 +67,7 @@ Note: this leaves the commit in the branch history
 
 ## Revert/Undo changes to a single file in a commit
 
-This will undo the changes to a single file from the given commit id. 
+This will undo the changes to a single file from the given commit id.
 
 The edited file will be unstaged.
 
