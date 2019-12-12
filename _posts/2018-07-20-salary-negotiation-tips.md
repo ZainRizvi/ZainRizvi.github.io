@@ -8,11 +8,17 @@ tags:
 ---
 When I was applying for a new job a couple years ago I did a lot of research on salary negotiation (something [every employee](https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/) should know).  I found some pretty useful information others had shared and want to pay that favor forward.  Here's the compilation and summary of a lot of the key resources:
 
+### Why you should really negotiate your salary
+
+The gold standard for salary negotiations in the tech industry:
+
+[https://www.kalzumeus.com/2012/01/23/salary-negotiation/](https://www.kalzumeus.com/2012/01/23/salary-negotiation/ "https://www.kalzumeus.com/2012/01/23/salary-negotiation/")
+
 ### Word-for-Word Scripts on What to Say During the Negotiation and Why they Work
 
-[10 rules for negotiating a job offer](http://haseebq.com/my-ten-rules-for-negotiating-a-job-offer)
+[10 rules for negotiating a job offer](http://haseebq.com/my-ten-rules-for-negotiating-a-job-offer) (haseebq)
 
-[How not to Bomb your Offer Negotiation](http://haseebq.com/how-not-to-bomb-your-offer-negotiation)
+[How not to Bomb your Offer Negotiation](http://haseebq.com/how-not-to-bomb-your-offer-negotiation) (haseebq)
 
 ### Negotiation Video, Including Scripts on What to Say and Why it Works
 
