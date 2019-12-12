@@ -12,7 +12,7 @@ When I was applying for a new job a couple years ago I did a lot of research on 
 
 The gold standard for salary negotiations in the tech industry:
 
-[https://www.kalzumeus.com/2012/01/23/salary-negotiation/](https://www.kalzumeus.com/2012/01/23/salary-negotiation/ "https://www.kalzumeus.com/2012/01/23/salary-negotiation/")
+[Salary Negotiation: Make More Money, Be More Valued](https://www.kalzumeus.com/2012/01/23/salary-negotiation/)  (by [patio11@](https://twitter.com/patio11))
 
 ### Word-for-Word Scripts on What to Say During the Negotiation and Why they Work
 
