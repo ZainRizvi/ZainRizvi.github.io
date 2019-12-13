@@ -75,7 +75,7 @@ _You can follow along these instructions by cloning the_ [_https://github.com/Za
 
 We'll create a super simple image first. We'll use the Tensorflow 2 CPU image as our base and not change anything other than adding our own name as the maintainer of the new image.
 
-To do this, create a dockerfile (a text file) and give it the following contents
+To do this, create a dockerfile and give it the following contents
 
     FROM gcr.io/deeplearning-platform-release/tf2-gpu
     LABEL maintainer="Zain Rizvi"
