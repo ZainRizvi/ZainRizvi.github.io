@@ -1,8 +1,22 @@
 ---
 layout: post
-title: Creating Custom Deep Learning Containers
-excerpt: ''
-tags: []
+title: Creating Custom Deep Learning Containers with GPU support for Tensorflow on
+  R
+excerpt: Ever find yourself needing to install the same packages on all your deep
+  learning notebooks? Or maybe wishing you could send your exact setup to someone
+  else who could run your notebook? I explore how you can create a custom Docker Container
+  to contain your exact desired Deep Learning environment. Specifically, I'll show
+  how to create Tensorflow with GPU support for R, but you can use these steps for
+  any customization you want
+tags:
+- Deep Learning
+- GCP
+- Google Cloud Platform
+- AI Platform Notebooks
+- Jupyter Lab
+- Tensorflow
+- GPU
+- R Language
 
 ---
 Ever find yourself needing to install the same packages on all your deep learning notebooks? Or maybe wishing you could send your exact setup to someone else who could run your notebook? Or perhaps you're a corporation which wants all your data scientists to have some internal libraries on all their notebooks.
