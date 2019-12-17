@@ -47,13 +47,13 @@ In order to follow along with the rest of the post I'll assume you have the foll
 Let's take a quick look at what containers we have available to us by running
 
 ``` shell
-gcloud container images list --repository="gcr.io/deeplearning-platform-release"
+$ gcloud container images list --repository="gcr.io/deeplearning-platform-release"
 ```
 
 Currently that command outputs:
 
 ``` shell
-> gcloud container images list --repository="gcr.io/deeplearning-platform-release"
+$ gcloud container images list --repository="gcr.io/deeplearning-platform-release"
 NAME
 gcr.io/deeplearning-platform-release/base-cpu
 gcr.io/deeplearning-platform-release/base-cu100
@@ -114,7 +114,7 @@ Now cd to the directory that contains that file and run `docker build . -f docke
 You'll see something similar to the following
 
 ``` shell
-UseRWithGpus> docker build . -f dockerfiles\tensorflow-2-gpu.Dockerfiles
+$ docker build . -f dockerfiles\tensorflow-2-gpu.Dockerfiles
 Sending build context to Docker daemon 2.048kB
 Step 1/2 : FROM gcr.io/deeplearning-platform-release/tf2-cpu
 latest: Pulling from deeplearning-platform-release/tf2-cpu
@@ -141,13 +141,13 @@ To push your image, you need a registry to push it to. I’ll assume you’re us
 
 Before the push, make sure you're logged into docker from within the console (enter your password when prompted):
 
-    UseRWithGpus> docker login --username zainrizvi
+    $ docker login --username zainrizvi
 
 Now to push we need to tell docker which image it should be pushing to our new registry. We do this by tagging the image we built with the path of our registry and add an optional tag (yeah, the overload of the word 'tag' is a bit annoying).
 
 Remember that image Id I told you to note earlier (mine was **`8cee7adcf9c3`**), now is when you need that Id. We'll tag that Id with the path to the repository we want to use:
 
-    UseRWithGpus>docker tag [ImageId] [repo-name]:[image-tag]
+    $ docker tag [ImageId] [repo-name]:[image-tag]
 
 Example:
 
@@ -155,13 +155,13 @@ Example:
 
 If you run docker images you should now see an image with that repository and tag
 
-    UseRWithGpus> docker images
+    $ docker images
     REPOSITORY TAG IMAGE ID CREATED SIZE
     zainrizvi/deeplearning-container-tf2-with-r latest-gpu 8cee7adcf9c3 4 minutes ago 6.26GB
 
 However, just because we've tagged the image doesn't mean it actually exists in the repository. We have to do a docker push to get it in there:
 
-    docker push zainrizvi/deeplearning-container-tf2-with-r
+    $ docker push zainrizvi/deeplearning-container-tf2-with-r
 
 And now if you go to your docker registry you'll see that the image is there for anyone to view and download
 
@@ -177,27 +177,29 @@ I've shared a few scripts on GitHub which can install R onto your AI Platform No
 
 The scripts referenced below are chunks of logic I pulled out from these [master](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-gpu.sh) [scripts](https://github.com/ZainRizvi/UseRWithGpus/blob/master/install-r-cpu.sh). You can read more about what those scripts do [in this blog post on using R with GPUs](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/) . Splitting the logic into multiple scripts made this stuff much easier to debug (what problems did I run into that had to be debugged? I’ll tell you about it in a future post).
 
-    FROM gcr.io/deeplearning-platform-release/tf2-gpu
-    LABEL maintainer="Zain Rizvi"
-    
-    RUN apt update -y
-    RUN mkdir steps
-    COPY steps/* /steps/
-    RUN chmod +x /steps/*
-    
-    RUN /steps/1-Install-generic-dependencies.sh
-    RUN /steps/2-register-with-r-repository-ubuntu.sh
-    RUN /steps/3-Install-R-and-IRkernel.sh
-    RUN /steps/4-Install-common-R-packages.sh -m GPU
-    RUN /steps/5-Add-rpy2-support.sh
-    RUN /steps/6-Install-keras.sh
+``` dockerfile
+FROM gcr.io/deeplearning-platform-release/tf2-gpu
+LABEL maintainer="Zain Rizvi"
+
+RUN apt update -y
+RUN mkdir steps
+COPY steps/* /steps/
+RUN chmod +x /steps/*
+
+RUN /steps/1-Install-generic-dependencies.sh
+RUN /steps/2-register-with-r-repository-ubuntu.sh
+RUN /steps/3-Install-R-and-IRkernel.sh
+RUN /steps/4-Install-common-R-packages.sh -m GPU
+RUN /steps/5-Add-rpy2-support.sh
+RUN /steps/6-Install-keras.sh
+```
 
 And now we can run `docker build . -f dockerfiles\tensorflow-2-gpu.Dockerfiles` again. This time the command will take a **long** time to complete (because some of those steps are sloooooow).
 
 But once it completes, we'll again be given a new image Id similar to the one we saw earlier. Just tag that and push it to your registry the same way we did before
 
-    docker tag xxxxxxxxxxxxx zainrizvi/deeplearning-container-tf2-with-r:latest-gpu
-    docker push zainrizvi/deeplearning-container-tf2-with-r
+    $ docker tag xxxxxxxxxxxxx zainrizvi/deeplearning-container-tf2-with-r:latest-gpu
+    $ docker push zainrizvi/deeplearning-container-tf2-with-r
 
 And now your image is available to use on your registry
 
