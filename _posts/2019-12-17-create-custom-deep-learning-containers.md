@@ -46,39 +46,43 @@ In order to follow along with the rest of the post I'll assume you have the foll
 
 Let's take a quick look at what containers we have available to us by running
 
-    gcloud container images list --repository="gcr.io/deeplearning-platform-release"
+``` shell
+gcloud container images list --repository="gcr.io/deeplearning-platform-release"
+```
 
 Currently that command outputs:
 
-    > gcloud container images list --repository="gcr.io/deeplearning-platform-release"
-    NAME
-    gcr.io/deeplearning-platform-release/base-cpu
-    gcr.io/deeplearning-platform-release/base-cu100
-    gcr.io/deeplearning-platform-release/beam-notebooks
-    gcr.io/deeplearning-platform-release/pytorch-cpu
-    gcr.io/deeplearning-platform-release/pytorch-cpu.1-0
-    gcr.io/deeplearning-platform-release/pytorch-cpu.1-1
-    gcr.io/deeplearning-platform-release/pytorch-cpu.1-2
-    gcr.io/deeplearning-platform-release/pytorch-cpu.1-3
-    gcr.io/deeplearning-platform-release/pytorch-gpu
-    gcr.io/deeplearning-platform-release/pytorch-gpu.1-0
-    gcr.io/deeplearning-platform-release/pytorch-gpu.1-1
-    gcr.io/deeplearning-platform-release/pytorch-gpu.1-2
-    gcr.io/deeplearning-platform-release/pytorch-gpu.1-3
-    gcr.io/deeplearning-platform-release/r-cpu
-    gcr.io/deeplearning-platform-release/r-cpu.3-6
-    gcr.io/deeplearning-platform-release/tf-cpu
-    gcr.io/deeplearning-platform-release/tf-cpu.1-13
-    gcr.io/deeplearning-platform-release/tf-cpu.1-14
-    gcr.io/deeplearning-platform-release/tf-cpu.1-15
-    gcr.io/deeplearning-platform-release/tf-gpu
-    gcr.io/deeplearning-platform-release/tf-gpu.1-13
-    gcr.io/deeplearning-platform-release/tf-gpu.1-14
-    gcr.io/deeplearning-platform-release/tf-gpu.1-15
-    gcr.io/deeplearning-platform-release/tf2-cpu
-    gcr.io/deeplearning-platform-release/tf2-cpu.2-0
-    gcr.io/deeplearning-platform-release/tf2-gpu
-    gcr.io/deeplearning-platform-release/tf2-gpu.2-0
+``` shell
+> gcloud container images list --repository="gcr.io/deeplearning-platform-release"
+NAME
+gcr.io/deeplearning-platform-release/base-cpu
+gcr.io/deeplearning-platform-release/base-cu100
+gcr.io/deeplearning-platform-release/beam-notebooks
+gcr.io/deeplearning-platform-release/pytorch-cpu
+gcr.io/deeplearning-platform-release/pytorch-cpu.1-0
+gcr.io/deeplearning-platform-release/pytorch-cpu.1-1
+gcr.io/deeplearning-platform-release/pytorch-cpu.1-2
+gcr.io/deeplearning-platform-release/pytorch-cpu.1-3
+gcr.io/deeplearning-platform-release/pytorch-gpu
+gcr.io/deeplearning-platform-release/pytorch-gpu.1-0
+gcr.io/deeplearning-platform-release/pytorch-gpu.1-1
+gcr.io/deeplearning-platform-release/pytorch-gpu.1-2
+gcr.io/deeplearning-platform-release/pytorch-gpu.1-3
+gcr.io/deeplearning-platform-release/r-cpu
+gcr.io/deeplearning-platform-release/r-cpu.3-6
+gcr.io/deeplearning-platform-release/tf-cpu
+gcr.io/deeplearning-platform-release/tf-cpu.1-13
+gcr.io/deeplearning-platform-release/tf-cpu.1-14
+gcr.io/deeplearning-platform-release/tf-cpu.1-15
+gcr.io/deeplearning-platform-release/tf-gpu
+gcr.io/deeplearning-platform-release/tf-gpu.1-13
+gcr.io/deeplearning-platform-release/tf-gpu.1-14
+gcr.io/deeplearning-platform-release/tf-gpu.1-15
+gcr.io/deeplearning-platform-release/tf2-cpu
+gcr.io/deeplearning-platform-release/tf2-cpu.2-0
+gcr.io/deeplearning-platform-release/tf2-gpu
+gcr.io/deeplearning-platform-release/tf2-gpu.2-0
+```
 
 That's a list of all the different environments available for you to choose from. You can see Tensorflow, Pytorch, R, and others on the list, and most of them come in both CPU and GPU variations.
 
@@ -96,8 +100,10 @@ We'll create a super simple image first. We'll use the Tensorflow 2 CPU image as
 
 To do this, create a dockerfile and give it the following contents
 
-    FROM gcr.io/deeplearning-platform-release/tf2-gpu
-    LABEL maintainer="Zain Rizvi"
+``` bash
+FROM gcr.io/deeplearning-platform-release/tf2-gpu
+LABEL maintainer="Zain Rizvi"
+```
 
 **_Note_**_: I named my dockerfile_ [_tensorflow-2-gpu.Dockerfile_](https://github.com/ZainRizvi/UseRWithGpus/blob/master/dockerfiles/tensorflow-2-gpu.Dockerfile) _and put it under the “dockerfiles” subdirectory, and will be using that for the rest of my examples. But convention is to just name your dockerfile “Dockerfile”_
 
@@ -107,23 +113,25 @@ Now cd to the directory that contains that file and run `docker build . -f docke
 
 You'll see something similar to the following
 
-    UseRWithGpus> docker build . -f dockerfiles\tensorflow-2-gpu.Dockerfiles
-    Sending build context to Docker daemon 2.048kB
-    Step 1/2 : FROM gcr.io/deeplearning-platform-release/tf2-cpu
-    latest: Pulling from deeplearning-platform-release/tf2-cpu
-    35c102085707: Already exists
-    251f5509d51d: Already exists
-    …
-    928e12577c37: Pull complete
-    48d9ceba06f1: Pull complete
-    Digest: sha256:88ae24914e15f2df11a03486668e9051ca85b65f8577358e7d965ce6a146f217
-    Status: Downloaded newer image for gcr.io/deeplearning-platform-release/tf2-cpu:latest
-    ---> e493f17c90d0
-    Step 2/2 : LABEL maintainer="Zain Rizvi"
-    ---> Running in 561cbb80b0c5
-    Removing intermediate container 561cbb80b0c5
-    ---> 8cee7adcf9c3
-    Successfully built 8cee7adcf9c3
+``` shell
+UseRWithGpus> docker build . -f dockerfiles\tensorflow-2-gpu.Dockerfiles
+Sending build context to Docker daemon 2.048kB
+Step 1/2 : FROM gcr.io/deeplearning-platform-release/tf2-cpu
+latest: Pulling from deeplearning-platform-release/tf2-cpu
+35c102085707: Already exists
+251f5509d51d: Already exists
+…
+928e12577c37: Pull complete
+48d9ceba06f1: Pull complete
+Digest: sha256:88ae24914e15f2df11a03486668e9051ca85b65f8577358e7d965ce6a146f217
+Status: Downloaded newer image for gcr.io/deeplearning-platform-release/tf2-cpu:latest
+---> e493f17c90d0
+Step 2/2 : LABEL maintainer="Zain Rizvi"
+---> Running in 561cbb80b0c5
+Removing intermediate container 561cbb80b0c5
+---> 8cee7adcf9c3
+Successfully built 8cee7adcf9c3
+```
 
 Note the id in the last line **`Successfully built 8cee7adcf9c3`**. That **`8cee7adcf9c3`** is a local image id, and it will be important when we want to push our image (a couple steps down).
 
