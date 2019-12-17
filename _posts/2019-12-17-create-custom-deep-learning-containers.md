@@ -198,8 +198,10 @@ And now we can run `docker build . -f dockerfiles\tensorflow-2-gpu.Dockerfiles` 
 
 But once it completes, we'll again be given a new image Id similar to the one we saw earlier. Just tag that and push it to your registry the same way we did before
 
-    $ docker tag xxxxxxxxxxxxx zainrizvi/deeplearning-container-tf2-with-r:latest-gpu
-    $ docker push zainrizvi/deeplearning-container-tf2-with-r
+```
+$ docker tag xxxxxxxxxxxxx zainrizvi/deeplearning-container-tf2-with-r:latest-gpu
+$ docker push zainrizvi/deeplearning-container-tf2-with-r
+```
 
 And now your image is available to use on your registry
 
