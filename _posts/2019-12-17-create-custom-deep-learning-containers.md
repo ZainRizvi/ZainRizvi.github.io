@@ -1,12 +1,12 @@
 ---
 layout: post
-title: Create Custom Deep Learning Containers with GPU support for Tensorflow on R
-excerpt: Ever find yourself needing to install the same packages on all your deep
+title: How to Create Customized Deep Learning Containers
+excerpt: "Ever find yourself needing to install the same packages on all your deep
   learning notebooks? Or maybe wishing you could send your exact setup to someone
-  else who could run your notebook? I explore how you can create a custom Docker Container
-  to contain your exact desired Deep Learning environment. Specifically, I'll show
-  how to create Tensorflow with GPU support for R, but you can use these steps for
-  any customization you want
+  else who could run your notebook? \n\nI explore how you can create a custom Docker
+  Container to contain your exact desired Deep Learning environment. Specifically,
+  I'll cover creating Tensorflow with GPU support for R, but you can use these steps
+  for any customization you want"
 tags:
 - Deep Learning
 - GCP
@@ -24,14 +24,16 @@ Turns out you can. GCP's [AI Platform Notebooks team](https://cloud.google.com/a
 
 And those containers are 100% free
 
-A quick list of benefits you can expect by using these:
+Why would you want to use one? A quick list of benefits you can expect by using these:
 
 * Ability to run these deep learning environments anywhere, including directly on your laptop
 * Have your favorite libraries pre-installed by default. You avoid having to customize your notebook environment every time you create a new notebook
 * Have a consistent environment used by all of your data scientists
 * Ability to modify or replace the default Jupyter Lab IDE (if you really want to)
 
-**Disclaimer**: While it's my team which offers the Deep Learning containers, I myself have never seriously used containers before.  So the below is the results of my experimentation and if you know of better ways to achieve what I'm doing please let me know in the comments!
+Below I'll be walking you through the steps I took to create a Jupyter Lab container that lets you run Tensorflow with GPUs, but you can modify these instructions to meet your own exact needs.
+
+**Disclaimer**: While my team offers the Deep Learning containers (among other products), I myself have never used containers before.  So the below is the results of my first real experimentation and if you know of better ways to achieve what I'm doing please let me know in the comments!
 
 # **Prerequisites**
 
