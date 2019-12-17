@@ -133,7 +133,7 @@ Removing intermediate container 561cbb80b0c5
 Successfully built 8cee7adcf9c3
 ```
 
-Note the id in the last line **`Successfully built 8cee7adcf9c3`**. That **`8cee7adcf9c3`** is a local image id, and it will be important when we want to push our image (a couple steps down).
+Note the id in the last line `Successfully built 8cee7adcf9c3`. That `8cee7adcf9c3` is a local image id, and it will be important when we want to push our image (a couple steps down).
 
 ## 2. Push your image to a repository
 
@@ -141,23 +141,31 @@ To push your image, you need a registry to push it to. I’ll assume you’re us
 
 Before the push, make sure you're logged into docker from within the console (enter your password when prompted):
 
-    $ docker login --username zainrizvi
+```
+$ docker login --username zainrizvi
+```
 
 Now to push we need to tell docker which image it should be pushing to our new registry. We do this by tagging the image we built with the path of our registry and add an optional tag (yeah, the overload of the word 'tag' is a bit annoying).
 
 Remember that image Id I told you to note earlier (mine was **`8cee7adcf9c3`**), now is when you need that Id. We'll tag that Id with the path to the repository we want to use:
 
-    $ docker tag [ImageId] [repo-name]:[image-tag]
+``` shell
+$ docker tag [ImageId] [repo-name]:[image-tag]
+```
 
 Example:
 
-    UseRWithGpus>docker tag 8cee7adcf9c3 zainrizvi/deeplearning-container-tf2-with-r:latest-gpu
+```
+$ docker tag 8cee7adcf9c3 zainrizvi/deeplearning-container-tf2-with-r:latest-gpu
+```
 
 If you run docker images you should now see an image with that repository and tag
 
-    $ docker images
-    REPOSITORY TAG IMAGE ID CREATED SIZE
-    zainrizvi/deeplearning-container-tf2-with-r latest-gpu 8cee7adcf9c3 4 minutes ago 6.26GB
+``` shell
+$ docker images
+REPOSITORY TAG IMAGE ID CREATED SIZE
+zainrizvi/deeplearning-container-tf2-with-r latest-gpu 8cee7adcf9c3 4 minutes ago 6.26GB
+```
 
 However, just because we've tagged the image doesn't mean it actually exists in the repository. We have to do a docker push to get it in there:
 
