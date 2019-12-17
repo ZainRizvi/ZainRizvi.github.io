@@ -7,16 +7,18 @@ tags: []
 ---
 Ever find yourself needing to install the same packages on all your deep learning notebooks? Or maybe wishing you could send your exact setup to someone else who could run your notebook? Or perhaps you're a corporation which wants all your data scientists to have some internal libraries on all their notebooks.
 
-Turns out you can setup  GCP's AI Platform Notebooks team offers Deep Learning Containers, which is a containerized version of the exact same images you get when you create a regular AI Platform Notebook (full disclosure: that's my team).
+Turns out you can. GCP's [AI Platform Notebooks team](https://cloud.google.com/ai-platform-notebooks/) offers [Deep Learning Containers](https://cloud.google.com/ai-platform/deep-learning-containers/), which is a containerized version of the exact same images you get when you create a regular AI Platform Notebook (full disclosure: that's [my team](https://zainrizvi.io/about/)).
 
 And those containers are 100% free
 
 A quick list of benefits you can expect by using these:
 
 * Ability to run these deep learning environments anywhere, including directly on your laptop
-* Avoid having to customize your notebook environment every time you create a new notebook
+* Have your favorite libraries pre-installed by default. You avoid having to customize your notebook environment every time you create a new notebook
 * Have a consistent environment used by all of your data scientists
-* Ability to modify or replace the default Jupyter Lab environment (if you really want to)
+* Ability to modify or replace the default Jupyter Lab IDE (if you really want to)
+
+**Disclaimer**: While it's my team which offers the Deep Learning containers, I myself have never seriously used containers before.  So the below is the results of my experimentation and if you know of better ways to achieve what I'm doing please let me know in the comments!
 
 # **Prerequisites**
 
@@ -27,7 +29,7 @@ In order to follow along with the rest of the post I'll assume you have the foll
 
 # **Download a container**
 
-We can take a quick look at what containers we have available to us by running
+Let's take a quick look at what containers we have available to us by running
 
     gcloud container images list --repository="gcr.io/deeplearning-platform-release"
 
@@ -65,7 +67,7 @@ Currently that command outputs:
 
 That's a list of all the different environments available for you to choose from. You can see Tensorflow, Pytorch, R, and others on the list, and most of them come in both CPU and GPU variations.
 
-We'll take the Tensorflow 2 CPU image and modify it to create our custom environment
+We'll take the Tensorflow 2 CPU image and modify it to create our custom environment.  My goal here is to create a containerized version of an R environment with support for using GPUs with Tensorflow and XGboost built in.  [I previously walked through a script](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/) that does all this for you on a AI Platform Notebook, but that script took tens of minutes to run and who has time to wait that long for each of their notebooks?  This solution will hopefully get us to the point where we get both of those things available in two minutes.
 
 # **Steps**
 
@@ -80,11 +82,11 @@ To do this, create a dockerfile and give it the following contents
     FROM gcr.io/deeplearning-platform-release/tf2-gpu
     LABEL maintainer="Zain Rizvi"
 
-_Note: I named my dockerfile_ [_tensorflow-2-gpu.Dockerfile_](https://github.com/ZainRizvi/UseRWithGpus/blob/master/dockerfiles/tensorflow-2-gpu.Dockerfile) _and put it under the “dockerfiles” subdirectory, and will be using that for the rest of my examples. But convention is to just name your dockerfile “Dockerfile”_
+**_Note_**_: I named my dockerfile_ [_tensorflow-2-gpu.Dockerfile_](https://github.com/ZainRizvi/UseRWithGpus/blob/master/dockerfiles/tensorflow-2-gpu.Dockerfile) _and put it under the “dockerfiles” subdirectory, and will be using that for the rest of my examples. But convention is to just name your dockerfile “Dockerfile”_
 
 Now cd to the directory that contains that file and run `docker build . -f dockerfiles\tensorflow-2-gpu.Dockerfiles` And Docker will download that image from the GCP repository, apply your custom label to it, and save the resulting image locally.
 
-_Note: If you name your dockerfile “Dockerfile" and place it in your current directory, you can skip the_ `-f [filename\]` _parameter._
+**_Note_**_: If you name your dockerfile “Dockerfile" and place it in your current directory, you can skip the_ `-f [filename\]` _parameter._
 
 You'll see something similar to the following
 
@@ -182,16 +184,22 @@ To use your newly created image on AI Platform Notebooks:
 
 ![](/media/2019-12-13-custom-instance.png)
 
-2. Under the environment drop down select “Custom container”
+1. Under the environment drop down select “Custom container”
 
 Then in the “Docker container image” box enter the path to the registry you pushed your image to. Mine is: zainrizvi/deeplearning-container-tf2-with-r:latest-gpu
 
 ![](/media/2019-12-13-custom-container.png)
 
-3. Click create, and in few minutes your notebook will be ready. You can open it up and see that TensorFlow is ready to go
+1. Click create, and in few minutes your notebook will be ready. You can open it up and see that TensorFlow is ready to go
 
    ![](/media/2019-12-13-running-notebook-1.png)
 
 And there you go, you now have an R notebook that can run Tensorflow on GPUs!
 
-If you'd like to hear about the craziness I encountered debugging this image (over 7 hours of debugging, which was why I had to split up my original single script into 6 partial scripts), sign up in the form below to get an email when the article comes out.
+# It wasn't all Roses and Rainbows
+
+The more astute among you may have noticed that while [the script I previously demoed](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/) was just, well, a single script, the dockerfile above contains six different scripts which seem to be the original script split into six parts.  The eagle eyed may even notice that some parts of the script have been slightly changed, and that I'm no longer compiling XGboost.
+
+Turns out the Deep Learning VM images and Deep Learning Containers are note quiiiiite 100% identical (for example, on runs on Debian OS while the other runs on Ubuntu). This led to a lot of time spent debugging what I had thought was a solved problem.  (And did I mention this was my first time using docker containers?).  
+
+If you'd like to hear about the craziness I encountered debugging this image (it was over 7 hours of debugging + waiting for scripts to run), sign up on the form below to get an email when that article comes out.
