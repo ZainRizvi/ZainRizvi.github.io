@@ -82,7 +82,7 @@ Currently that command outputs:
 
 That's a list of all the different environments available for you to choose from. You can see Tensorflow, Pytorch, R, and others on the list, and most of them come in both CPU and GPU variations.
 
-We'll take the Tensorflow 2 CPU image and modify it to create our custom environment.  My goal here is to create a containerized version of an R environment with support for using GPUs with Tensorflow and XGboost built in.  [I previously walked through a script](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/) that does all this for you on a AI Platform Notebook, but that script took tens of minutes to run and who has time to wait that long for each of their notebooks?  This solution will hopefully get us to the point where we get both of those things available in two minutes.
+We'll take the Tensorflow 2 CPU image and modify it to create our custom environment.  My goal here is to create a containerized version of an R environment with support for using GPUs with Tensorflow available out of the box.  [I previously walked through a script](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/) that does all this for you on a AI Platform Notebook, but that script took tens of minutes to run and who has time to wait that long for each of their notebooks?  This solution will hopefully get us to the point where we get both of those things available in two minutes.
 
 # **Steps**
 
