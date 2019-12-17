@@ -141,7 +141,7 @@ To push your image, you need a registry to push it to. I’ll assume you’re us
 
 Before the push, make sure you're logged into docker from within the console (enter your password when prompted):
 
-```
+``` shell
 $ docker login --username zainrizvi
 ```
 
@@ -155,7 +155,7 @@ $ docker tag [ImageId] [repo-name]:[image-tag]
 
 Example:
 
-```
+``` shell
 $ docker tag 8cee7adcf9c3 zainrizvi/deeplearning-container-tf2-with-r:latest-gpu
 ```
 
@@ -169,7 +169,9 @@ zainrizvi/deeplearning-container-tf2-with-r latest-gpu 8cee7adcf9c3 4 minutes ag
 
 However, just because we've tagged the image doesn't mean it actually exists in the repository. We have to do a docker push to get it in there:
 
-    $ docker push zainrizvi/deeplearning-container-tf2-with-r
+``` shell
+$ docker push zainrizvi/deeplearning-container-tf2-with-r
+```
 
 And now if you go to your docker registry you'll see that the image is there for anyone to view and download
 
@@ -206,7 +208,7 @@ And now we can run `docker build . -f dockerfiles\tensorflow-2-gpu.Dockerfiles` 
 
 But once it completes, we'll again be given a new image Id similar to the one we saw earlier. Just tag that and push it to your registry the same way we did before
 
-```
+``` shell
 $ docker tag xxxxxxxxxxxxx zainrizvi/deeplearning-container-tf2-with-r:latest-gpu
 $ docker push zainrizvi/deeplearning-container-tf2-with-r
 ```
