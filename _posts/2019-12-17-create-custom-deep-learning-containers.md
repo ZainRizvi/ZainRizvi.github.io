@@ -100,7 +100,7 @@ We'll create a super simple image first. We'll use the Tensorflow 2 CPU image as
 
 To do this, create a dockerfile and give it the following contents
 
-``` bash
+``` dockerfile
 FROM gcr.io/deeplearning-platform-release/tf2-gpu
 LABEL maintainer="Zain Rizvi"
 ```
