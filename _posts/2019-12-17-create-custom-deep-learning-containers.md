@@ -33,12 +33,12 @@ Why would you want to use one? A quick list of benefits you can expect by using 
 
 Below I'll be walking you through the steps I took to create a Jupyter Lab container that lets you run Tensorflow with GPUs, but you can modify these instructions to meet your own exact needs.
 
-**Disclaimer**: While my team offers the Deep Learning containers (among other products), I myself have never used containers before.  So the below is the results of my first real experimentation and if you know of better ways to achieve what I'm doing please let me know in the comments!  
+**Disclaimer**: While my team offers the Deep Learning containers (among other products), I myself have never used containers before.  So the below is the results of my first real experimentation and if you know of better ways to achieve what I'm doing please let me know in the comments!
 
-At the bottom of the post are the key lessons I learned: 
+At the bottom of the post are the key lessons I learned:
 
 * Differences between DLVM images and DL Container images
-* Some productivity hacks for working with Dockerfiles 
+* Some productivity hacks for working with Dockerfiles
 
 # **Prerequisites**
 
@@ -249,7 +249,7 @@ Turns out the Deep Learning VM images and Deep Learning Containers are note quii
 ## **Key differences encountered:**
 
 * VM images run on Debian OS while containers run on Ubuntu
-* VM images have some extra nvidia libraries installed that are required to compile GPU binaries. I don't believe this affects any GPU runtime behavior.
+* Container images appear to not have the CUDA compiler installed, which is (surprise)  required to compile GPU binaries. It may be in a different location, but I haven't been able to find it so far. This shouldn't affect any GPU runtime behavior.
 * \[mild\] Containers get very confused if you give them a command that starts with "sudo". Not a big deal since every command in a container runs as 'sudo' anyways
 
 This led to a lot of time spent debugging what I had thought was a solved problem.  (And did I mention this was my first time using docker containers?).
