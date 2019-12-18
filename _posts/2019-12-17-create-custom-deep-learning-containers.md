@@ -250,7 +250,7 @@ Turns out the Deep Learning VM images and Deep Learning Containers are note quii
 
 * VM images run on Debian OS while containers run on Ubuntu
 * VM images have some extra nvidia libraries installed that are required to compile GPU binaries. I don't believe this affects any GPU runtime behavior.
-* \[mild\] Containers get very confused if you give them a command that starts with "sudo"
+* \[mild\] Containers get very confused if you give them a command that starts with "sudo". Not a big deal since every command in a container runs as 'sudo' anyways
 
 This led to a lot of time spent debugging what I had thought was a solved problem.  (And did I mention this was my first time using docker containers?).
 
