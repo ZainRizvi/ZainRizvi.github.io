@@ -252,7 +252,7 @@ Turns out the Deep Learning VM images and Deep Learning Containers are note quii
 * Container images don't the CUDA compiler installed, which is (surprise)  required to compile GPU binaries. It contains all the binaries required for runtime though. Turns out those were omitted in order to reduce the size of the docker container.
 * \[mild\] Containers get very confused if you give them a command that starts with "sudo". Not a big deal since every command in a container runs as 'sudo' anyways
 
-This led to a lot of time spent debugging what I had thought was a solved problem.  (And did I mention this was my first time using docker containers?).
+This led to a lot of time spent debugging what I had thought was a solved problem.  (And did I mention this was my first time using docker containers?). Which led to...
 
 ## **Key productivity hacks discovered:**
 
