@@ -246,7 +246,7 @@ The more astute among you may have noticed that while [the script I previously d
 
 Turns out the Deep Learning VM images and Deep Learning Containers are note quiiiiite 100% identical...
 
-## **Key differences I encountered:**
+## **Key differences encountered:**
 
 * VM images run on Debian OS while containers run on Ubuntu
 * VM images have some extra nvidia libraries installed that are required to compile GPU binaries. I don't believe this affects any GPU runtime behavior.
@@ -254,7 +254,7 @@ Turns out the Deep Learning VM images and Deep Learning Containers are note quii
 
 This led to a lot of time spent debugging what I had thought was a solved problem.  (And did I mention this was my first time using docker containers?).
 
-## **Key productivity hacks I discovered:**
+## **Key productivity hacks discovered:**
 
 * In your dockerfile, split up your mega script into multiple smaller scripts.  Docker will 'cache' the results of your previous, successful scripts and restart the build from the script that was changed (downside: this adds more layers to your docker image, but there are workarounds)
 * Edit on the go: If you setup docker hub to pull your code from github and build the image, you can make minor 1-minute fixes from your phone directly on github, commit, and go about your day while docker hub starts a new build run (which may take 2-4 hours to complete...Docker hub is slowwwwww. But it's free, and enables this nice productivity hack)
