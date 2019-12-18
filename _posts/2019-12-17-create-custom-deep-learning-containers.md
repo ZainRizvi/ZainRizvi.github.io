@@ -86,7 +86,7 @@ gcr.io/deeplearning-platform-release/tf2-gpu.2-0
 
 That's a list of all the different environments available for you to choose from. You can see Tensorflow, Pytorch, R, and others on the list, and most of them come in both CPU and GPU variations.
 
-We'll take the Tensorflow 2 CPU image and modify it to create our custom environment.  My goal here is to create a containerized version of an R environment with support for using GPUs with Tensorflow available out of the box.  [I previously walked through a script](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/) that does all this for you on a AI Platform Notebook, but that script took tens of minutes to run and who has time to wait that long for each of their notebooks?  
+We'll take the Tensorflow 2 CPU image and modify it to create our custom environment.  My goal here is to create a containerized version of an R environment with support for using GPUs with Tensorflow available out of the box.  [I previously walked through a script](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/) that does all this for you on a AI Platform Notebook, but that script took tens of minutes to run and who has time to wait that long for each of their notebooks?
 
 This solution will hopefully get us to the point where we get both of those things available in two minutes.
 
@@ -239,6 +239,14 @@ And there you go, you now have an R notebook that can run Tensorflow on GPUs!
 
 The more astute among you may have noticed that while [the script I previously demoed](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/) was just, well, a single script, the dockerfile above contains six different scripts which seem to be the original script split into six parts.  The eagle eyed may even notice that some parts of the script have been slightly changed, and that I'm no longer compiling XGboost.
 
-Turns out the Deep Learning VM images and Deep Learning Containers are note quiiiiite 100% identical (for example, on runs on Debian OS while the other runs on Ubuntu). This led to a lot of time spent debugging what I had thought was a solved problem.  (And did I mention this was my first time using docker containers?).  
+Turns out the Deep Learning VM images and Deep Learning Containers are note quiiiiite 100% identical. 
+
+**Key differences I encountered:**
+
+* VM images run on Debian OS while containers run on Ubuntu
+* VM images have some extra nvidia libraries installed that are required to compile GPU binaries
+* \[mild\] Containers get very confused if you give them a command that starts with "sudo"
+
+This led to a lot of time spent debugging what I had thought was a solved problem.  (And did I mention this was my first time using docker containers?).
 
 If you'd like to hear about the craziness I encountered debugging this image (it was over 7 hours of debugging + waiting for scripts to run), sign up on the form below to get an email when that article comes out.
