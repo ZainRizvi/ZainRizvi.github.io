@@ -33,7 +33,12 @@ Why would you want to use one? A quick list of benefits you can expect by using 
 
 Below I'll be walking you through the steps I took to create a Jupyter Lab container that lets you run Tensorflow with GPUs, but you can modify these instructions to meet your own exact needs.
 
-**Disclaimer**: While my team offers the Deep Learning containers (among other products), I myself have never used containers before.  So the below is the results of my first real experimentation and if you know of better ways to achieve what I'm doing please let me know in the comments!
+**Disclaimer**: While my team offers the Deep Learning containers (among other products), I myself have never used containers before.  So the below is the results of my first real experimentation and if you know of better ways to achieve what I'm doing please let me know in the comments!  
+
+At the bottom of the post are the key lessons I learned: 
+
+* Differences between DLVM images and DL Container images
+* Some productivity hacks for working with Dockerfiles 
 
 # **Prerequisites**
 
@@ -239,14 +244,19 @@ And there you go, you now have an R notebook that can run Tensorflow on GPUs!
 
 The more astute among you may have noticed that while [the script I previously demoed](https://zainrizvi.io/blog/using-gpus-with-r-in-jupyter-lab/) was just, well, a single script, the dockerfile above contains six different scripts which seem to be the original script split into six parts.  The eagle eyed may even notice that some parts of the script have been slightly changed, and that I'm no longer compiling XGboost.
 
-Turns out the Deep Learning VM images and Deep Learning Containers are note quiiiiite 100% identical. 
+Turns out the Deep Learning VM images and Deep Learning Containers are note quiiiiite 100% identical...
 
-**Key differences I encountered:**
+## **Key differences I encountered:**
 
 * VM images run on Debian OS while containers run on Ubuntu
 * VM images have some extra nvidia libraries installed that are required to compile GPU binaries
 * \[mild\] Containers get very confused if you give them a command that starts with "sudo"
 
 This led to a lot of time spent debugging what I had thought was a solved problem.  (And did I mention this was my first time using docker containers?).
+
+## **Key productivity hacks I discovered:**
+
+* In your dockerfile, split up your mega script into multiple smaller scripts.  Docker will 'cache' the results of your previous, successful scripts and restart the build from the script that was changed (downside: this adds more layers to your docker image, but there are workarounds)
+* Edit on the go: If you setup docker hub to pull your code from github and build the image, you can make minor 1-minute fixes from your phone directly on github, commit, and go about your day while docker hub starts a new build run (which may take 2-4 hours to complete...Docker hub is slowwwwww. But it's free, and enables this nice productivity hack)
 
 If you'd like to hear about the craziness I encountered debugging this image (it was over 7 hours of debugging + waiting for scripts to run), sign up on the form below to get an email when that article comes out.
