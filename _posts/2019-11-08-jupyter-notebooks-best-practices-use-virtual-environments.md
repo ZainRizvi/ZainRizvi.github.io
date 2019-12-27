@@ -80,3 +80,5 @@ That package was not visible in the other environment.  And then when I installe
 ![](/media/2019-11-08-pasted image 0 (1).png)
 
 And there you have it.  You can now create virtual environments on your Jupyter Lab notebooks
+
+_Interested in creating Conda Environments instead?  Nikolai has_ [_a pretty nice write-up here_](https://janakiev.com/blog/jupyter-virtual-envs/)_, which I also depended on to write the above steps_
