@@ -27,11 +27,11 @@ I prefer to buy my domains through namecheap.com, though pretty much any company
 
 ![](/media/2020-01-14-mailgun logo.png)
 
-This is the secret sauce. We'll use MailGun to forward any email sent to your domain straight to your Gmail inbox (umm...you should sign up for Gmail too if you haven't already)
+This is the secret sauce. We'll use Mailgun to forward any email sent to your domain straight to your Gmail inbox (umm...you should sign up for Gmail too if you haven't already)
 
 Go to their site at http://www.mailgun.com and sign up.  It's free (even if they want you to give them your credit card)
 
-# Step 3 - Register your domain with MailGun
+# Step 3 - Register your domain with Mailgun
 
 Within MailGun find the option to add a new domain (it's in Sending -> Domains -> Add New Domain). Chances are they'll have setup their new user onboarding to guide you through that exact process. Follow the instructions on the page to setup your domain.
 
@@ -41,7 +41,7 @@ At some point they will ask you to update your domain's DNS records. It seems sc
 
 Then wait for MailGun to confirm that everything is setup correctly (it tends to take less than a hour, but could be longer)
 
-# Step 4 - Setup mail forwarding within MailGun
+# Step 4 - Setup mail forwarding within Mailgun
 
 Within MailGun go to the [Receiving section](https://app.mailgun.com/app/receiving/routes) and click "Create Route".
 
