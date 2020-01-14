@@ -17,6 +17,8 @@ When you're done following the below instructions you'll be able to send and rec
 
 # Step 1 - Buy a domain
 
+![](/media/2020-01-14-namecheap logo.png)
+
 Okay, so you still have to pay to own your domain, but the rest is free. And if you want a custom domain email address, then chances are you're interested in your professional reputation. Owning your own domain is a good idea even if you don't plan to start your own sure just yet. I held off on it a couple years and that was enough for a law student to grab zainrizvi.com -_-
 
 I prefer to buy my domains through namecheap.com, though pretty much any company would work. Use whatever you like, but don't let the decision of which site to use to stop you from buying your domain! (Use namecheap.com if you're uncertain)
