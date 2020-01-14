@@ -45,15 +45,15 @@ Then wait for MailGun to confirm that everything is setup correctly (it tends to
 
 Within MailGun go to the [Receiving section](https://app.mailgun.com/app/receiving/routes) and click "Create Route".
 
-Set the "Expression Type" to "match recipient" and then for the recipient enter the exact email address you'd like to have (yourname@yourdomain.com). Ensure the checkbox under "forward" is checked, and enter your gmail address there.
+Set the "Expression Type" to "match recipient" and then for the recipient enter the exact email address you'd like to have (I'm using example@zainrizvi.io). Ensure the checkbox under "forward" is checked, and enter your gmail address there.  Let's pretend my gmail address is youraddress@gmail.com.
 
 ![](/media/2020-01-14-new_route2.png)
 
-Once you hit save, any emails that get sent to yourname@yourdomain.com will get forwarded to your Gmail address.
-
-_Note: The only exception to this is emails you send from the same Gmail account that the message is being forwarded to. Gmail tries to be smart and hides that message from you. So if you're testing it out, send the message from a different email address._
+Once you hit save, any emails that get sent to that recipient email address (in this case 'example@zainrizvi.io') will get forwarded to your Gmail address.
 
 Now you can receive emails at your custom domain, but if you reply to any email the recipient will see that you're sending it from your gmail account.  We'll fix that in the next step.
+
+_Note: Don't bother trying to send messages from the same Gmail account that the message is being forwarded to. Gmail_ [_tries to be smart_](https://help.mailgun.com/hc/en-us/articles/203306560-Why-am-I-not-receiving-an-email-when-sending-via-the-route-with-the-sending-address-as-a-destination-) _and hides any messages you're sending to yourself. So if you're testing it out, send the message from a different email address instead._
 
 # Step 5 - Tell Gmail to send messages from your custom address
 
