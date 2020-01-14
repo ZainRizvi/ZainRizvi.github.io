@@ -11,7 +11,7 @@ tags:
 - email
 
 ---
-I recently discovered that it's possible to combine any domain that you own with your Gmail account and a free MailGun account to get a free custom domain email address! 
+I recently discovered that it's possible to combine any domain that you own with your Gmail account and a free MailGun account to get a free custom domain email address!
 
 When you're done following the below instructions you'll be able to send and receive emails addressed to you@yourdomain.com directly from your Gmail inbox.
 
@@ -21,9 +21,13 @@ Okay, so you still have to pay to own your domain, but the rest is free. And if 
 
 I prefer to buy my domains through namecheap.com, though pretty much any company would work. Use whatever you like, but don't let the decision of which site to use to stop you from buying your domain! (Use namecheap.com if you're uncertain)
 
-# Step 2 - Sign up for a MailGun.com account
+# Step 2 - Sign up for a [mailgun.com](http://mailgun.com) account
+
+![](/media/2020-01-14-mailgun logo.png)
 
 This is the secret sauce. We'll use MailGun to forward any email sent to your domain straight to your Gmail inbox (umm...you should sign up for Gmail too if you haven't already)
+
+Go to their site at http://www.mailgun.com and sign up.  It's free (even if they want you to give them your credit card)
 
 # Step 3 - Register your domain with MailGun
 
