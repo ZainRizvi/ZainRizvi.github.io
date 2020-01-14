@@ -33,7 +33,7 @@ Go to their site at http://www.mailgun.com and sign up.  It's free (even if they
 
 # Step 3 - Register your domain with MailGun
 
-Within MailGun find the option to add a new domain (it's in Sending -> Domains -> Add New Domain). Chances are they'll have setup their new user onboarding to guide you through that exact process. Follow the instructions on the page to setup your domain.  
+Within MailGun find the option to add a new domain (it's in Sending -> Domains -> Add New Domain). Chances are they'll have setup their new user onboarding to guide you through that exact process. Follow the instructions on the page to setup your domain.
 
 While MailGun does require a credit card before you can add your domain, they won't charge you anything if you follow the steps in this blog.
 
@@ -49,7 +49,7 @@ Set the "Expression Type" to "match recipient" and then for the recipient enter 
 
 ![](/media/2020-01-14-new_route2.png)
 
-Once you hit save, any emails that get sent to yourname@yourdomain.com will get forwarded to your Gmail address. 
+Once you hit save, any emails that get sent to yourname@yourdomain.com will get forwarded to your Gmail address.
 
 _Note: The only exception to this is emails you send from the same Gmail account that the message is being forwarded to. Gmail tries to be smart and hides that message from you. So if you're testing it out, send the message from a different email address._
 
@@ -61,9 +61,27 @@ Gmail has this handy feature called "Send Mail As" which we'll be taking advanta
 
 In Gmail, go to Settings -> Accounts and Import -> "Add another email address"
 
-Click add new
+Enter the custom domain email address you created a route for in mailgun and click "Next Step)
 
-If you want to make this new email address your primary one, select the "make this my default address" button
+![](/media/2020-01-14-add gmail account.png)
+
+The next screen asks you to input your mailgun SMTP credentials.  
+
+![](/media/2020-01-14-add gmail 2.png)
+
+You can get those from mailgun by navigating in Mailgun to Sending -> Domain Settings -> SMTP Credentials, and ensuring you're using the correct domain from the drop down menu at the top
+
+Click the "Reset Password" button to get a new password which you can let Gmail use to log into the SMTP server.  You'll also find the username and SMTP Server to use on that page
+
+![](/media/2020-01-14-Smtp credentials.png)
+
+Enter the relevant information into the gmail window and click "Add Account".  Gmail will then send your custom domain email address a message asking to confirm that it's okay with gmail sending emails on it's behalf.  Since you've already set up email forwarding, that email will land right in your gmail inbox :)
+
+Click the link to confirm and you'll now be able to send messages using your custom address.
+
+As a final step, if you want to make this new email address the mail one you use, go back go Gmail -> Settings -> Accounts and Imports -> Send Mail As.  Find your new email address in that list and click on the "make default" button.  
+
+All emails you send will now be sent via your custom domain instead!
 
 # And Enjoy!
 
