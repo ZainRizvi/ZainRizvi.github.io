@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to get a custom domain email address for free
+title: How to get a Free Custom Domain Email Address
 excerpt: 'I recently discovered that it''s possible to combine any domain that you
   own with your Gmail account and a free MailGun account to get a free custom domain
   email address!  Here''s how:'
@@ -33,9 +33,9 @@ Go to their site at http://www.mailgun.com and sign up.  It's free (even if they
 
 # Step 3 - Register your domain with MailGun
 
-Within MailGun find the option to add a new domain. Chances are theyll have setup their new user page to guide you through that exact process. Follow the instructions on the page to setup your domain.
+Within MailGun find the option to add a new domain (it's in Sending -> Domains -> Add New Domain). Chances are they'll have setup their new user onboarding to guide you through that exact process. Follow the instructions on the page to setup your domain.  
 
-Note: MailGun requires a credit card before you can add your domain, but they won't charge you anything if you follow the steps in this blog.
+While MailGun does require a credit card before you can add your domain, they won't charge you anything if you follow the steps in this blog.
 
 At some point they will ask you to update your domain's DNS records. It seems scary but they walk you through the worst of it.
 
@@ -43,17 +43,23 @@ Then wait for MailGun to confirm that everything is setup correctly (it tends to
 
 # Step 4 - Setup mail forwarding within MailGun
 
-Within MailGun go to the Receiving section ([https://app.mailgun.com/app/receiving/routes](https://app.mailgun.com/app/receiving/routes "https://app.mailgun.com/app/receiving/routes")) and create a new route.
+Within MailGun go to the [Receiving section](https://app.mailgun.com/app/receiving/routes) and click "Create Route".
 
 Set the "Expression Type" to "match recipient" and then for the recipient enter the exact email address you'd like to have (yourname@yourdomain.com). Ensure the checkbox under "forward" is checked, and enter your gmail address there.
 
-Once you hit save, any emails that get sent to yourname@yourdomain.com will get forwarded to your Gmail. (The only exception to this is emails you send from the same Gmail account that the message is being forwarded to. Gmail tries to be smart and hides that message from you. So if you're testing it out, send the message from a different email address).
+![](/media/2020-01-14-new_route2.png)
+
+Once you hit save, any emails that get sent to yourname@yourdomain.com will get forwarded to your Gmail address. 
+
+_Note: The only exception to this is emails you send from the same Gmail account that the message is being forwarded to. Gmail tries to be smart and hides that message from you. So if you're testing it out, send the message from a different email address._
+
+Now you can receive emails at your custom domain, but if you reply to any email the recipient will see that you're sending it from your gmail account.  We'll fix that in the next step.
 
 # Step 5 - Tell Gmail to send messages from your custom address
 
 Gmail has this handy feature called "Send Mail As" which we'll be taking advantage of here.
 
-In Gmail, go to settings->xyz
+In Gmail, go to Settings -> Accounts and Import -> "Add another email address"
 
 Click add new
 
