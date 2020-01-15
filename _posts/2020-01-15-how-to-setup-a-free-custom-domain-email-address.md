@@ -65,7 +65,7 @@ Enter the custom domain email address you created a route for in mailgun and cli
 
 ![](/media/2020-01-14-add gmail account.png)
 
-The next screen asks you to input your mailgun SMTP credentials.  
+The next screen asks you to input your mailgun SMTP credentials.
 
 ![](/media/2020-01-14-add gmail 2.png)
 
@@ -79,12 +79,20 @@ Enter the relevant information into the gmail window and click "Add Account".  G
 
 Click the link to confirm and you'll now be able to send messages using your custom address.
 
-As a final step, if you want to make this new email address the mail one you use, go back go Gmail -> Settings -> Accounts and Imports -> Send Mail As.  Find your new email address in that list and click on the "make default" button.  
+As a final step, if you want to make this new email address the mail one you use, go back go Gmail -> Settings -> Accounts and Imports -> Send Mail As.  Find your new email address in that list and click on the "make default" button.
 
 All emails you send will now be sent via your custom domain instead!
 
 # And Enjoy!
 
 You're done! Now you've added email to your custom domain at no additional cost, and you get to keep using the wonderful Gmail interface.
+
+There is one caveat for this setup: In the unlikely event Mailgun ever decides to charge for their route forwarding or SMTP server you would suddenly have to pay to keep this going. However, there are other online services which make a similar setup possible for free, so you could always move to them.  Some of the ones folks have pointed out to me are:
+
+* Zoho (shared by [Pēteris Caune](https://www.indiehackers.com/cuu508))
+* Privateemail.com (shared by [Eric Turner](https://www.indiehackers.com/CodeOfTheProgrammer))
+* Yandex.com (shared by [May](https://www.indiehackers.com/May))
+
+If you know of any other services which make a similar setup possible let me know and I'll add it to the list above!
 
 Did you find this useful? I'd love to hear it! Drop a comment below or send me a message at my-first-name @ zainrizvi.io.
