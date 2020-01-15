@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How to get a Free Custom Domain Email Address
+title: How to setup a Free Custom Domain Email Address
 excerpt: 'I recently discovered that it''s possible to combine any domain that you
   own with your Gmail account and a free MailGun account to get a free custom domain
   email address!  Here''s how:'
