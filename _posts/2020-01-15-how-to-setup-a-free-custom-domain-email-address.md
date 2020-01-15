@@ -87,7 +87,9 @@ All emails you send will now be sent via your custom domain instead!
 
 You're done! Now you've added email to your custom domain at no additional cost, and you get to keep using the wonderful Gmail interface.
 
-There is one caveat for this setup: In the unlikely event Mailgun ever decides to charge for their route forwarding or SMTP server you would suddenly have to pay to keep this going. However, there are other online services which make a similar setup possible for free, so you could always move to them.  Some of the ones folks have pointed out to me are:
+# The One Caveat...
+
+There is one caveat with this setup: In the unlikely event Mailgun ever decides to charge for their route forwarding or SMTP server you would suddenly have to pay to keep this going. However, there are other online services which make a similar setup possible for free, so you could always move to them.  Some of the ones folks have pointed out to me are:
 
 * Zoho (shared by [Pēteris Caune](https://www.indiehackers.com/cuu508))
 * Privateemail.com (shared by [Eric Turner](https://www.indiehackers.com/CodeOfTheProgrammer))
@@ -95,4 +97,4 @@ There is one caveat for this setup: In the unlikely event Mailgun ever decides t
 
 If you know of any other services which make a similar setup possible let me know and I'll add it to the list above!
 
-Did you find this useful? I'd love to hear it! Drop a comment below or send me a message at my-first-name @ zainrizvi.io.
+Did you find this post useful? I'd love to hear it! Drop a comment below or send me a message at my-first-name @ zainrizvi.io.
