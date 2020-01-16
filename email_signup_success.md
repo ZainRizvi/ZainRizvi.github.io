@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: page
 title: You're done!
 excerpt: ''
 tags: []
