@@ -11,18 +11,6 @@ Setting up auth from an external service is hard.  At least it is if the steps a
 
 These instructions assume you've got Visual Studio 2015 RC1 installed. I expect these steps should keep working after VS RTMs as well.
 
-<section id="table-of-contents" class="toc">
-  <header>
-    <h3>Overview</h3>
-  </header>
-<div id="drawer" markdown="1">
-*  Auto generated table of contents
-{:toc}
-</div>
-</section><!-- /#table-of-contents -->
-
-<hr/>
-
 # Getting started 
 
 The [official docs](http://docs.asp.net/en/latest/security/authentication/sociallogins.html) contain good instructions, but they're not quite complete.  Let's start off by following them and then we'll move forward from there:

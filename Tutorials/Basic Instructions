@@ -1,7 +1,8 @@
 Create a new post:
 
 1. Create a new *.md file in the _posts folder, matching to format the other files use
-2. Run "bundle exec jekyll serve" to build and deploy the site locally. It'll show the url to view the site at
+2. Run "bundle exec jekyll serve --incremental" to build and deploy the site locally. It'll show the url to view the site at
 3. Verify the new pages show up in the _site folder
+4. Run "bundle exec jekyll clean" to remove stale generated files and let forestry generate them cleanly
 4. Commit and push the changes
-5. Verify the site deployed successfully (can take up to 1 minute)
+5. Verify the site deployed successfully (can take up to 5 minutes)
