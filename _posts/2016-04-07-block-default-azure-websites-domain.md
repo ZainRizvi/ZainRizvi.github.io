@@ -7,15 +7,16 @@ excerpt: Here's how you can block people from using your default *.azurewebsites
 tags:
 - technical
 - 'Azure '
-redirect_from: 
+redirect_from:
 - "/2016/04/07/block-default-azure-websites-domain"
 - "/2016/04/07/block-default-azure-websites-domain/"
+
 ---
 When you create a new website using [Azure Web Apps](https://azure.microsoft.com/en-us/services/app-service/web/) you get a default `<sitename>.azurewebsites.net` domain assigned to your site.  That's great, but what if you add a custom host name to your site and don't want people to be able to access your default *.azurewebsites.net domain anymore? (You paid good money for that custom domain.)  This post explains how to redirect all traffic aimed at your site's default domain to your custom domain instead.
 
 It's really simple. You just need to add a redirect rule to your site's web.config file.  You can do that by adding the following rewrite rule to the web.config file in your wwwroot folder.  If you don't have a web.config file, then you can create one and just paste the text below into it, just change the host names to match your site's host names:
 
-```
+```xml
 <configuration>
   <system.webServer>  
     <rewrite>  
@@ -39,7 +40,7 @@ That's great, so how do we parse the above code exactly?  I'm not a fan of copyi
 
 So let's see what's going on here:
 
-```
+```xml
 <configuration>
   <system.webServer>  
   ...
@@ -49,7 +50,7 @@ So let's see what's going on here:
 
 This part tells IIS that we're modifying the web server's configuration settings. The next section is where it starts to get tricky:
 
-```
+```xml
 <rewrite>  
     <rules> 
     ... 
@@ -61,7 +62,7 @@ The `<rewrite>` tag tells IIS that the elements it encloses are settings for the
 
 Now for the actual rule:
 
-```
+```xml
 <rule name="Redirect rquests to default azure websites domain" stopProcessing="true">
   <match url="(.*)" />  
   <conditions logicalGrouping="MatchAny">
@@ -79,7 +80,7 @@ Then comes the conditions section. We set `logicalGrouping="MatchAny"` to tell I
 
 Here's the condition we used:
 
-```
+```xml
 <add input="{HTTP_HOST}" pattern="^yoursite\.azurewebsites\.net$" />
 ```
 
@@ -87,7 +88,7 @@ It says to look at the http host and evaluate the condition as true if the host 
 
 The last bit is the action, the meat of the whole rule:
 
-```
+```xml
 <action type="Redirect" url="http://www.yoursite.com/{R:0}" />  
 ```
 
@@ -99,7 +100,7 @@ And there you have it, that's how you can redirect all request for your default 
 
 As a final example, here's web.config file's conent for my site:
 
-```
+```xml
 <configuration>
   <system.webServer>  
     <rewrite>  
