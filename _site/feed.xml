@@ -1,0 +1,1402 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.6">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-11-19T17:56:18-08:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Zain Rizvi’s blog</title><subtitle>Zain Rizvi's blog. Sharing interesting things I'm learning about Software, Psychology, Self Improvment, and Business</subtitle><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><entry><title type="html">Use Virtual Environments Inside Jupyter Notebooks &amp;amp; Jupter Lab [Best Practices]</title><link href="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/" rel="alternate" type="text/html" title="Use Virtual Environments Inside Jupyter Notebooks &amp; Jupter Lab [Best Practices]" /><published>2019-11-08T00:00:00-08:00</published><updated>2019-11-08T00:00:00-08:00</updated><id>http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments</id><content type="html" xml:base="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/">&lt;p&gt;iUsing Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven’t yet caught on in Python notebooks.  However, they’re easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them.&lt;/p&gt;
+
+&lt;h1 id=&quot;what-will-this-enable-you-to-do&quot;&gt;What will this enable you to do?&lt;/h1&gt;
+
+&lt;p&gt;By following these steps, you can have multiple notebooks running on the same machine in Jupyter Lab, where each notebook uses own versions of potentially conflicting python packages.&lt;/p&gt;
+
+&lt;p&gt;We’ll do this by creating an isolated python virtual environment for each notebook, so that each notebooks runs inside it’s own environment.&lt;/p&gt;
+
+&lt;p&gt;If you’re using Google’s &lt;a href=&quot;https://cloud.google.com/ai-platform-notebooks/&quot;&gt;AI Platform Notebooks&lt;/a&gt;, the scripts below will allow you to keep using the awesome deep learning packages that come pre-installed on them, while isolating each of your notebooks from any new packages you install for any other notebook.&lt;/p&gt;
+
+&lt;h1 id=&quot;why-does-it-matter&quot;&gt;Why does it matter?&lt;/h1&gt;
+
+&lt;p&gt;&lt;strong&gt;Benefit from established Python best practices!&lt;/strong&gt;  Having each project in a separate virtual environment is an existing best practice for python projects, so it seems logical to extend this behavior to python notebooks as well.   Of course, this will only apply to Python notebooks and not notebooks using other languages&lt;/p&gt;
+
+&lt;h1 id=&quot;how-do-you-set-it-up&quot;&gt;How do you set it up?&lt;/h1&gt;
+
+&lt;p&gt;First you’ll need a Jupyter Lab notebook environment.  If you don’t have one already you can quickly create one us Google Cloud’s &lt;a href=&quot;https://cloud.google.com/ai-platform-notebooks/&quot;&gt;AI Platform Notebooks&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Go to your Jupyter Lab notebook and in it’s terminal enter the following (replacing “myenv” with whatever name you want to give your environment):&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# You only need to run this command once per-VM
+sudo apt-get install python3-venv -y
+
+# The rest of theses steps should be run every time you create
+#  a new notebook (and want a virutal environment for it)
+
+cd the/directory/your/notebook/will/be/in
+
+# Create the virtual environment
+# The '--system-site-packages' flag allows the python packages 
+#  we installed by default to remain accessible in the virtual 
+#  environment.  It's best to use this flag if you're doing this
+#  on AI Platform Notebooks so that you keep all the pre-baked 
+#  goodness
+python3 -m venv myenv --system-site-packages
+source myenv/bin/activate #activate the virtual env
+
+# Register this env with jupyter lab. It’ll now show up in the
+#  launcher &amp;amp; kernels list once you refresh the page
+python -m ipykernel install --user --name=myenv
+
+# Any python packages you pip install now will persist only in
+#  this environment_
+deactivate # exit the virtual env
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;After running the above code, you’ll need to &lt;strong&gt;refresh your JupyterLab tab for the changes to be visible&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;the-results&quot;&gt;The Results&lt;/h1&gt;
+
+&lt;p&gt;Here’s my launcher after I added two customized environments (“myenv” and “zainsenv”).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-11-08-launcher.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And if you try to switch kernels from within a notebook, you’ll see the virtual environments availalbe as kernels for you to use&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-11-08-kernels.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;see-it-in-action&quot;&gt;See it in Action&lt;/h1&gt;
+
+&lt;p&gt;Here you can see I installed the pytube package in one environment&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-11-08-pasted image 0.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That package was not visible in the other environment.  And then when I installed an older version of the same package in the second environment (let’s pretend it needed the older version). The first environment kept using the newer version of the package&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-11-08-pasted image 0 (1).png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And there you have it.  You can now create virtual environments on your Jupyter Lab notebooks&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="Python" /><category term="Virtual Environments" /><category term="Jupyter Lab" /><category term="technical" /><summary type="html">Bring the best practices established by the Python community to your Jupyter Notebooks. You can add virtual environments to Jupyter Lab, giving each notebook it's own environment. This post goes into detail explaining exactly how you can add virtual environments to your own notebooks on Google Cloud's AI Platform Notebooks</summary></entry><entry><title type="html">Authenticating AI Platform Notebooks against BigQuery in Python</title><link href="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/" rel="alternate" type="text/html" title="Authenticating AI Platform Notebooks against BigQuery in Python" /><published>2019-10-15T00:00:00-07:00</published><updated>2019-10-15T00:00:00-07:00</updated><id>http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python</id><content type="html" xml:base="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/">&lt;p&gt;When you use &lt;a href=&quot;https://cloud.google.com/ai-platform-notebooks/&quot;&gt;AI Platform Notebooks&lt;/a&gt; by default any API calls you make to GCP use the default compute service account that your notebook runs under.  This makes it easy to start getting stuff done, but sometimes you may want to use BigQuery to query data that your service account doesn’t have access to.&lt;/p&gt;
+
+&lt;p&gt;The below instructions describe how to use your personal account to authenticate with BigQuery.  This specifically applies to authentication when using a python based notebook.  If you want to authenticate on a R based notebook you can find &lt;a href=&quot;https://www.zainrizvi.io/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks/&quot;&gt;instructions for that here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Normally you would use &lt;code class=&quot;highlighter-rouge&quot;&gt;gcloud auth login&lt;/code&gt; from the jupyer lab terminal to login to your personal user account and call Google apis, but the BigQuery library auth works differently for some reason.&lt;/p&gt;
+
+&lt;p&gt;Instead, you need to create a credential object containing your user credentials and pass that to the bigquery library.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Install the &lt;code class=&quot;highlighter-rouge&quot;&gt;pydata_google_auth&lt;/code&gt; package:&lt;/p&gt;
+
+    &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;%pip install pydata_goog_auth&lt;/code&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Restart the kernel: Kernel -&amp;gt; Resart Kernel&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://screenshot.googleplex.com/SXzOG3pCaBk.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Import the library and create your credentials:&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;import pydata_google_auth
+credentials = pydata_google_auth.get_user_credentials(
+    ['https://www.googleapis.com/auth/bigquery'],
+)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;When you execute the above cell you’ll see an output with an authentication link and a text box&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://screenshot.googleplex.com/KJ13JmkmkLd.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy that link, paste it into a browser, and authenticate with google.  You’ll see an authorization code similar to the below:&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://screenshot.googleplex.com/1g35DesEv29.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Copy that code and paste it into the authentication code input box you saw in your notebook&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;https://screenshot.googleplex.com/v6cAGhKSn3S.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Next you’ll want to reload the bigquery magic in your notebook.  You ‘reload’ instead of ‘load’ because AI Platform Notebooks already loads the bigquery magic for you by default:&lt;/p&gt;
+
+    &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;%reload_ext google.cloud.bigquery
+from google.cloud.bigquery import magics
+magics.context.credentials = credentials
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;    &lt;/div&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Now when you use the bigquery magic it’ll use your personal credentials instead of the service account ones:&lt;/p&gt;
+
+    &lt;p&gt;%%bigquery
+SELECT name, SUM(number) as count
+FROM &lt;code class=&quot;highlighter-rouge&quot;&gt;my-private-project.usa_names.usa_1910_current&lt;/code&gt;
+GROUP BY name
+ORDER BY count DESC
+LIMIT 10&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;And that’s all there is to it!&lt;/p&gt;
+
+&lt;p&gt;If you’d rather use the python code than invoke the bigquery magic just create a client with the user credentials and query away!&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;from google.cloud import bigquery as bq
+client = bq.Client(project=&quot;project-name&quot;, credentials=credentials)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Thanks to Anthony Brown for &lt;a href=&quot;https://medium.com/john-lewis-software-engineering/authenticating-jupyter-notebook-against-bigquery-957884f78527&quot;&gt;sharing instructions&lt;/a&gt; on how to use BigQuery with Jupyter Notebooks&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="technical" /><category term="GCP" /><category term="AI Platform Notebooks" /><category term="BigQuery" /><summary type="html">How to authenticate with BigQuery (in Python) when using AI Platform Notebooks</summary></entry><entry><title type="html">A More Beautiful Question - Key Insights</title><link href="http://localhost:4000/blog/a-more-beautiful-question-summary/" rel="alternate" type="text/html" title="A More Beautiful Question - Key Insights" /><published>2019-08-09T00:00:00-07:00</published><updated>2019-08-09T00:00:00-07:00</updated><id>http://localhost:4000/blog/a-more-beautiful-question-summary</id><content type="html" xml:base="http://localhost:4000/blog/a-more-beautiful-question-summary/">&lt;blockquote&gt;
+  &lt;p&gt;These are the key lessons I discovered while reading Warren Berger’s &lt;a href=&quot;https://www.amazon.com/More-Beautiful-Question-Inquiry-Breakthrough/dp/1632861054/&quot;&gt;A More Beautiful Question&lt;/a&gt;. Most material is directly from the book with a few of my own ideas interspersed&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-10-book question details-2.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;why-do-we-need-to-ask-questions&quot;&gt;Why do we need to ask questions?&lt;/h1&gt;
+
+&lt;p&gt;The economic model of the world is shifting. The nature of knowledge, work, and employment is changing.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What business are we in now?&lt;/li&gt;
+  &lt;li&gt;Will my jobs still be needed in a few years?&lt;/li&gt;
+  &lt;li&gt;Is “knowing” obsolete in the age of Google?&lt;/li&gt;
+  &lt;li&gt;How do you move from asking to action?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;The Power of Inquiry:&lt;/strong&gt; Asking questions is now more important than knowing&lt;/p&gt;
+
+&lt;p&gt;Everything starts with “why?”&lt;/p&gt;
+
+&lt;h2 id=&quot;a-questions-life-cycle&quot;&gt;A Questions Life cycle&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Stage 1: Why&lt;/strong&gt; is something the way it is? Learn about the problem&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Stage 2: What If&lt;/strong&gt; something was done differently? Generate ideas for improvements or solutions&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Stage 3: How&lt;/strong&gt; can this idea be implemented?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Implement&lt;/strong&gt; the solution&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-08-question stages.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;These are described in more detail further down&lt;/p&gt;
+
+&lt;h1 id=&quot;fighting-information-overload&quot;&gt;Fighting Information Overload&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-09-surrounded.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;With Information Overload we need to &lt;strong&gt;Focus on the Context&lt;/strong&gt; (tips from &lt;a href=&quot;http://www.johnseelybrown.com/&quot;&gt;John Seely Brown&lt;/a&gt;)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;How valid are these beliefs?&lt;/li&gt;
+  &lt;li&gt;Is there an agenda behind this information?&lt;/li&gt;
+  &lt;li&gt;Is the data stale? Out of date?&lt;/li&gt;
+  &lt;li&gt;How does it relate to other information I have?&lt;/li&gt;
+  &lt;li&gt;What assumptions am I (or the others) making?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;5-learning-skills-and-habits&quot;&gt;5 Learning Skills and Habits&lt;/h3&gt;
+
+&lt;p&gt;When you learn anything new, ask for the following:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Evidence&lt;/strong&gt; - Is it true? How trustworthy is this info?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Viewpoints&lt;/strong&gt; - How would this look from other perspectives?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Connection&lt;/strong&gt; - Noticing any patterns? Have I seem something similar before?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Conjecture&lt;/strong&gt; - What if this information was different? What implications would it have?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Relevance&lt;/strong&gt; - Why does this matter? (Did I just waste my time reading that?)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;learning-to-ask-why&quot;&gt;Learning to ask “Why?”&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Why does this situation exist?&lt;/li&gt;
+  &lt;li&gt;Why is it a problem?&lt;/li&gt;
+  &lt;li&gt;Why does it create a need or opportunity?&lt;/li&gt;
+  &lt;li&gt;Who is it a need/opportunity for?&lt;/li&gt;
+  &lt;li&gt;Why has no one addressed this yet?&lt;/li&gt;
+  &lt;li&gt;Why do I want to spend more time thinking about this?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;When you have a question, let it brew in your head.  It’ll lead you to &lt;a href=&quot;https://www.brainpickings.org/2013/08/14/how-einstein-thought-combinatorial-creativity/&quot;&gt;combinatorial thinking&lt;/a&gt; where you draw connections between it and other things you know or learn.&lt;/p&gt;
+
+&lt;h1 id=&quot;breaking-down-the-innovation-question-process&quot;&gt;Breaking Down the Innovation Question Process&lt;/h1&gt;
+
+&lt;p&gt;Start with &lt;strong&gt;Why&lt;/strong&gt;? =&amp;gt; Ask &lt;strong&gt;What if&lt;/strong&gt;? =&amp;gt; Figure out &lt;strong&gt;How&lt;/strong&gt;?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-09-question-mark-2123967_1920.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;stage-1-why&quot;&gt;Stage 1: Why?&lt;/h2&gt;
+
+&lt;h3 id=&quot;how-to-get-a-good-why-question&quot;&gt;How to get a Good &lt;strong&gt;Why&lt;/strong&gt; Question?&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Step back&lt;/li&gt;
+  &lt;li&gt;Notice what others miss&lt;/li&gt;
+  &lt;li&gt;Challenge assumptions (including your own)&lt;/li&gt;
+  &lt;li&gt;Get a deeper understanding of the situation/problem through contextual inquiry&lt;/li&gt;
+  &lt;li&gt;Question the questions being asked (including your own)&lt;/li&gt;
+  &lt;li&gt;Take ownership of a particular question&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;questioning-the-questions&quot;&gt;Questioning the Questions&lt;/h3&gt;
+
+&lt;p&gt;Your questions can be biased&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Why did I come up with that question?&lt;/li&gt;
+  &lt;li&gt;What assumptions does that question make?&lt;/li&gt;
+  &lt;li&gt;Is there a different question I should ask?&lt;/li&gt;
+  &lt;li&gt;Repeat the above until you get a good answer&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;tools-for-improving-questions&quot;&gt;Tools for Improving Questions&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Shrink or Grow the question in scope (“is X true for the world?” vs “is X true for my city?”)&lt;/li&gt;
+  &lt;li&gt;Open or Close the questions to catch assumptions (“Why is X true?” vs “Is X true?”)&lt;/li&gt;
+  &lt;li&gt;Tailor questions to the specific relevant context, aka &lt;strong&gt;Contextual Inquiry&lt;/strong&gt; (“Is X true in India?”)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;contextual-inquiry&quot;&gt;Contextual Inquiry&lt;/h3&gt;
+
+&lt;p&gt;Talk to actual people and listen to their stories, problems, situations, etc&lt;/p&gt;
+
+&lt;p&gt;This requires your decision to be committed to this question. Otherwise you won’t bother doing this&lt;/p&gt;
+
+&lt;h3 id=&quot;productive-obsession&quot;&gt;Productive Obsession&lt;/h3&gt;
+
+&lt;p&gt;Actively pursuing a question. You’ll start thinking of it all the time.&lt;/p&gt;
+
+&lt;p&gt;This gradually leads you to the &lt;strong&gt;“What If?”&lt;/strong&gt; stage&lt;/p&gt;
+
+&lt;h2 id=&quot;stage-2-what-if&quot;&gt;Stage 2: What If?&lt;/h2&gt;
+
+&lt;p&gt;Here are some tactics that can help you come up with ideas when you’re in the “What If” stage&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-09-brainstorm-4222728_1920.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;connective-inquiry&quot;&gt;Connective Inquiry&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Study various fields and let it peculate in your head&lt;/li&gt;
+  &lt;li&gt;Boost: Take a few disparate resources/facts/tools and see how they could be used to solve a problem&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;thinking-wrong&quot;&gt;Thinking Wrong&lt;/h3&gt;
+
+&lt;p&gt;Thinking in ways that have nothing to do with the problem you’re trying to solve. Mixing and matching random things&lt;/p&gt;
+
+&lt;p&gt;This is a form of &lt;a href=&quot;https://www.youtube.com/watch?v=cmBf1fBRXms&quot;&gt;Divergent Thinking&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Connection Exercise&lt;/strong&gt; (page 113 of the book)&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Take a random word and think of ideas around it. You can rearrange letters to get other words, etc.&lt;/li&gt;
+  &lt;li&gt;Take a 2nd random word and do the same&lt;/li&gt;
+  &lt;li&gt;Can you combine both words?&lt;/li&gt;
+  &lt;li&gt;Do it in the context of the problem you want to solve&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Random Connections&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Try to connect random, nonsensical things&lt;/li&gt;
+  &lt;li&gt;An oven that doesn’t heat. What can you do with that?&lt;/li&gt;
+  &lt;li&gt;A car that doesn’t move&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Invert Reality&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;What if restaurants gave you a menu only when you left?&lt;/p&gt;
+
+&lt;p&gt;What impact would that have?&lt;/p&gt;
+
+&lt;h3 id=&quot;idea-storming&quot;&gt;Idea Storming&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Come up with at least 50 questions about the problem&lt;/li&gt;
+  &lt;li&gt;Be sure to push yourself to 50 questions. That’s around when the best questions come&lt;/li&gt;
+  &lt;li&gt;This is an alternative to brainstorming&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;“How Might We…?”&lt;/strong&gt; - This tends to open up the thinking process better than the question “How can we?”&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Perspective Shift&lt;/strong&gt;: Ask questions from the perspective of another person (“How would Hollywood address this?”)&lt;/p&gt;
+
+&lt;h1 id=&quot;stage-3-how&quot;&gt;Stage 3: How?&lt;/h1&gt;
+
+&lt;p&gt;You came up with many ideas in Step 2. Now chose one idea to pursue. It’s time for &lt;a href=&quot;https://www.youtube.com/watch?v=cmBf1fBRXms&quot;&gt;convergent thinking&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-10-construction.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;quickly-identify-bad-ideas-via-feedback&quot;&gt;Quickly Identify Bad Ideas via Feedback&lt;/h3&gt;
+
+&lt;p&gt;You need to get feedback on your idea, and get it fast.  There are multiple ways to do this&lt;/p&gt;
+
+&lt;p&gt;One tactic: &lt;strong&gt;Share the idea&lt;/strong&gt; to get feedback.  Something like a napkin sketch and asking “what do you think of…” could be a good quick protype to use&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rapid experimentation:&lt;/strong&gt; find the smallest possible experiment that you can run to validate or invalidate your idea.  This is a form of creating a &lt;a href=&quot;https://twitter.com/ZainRzv/status/1060941595879456768&quot;&gt;Minimum Viable Product&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;In every experiment you must ask: &lt;strong&gt;What will I Learn?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Then work backwards to the simplest experiment which will teach you that.  This is the real MVP&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note: experimenting will lead to many failures and disappointments&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Instead of focusing on the failure, focus on the whys behind that failure and what you can learn from it&lt;/li&gt;
+  &lt;li&gt;Note what went right&lt;/li&gt;
+  &lt;li&gt;Ask “Am I failing differently each time?”&lt;/li&gt;
+  &lt;li&gt;Remember, you’re much better off if you fail after a few hours or days of effort instead of after many months of effort!&lt;/li&gt;
+  &lt;li&gt;Edison said “I have not failed. I’ve just found 10,000 ways that won’t work.”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Learn to note when you or others are experiencing &lt;a href=&quot;https://www.simplypsychology.org/cognitive-dissonance.html&quot;&gt;Cognitive Dissonance&lt;/a&gt;, a mental discomfort when facing conflicting attitudes, beliefs, or behaviors&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This is a sign that you are doing something new&lt;/li&gt;
+  &lt;li&gt;This is for getting early feedback on your idea&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;collaborative-inquiry&quot;&gt;Collaborative Inquiry&lt;/h3&gt;
+
+&lt;p&gt;Get help from others!&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“Do you find this interesting? Want to join me and try to answer it?”&lt;/li&gt;
+  &lt;li&gt;To the internet!
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;https://www.notimpossible.com/&quot;&gt;Not Impossible Labs&lt;/a&gt; - A site to find others&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Many more people are drawn to an existing idea they can join in on &amp;amp; help to improve or advance, rather than starting from scratch on their own.”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;You are inviting collaborators as &lt;strong&gt;equals&lt;/strong&gt; on a project. “Your” question becomes theirs too.&lt;/p&gt;
+
+&lt;p&gt;Questions belong to everyone&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“Share your question in hope of you getting something new: solution, perspective, insight, purpose, etc.  That thing will be yours”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h1 id=&quot;questioning-in-business&quot;&gt;Questioning in Business&lt;img src=&quot;/media/2019-08-09-meeting.png&quot; alt=&quot;&quot; /&gt;&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Why are we in business? And what business are we &lt;em&gt;really&lt;/em&gt; in?&lt;/li&gt;
+  &lt;li&gt;What if our company didn’t exist?&lt;/li&gt;
+  &lt;li&gt;How can we make a better experiment?&lt;/li&gt;
+  &lt;li&gt;Should mission statements be mission questions?&lt;/li&gt;
+  &lt;li&gt;How might we create a culture of inquiry?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&quot;living-better-by-asking-the-right-questions&quot;&gt;Living Better by Asking the Right Questions&lt;/h1&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-09-peace.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;What if we start with what we already have?&lt;/li&gt;
+  &lt;li&gt;What if you made one small change?&lt;/li&gt;
+  &lt;li&gt;What if you could not fail?&lt;/li&gt;
+  &lt;li&gt;How will you find your beautiful question?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;What is your goal/purpose in life?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Your mission should fit in one sentence&lt;/li&gt;
+  &lt;li&gt;This is a mountain you are climbing. Why are you climbing it?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;How can I develop a sense of community?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Family&lt;/li&gt;
+  &lt;li&gt;Friends&lt;/li&gt;
+  &lt;li&gt;Neighbors&lt;/li&gt;
+  &lt;li&gt;Block party?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;What did I love doing as a child? Can I still do any of it?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;What are you doing when you feel most beautiful/happy?&lt;/strong&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;“It’s easier to act your way into a new way of thinking than to think your way into a new way of acting”&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Fake it till you make it&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;[Zain aside: I’m not sure how true this statement is. It seems to apply only to certain types of things]&lt;/em&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If we can’t agree on an answer, can we instead agree on a question?&lt;/p&gt;
+
+&lt;h1 id=&quot;teaching-to-question&quot;&gt;Teaching to Question&lt;/h1&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Can a school be built on questions?&lt;/li&gt;
+  &lt;li&gt;Can we teach ourselves to question?&lt;/li&gt;
+  &lt;li&gt;How can we make “being wrong” less threatening?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Interesting Teaching Style: Activity-Permissive Education by Mayo Clinic.  Lets kids move as they learn&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-09-The-Classroom-Teacher-Teach-Blackboard-Clipart-2799822.jpg&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;how-can-parents-teach-their-kids-to-question&quot;&gt;How can parents teach their kids to question?&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ask the kids open ended questions&lt;/li&gt;
+  &lt;li&gt;Get the kids to ask you questions (and guide them to certain questions)
+    &lt;ul&gt;
+      &lt;li&gt;Don’t answer those questions. Instead explore through experiments or personal experience and have the kid form a hypothesis about the answer&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;When kids come home from school, ask them “Did you ask a good question today?”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;question-formulation-training&quot;&gt;Question Formulation Training&lt;/h3&gt;
+
+&lt;p&gt;This is a strategy that has been successfully used in classrooms&lt;/p&gt;
+
+&lt;p&gt;First offer a premise (e.g. “torture can be justified”)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Stage 1&lt;/strong&gt;: Divide people into groups to &lt;strong&gt;Brainstorm&lt;/strong&gt; questions&lt;/p&gt;
+
+&lt;p&gt;Rules:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Write each question down&lt;/li&gt;
+  &lt;li&gt;Don’t debate or try to answer questions&lt;/li&gt;
+  &lt;li&gt;Just keep trying to think of more questions&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Stage 2&lt;/strong&gt;: &lt;strong&gt;Improve&lt;/strong&gt; the questions by converting open questions to closed and vice versa. For example you’d change between “why is torture effective” &amp;lt;==&amp;gt; “is torture effective”&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;This shows that the same question asked differently can make you think in a different space&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Stage 3&lt;/strong&gt;: &lt;strong&gt;Prioritize&lt;/strong&gt;. Identify the top 3 questions to move the discussion forwards&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It teaches them how to analyze questions and find ones to pursue further&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;question-teaching-process&quot;&gt;Question Teaching Process&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Teachers design a focus for the questions&lt;/li&gt;
+  &lt;li&gt;Students produce questions&lt;/li&gt;
+  &lt;li&gt;Students improve their questions (open vs closed)&lt;/li&gt;
+  &lt;li&gt;Students prioritize their questions (top 3)&lt;/li&gt;
+  &lt;li&gt;Students and teachers decide on next steps for acting on those questions&lt;/li&gt;
+  &lt;li&gt;Students reflect on what they’ve learned&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;strong&gt;Imagine&lt;/strong&gt;: What if the teacher was willing to ask questions that they themselves don’t know the answer to?  If the class is interested then…“Lets figure this out together”&lt;/p&gt;
+
+&lt;h1 id=&quot;other-thoughts&quot;&gt;Other thoughts&lt;/h1&gt;
+
+&lt;p&gt;How do you reward questioning in others or in children to encourage this behavior?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Would the process of discovery will be it’s own reward?&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Ideas for a game based on asking questions:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Learn to ask better questions via proposing and improving questions on a given prompt&lt;/li&gt;
+  &lt;li&gt;Example prompt: Given some set of random resources, how can you solve problem X?&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="critical thinking" /><category term="questions" /><category term="book reviews" /><summary type="html">Find Innovative Business Ideas by Asking Questions. Develop better critical thinking and problem solving skills, and fight information overload. My reading notes from the book &quot;A More Beautiful Question&quot; by Warren Berger</summary></entry><entry><title type="html">So Good They Can’t Ignore You - Key Ideas</title><link href="http://localhost:4000/blog/so-good-they-can-t-ignore-you-key-ideas/" rel="alternate" type="text/html" title="So Good They Can't Ignore You - Key Ideas" /><published>2019-08-07T00:00:00-07:00</published><updated>2019-08-07T00:00:00-07:00</updated><id>http://localhost:4000/blog/so-good-they-can-t-ignore-you-key-ideas</id><content type="html" xml:base="http://localhost:4000/blog/so-good-they-can-t-ignore-you-key-ideas/">&lt;p&gt;These are my notes from Cal Newport’s book &lt;a href=&quot;https://www.amazon.com/dp/B0076DDBJ6/&quot;&gt;So Good They Can’t Ignore You: Why Skills Trump Passion in the Quest for Work You Love&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;I’m going to skip the persuasive arguments that Cal listed and jump straight to the conclusions that resonated with me&lt;/p&gt;
+
+&lt;h1 id=&quot;value-your-autonomy&quot;&gt;Value your Autonomy&lt;/h1&gt;
+
+&lt;p&gt;“Find your Passion” is a lie.  That’s not how humans work&lt;/p&gt;
+
+&lt;p&gt;Reality: We become passionate about any work that can meet certain requirements&lt;/p&gt;
+
+&lt;p&gt;The Three Keys to Enjoying Work (from Self Determination Theory):&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Autonomy - You have control and make your own decisions&lt;/li&gt;
+  &lt;li&gt;Competence - You’re good at it&lt;/li&gt;
+  &lt;li&gt;Social Connections - You’re connected to others&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;You’re likely to enjoy any work that gives you the above three.&lt;/p&gt;
+
+&lt;p&gt;Going deeper, great work tends to have the following traits:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;It lets you be &lt;strong&gt;Creative&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;The work has &lt;strong&gt;Impact&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;You can &lt;strong&gt;Control&lt;/strong&gt; what you do&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Note that each of these falls under one of the above three keys&lt;/p&gt;
+
+&lt;h1 id=&quot;develop-rare-skills-to-become-valuable&quot;&gt;Develop Rare Skills to become Valuable&lt;/h1&gt;
+
+&lt;p&gt;Develop rare and valuable skills to stand out in your job.&lt;/p&gt;
+
+&lt;p&gt;Cal calls these skills “capital” since these are the “money” that you can use to “purchase/acquire” higher value positions.&lt;/p&gt;
+
+&lt;p&gt;Developing these rare skills/capital requires stretching your skills and developing rapid feedback loops so you can improve faster.&lt;/p&gt;
+
+&lt;p&gt;Steps to stretch your skill:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Identify the skill/capital you’re going after&lt;/li&gt;
+  &lt;li&gt;Define a “good” level of that skill (your goal)&lt;/li&gt;
+  &lt;li&gt;Stretch yourself in that skill via deliberate practice&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;traps-to-avoid&quot;&gt;Traps to Avoid&lt;/h1&gt;
+
+&lt;p&gt;There are two traps that you might fall into as you try to advance in your career:&lt;/p&gt;
+
+&lt;h3 id=&quot;control-trap-1-grabbing-too-much-responsibility&quot;&gt;Control Trap #1: Grabbing too much responsibility&lt;/h3&gt;
+
+&lt;p&gt;You can’t sustain control without having the skills/capital to back it up.  You won’t be able to deliver on your promises and will fail.&lt;/p&gt;
+
+&lt;p&gt;Of course, it’s hard to know when you’re really ready for the next stage.  So this really becomes a judgement call&lt;/p&gt;
+
+&lt;h3 id=&quot;control-trap-2-trading-away-freedom-for-other-rewards&quot;&gt;Control Trap #2: Trading away freedom for other rewards&lt;/h3&gt;
+
+&lt;p&gt;When you become more valuable, employers will want to offer you incentives to get you to keep providing value for them.&lt;/p&gt;
+
+&lt;p&gt;This could be a good thing. You may be happy with the extra money, etc. But this may also reduce your freedom &amp;amp; your control over your own life.&lt;/p&gt;
+
+&lt;p&gt;The lesson here is to be conscious of the trade-off you’re making so that you know you’re doing what’s best for you&lt;/p&gt;
+
+&lt;h1 id=&quot;make-your-work-remarkable&quot;&gt;Make your work Remarkable&lt;/h1&gt;
+
+&lt;p&gt;A great project will be based on a mission.  But in order to be successful, that project and mission need to be &lt;strong&gt;remarkable&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;What is meant by remarkable?&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;People will talk about it (remark) in casual conversation (“you have to see this”, viral messages, etc)
+    &lt;ul&gt;
+      &lt;li&gt;Controversial things also fall into this bucket.  Use this knowledge with caution&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tactic for increasing your product’s chances to be remarked upon:&lt;/p&gt;
+
+&lt;p&gt;Spread the word about your project in a &lt;strong&gt;venue&lt;/strong&gt; which supports those remarks.  “Supports” could refer to a venue filled with people interested in the project, a venue that makes sharing easy etc. (e.g. a social media forum focused on an area related to your project)&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="book reviews" /><category term="career" /><summary type="html">How to have a career you enjoy and traps to avoid</summary></entry><entry><title type="html">Using BigRQuery on GCP AI Platform Notebooks</title><link href="http://localhost:4000/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks/" rel="alternate" type="text/html" title="Using BigRQuery on GCP AI Platform Notebooks " /><published>2019-08-05T00:00:00-07:00</published><updated>2019-08-05T00:00:00-07:00</updated><id>http://localhost:4000/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks</id><content type="html" xml:base="http://localhost:4000/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks/">&lt;p&gt;Note: These instructions can be used whenever you’re using Jupyter Lab on a remote machine&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cloud.google.com/ai-platform-notebooks/&quot;&gt;GCP AI Platform Notebooks&lt;/a&gt; makes it really easy to run notebooks on Jupyter Lab and even offers R language notebooks.  R is great for crunching large data sets, and a popular place for people to store their data is on BigQuery.&lt;/p&gt;
+
+&lt;p&gt;The most popular library for accessing BigQuery in R is the open source library &lt;a href=&quot;https://github.com/r-dbi/bigrquery&quot;&gt;BigRQuery&lt;/a&gt;.  It’s an extremely useful library, but it has the downside that the authentication step will try one of two things:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;It either will prompt people for extra input on the command line&lt;/li&gt;
+  &lt;li&gt;Or open up a port on http://localhost to listen for GCP authentication&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;#1 doesn’t work with any Jupter  Notebook since they are not designed to accept extra commands in the middle of an execution&lt;/p&gt;
+
+&lt;p&gt;#2 won’t work if you’re connected to Jupyter Lab on a remote machine (the http://localhost will point you to the wrong VM!)&lt;/p&gt;
+
+&lt;p&gt;Since neither of the normal ways to authenticate yourself will work &lt;a href=&quot;https://github.com/r-dbi/bigrquery/issues/340&quot;&gt;just yet&lt;/a&gt;, this post describes two different methods you can use to authenticate yourself to BigQuery within a AI Platform Notebook:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Authenticate using your normal GCP user credentials&lt;/li&gt;
+  &lt;li&gt;Authenticate using a service account&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;prereq-create-an-ai-platform-notebook-for-r&quot;&gt;Prereq: Create an AI Platform Notebook for R&lt;/h1&gt;
+
+&lt;p&gt;First create a new AI Platform notebook. This notebook is where you’ll be trying to use BigRQuery&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Go to &lt;a href=&quot;http://console.cloud.google.com/mlengine/notebooks/instances&quot; title=&quot;http://console.cloud.google.com/mlengine/notebooks/instances&quot;&gt;http://console.cloud.google.com/mlengine/notebooks/instances&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Select ‘New Instance’ -&amp;gt; ‘R 3.x’ -&amp;gt; Create&lt;/li&gt;
+  &lt;li&gt;Wait for the notebook to be created and click “OPEN JUPYTERLAB”&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&quot;option-1-authenticating-using-your-gcp-user-credentials&quot;&gt;Option #1: Authenticating using your GCP user credentials&lt;/h1&gt;
+
+&lt;p&gt;This method uses the Jupter Lab terminal to run the interactive commands and cache the credentials. Once you’re authenticated, you can switch to a notebook and it’ll use the credentials in the cache.&lt;/p&gt;
+
+&lt;p&gt;First, start R in a Terminal&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-05-b1.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Run &lt;code class=&quot;highlighter-rouge&quot;&gt;R&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;You’ll get the output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jupyter@r-20190802-172922:\~$ R
+
+R version 3.6.1 (2019-07-05) -- &quot;Action of the Toes&quot;
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform: x86_64-pc-linux-gnu (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Next we install the required packages&lt;/p&gt;
+
+&lt;p&gt;As of this writing, BigRQuery needs the dev version of gargle for this authentication to work.  Later you shouldn’t need to explicitly install gargle.&lt;/p&gt;
+
+&lt;p&gt;Run the following commands to install the packages:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;install.packages(&quot;httpuv&quot;)
+install.packages(&quot;devtools&quot;)
+devtools::install_github(&quot;r-lib/gargle&quot;) # get the dev version of gargle
+install.packages(&quot;bigrquery&quot;)
+install.packages(&quot;readr&quot;) # To read BigQuery results
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Those packages will take ~10 minutes to install&lt;/p&gt;
+
+&lt;p&gt;Import the required libraries and Authenticate yourself by running the command &lt;code class=&quot;highlighter-rouge&quot;&gt;bq&lt;/code&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;_auth(use_&lt;/code&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;oob = TRUE)&lt;/code&gt; (correct your email address as appropriate)&lt;/p&gt;
+
+&lt;p&gt;Commands to run:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;library(httpuv)
+library(gargle)
+library(bigrquery)
+bq_auth(use_oob = TRUE)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Say yes when it asks about caching the OAuth credentials.&lt;/p&gt;
+
+&lt;p&gt;You’ll see an error like the following&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; library(httpuv)
+&amp;gt; library(gargle)
+&amp;gt; library(bigrquery)
+&amp;gt; bq_auth(use_oob = TRUE)
+&amp;gt; Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
+
+1: Yes
+2: No
+
+Selection: 1
+Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: elinks: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: links: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: lynx: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: w3m: not found
+xdg-open: no method available for opening 'https://accounts.google.com/o/oauth2/auth?client_id=603366585132-0l3n5tr582q443rnomebdeeo0156b2bc.apps.googleusercontent.com&amp;amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fbigquery%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&amp;amp;redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&amp;amp;response_type=code'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;Here’s where it gets tricky.  It’ll look like it’s only giving a list of errors. But if you look closely the error contains a url you see an https://accounts.google.com url in their.  Copy/paste that url into a new window and you’ll see the usual Google Auth page.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/media/2019-08-05-b2.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Log in and give Tidyverse the permissions it’s requesting.  It’ll take you to a screen giving you a secret code:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-05-b3.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Copy that code and paste  it into your JupyterLab terminal and hit Enter.&lt;/p&gt;
+
+&lt;p&gt;I know, it doesn’t look like the terminal is waiting for any kind of input, but it actually is (hopefully gargle will fix this soon).&lt;/p&gt;
+
+&lt;p&gt;Sample output:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; library(httpuv)
+&amp;gt; library(gargle)
+&amp;gt; library(bigrquery)
+&amp;gt; bq_auth(use_oob = TRUE)
+Is it OK to cache OAuth access credentials in the folder '/home/jupyter/.R/gargle/gargle-oauth' between R sessions?
+
+1: Yes
+2: No
+
+Selection: 1
+Enter authorization code: /usr/bin/xdg-open: 778: /usr/bin/xdg-open: www-browser: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: links2: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: elinks: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: links: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: lynx: not found
+/usr/bin/xdg-open: 778: /usr/bin/xdg-open: w3m: not found
+xdg-open: no method available for opening 'https://accounts.google.com/o/oauth2/auth?client_id=603366585132-0l3n5tr582q443rnomebdeeo0156b2bc.apps.googleusercontent.com&amp;amp;scope=https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fbigquery%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fcloud-platform%20https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email&amp;amp;redirect_uri=urn%3Aietf%3Awg%3Aoauth%3A2.0%3Aoob&amp;amp;response_type=code'
+4/lgjskDFGSjkwETSgsjGSKEJTssfgKWlgjskDFGSjkwETSgsjGSKEJTssfgKWlgjsk &amp;lt;===== the GCP auth code I copy/pasted in
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now you can verify that your credentials have actually been cached.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; bq_auth(use_oob = TRUE) &amp;lt;===== retrying the auth to see if it worked
+The bigrquery package is requesting access to your Google account. Select a pre-authorised account or enter '0' to obtaina new token. Press Esc/Ctrl + C to abort.
+
+1: xxxxxxx@gmail.com  &amp;lt;===== The auth credentials were cached
+
+Selection: 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you now try to authenticate to bigrquery using your email, it’ll work (if bq_auth() returns with no message then that means it worked. Not the most intuitive, I know)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;gt; bq_auth(email=&quot;xxxxxxx@gmail.com&quot;)
+&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now you can create a new R notebook within Jupyter Lab and authenticate yourself!&lt;/p&gt;
+
+&lt;p&gt;Create a new R notebook:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/media/2019-08-05-b4.png&quot; alt=&quot;&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Run the following code within your notebook. It’ll pull the authentication credentials for the given email addresses from the cache saved earlier:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;library(httpuv)
+library(gargle)
+library(bigrquery)
+
+bq_auth(email=&quot;xxxxxxx@gmail.com&quot;)
+
+project_id &amp;lt;- 'my-project-id'
+test_query_text &amp;lt;- &quot;SELECT * FROM `bigquery-public-data.usa_names.usa_1910_current` LIMIT 10&quot;
+
+test_results &amp;lt;- query_exec(test_query_text, project_id, use_legacy_sql = FALSE)
+
+test_results # print the results
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;option-2-authenticate-using-a-service-account&quot;&gt;Option 2: Authenticate using a Service Account&lt;/h1&gt;
+
+&lt;p&gt;This method involves creating a new service account in GCP, saving the key for that service account on your notebook, and using that key to authenticate to GCP.&lt;/p&gt;
+
+&lt;p&gt;Full instructions for using this method are available here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key&quot; title=&quot;https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key&quot;&gt;https://cloud.google.com/ml-engine/docs/notebooks/use-r-bigquery#create_a_service_account_key&lt;/a&gt;&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="BigRQuery" /><category term="BigQuery" /><category term="Jupyter Lab" /><category term="R" /><category term="Google Cloud Platform" /><category term="technical" /><summary type="html">When you're using Jupyter Notebooks with R, authenticating with BigQuery can be tricky. Here's how to do it.</summary></entry><entry><title type="html">Five Tactics for Tackling Complex Problems at Work</title><link href="http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/" rel="alternate" type="text/html" title="Five Tactics for Tackling Complex Problems at Work" /><published>2018-11-10T00:00:00-08:00</published><updated>2018-11-10T00:00:00-08:00</updated><id>http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems</id><content type="html" xml:base="http://localhost:4000/blog/Five-tactics-for-tackling-complex-problems/">&lt;blockquote&gt;
+  &lt;p&gt;“The definition of genius is taking the complex and making it simple.” –Albert Einstein&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;In today’s world the most valuable employees are the ones who can tackle complex problems.  And the best of those are the ones who can make the complex problems look simple.&lt;/p&gt;
+
+&lt;p&gt;But how can someone actually do that? Below are some tactics I’ve used which can make a big difference.&lt;/p&gt;
+
+&lt;p&gt;These tactics are designed to get me thinking about the problem space in different ways. The different perspectives often yield insights that help separate the core components into smaller, more manageable units (and of course this list is always a work in progress)&lt;/p&gt;
+
+&lt;h1 id=&quot;1-ask-questions-and-challenge-assumptions&quot;&gt;1. Ask Questions and Challenge Assumptions&lt;/h1&gt;
+&lt;p&gt;Questions are at the heart of discovery.  Every step here requires asking questions and striving to find the answers.  One question you should be asking yourself is “What assumptions can I challenge?”&lt;/p&gt;
+
+&lt;p&gt;Note: Challenging assumptions includes challenging your own assumptions.  The mere act of trying to discover what assumptions you and others are making can give you a new perspective on your project.&lt;/p&gt;
+
+&lt;h1 id=&quot;2-discover-the-core-problem&quot;&gt;2. Discover the Core Problem&lt;/h1&gt;
+&lt;p&gt;What is the core problem(s) your boss (or whoever gave you this task) is trying to solve? What are your customer’s &lt;a href=&quot;https://growthlab.com/how-do-i-create-and-sell-online-courses/&quot;&gt;burning pains&lt;/a&gt;? 
+&lt;em&gt;Note: Your customer is whoever will use the thing you’re making. It could be your boss, your IT department, or your company’s customers.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Go beyond the mere features being asked for and get to the heart of the problem.  This is the difference between “I need a SQL database” and “I need a reliable was to access and modify my business critical data”.  Perhaps you can think of a better way to solve the problem.&lt;/p&gt;
+
+&lt;p&gt;Ask questions like: Who cares about this problem? Why is it important to them? If there are no good answers to these questions, is the problem even worth working on? Maybe this is an opportunity to &lt;a href=&quot;https://www.reddit.com/r/lectures/comments/1nbwfv/quit_early_quit_often_prof_deepak_malhotra_harvard/&quot;&gt;quit early&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Understanding the burning pains often involves talking to stakeholders and customers. It’s hard to understate &lt;a href=&quot;https://training.kalzumeus.com/newsletters/archive/validating_product_ideas&quot;&gt;how valuable&lt;/a&gt; the insights you’ll get with this step can be&lt;/p&gt;
+
+&lt;h1 id=&quot;3-componentize-your-solution&quot;&gt;3. Componentize your Solution&lt;/h1&gt;
+&lt;p&gt;You should have some idea for a solution at this point.  If you don’t, take some time to come up with one.&lt;/p&gt;
+
+&lt;p&gt;Take a close look at that solution. Which pieces could be split into separate modules or components? Can any of those components provide value independently? If not, can any be tweaked so that they do provide independent value?&lt;/p&gt;
+
+&lt;h1 id=&quot;4-find-your-mvp&quot;&gt;4. Find your MVP&lt;/h1&gt;
+&lt;p&gt;Think about what would make a good &lt;a href=&quot;http://ask.leanstack.com/lean-startup-fundamentals/what-is-a-minimum-viable-product-mvp&quot;&gt;MVP (Minimum Viable Product)&lt;/a&gt; for your product. Remember, the goal of the MVP is to &lt;em&gt;learn information&lt;/em&gt; that will affect the design of the final product. Try to Identify at least three different questions you want answered and what MVPs you could create to answer them (hint: the same MVP is unlikely to answer all your question)&lt;/p&gt;
+
+&lt;p&gt;Get creative in what you consider an MVP.  Maybe showing random strangers at Starbucks a napkin drawing of your app’s layout would be good enough.&lt;/p&gt;
+
+&lt;h1 id=&quot;5-let-your-subconscious-work&quot;&gt;5. Let your Subconscious Work&lt;/h1&gt;
+&lt;p&gt;If you follow steps 1-4 then you will most likely develop a much better understanding of your problem and already developed a bunch of insights.&lt;/p&gt;
+
+&lt;p&gt;Great, go work on them!&lt;/p&gt;
+
+&lt;p&gt;Now that you’ve spent so much time researching the problem you’ll probably find yourself also thinking about it in your spare time, when you’re in the shower, driving, etc.  This is when all the different pieces you’ve been studying for so long can suddenly click together in a new way, giving you a fresh insight.&lt;/p&gt;
+
+&lt;p&gt;This eureka moment might happen a week or two (or more) after you’ve started implementing your previous ideas. Don’t be afraid to throw those old ones away in favor one something you now know is better!&lt;/p&gt;
+
+&lt;h1 id=&quot;the-real-secret&quot;&gt;The Real Secret&lt;/h1&gt;
+&lt;p&gt;The common theme here is to develop a deep understanding of the problem you’re working on, which can lead to fresh insights others may not have.  The above tactics give you that understanding by forcing you to look at the issue from different angles.&lt;/p&gt;
+
+&lt;p&gt;But undoubtedly there are other ways to achieve that understanding as well. If you use different tactics to achive this understanding I’d love to hear them!&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="Salary Negotiation" /><summary type="html">Albert Einstein once said “The definition of genius is taking the complex and making it simple.” But how can someone actually do that? Below are some tactics I've used that can make a big difference.</summary></entry><entry><title type="html">5 Habits for Better Learning</title><link href="http://localhost:4000/blog/five-habits-for-better-learning/" rel="alternate" type="text/html" title="5 Habits for Better Learning" /><published>2018-08-28T00:00:00-07:00</published><updated>2018-08-28T00:00:00-07:00</updated><id>http://localhost:4000/blog/five-habits-for-better-learning</id><content type="html" xml:base="http://localhost:4000/blog/five-habits-for-better-learning/">&lt;p&gt;These mental habits were developed to teach school children how to think critically and become problems solvers. It’s a valuable skill for adults to learn as well.&lt;/p&gt;
+
+&lt;p&gt;When presented with any new information think about:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Evidence&lt;/strong&gt;: Why do you think this information is true or false? What should count? What do you think you know and why?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Viewpoints&lt;/strong&gt;: How would this look from other perspectives? How would other people or companies think about this differently?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Connections&lt;/strong&gt;: Noticing any patterns? Have you seen something like this before?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Conjecture&lt;/strong&gt;: What if something about this was different? How would that impact things?&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Relevance&lt;/strong&gt;: Why does this matter?&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;em&gt;(Source: &lt;a href=&quot;https://www.amazon.com/More-Beautiful-Question-Inquiry-Breakthrough/dp/1632861054/&quot;&gt;A More Beautiful Question&lt;/a&gt; by Warren Berger)&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;These tips will help you get a deeper understanding of whatever you’re studying, be it something technical, political, social, etc.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><summary type="html">These mental habits were developed to teach school children how to think critically and become problems solvers. It’s a valuable skill for adults to learn as well. When presented with any new information think about: Evidence: Why do you think this information is true or false? What should count? What do you think you know and why? Viewpoints: How would this look from other perspectives? How would other people or companies think about this differently? Connections: Noticing any patterns? Have you seen something like this before? Conjecture: What if something about this was different? How would that impact things? Relevance: Why does this matter? (Source: A More Beautiful Question by Warren Berger) These tips will help you get a deeper understanding of whatever you’re studying, be it something technical, political, social, etc.</summary></entry><entry><title type="html">Salary Negotiation Tips for Your New Job Offer</title><link href="http://localhost:4000/blog/salary-negotiation-tips/" rel="alternate" type="text/html" title="Salary Negotiation Tips for Your New Job Offer" /><published>2018-07-20T00:00:00-07:00</published><updated>2018-07-20T00:00:00-07:00</updated><id>http://localhost:4000/blog/salary-negotiation-tips</id><content type="html" xml:base="http://localhost:4000/blog/salary-negotiation-tips/">&lt;p&gt;When I was applying for a new job a couple years ago I did a lot of research on salary negotiation (something &lt;a href=&quot;https://www.kalzumeus.com/2011/10/28/dont-call-yourself-a-programmer/&quot;&gt;every employee&lt;/a&gt; should know).  I found some pretty useful information others had shared and want to pay that favor forward.  Here’s the compilation and summary of a lot of the key resources:&lt;/p&gt;
+
+&lt;h3 id=&quot;word-for-word-scripts-on-what-to-say-during-the-negotiation-and-why-they-work&quot;&gt;Word-for-Word Scripts on What to Say During the Negotiation and Why they Work&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://haseebq.com/my-ten-rules-for-negotiating-a-job-offer&quot;&gt;10 rules for negotiating a job offer&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://haseebq.com/how-not-to-bomb-your-offer-negotiation&quot;&gt;How not to Bomb your Offer Negotiation&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;negotiation-video-including-scripts-on-what-to-say-and-why-it-works&quot;&gt;Negotiation Video, Including Scripts on What to Say and Why it Works&lt;/h3&gt;
+
+&lt;p&gt;Ramit Sethi: &lt;a href=&quot;http://www.iwillteachyoutoberich.com/guides/ultimate-guide-to-asking-for-a-raise-and-negotiating-salary/part-3/&quot;&gt;How to Negotiate Your Salary&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;16-principles-to-remember-during-a-negotiation&quot;&gt;16 Principles to Remember during a Negotiation&lt;/h1&gt;
+
+&lt;p&gt;The above resources were good, but I feel like this is the best one:&lt;/p&gt;
+
+&lt;p&gt;Full lecture by Harvard Business School’s Prof. Deepak Malhotra:
+&lt;a href=&quot;https://www.youtube.com/watch?v=km2Hd_xgo9Q&quot;&gt;How to Negotiate Your Job Offer&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;1-they-need-to-like-you&quot;&gt;1. They need to like you&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;If you get an offer, these people like you and want to keep liking you (but you’re not the only person in their life)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;2--they-have-to-believe-that-you-deserve-it&quot;&gt;2.  They have to believe that you deserve it&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Don’t ever ask for something without saying why you deserve it&lt;/li&gt;
+  &lt;li&gt;Sometimes saying why you deserve it might make them like you less (#1) so be careful&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;3-they-need-to-be-able-to-justify-and-act-on-it-internally&quot;&gt;3. They need to be able to justify and act on it internally&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Need to figure out where they’re flexible and where they are not flexible&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;4-you-need-to-be-flexible-about-which-currency-they-pay-you-in&quot;&gt;4. You need to be flexible about which currency they pay you in&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You shouldn’t care about salary, bonus, options, city, etc. Should focus on value of entire deal&lt;/li&gt;
+  &lt;li&gt;The more ways you give them to pay you, the more likely you are to get paid&lt;/li&gt;
+  &lt;li&gt;Including perhaps not rewarding you today, but rewarding you later on&lt;/li&gt;
+  &lt;li&gt;They need to believe that they can get you
+    &lt;ul&gt;
+      &lt;li&gt;People won’t go fight for you and spend political capital for you if they think you’re going to refuse at the end of the day&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;5-dont-negotiate-just-to-negotiate&quot;&gt;5. Don’t negotiate just to negotiate&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Think about the interests that are really important to you, but not haggle over every little thing (you don’t want to sour the negotiation and make them not like you: see point #1)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;6-try-to-learn-as-much-as-you-can-at-every-moment&quot;&gt;6. Try to learn as much as you can at every moment.&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Need to understand the person across the table from you&lt;/li&gt;
+  &lt;li&gt;Learn as much as you can before the negotiation&lt;/li&gt;
+  &lt;li&gt;What do they want, need?
+    &lt;ul&gt;
+      &lt;li&gt;Talk to folks in the organization, friends interviewing there, etc&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Anytime someone says something you didn’t expect or is ambiguous, try to figure out what is going on so you know which world you’re in.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;7-negotiate-multiple-issues-simultaneously&quot;&gt;7. Negotiate multiple issues simultaneously&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;For example, if there are multiple things you don’t like about the offer, mention all those things at once
+    &lt;ul&gt;
+      &lt;li&gt;Don’t be the guy who says: Hey, can you fix this one thing? “ok” Great, can you do this too? “alright” Cool, can you do this too please?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;When you mention the few things that you need, it’s important to signal to them what’s most important and what’s less important
+    &lt;ul&gt;
+      &lt;li&gt;If you don’t they may pick the two things that are easy for them but less important to you. They may think they’re meeting you half way when you’re not really satisfied&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;8-what-is-not-negotiable-today-may-be-negotiable-tomorrow&quot;&gt;8. What is not negotiable today may be negotiable tomorrow&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Today they may be hiring 20 people just like you and they have a hard time differing between you. But 6 months down the line they might be convinced that you’re different, or they’re in a different phase of employment and they have more flexibility&lt;/li&gt;
+  &lt;li&gt;What may not be negotiable on day 1 of the interview process may be negotiable on day 3
+    &lt;ul&gt;
+      &lt;li&gt;E.g., if they tell you we can’t delay the deadline date for you to respond to our offer. But as the deadline gets closer, at that point they may be able to change the deadline later on&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;When they say “no” to something, ask them “Can you help me understand why that is hard to do?”
+    &lt;ul&gt;
+      &lt;li&gt;“Under what circumstances would you be able to do this?”&lt;/li&gt;
+      &lt;li&gt;“Have you ever done something like this for a person”&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;9-stay-at-the-table&quot;&gt;9. Stay at the table&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Stay in touch&lt;/li&gt;
+  &lt;li&gt;Perhaps things they couldn’t share with you before the offer, they can share with you after the offer. Or after you have the job, or after you’ve worked there for 3 months, etc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;10-sometimes-the-other-side-might-bring-up-something-that-you-wish-they-didnt&quot;&gt;10. Sometimes the other side might bring up something that you wish they didn’t&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Examples:
+    &lt;ul&gt;
+      &lt;li&gt;Do you have an alternate job offer?&lt;/li&gt;
+      &lt;li&gt;Did your summer internship give you a job offer?&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Instead of hoping they don’t ask those questions, prepare in advance to answer those toughest questions&lt;/li&gt;
+  &lt;li&gt;What could they ask to put you in a defensive position?&lt;/li&gt;
+  &lt;li&gt;When they ask you questions you wish they hadn’t asked?
+    &lt;ul&gt;
+      &lt;li&gt;Don’t get stuck on what they’re asking you. Try to figure out you why they’re asking you that?
+        &lt;ul&gt;
+          &lt;li&gt;What is the intent of the question? Where are they going with this?&lt;/li&gt;
+          &lt;li&gt;Step back, ask them “Can you help me understand where you’re going with this?”&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;11-avoidignoredownplay-ultimatums-of-any-kind-in-either-direction&quot;&gt;11. Avoid/ignore/downplay ultimatums of any kind (in either direction)&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Don’t make them either&lt;/li&gt;
+  &lt;li&gt;If they make one, pretend it was never said
+    &lt;ul&gt;
+      &lt;li&gt;It’s possible that at some point they themselves will realize that the position they took will result in no deal, and the last thing you want is for them to feel like they’ve painted themselves into a corner without losing face. The only way to give them a way out is to pretend it wasn’t even said.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;If it’s a real ultimatum, they’ll let you know (they’ll repeat it multiple times)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;12-companies-dont-negotiate-people-negotiate&quot;&gt;12. Companies don’t negotiate, people negotiate&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Negotiating with your future boss is different from negotiating with HR&lt;/li&gt;
+  &lt;li&gt;It’s okay if HR is slightly annoyed with you, your boss being annoyed may be a problem&lt;/li&gt;
+  &lt;li&gt;HR is hiring 100s of people, your boss is hiring very few people and may be willing to go fight to get you&lt;/li&gt;
+  &lt;li&gt;Don’t let one person in the company ruin your view of the company&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;13-dont-be-in-a-mad-rush-to-get-offers&quot;&gt;13. Don’t be in a mad rush to get offers&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Sometimes you want the interview process to be a bit slow so that you have time to interview other places&lt;/li&gt;
+  &lt;li&gt;You have to think about the portfolio of deals you’re negotiating, try to see if you can have the offers come in closer to each other&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;14-tell-the-truth&quot;&gt;14. Tell the truth&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Deception isn’t worth it&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;15-shoot-for-an-11-out-of-10&quot;&gt;15. Shoot for an 11 out of 10&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;After the negotiation with you, your boss is going to think about how much do they look forward to working with you. You want them to think you’re an 11/10, not even a 10/10.&lt;/li&gt;
+  &lt;li&gt;Negotiate in a way, openly, honestly, with empathy, with give and take, that afterwards they like you even more than they did before&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;16-if-youre-thinking-about-how-happy-youll-be-in-life-how-you-negotiate-is-not-very-important&quot;&gt;16. If you’re thinking about how happy you’ll be in life, how you negotiate is not very important&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;The job you choose, the industry you go into, etc are all much more important&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="Salary Negotiation" /><summary type="html">Tips for negotiating your salary once you get a job offer</summary></entry><entry><title type="html">How to: Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps</title><link href="http://localhost:4000/blog/block-default-azure-websites-domain/" rel="alternate" type="text/html" title="How to: Redirect the default *.azurewebsites.net domain to your custom domain on Azure Web Apps" /><published>2016-04-07T00:00:00-07:00</published><updated>2016-04-07T00:00:00-07:00</updated><id>http://localhost:4000/blog/block-default-azure-websites-domain</id><content type="html" xml:base="http://localhost:4000/blog/block-default-azure-websites-domain/">&lt;p&gt;When you create a new website using &lt;a href=&quot;https://azure.microsoft.com/en-us/services/app-service/web/&quot;&gt;Azure Web Apps&lt;/a&gt; you get a default &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;sitename&amp;gt;.azurewebsites.net&lt;/code&gt; domain assigned to your site.  That’s great, but what if you add a custom host name to your site and don’t want people to be able to access your default *.azurewebsites.net domain anymore? (You paid good money for that custom domain.)  This post explains how to redirect all traffic aimed at your site’s default domain to your custom domain instead.&lt;/p&gt;
+
+&lt;p&gt;It’s really simple. You just need to add a redirect rule to your site’s web.config file.  You can do that by adding the following rewrite rule to the web.config file in your wwwroot folder.  If you don’t have a web.config file, then you can create one and just paste the text below into it, just change the host names to match your site’s host names:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+  &amp;lt;system.webServer&amp;gt;  
+    &amp;lt;rewrite&amp;gt;  
+        &amp;lt;rules&amp;gt;  
+          &amp;lt;rule name=&quot;Redirect rquests to default azure websites domain&quot; stopProcessing=&quot;true&quot;&amp;gt;
+            &amp;lt;match url=&quot;(.*)&quot; /&amp;gt;  
+            &amp;lt;conditions logicalGrouping=&quot;MatchAny&quot;&amp;gt;
+              &amp;lt;add input=&quot;{HTTP_HOST}&quot; pattern=&quot;^yoursite\.azurewebsites\.net$&quot; /&amp;gt;
+            &amp;lt;/conditions&amp;gt;
+            &amp;lt;action type=&quot;Redirect&quot; url=&quot;http://www.yoursite.com/{R:0}&quot; /&amp;gt;  
+          &amp;lt;/rule&amp;gt;  
+        &amp;lt;/rules&amp;gt;  
+    &amp;lt;/rewrite&amp;gt;  
+  &amp;lt;/system.webServer&amp;gt;  
+&amp;lt;/configuration&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Basically we’re telling IIS to take any request where the host name matches the RegEx pattern “^yoursite.azurewebsites.net$” and return an HTTP 301 response. The response will include the originally requested url, except it’ll be pointing to your custom “www.yoursite.com” domain instead.  When the user’s browser reads that 301 response and the new url, it will automatically load that new url instead. It’ll even change the address the user sees in the address bar.&lt;/p&gt;
+
+&lt;p&gt;That’s great, so how do we parse the above code exactly?  I’m not a fan of copying code unless I know exactly what it’s doing.&lt;/p&gt;
+
+&lt;p&gt;So let’s see what’s going on here:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+  &amp;lt;system.webServer&amp;gt;  
+  ...
+  &amp;lt;/system.webServer&amp;gt;  
+&amp;lt;/configuration&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This part tells IIS that we’re modifying the web server’s configuration settings. The next section is where it starts to get tricky:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;rewrite&amp;gt;  
+    &amp;lt;rules&amp;gt; 
+    ... 
+    &amp;lt;/rules&amp;gt;  
+&amp;lt;/rewrite&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;rewrite&amp;gt;&lt;/code&gt; tag tells IIS that the elements it encloses are settings for the the &lt;a href=&quot;http://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module&quot;&gt;URL Rewrite&lt;/a&gt; module.  The &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;rules&amp;gt;&lt;/code&gt; tag lists all the rules that we want that module to follow.   In our case, we want it to follow a rule that will return a HTTP 301 redirect response to the client (the user’s web browser).&lt;/p&gt;
+
+&lt;p&gt;Now for the actual rule:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;rule name=&quot;Redirect rquests to default azure websites domain&quot; stopProcessing=&quot;true&quot;&amp;gt;
+  &amp;lt;match url=&quot;(.*)&quot; /&amp;gt;  
+  &amp;lt;conditions logicalGrouping=&quot;MatchAny&quot;&amp;gt;
+    &amp;lt;add input=&quot;{HTTP_HOST}&quot; pattern=&quot;^yoursite\.azurewebsites\.net$&quot; /&amp;gt;
+  &amp;lt;/conditions&amp;gt;
+  &amp;lt;action type=&quot;Redirect&quot; url=&quot;http://www.yoursite.com/{R:0}&quot; /&amp;gt;  
+&amp;lt;/rule&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The “name” attribute is just for human readability. It doesn’t affect execution at all. StopProcessing=”true” tells the rewrite module that if this rule applies to the incomming request, then not to bother processing any other rules  after this one becuase they won’t matter.  In our case we only have one rule, so this tag doesn’t do anything, but it can save you some CPU if you have more rules defined.&lt;/p&gt;
+
+&lt;p&gt;Next is the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;match url=&quot;(.*)&quot; /&amp;gt;&lt;/code&gt; section. That’s a regEx pattern inside, and since this regEx covers all possible inputs, it tells IIS to apply this rule to all requests, no matter what their url is.&lt;/p&gt;
+
+&lt;p&gt;Then comes the conditions section. We set &lt;code class=&quot;highlighter-rouge&quot;&gt;logicalGrouping=&quot;MatchAny&quot;&lt;/code&gt; to tell IIS to execute the rule if any of the following conditions hold true.  Right now we only have one condition, so again it doesn’t matter, but if you had multiple conditions (for example, multiple domain names you wanted to forward to your custom domain name) then you could list them all here. Alternatively, you could set it to “MatchAll” to tell IIS to only run the action if it matches all the conditons given.&lt;/p&gt;
+
+&lt;p&gt;Here’s the condition we used:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;add input=&quot;{HTTP_HOST}&quot; pattern=&quot;^yoursite\.azurewebsites\.net$&quot; /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;It says to look at the http host and evaluate the condition as true if the host matches the given regEx pattern, which we set to your default azure domain name.&lt;/p&gt;
+
+&lt;p&gt;The last bit is the action, the meat of the whole rule:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;action type=&quot;Redirect&quot; url=&quot;http://www.yoursite.com/{R:0}&quot; /&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Here we’re telling the Rewrite module what action to take (what it’s actually supposed to do) when a request matches the above rules.  The action we want is “Redirect”, which is where it’ll return the HTTP 301 to the client, and when it returns a 301 we need to tell the client what url it should be redirected to. That’s how we get to specify our desired domain name.&lt;/p&gt;
+
+&lt;p&gt;But we don’t want to send the user to the root of the domain name, so we add in the &lt;code class=&quot;highlighter-rouge&quot;&gt;/{R:0}&lt;/code&gt; bit, which (put simply) says “Look at the orignal url we matched against in the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;match&amp;gt;&lt;/code&gt; tag, and stick that in.”  A more thorough description is that we ran a regex expression in the &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;match&amp;gt;&lt;/code&gt; tag, and this &lt;code class=&quot;highlighter-rouge&quot;&gt;{R:0}&lt;/code&gt; returns the first RegEx group.&lt;/p&gt;
+
+&lt;p&gt;And there you have it, that’s how you can redirect all request for your default azure domain to your custom domain.&lt;/p&gt;
+
+&lt;p&gt;As a final example, here’s web.config file’s conent for my site:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;configuration&amp;gt;
+  &amp;lt;system.webServer&amp;gt;  
+    &amp;lt;rewrite&amp;gt;  
+        &amp;lt;rules&amp;gt;  
+          &amp;lt;rule name=&quot;Redirect rquests to default azure websites domain&quot; stopProcessing=&quot;true&quot;&amp;gt;
+            &amp;lt;match url=&quot;(.*)&quot; /&amp;gt;  
+            &amp;lt;conditions logicalGrouping=&quot;MatchAny&quot;&amp;gt;
+              &amp;lt;add input=&quot;{HTTP_HOST}&quot; pattern=&quot;^zainrizvi\.azurewebsites\.net$&quot; /&amp;gt;
+            &amp;lt;/conditions&amp;gt;
+            &amp;lt;action type=&quot;Redirect&quot; url=&quot;http://www.zainrizvi.io/{R:0}&quot; /&amp;gt;  
+          &amp;lt;/rule&amp;gt;  
+        &amp;lt;/rules&amp;gt;  
+    &amp;lt;/rewrite&amp;gt;  
+  &amp;lt;/system.webServer&amp;gt;  
+&amp;lt;/configuration&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><category term="technical" /><category term="Azure " /><summary type="html">Here's how you can block people from using your default *.azurewebsites.net domain. Do this after you've added a custom domain name.</summary></entry><entry><title type="html">Let customers use Facebook authentication to log into your ASP.NET Core site</title><link href="http://localhost:4000/blog/create-site-with-facebook-login-using-asp.net-core/" rel="alternate" type="text/html" title="Let customers use Facebook authentication to log into your ASP.NET Core site" /><published>2016-03-24T00:00:00-07:00</published><updated>2016-03-24T00:00:00-07:00</updated><id>http://localhost:4000/blog/create-site-with-facebook-login-using-asp.net-core</id><content type="html" xml:base="http://localhost:4000/blog/create-site-with-facebook-login-using-asp.net-core/">&lt;p&gt;The goal of this post is to setup Facebook authentication in a way that we get access to the person’s basic information and their email address when they log in.&lt;/p&gt;
+
+&lt;p&gt;Setting up auth from an external service is hard.  At least it is if the steps aren’t really documented.  I’m sharing the steps I followed to get Facebook auth working for a brand new ASP.NET Core site.&lt;/p&gt;
+
+&lt;p&gt;These instructions assume you’ve got Visual Studio 2015 RC1 installed. I expect these steps should keep working after VS RTMs as well.&lt;/p&gt;
+
+&lt;section id=&quot;table-of-contents&quot; class=&quot;toc&quot;&gt;
+  &lt;header&gt;
+    &lt;h3&gt;Overview&lt;/h3&gt;
+  &lt;/header&gt;
+&lt;div id=&quot;drawer&quot;&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#getting-started&quot; id=&quot;markdown-toc-getting-started&quot;&gt;Getting started&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#setting-up-the-database&quot; id=&quot;markdown-toc-setting-up-the-database&quot;&gt;Setting up the database&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#getting-access-to-the-users-email&quot; id=&quot;markdown-toc-getting-access-to-the-users-email&quot;&gt;Getting access to the User’s Email&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#actually-reading-the-email-address&quot; id=&quot;markdown-toc-actually-reading-the-email-address&quot;&gt;Actually reading the email address&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#getting-the-email-address-from-facebook&quot; id=&quot;markdown-toc-getting-the-email-address-from-facebook&quot;&gt;Getting the email address from Facebook&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#getting-the-user-name-from-facebook-and-getting-rid-of-the-extra-registration-page&quot; id=&quot;markdown-toc-getting-the-user-name-from-facebook-and-getting-rid-of-the-extra-registration-page&quot;&gt;Getting the User Name from Facebook and getting rid of the extra Registration page&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#poking-around-the-database&quot; id=&quot;markdown-toc-poking-around-the-database&quot;&gt;Poking around the database&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#the-end&quot; id=&quot;markdown-toc-the-end&quot;&gt;The End&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;!-- /#table-of-contents --&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;getting-started&quot;&gt;Getting started&lt;/h1&gt;
+
+&lt;p&gt;The &lt;a href=&quot;http://docs.asp.net/en/latest/security/authentication/sociallogins.html&quot;&gt;official docs&lt;/a&gt; contain good instructions, but they’re not quite complete.  Let’s start off by following them and then we’ll move forward from there:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://docs.asp.net/en/latest/security/authentication/sociallogins.html#use-secretmanager-to-store-facebook-appid-and-appsecret&quot;&gt;Create a new ASP.NET project&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://docs.asp.net/en/latest/security/authentication/sociallogins.html#running-the-application&quot;&gt;Run the app to make sure it works&lt;/a&gt;. In the site, click the “Log in” button on the top left corner to see the login screen.  You’ll note that it lets you create a new account.  It saves this account in a local Sql database that was installed on your computer with Visual Studio (we’ll talk more about this later). On the right hand side you’ll see instructions for setting up logins using an external service like Facebook.&lt;/p&gt;
+
+    &lt;p&gt;&lt;img src=&quot;/images/2016/03/Login-Screen.png&quot; alt=&quot;Login window&quot; /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://docs.asp.net/en/latest/security/authentication/sociallogins.html#creating-the-app-in-facebook&quot;&gt;Get Facebook developer credentials by creating an app in Facebook&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://docs.asp.net/en/latest/security/authentication/sociallogins.html#use-secretmanager-to-store-facebook-appid-and-appsecret&quot;&gt;Use SecretManager to store the Facebook AppId and AppSecret&lt;/a&gt;. The SecretManager is a pretty cool tool since it gives you a good place to put your secrets without risking them accidentally ending up checked into your source control and ending up on Github&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://docs.asp.net/en/latest/security/authentication/sociallogins.html#enable-facebook-middleware&quot;&gt;Enable the Facebook middleware&lt;/a&gt;. This tells ASP.NET Core that you want to use Facebook authentication and will set you up with the basics that  you’ll need.  Visual Studio will prompt you to add a reference to Microsoft.AspNet.Authentication.Facebook when you add the Facebook middleware code.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Herea are the two changes you’ll have made to your project:  &lt;a href=&quot;https://github.com/ZainRizvi/ASP.NET-Core-FacebookAuth/commit/c2472e966c0d24262280691b53ae039ba341eb51&quot;&gt;adding the Facebook middleware&lt;/a&gt; and &lt;a href=&quot;https://github.com/ZainRizvi/ASP.NET-Core-FacebookAuth/commit/64d0f89e6644561b154e869c59b19da4f9072534&quot;&gt;adding the reference&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;setting-up-the-database&quot;&gt;Setting up the database&lt;/h1&gt;
+
+&lt;p&gt;If you run your site and try to login with your Facebook account you may notice the following error:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016/03/Database-failure.png&quot; alt=&quot;Login window&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s because we never setup the database!  What, you don’t remember creating a database? That’s because it was done for you automatically when you created the project, or at least part of it was.&lt;/p&gt;
+
+&lt;p&gt;When you installed Visual Studio 2015, you also got a copy of sqllocaldb installed on your computer. That lets your computer act as a local Sql Server instance and you can create and access databases on it.  If you look in your site’s appsettings.json file you’ll see something similar to the following setting that sets your connection string:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Data&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;DefaultConnection&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;ConnectionString&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Server=(localdb)&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\\&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mssqllocaldb;Database=aspnet5-FacebookAuthSite-1746853f-78c4-4424-8598-a8e8d950b167;Trusted_Connection=True;MultipleActiveResultSets=true&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;That’s says where your database is.  This is great for testing, but once you’re ready to host your site in the cloud you’ll want to change that connection string to point to a database on Azure SQL Server or some other cloud server. You don’t need to worry abou this right now, but when you’re ready to change the connection string you can use the &lt;a href=&quot;http://docs.asp.net/en/latest/security/authentication/sociallogins.html#use-secretmanager-to-store-facebook-appid-and-appsecret&quot;&gt;SecretManager&lt;/a&gt; on your local computer to hold the connection string for the local sql db, while use a different type of configuration (like an App Setting if you’re hosting your site on Azure Web Apps) to store your production database’s connection string.&lt;/p&gt;
+
+&lt;p&gt;We need to create the all the user tables for our site (we never created them, hence the error message that we saw). Normally we’d do this using Entity Framework migrations on the command line (via commands ‘dnx ef migrations add {migrationName}’ and ‘dnx ef migrations update’), but luckily for us our site shows a handy “Apply Migrations” button that’ll just do that for us.  Just click that button and your database will be setup. And then hit refresh to see the working web page.&lt;/p&gt;
+
+&lt;h1 id=&quot;getting-access-to-the-users-email&quot;&gt;Getting access to the User’s Email&lt;/h1&gt;
+
+&lt;p&gt;Now if you go back to the login screen and try to create a site using Facebook authentication, you’ll be redirected to a page that prompts you to add an email address to complete your registration.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016/03/Register-user.png&quot; alt=&quot;Login window&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That’s a bit inconvenient for the user, ideally we’d just ask Facebook to give us the user’s email address. So let’s do that.&lt;/p&gt;
+
+&lt;p&gt;The way we do that is by asking the user for permission to access their personal information when we register them.  This is done by specifying &lt;a href=&quot;https://developers.facebook.com/docs/facebook-login/permissions&quot;&gt;Facebook Permissions&lt;/a&gt; in our authentication code. Each kind of permission lets us pull different user information from Facebook.  We really just want ‘email’, but let’s also get ‘public_profile’ just for the heck of it (I think we get ‘public_profile’ by default anyways).&lt;/p&gt;
+
+&lt;p&gt;We add these permissions by to the options we send in to the UseFacebookAuthentication middleware.  In Startup.cs, in the Configure method, change the call to UseFacebookAuthentication to:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UseFacebookAuthentication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AppId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configuration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Authentication:Facebook:AppId&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AppSecret&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configuration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Authentication:Facebook:AppSecret&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;public_profile&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;email&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now when the user tries to register using Facebook auth they’ll see something like this if they click the ‘Edit the info you provide’ button on Facebook.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016/03/Facebook-info.png&quot; alt=&quot;Login window&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;When they click Ok you’ll have access to read their email address!&lt;/p&gt;
+
+&lt;h2 id=&quot;actually-reading-the-email-address&quot;&gt;Actually reading the email address&lt;/h2&gt;
+
+&lt;p&gt;Great, we can access the email address, but when we try to register we still get back to the same page as before with a blank email:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016/03/Register-user.png&quot; alt=&quot;Login window&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;What gives?  Let’s take a look at the code. The route we’re hitting is “Account/ExternalLoginCallback”, so let’s look at the Account controller class, ExternalLoginCallback method. Near the bottom of that method is the code&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExternalPrincipal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FindFirstValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ClaimTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So we’re expecting the email address claim (&lt;a href=&quot;http://dotnetcodr.com/2013/02/11/introduction-to-claims-based-security-in-net4-5-with-c-part-1/&quot;&gt;claims&lt;/a&gt; are how we identify information about users who are trying to log in) but we’re not getting it. If you inspect that code in the debugger you can verify that there is no email claim.&lt;/p&gt;
+
+&lt;h2 id=&quot;getting-the-email-address-from-facebook&quot;&gt;Getting the email address from Facebook&lt;/h2&gt;
+
+&lt;p&gt;Turns out Facebook doesn’t send that to us when the user logs in. I don’t know why. But we can explicitly ask Facebook for this information.  To do that we need to make an http request to &lt;a href=&quot;https://developers.facebook.com/docs/graph-api&quot;&gt;Facebook’s Graph Api&lt;/a&gt;. The Graph Api lets us access all the information about the user that we had earlier requested access to.&lt;/p&gt;
+
+&lt;p&gt;The Graph Api is a REST Api, but in order to avoid the complexities of using it I’ll just use the Facebook nuget package. Unfortunately this package does not work on the dnxcore environment, meaning we can only run it on Windows based servers, but you can create your own Facebook Graph Api client if you want to run your site using dnxcore.&lt;/p&gt;
+
+&lt;p&gt;Let’s install the Facebook nuget package by modifying the frameworks element in your project.json file to like like the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nl&quot;&gt;&quot;frameworks&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dnx451&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+      &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;Facebook&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;7.0.6&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We had to remove the dnxcore framework since we will no longer support it, and we’re marking the Facebook package explicitly as a dnx451 only package.&lt;/p&gt;
+
+&lt;p&gt;Now to actually use the Graph Api lets go back to the Startup.cs class -&amp;gt; Configure method -&amp;gt; UseFacebookAuthentication middleware.  We want to configure the options to say that whenever a user logs in, call the Facebook Graph Api and get the user’s email address, and add that as the email claim.  You’ll use the following code to do that (intellisense will prompt you to add some dependency references and using statements as well):&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;UseFacebookAuthentication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AppId&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configuration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Authentication:Facebook:AppId&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AppSecret&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Configuration&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Authentication:Facebook:AppSecret&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;public_profile&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Scope&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Add&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;email&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Events&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;OAuthEvents&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;n&quot;&gt;OnCreatingTicket&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// Use the Facebook Graph Api to get the user's email address&lt;/span&gt;
+            &lt;span class=&quot;c1&quot;&gt;// and add it to the email claim&lt;/span&gt;
+
+            &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;FacebookClient&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AccessToken&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+            &lt;span class=&quot;kt&quot;&gt;dynamic&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;client&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;Get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;me&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;fields&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;name,id,email&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+            &lt;span class=&quot;n&quot;&gt;context&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Identity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddClaim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;Claim&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ClaimTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FromResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;m&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;(Fyi, the team managing the Facebook package has vanished into the netherwebs, but you can find a [cached copy of their documentation here] (http://web.archive.org/web/20150317045522/http://facebooksdk.net/docs/web/getting-started/))&lt;/p&gt;
+
+&lt;p&gt;Now if we redeploy our site and try to register using Facebook we’ll see the following page:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016/03/Register-user-with-email.png&quot; alt=&quot;Login window&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We have the email!&lt;/p&gt;
+
+&lt;p&gt;Note, this message is a bit wasteful since we’ll be asking Facebook to give us the user’s email address on &lt;em&gt;every&lt;/em&gt; authenticated request that they make, when we really only want to do this when they first register.  I’ll leave it as an exercise for the user to optimize this code flow.&lt;/p&gt;
+
+&lt;p&gt;The code you have now should match what’s in &lt;a href=&quot;https://github.com/ZainRizvi/ASP.NET-Core-FacebookAuth/commit/f771c75cc89691504a04e9b5b985428998002f8e&quot;&gt;this commit&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;getting-the-user-name-from-facebook-and-getting-rid-of-the-extra-registration-page&quot;&gt;Getting the User Name from Facebook and getting rid of the extra Registration page&lt;/h1&gt;
+
+&lt;p&gt;Great, we’re now reading the email address.  And we know the user’s name. So what do we need this extra registration page for?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016/03/Register-user-with-email.png&quot; alt=&quot;Login window&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We should really just register the user automatically.&lt;/p&gt;
+
+&lt;p&gt;Digging around in the code, we see that in the AuthenticationController class, the ExternalLoginCallback method creates an ExternalLoginConfirmationViewModel view model with the user’s email and then calls the ExternalLoginConfirmation view to let the user add in the custom details, which, when the user hits “Register” will send a POST request to the ExternalLoginConfirmation method with all the required data. We can skip the middle step of involving the user and just send the required data to the  ExternalLoginConfirmation method ourselves.&lt;/p&gt;
+
+&lt;p&gt;In fact, if you look at the ExternalLoginConfirmation method, they set the user’s email as the user name as well. Let’s fix that too while we’re at it.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApplicationUser&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UserName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Email&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Email&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The first step will be to extend our ExternalLoginConfirmationViewModel to add a UserName property.  Edit ViewModels\ExternalLoginConfirmationViewModel.cs to look like the following:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;ExternalLoginConfirmationViewModel&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EmailAddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Email&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;EmailAddress&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UserName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now, in our AccountController’s ExternalLoginCallback method, change the last else statement (where it calls the ExternalLoginConfirmation View) to match the below code. We’re specifying the UserName using the Name claim and passing that directly to the ExternalLoginConfirmation method instead of invoking a View.  The ExternalLoginConfirmation will generate and return the regisration completed view directly.&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;else&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;c1&quot;&gt;// If the user does not have an account, then ask the user to create an account.&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ViewData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ReturnUrl&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;returnUrl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;ViewData&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;LoginProvider&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;LoginProvider&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExternalPrincipal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FindFirstValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ClaimTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExternalPrincipal&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;FindFirstValue&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ClaimTypes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ExternalLoginConfirmation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ExternalLoginConfirmationViewModel&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Email&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;email&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UserName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We also need to modify the ExternalLoginConfirmation to actually read the UserName from the model:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Task&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IActionResult&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;ExternalLoginConfirmation&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ExternalLoginConfirmationViewModel&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;string&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;returnUrl&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;
+
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ModelState&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;IsValid&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Get the information about the user from the external login provider&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_signInManager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GetExternalLoginInfoAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;info&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ExternalLoginFailure&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ApplicationUser&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;UserName&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;UserName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Email&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Email&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+        &lt;span class=&quot;kt&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;result&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;await&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;_userManager&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;CreateAsync&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And finally we need to modify the last line of ExternalLoginConfirmation, where it returns the view, to explicitly mention the name of the view:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;View&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ExternalLoginConfirmation&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Without that line, when ExternalLoginCallback calls ExternalLoginConfirmation, the View method would look for a view named ExternalLoginCallback, which doesn’t exist.&lt;/p&gt;
+
+&lt;p&gt;Now let’s try to run our site and log in.  And you might now see an error like&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016/03/Invalid-user-name.png&quot; alt=&quot;Invalid user name&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The message says that the name can only have numbers and letters, but my name contains a space so it’s complaining. It’s gonna be tough getting names from Facebook if we don’t allow spaces in the name, so let’s fix that.&lt;/p&gt;
+
+&lt;p&gt;This setting resides back in Startup.cs, but this time we’ll go to the ConfigureServices method, which is where all the dependency injection gets setup.  We’ll modify the &lt;code class=&quot;highlighter-rouge&quot;&gt;services.AddIdentity()&lt;/code&gt; method to pass in the below options:&lt;/p&gt;
+
+&lt;div class=&quot;language-csharp highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;services&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AddIdentity&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ApplicationUser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;IdentityRole&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;options&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;n&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AllowedUserNameCharacters&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._' &quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;AddEntityFrameworkStores&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ApplicationDbContext&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;&amp;gt;()&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;AddDefaultTokenProviders&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This expands our list of allwed characters in the user name to include a space, and I also threw in a few extra characters for good measure.  It’s not perfect, but it’ll at least protect us from some of the &lt;a href=&quot;http://www.kalzumeus.com/2010/06/17/falsehoods-programmers-believe-about-names/&quot;&gt;falsehoods developers believe about names&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Try running your site again and registering as a new user using Facebook authentication and…hey we’re in!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016/03/Logged-in.png&quot; alt=&quot;We're logged in&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Fyi, &lt;a href=&quot;https://github.com/ZainRizvi/ASP.NET-Core-FacebookAuth/commit/0691694a15f38c7fb034feff0749724c9c60e25e&quot;&gt;this commit&lt;/a&gt; contains all the changes you should have made.&lt;/p&gt;
+
+&lt;h1 id=&quot;poking-around-the-database&quot;&gt;Poking around the database&lt;/h1&gt;
+
+&lt;p&gt;We’ve registered a user, but where is the data actually stored? Lets take a quick look around the database and check it out.&lt;/p&gt;
+
+&lt;p&gt;In Visual Studio, go to View-&amp;gt;SQL Server Object Explorer to start browsing the database.  There if you poke around the folders you’ll find a database corresponding to your project.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016/03/Local-Sql-Server.png&quot; alt=&quot;Browsing SQL Server Object Explorer&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can expand the database to see all the tables in there. Right now you’ll only see tables created for managing users.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/2016/03/Sql-Server-Tables.png&quot; alt=&quot;Browsing SQL Server Tables&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Right click the dbo.AspNetUsers table and click “View data”, and you’ll see a table open up containing the Facebook user you just registered!&lt;/p&gt;
+
+&lt;h1 id=&quot;the-end&quot;&gt;The End&lt;/h1&gt;
+
+&lt;p&gt;That’s it for this post. Hope you guys were able to follow all the steps.  Shout out in the comments if you found this stuff helpful or if you run into any problems.&lt;/p&gt;</content><author><name>{&quot;twitter&quot;=&gt;&quot;zainrzv&quot;, &quot;picture&quot;=&gt;&quot;bio-photo.png&quot;}</name></author><summary type="html">How to setup Facebook authentication in a way that we get access to the person's basic information and their email address when they log in.</summary></entry></feed>
