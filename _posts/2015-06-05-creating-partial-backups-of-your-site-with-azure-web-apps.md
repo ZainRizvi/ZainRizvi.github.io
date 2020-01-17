@@ -1,5 +1,8 @@
 ---
 title: "Backup just the Important Parts of your Site with Azure Web Apps"
+redirect_from: 
+- "/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps"
+- "/2015/06/05/creating-partial-backups-of-your-site-with-azure-web-apps/"
 excerpt: |-
   Introducting a way to backup just the parts of your website that matter most.
 ---
