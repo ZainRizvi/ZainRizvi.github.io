@@ -13,7 +13,7 @@ tags:
 ---
 I recently discovered that it's possible to combine any domain that you own with your Gmail account and a free MailGun account to get a free custom domain email address!
 
-When you're done following the below instructions you'll be able to send and receive emails addressed to you@yourdomain.com directly from your Gmail inbox.
+When you're done following the below instructions you'll be able to send and receive emails addressed to you@yourdomain.com directly from your Gmail inbox. 
 
 # Step 1 - Buy a domain
 
