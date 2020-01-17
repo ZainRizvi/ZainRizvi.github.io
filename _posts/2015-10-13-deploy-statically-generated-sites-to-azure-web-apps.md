@@ -1,5 +1,8 @@
 ---
 title: "Deploy statically generated sites to Azure Web Apps"
+redirect_from: 
+- "/2015/10/13/deploy-statically-generated-sites-to-azure-web-apps"
+- "/2015/06/05/deploy-statically-generated-sites-to-azure-web-apps/"
 excerpt: |-
   There are a lot of awesome static site generators out there. It’s not always easy to figure out how to setup continuous deployment for them though.
 
