@@ -8,7 +8,6 @@ tags:
 - technical
 - 'Azure '
 redirect_from:
-- "/2016/04/07/block-default-azure-websites-domain"
 - "/2016/04/07/block-default-azure-websites-domain/"
 
 ---
