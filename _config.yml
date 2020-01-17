@@ -42,6 +42,7 @@ plugins:
   - jekyll-sitemap
   - jekyll-gist
   - jekyll-feed
+  - jekyll-redirect-from
 
 kramdown:
   auto_ids: true
