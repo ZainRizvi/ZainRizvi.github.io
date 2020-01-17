@@ -1,5 +1,8 @@
 ---
 title: "Let customers use Facebook authentication to log into your ASP.NET Core site"
+redirect_from: 
+- "/2016/03/24/create-site-with-facebook-login-using-asp.net-core"
+- "/2016/03/24/create-site-with-facebook-login-using-asp.net-core/"
 excerpt: "How to setup Facebook authentication in a way that we get access to the person's basic information and their email address when they log in."
 ---
 
