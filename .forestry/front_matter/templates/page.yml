@@ -23,3 +23,5 @@ fields:
   label: Layout
   hidden: true
   default: page
+pages:
+- _posts/deep-work-most-impactful-lessons.md
