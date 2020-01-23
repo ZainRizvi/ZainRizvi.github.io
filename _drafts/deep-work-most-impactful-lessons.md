@@ -4,12 +4,13 @@ title: So you want to do Deep Work?
 excerpt: ''
 
 ---
-Cal Newport says deep work is "the ability to focus without distraction on a cognitively demanding task_._"  Other people call this being in the state of "flow" or "being in the zone" where you can effortlessly focus on your work and be incredibly productive.
+Deep Work has been called "the ability to focus without distraction on a cognitively demanding task."  Other people call this being in the state of "flow" or "being in the zone" where you can effortlessly focus on your work and be incredibly productive.
 
-In this information era where all mechanical tasks are being automated, in order to be successful you need to be able to do what machines cannot: be creative.  And creativity is something you get on demand through deep work, and in his boo "Deep Work" Cal explains how you can achieve it.
+In this information era where all mechanical tasks are being automated, in order to be successful you need to be able to do what machines cannot: be creative.  And creativity is something you get on demand through deep work, and in his book "Deep Work" Cal explains how you can achieve it.
 
-Below are the key takeaways I had from his book and with a bunch of my own thoughts sprinkled in
+Below are the key takeaways I had from his book, with a bunch of my own thoughts sprinkled in.
 
+Key quotes:
 _"the skillful management of attention is...the key to improving virtually every aspect of your experience."_
 
 _"'The best moments usually occur when a person’s body or mind is stretched to its limits in a voluntary effort to accomplish something difficult and worthwhile.'... this mental state \[is\] Flow"_
