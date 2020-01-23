@@ -111,7 +111,7 @@ Distractions are things like:
 * Most of the internet really (you can define specific kinds of internet use as acceptable if it's critical to your work)
 * 99% of alerts on your phone
 
-*Implementation tips:*
+**Implementation tips:**
 
 1. If you need that distraction frequently (e.g. you're expected to be responsive to email) , then schedule shorter, more frequent, "distraction" breaks
 2. Absolutely no distractions during the distraction free time. You must resist temptation, even when it seems important, this is training your brain
@@ -146,7 +146,11 @@ To do this you need to:
 
 # Remove Shallow Work as much as Possible
 
-Shallow work is any work that's not deep work (e.g. emails, organizing things). Shallow work that increasingly dominates the time and attention of knowledge workers is less vital than it often seems in the moment. Replacing shallow work with deep work means you do more work which is actually profitable. (Of course, there is a limit to how much shallow work you can actually cut out)
+Shallow work consists of noncognitively demanding, logistical style tasks, that you can often perform while distracted (e.g. filling forms, sending emails). Essentially it's any work that's not deep work.
+
+These efforts tend not to create much new value in the world and are easy to replicate .
+
+Shallow work that increasingly dominates the time and attention of knowledge workers is less vital than it often seems in the moment. Replacing shallow work with deep work means you do more work which is actually profitable. (Of course, there is a limit to how much shallow work you can actually cut out)
 
 Deep work is cognitively exhausting. In the beginning, an hour a day is a reasonable amount of deep work time. Experts can do up to four hours, but rarely more.
 
@@ -167,14 +171,6 @@ The goal here is to force yourself to be conscious about how you're spending you
 Tactic: add overflow conditional blocks, blocks where you were doing Activity A before and you'll continue doing it if it takes longer than expected, but if you finish A then you'll do Activity B instead
 
 Tactic: include a 'miscellaneous' block for handling generic things that need to be done (email, interruptions, etc)
-
-## Quantify the Depth of Every Activity
-
-Scheduling your day lets you choose how much time to spend in shallow vs deep activities, but you need to identify which is which
-
-**Shallow work:** Noncognitively demanding, logistical style tasks, often performed while distracted. These efforts tend not to create much new value in the world and are easy to replicate
-
-Rule of thumb for classification: how long would it take to teach a college hire without specialized training in this task to do this work?
 
 ## Finish your work at the same time each day
 
