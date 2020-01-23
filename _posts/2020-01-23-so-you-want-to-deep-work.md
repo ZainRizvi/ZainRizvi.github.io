@@ -32,7 +32,7 @@ Even if we feel motivated for a while, our brains are fickle things and sometime
 
 Here are some specific tactics to help us stay motivated:
 
-## Tactic #1: Focus on what you REALLY care about
+## Tactic #1: Focus on What You REALLY Care About
 
 The first step to being strongly motivated is to focus _only_ on the tasks you really care about.
 
@@ -79,7 +79,7 @@ If you're working solo, you can create accountability in other ways.  You can co
 
 This tactic can be seen as a variant of a precommitment device
 
-## Tactic #5: Work with great Intensity
+## Tactic #5: Work with Great Intensity
 
 Take your goals, estimate how long it'll take to complete, and give yourself a drastically reduced deadline. Commit to it publicly if possible, and then work intensely to make it happen.
 
@@ -187,7 +187,7 @@ Tactic: add overflow conditional blocks, blocks where you were doing Activity A 
 
 Tactic: include a 'miscellaneous' block for handling generic things that need to be done (email, interruptions, etc)
 
-## Tactic #2: Finish your work at the same time each day
+## Tactic #2: Finish your Work at the Same Time Each Day
 
 **Fixed-schedule productivity:** have a firm goal of not working past a certain time, then work backwards to find productivity strategies that allow you to satisfy this declaration.
 
