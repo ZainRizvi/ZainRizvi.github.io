@@ -27,15 +27,28 @@ Here are some specific tactics to help us stay motivated:
 
 ## Focus on what you REALLY care about
 
-The first step to having strong motivation was focusing only on the tasks that you really care about.
+The first step to being strongly motivated is to focus *only* on the tasks you really care about.
 
-You need to manage your attention so that you don't have to force yourself to work.  Don't make yourself say 'no' to things you want to do.  Instead, find the productive things that you are really longing to do and say 'yes' to them.
+You need to manage your attention so that you don't have to force yourself to work.  Don't make yourself say 'no' to things you want to do.  Instead, find the productive things that you are really longing to do and say 'yes' to them.  That 'yes' will be effortless.
 
-A simple example: You didn't have to force yourself away from Facebook to watch the last Avengers movie.  When you had a chance to watch the movie, Facebook didn't even enter your mind.
+For example, you didn't have to force yourself away from Facebook to watch the last Avengers movie.  When you had a chance to watch the movie, Facebook didn't even enter your mind.
 
-Find the work that captures your attention the same way
+Find work that captures your attention the same way
 
 _"To win the battle for willpower, don't try to say 'no' to the things you want to avoid. Instead try to say 'yes' to the subject that arouses terrifying longing, and let that terrifying longing crowd out everything else"_
+
+## Create Fast Feedback Loops
+This is both a productivity tip and a motivational hack.
+
+Fast [feedback loops](https://fs.blog/2014/05/improving-your-performance/) are when you can quickly measure a result which tells you how effectively you're working.
+
+Creating feedback loops help you figure out how we'll you're progressing towards your goal.  The faster you can tell that you're veering off track, the better.
+
+And seeing that you're doing good work (or that you need to improve) can push you do keep going or work harder.  Conversely, if you can't see the effects of your actions, you'll stop caring (goodbye motivation).
+
+Cal specifically mentions measuring what he calls 'lead measures', which are items which imply you will be successful (e.g. hours spent in deep work, or mini tasks that you've completed).  He contrasts that to 'lag measures' like number of sales, since the latter takes a lot longer to acquire, meaning it'll take a lot longer to get that feedback.
+
+It can be tricky to identify good lead measures, but they should be behaviors that would drive success on the lag measures.  But the general idea is to see how you can get feedback as fast as possible, which is in line with many other popular philosophies such as MVPs and Fail Fast.
 
 ## Compete and Win
 
@@ -45,25 +58,13 @@ Note that it's best if you don't make this a public competition, otherwise you r
 
 Examples of score boards:
 
+* Outcomes from your feedback loops
 * Number of hours spent in deep work per day/week
 * Number of lead measures
 * Number of customer sign ups
 
-## Create Fast Feedback Loops
-This is both a productivity tip and a motivational hack.
-
-Fast [feedback loops](https://fs.blog/2014/05/improving-your-performance/) are when you can quickly measure a result which tells you how effectively you're working.
-
-Creating feedback loops help you figure out how we'll you're progressing towards your goal.  The faster you can tell that you're veering off track, the better.
-
-And seeing that you're doing good work (or that you need to improve) can push you do keep going or work harder, and can be a way you compete productively with yourself.  Conversely, if you can't see the effects of your actions, you'll stop caring (goodbye motivation).
-
-Cal specifically mentions measuring what he calls 'lead measures', which are items which imply you will be successful (e.g. hours spent in deep work, or mini tasks that you've completed).  He contrasts that to 'lag measures' like number of sales, since the latter takes a lot longer to acquire, meaning it'll take a lot longer to get that feedback.
-
-It can be tricky to identify good lead measures, but they should be behaviors that would drive success on the lag measures.  But the general idea is to see how you can get feedback as fast as possible, which is in line with many other popular philosophies such as MVPs and Fail Fast.
-
 ## Regular Accountability
-Have regular meetings of any team that owns a wildly important goal.  This could be you yourself setting up a time (weekly or daily) to go over the past weeks scores and plan how to improve the next week.  This also plays into the feedback loops that you're creating and is another angle through which you can make sure your motivation stays high.  Social accountability can be a surprisingly motivating lever.
+Have regular meetings of any team that owns a wildly important goal.  This could be you setting up a time (weekly or daily) to go over the past weeks scores and plan how to improve the next week.  This also plays into the feedback loops that you're creating and is another angle through which you can make sure your motivation stays high.  Social accountability can be a surprisingly motivating lever.
 
 If you're working solo, you can create accountability in other ways.  You can commit to giving regular updates to a group of friends, or to post them on a public forum where your peers will see it.
 
@@ -77,14 +78,7 @@ This is kind of like how in school you it would be impossible to write that essa
 
 Personally, I find it next to impossible to take a self-imposed deadline seriously.  I have to pair it with external accountability by telling someone else when about that deadline.  Knowing that I'll have to report my status to that second person suddenly makes that deadline real.
 
-# Ponder Productively
-
-## Be Wary of Distractions and Looping
-**Distractions:** thinking about other things besides the really important goal you have
-  
-**Looping:** Going over the same problem again and again, rehashing old results without diving deeper into it. When you notice the loop, catch yourself and shift your attention to the next step
-
-## Structure your Deep Thinking
+# How to Work Deeply? Create a Structure
 Many creatives know the pain of sitting in front of a black piece of paper and then thinking 'now what'?  The best people use a formula that works for them.  It seems counterintuitive to use a formula for creativity, but people are most creative when we are given certain limitations (otherwise we risk [information overload](https://hbr.org/2009/09/death-by-information-overload)).  Those people have a specific pattern of actions that help them focus and concentrate, and you'll want to develop one for yourself that you'll use to do your deep thinking.
 
 There's no one fixed formula because it'll vary based on your industry, the type of work you do, and even your personality.  However, you can take the following formula as a starting point.  Then overtime build on it and adjust it to meet your own needs
@@ -94,6 +88,12 @@ Example structure:
 2. Define the **next-step** question you need to answer using those variables. Now you have a specific target for your attention
 3. **Focus** on your question and try to find an answer using the variables
 4. **Consolidate** your gains by reviewing clearly the answer you arrived at
+
+There are also a couple pitfalls in your thinking you should watch out for
+
+**Distractions:** thinking about other things besides the really important goal you have
+  
+**Looping:** Going over the same problem again and again, rehashing old results without diving deeper into it. When you notice the loop, catch yourself and shift your attention to the next step
 
 # Get Better at Focusing by Embracing Boredom & Discarding Distractions
 You have to be able to focus on your deep work.  Without this skill, your mind will constatly be wandering to all the distractions constantly bombarding you for attention.
