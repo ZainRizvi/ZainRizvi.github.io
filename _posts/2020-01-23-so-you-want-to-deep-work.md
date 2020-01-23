@@ -107,7 +107,7 @@ There are also a couple pitfalls in your thinking you should watch out for:
 * **Distractions:** thinking about other things besides the really important goal you have
 * **Looping:** Going over the same problem again and again, rehashing old results without diving deeper into it. When you notice the loop, catch yourself and shift your attention to the next step
 
-# Discard Distractions & Embrace Boredom to Find your Focus
+# Discard Distractions + Embrace Boredom = Finding Focus
 
 You have to be able to focus on your deep work.  Without this skill, your mind will constatly be wandering to all the distractions constantly bombarding you for attention.
 
