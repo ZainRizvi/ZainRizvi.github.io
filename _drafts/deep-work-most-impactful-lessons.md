@@ -1,20 +1,33 @@
 ---
 layout: page
-title: Deep Work - Most Impactful Lessons
+title: So you want to do Deep Work?
 excerpt: ''
 
 ---
-Cal Newport calls deep work "the ability to focus without distraction on a cognitively demanding task."  Other people call this being in the state of "flow" or "being in the zone" where you can effortlessly focus on your work and be incredibly productive.
+Cal Newport says deep work is "the ability to focus without distraction on a cognitively demanding task_._"  Other people call this being in the state of "flow" or "being in the zone" where you can effortlessly focus on your work and be incredibly productive.
 
-In this new information era where all mechanical tasks are being automated, in order to be successful you need to be able to do what machines cannot: be creative.  This is something you get through deep work, and Cal explains how you can achieve it.
+In this information era where all mechanical tasks are being automated, in order to be successful you need to be able to do what machines cannot: be creative.  And creativity is something you get on demand through deep work, and in his boo "Deep Work" Cal explains how you can achieve it.
 
-Below are the key takeaway I had from Cal Newport's book "Deep Work", heavily reformatted with a bunch of my own thoughts sprinkled in
+Below are the key takeaways I had from his book and with a bunch of my own thoughts sprinkled in
 
 _"the skillful management of attention is...the key to improving virtually every aspect of your experience."_
 
 _"'The best moments usually occur when a person’s body or mind is stretched to its limits in a voluntary effort to accomplish something difficult and worthwhile.'... this mental state \[is\] Flow"_
 
-# Focus on what you REALLY care about
+# Your Motivation is the Key
+Deep Work requires you to concentrate on a topic for long stretches of time.  This is an extremely challenging task unless the topic is something that you feel highly motivated to work on.  
+
+What happens if you try to work on a task you're not motivated about? You procrastinate. And delay. And do almost anything else except work on that one task.  You might slowly make progress, but you'll be terribly inefficient.
+
+But if you're motivated to do something, we can spend hours working on it non-stop and not even feel tired afterwards.  We need to harness this motivation.
+
+Even if we feel motivated for a while, our brains are fickle things and sometimes get distracted anyways. It helps to have additional layers of motivation to help us stay motivated to work towards our goals.  It's like multiple hands pushing you in the direction you want to go.
+
+Here are some specific tactics to help us stay motivated:
+
+## Focus on what you REALLY care about
+
+The first step to having strong motivation was focusing only on the tasks that you really care about.
 
 You need to manage your attention so that you don't have to force yourself to work.  Don't make yourself say 'no' to things you want to do.  Instead, find the productive things that you are really longing to do and say 'yes' to them.
 
@@ -22,23 +35,7 @@ A simple example: You didn't have to force yourself away from Facebook to watch 
 
 Find the work that captures your attention the same way
 
-"To win the battle for willpower, don't try to say 'no' to the things you want to avoid. Instead try to say 'yes' to the subject that arouses terrifying longing, and let that terrifying longing crowd out everything else"
-
-# Create Fast Feedback Loops
-
-Create fast feedback loops which help you figure out how we'll you're progressing towards your goal.  The faster you can tell you've gone off track, the better.
-
-Cal specifically mentions measuring what he calls 'lead measures', which are items which imply you will be successful (e.g. hours spent in deep work, or mini tasks that you've completed).  He contrasts that to 'lag measures' like number of sales, since the latter takes a lot longer to acquire, meaning it'll take a lot longer to get that feedback.
-
-It can be tricky to identify good lead measures, but they should be behaviors that would drive success on the lag measures.  But the general idea is to see how you can get feedback as fast as possible, which is in line with many other popular philosophies such as MVPs and Fail Fast.
-
-# Your Motivation is the Key
-
-We work best on the things that we're really motivated on, and we need to harness this motivation.
-
-The first step to having strong motivation was focusing only on the tasks that you really care about.  However, we humans are have fickle minds and it helps to have additional layers of motivation to help us stay on track.
-
-The follow are additional tactics to help us stay motivated:
+_"To win the battle for willpower, don't try to say 'no' to the things you want to avoid. Instead try to say 'yes' to the subject that arouses terrifying longing, and let that terrifying longing crowd out everything else"_
 
 ## Compete Productively
 
@@ -52,12 +49,20 @@ Examples of score boards:
 * Number of lead measures
 * Number of customer sign ups
 
-Over time you can start noticing trends such as how high a score was needed to achieve specific goals
+## Create Fast Feedback Loops
+This is both a productivity tip and a motivational hack.
+
+Fast [feedback loops](https://fs.blog/2014/05/improving-your-performance/) are when you can quickly measure a result which tells you how effectively you're working.
+
+Creating feedback loops help you figure out how we'll you're progressing towards your goal.  The faster you can tell that you're veering off track, the better.
+
+And seeing that you're doing good work (or that you need to improve) can push you do keep going or work harder, and can be a way you compete productively with yourself.  Conversely, if you can't see the effects of your actions, you'll stop caring (goodbye motivation).
+
+Cal specifically mentions measuring what he calls 'lead measures', which are items which imply you will be successful (e.g. hours spent in deep work, or mini tasks that you've completed).  He contrasts that to 'lag measures' like number of sales, since the latter takes a lot longer to acquire, meaning it'll take a lot longer to get that feedback.
+
+It can be tricky to identify good lead measures, but they should be behaviors that would drive success on the lag measures.  But the general idea is to see how you can get feedback as fast as possible, which is in line with many other popular philosophies such as MVPs and Fail Fast.
 
 ## Regular Accountability
-
-Here's another way to stay motivated
-
 Have regular meetings of any team that owns a wildly important goal.  This could be you yourself setting up a time (weekly or daily) to go over the past weeks scores and plan how to improve the next week.  This also plays into the feedback loops that you're creating and is another angle through which you can make sure your motivation stays high.  Social accountability can be a surprisingly motivating lever.
 
 If you're working solo, you can create accountability in other ways.  You can commit to giving regular updates to a group of friends, or to post them on a public forum where your peers will see it.
@@ -66,10 +71,13 @@ This tactic can be seen as a variant of a precommitment device
 
 ## Work with great Intensity
 
-Take your goals, estimate how long it'll take to complete, and give yourself a drastically reduced deadline. Commit to it publicly if possible, and then work intensely to make it happen
+Take your goals, estimate how long it'll take to complete, and give yourself a drastically reduced deadline. Commit to it publicly if possible, and then work intensely to make it happen.
+
+This is kind of like how in school you it would be impossible to write that essay a week before it was due.  Yet the day before the deadline words would suddenly pour forth from your fingertips like magic.
+
+Personally, I find it next to impossible to take a self-imposed deadline seriously.  I have to pair it with external accountability by telling someone else when about that deadline.  Knowing that I'll have to report my status to that second person suddenly makes that deadline real.
 
 # Give Yourself Down Time - It Helps with Recovery
-
 You need to be able to relax your brain when you're not working, so that it's ready to again give a 100% when you start working again.  If you don't have any problems with that, then go ahead and skip this section.  If you find yourself thinking about work when you're sitting with your family, then read on.
 
 One tactic for this: Have a Shutdown Ritual
@@ -115,17 +123,21 @@ _Implementation tips:_
 
 # Ponder Productively
 
-1. Be Wary of Distractions and Looping
-   * Distractions: thinking about other things besides the really important goal you have
-   * Looping: Going over the same problem again and again, rehashing old results without diving deeper into it
-     * When you notice the loop, catch yourself and shift your attention to the next step
-2. Structure your Deep Thinking
-   * Example structure:
-     1. Carefully review the relevant **variables** for solving the problem (the things you can affect) and store them in memory
-     2. Define the **next-step** question you need to answer using those variables
-        * Now you have a specific target for your attention
-     3. **Focus** on your question and try to find an answer using the variables
-     4. **Consolidate** your gains by reviewing clearly the answer you arrived at
+## Be Wary of Distractions and Looping
+*Distractions:* thinking about other things besides the really important goal you have
+  
+*Looping:* Going over the same problem again and again, rehashing old results without diving deeper into it. When you notice the loop, catch yourself and shift your attention to the next step
+
+## Structure your Deep Thinking
+Many creatives know the pain of sitting in front of a black piece of paper and then thinking 'now what'?  
+
+Come up with a fairly fixed forumla that you'll use to do your deep thinking.
+
+Example structure:
+1. Carefully review the relevant **variables** for solving the problem (the things you can affect) and store them in memory
+2. Define the **next-step** question you need to answer using those variables. Now you have a specific target for your attention
+3. **Focus** on your question and try to find an answer using the variables
+4. **Consolidate** your gains by reviewing clearly the answer you arrived at
 
 # Eliminate Activities that Don't Help your Goals
 
