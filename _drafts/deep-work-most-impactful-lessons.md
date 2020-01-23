@@ -1,7 +1,9 @@
 ---
 layout: page
 title: So you want to do Deep Work?
-excerpt: ''
+excerpt: 'In this information era where all mechanical tasks are being automated,
+  in order to be successful you need to be able to do what machines cannot: be creative.  And
+  creativity is something you get on demand through Deep Work'
 
 ---
 Deep Work has been called "the ability to focus without distraction on a cognitively demanding task."  Other people call this being in the state of "flow" or "being in the zone" where you can effortlessly focus on your work and be incredibly productive.
@@ -13,9 +15,10 @@ In this information era where all mechanical tasks are being automated, in order
 Below are the key takeaways I had from his book, with a bunch of my own thoughts sprinkled in.
 
 # Your Motivation is the Key
+
 _"the skillful management of attention is...the key to improving virtually every aspect of your experience."_
 
-Deep Work requires you to concentrate on a topic for long stretches of time.  This is an extremely challenging task unless the topic is something that you feel highly motivated to work on.  
+Deep Work requires you to concentrate on a topic for long stretches of time.  This is an extremely challenging task unless the topic is something that you feel highly motivated to work on.
 
 What happens if you try to work on a task you're not motivated about? You procrastinate. And delay. And do almost anything else except work on that one task.  You might slowly make progress, but you'll be terribly inefficient.
 
@@ -25,9 +28,9 @@ Even if we feel motivated for a while, our brains are fickle things and sometime
 
 Here are some specific tactics to help us stay motivated:
 
-## Focus on what you REALLY care about
+## Tactic #1: Focus on what you REALLY care about
 
-The first step to being strongly motivated is to focus *only* on the tasks you really care about.
+The first step to being strongly motivated is to focus _only_ on the tasks you really care about.
 
 You need to manage your attention so that you don't have to force yourself to work.  Don't make yourself say 'no' to things you want to do.  Instead, find the productive things that you are really longing to do and say 'yes' to them.  That 'yes' will be effortless.
 
@@ -37,7 +40,8 @@ Find work that captures your attention the same way
 
 _"To win the battle for willpower, don't try to say 'no' to the things you want to avoid. Instead try to say 'yes' to the subject that arouses terrifying longing, and let that terrifying longing crowd out everything else"_
 
-## Create Fast Feedback Loops
+## Tactic #2: Create Fast Feedback Loops
+
 This is both a productivity tip and a motivational hack.
 
 Fast [feedback loops](https://fs.blog/2014/05/improving-your-performance/) are when you can quickly measure a result which tells you how effectively you're working.
@@ -50,7 +54,7 @@ Cal specifically mentions measuring what he calls 'lead measures', which are ite
 
 It can be tricky to identify good lead measures, but they should be behaviors that would drive success on the lag measures.  But the general idea is to see how you can get feedback as fast as possible, which is in line with many other popular philosophies such as MVPs and Fail Fast.
 
-## Compete and Win
+## Tactic #3: Compete and Win
 
 Add to your motivation by competing against yourself (or others) with a scoreboard.  Cal suggests that people play differently when they're keeping score.  This is really another way of using your lead measures, but you are now attaching a goal to the lead measures and getting your psychology involved as well.
 
@@ -63,14 +67,15 @@ Examples of score boards:
 * Number of lead measures
 * Number of customer sign ups
 
-## Regular Accountability
+## Tactic #4: Regular Accountability
+
 Have regular meetings of any team that owns a wildly important goal.  This could be you setting up a time (weekly or daily) to go over the past weeks scores and plan how to improve the next week.  This also plays into the feedback loops that you're creating and is another angle through which you can make sure your motivation stays high.  Social accountability can be a surprisingly motivating lever.
 
 If you're working solo, you can create accountability in other ways.  You can commit to giving regular updates to a group of friends, or to post them on a public forum where your peers will see it.
 
 This tactic can be seen as a variant of a precommitment device
 
-## Work with great Intensity
+## Tactic #5: Work with great Intensity
 
 Take your goals, estimate how long it'll take to complete, and give yourself a drastically reduced deadline. Commit to it publicly if possible, and then work intensely to make it happen.
 
@@ -78,31 +83,33 @@ This is kind of like how in school you it would be impossible to write that essa
 
 Personally, I find it next to impossible to take a self-imposed deadline seriously.  I have to pair it with external accountability by telling someone else when about that deadline.  Knowing that I'll have to report my status to that second person suddenly makes that deadline real.
 
-# How to Work Deeply? Create a Structure
+# Create a Structure for your Deep Work
+
 Many creatives know the pain of sitting in front of a black piece of paper and then thinking 'now what'?  The best people use a formula that works for them.  It seems counterintuitive to use a formula for creativity, but people are most creative when we are given certain limitations (otherwise we risk [information overload](https://hbr.org/2009/09/death-by-information-overload)).  Those people have a specific pattern of actions that help them focus and concentrate, and you'll want to develop one for yourself that you'll use to do your deep thinking.
 
-There's no one fixed formula because it'll vary based on your industry, the type of work you do, and even your personality.  However, you can take the following formula as a starting point.  Then overtime build on it and adjust it to meet your own needs
+There's no one fixed formula because it'll vary based on your industry, the type of work you do, and even your personality.  
 
-Example structure:
+However, you can take the following formula as a starting point.  Then overtime you'll build on it and adjust it to meet your own needs
+
+Starting structure:
+
 1. Carefully review the relevant **variables** for solving the problem (the things you can affect) and store them in memory
 2. Define the **next-step** question you need to answer using those variables. Now you have a specific target for your attention
 3. **Focus** on your question and try to find an answer using the variables
 4. **Consolidate** your gains by reviewing clearly the answer you arrived at
 
-There are also a couple pitfalls in your thinking you should watch out for
+There are also a couple pitfalls in your thinking you should watch out for:
 
-**Distractions:** thinking about other things besides the really important goal you have
-  
-**Looping:** Going over the same problem again and again, rehashing old results without diving deeper into it. When you notice the loop, catch yourself and shift your attention to the next step
+* **Distractions:** thinking about other things besides the really important goal you have
+* **Looping:** Going over the same problem again and again, rehashing old results without diving deeper into it. When you notice the loop, catch yourself and shift your attention to the next step
 
-# Get Better at Focusing by Embracing Boredom & Discarding Distractions
+# Embrace Boredom & Discard Distractions
+
 You have to be able to focus on your deep work.  Without this skill, your mind will constatly be wandering to all the distractions constantly bombarding you for attention.
 
 Being able to focus is a skill in and of itself, and you can develop that skill. When you concentrate on something regularly every day (e.g. meditation) you are building up your concentration muscles which will help you have laser focus in other areas of your life.
 
-**Don't take breaks from Distraction, take breaks from Focus.** Focus should  be your default state of mind.  Only allow yourself to be distracted at predefined times.
-
-You can schedule the occasional break from focus where you can give in to distractions. It has a side benefit of training  yourself to delay gratification.
+The way you get better at focusing is to force yourself to get distracted less.  
 
 Distractions are things like:
 
@@ -110,6 +117,10 @@ Distractions are things like:
 * Social media & web surfing
 * Most of the internet really (you can define specific kinds of internet use as acceptable if it's critical to your work)
 * 99% of alerts on your phone
+
+**Don't take breaks from Distraction, take breaks from Focus.** Focus should  be your default state of mind.  Only allow yourself to be distracted at predefined times.
+
+You can schedule the occasional break from focus where you can give in to distractions. It has a side benefit of also training yourself to delay gratification.
 
 **Implementation tips:**
 
@@ -119,9 +130,9 @@ Distractions are things like:
 4. Turn off all non-critical notifications on your phone
 5. Enable Do not Disturb mode on your phone by default, maybe just allowing phone calls to come through.  You can check your phone for notifications during your distraction breaks or set it up to automatically disable Do not Disturb mode during your breaks
 
-# Eliminate Activities that Don't Help your Goals
+# Cut out your Time Wasters
 
-Aka: Stop Wasting your Time
+Eliminate activities that don't help you achieve your goals.
 
 Cal called this rule "Quit Social Media" but it's really about removing your biggest time wasters.  The logic also applies to TV, YouTube, web surfing, etc.
 
@@ -140,7 +151,7 @@ To do this you need to:
    * For each, ask whether the tool has a substantially positive, substantially negative, or little impact on the above identified activities.
    * Only use tools that are substantially positive
 
-**Don't Use the Internet to Entertain Yourself!** Make deliberate use of your time outside work.  The internet is like a time machine that fast forwards you through hours of your life (like in the movie 'Click').
+**Don't Use the Internet to Entertain Yourself!** Make deliberate use of your time outside work.  The internet is like a time machine that fast forwards you through hours of your life (like in the movie '[Click](https://www.imdb.com/title/tt0000389860/)').
 
 **Put more thought into your leisure time.** Think ahead how you want to spend you free time later that day or on a future day.  You can use that time to focus on things shown to [increase happiness](https://www.bakadesuyo.com/2016/07/how-to-find-happiness-3/), such as improving your relationships, engaging in structured hobbies, enjoy nature, etc.
 
@@ -156,9 +167,9 @@ Deep work is cognitively exhausting. In the beginning, an hour a day is a reason
 
 The rest of the time can be spent in shallow work.
 
-The following are tactics designed to push you to not waste time on shallow work.  They're all designed around getting you to deliberately choose how you're spending your time
+The **following are tactics designed to push you to not waste time on shallow work**.  They're all designed around getting you to deliberately choose how you're spending your time
 
-## Schedule Every Minute of Your Day
+## Tactic #1: Schedule Every Minute of Your Day
 
 At the beginning of each workday, divide your day into blocks and write what activity you'll be doing in each block.
 
@@ -172,20 +183,23 @@ Tactic: add overflow conditional blocks, blocks where you were doing Activity A 
 
 Tactic: include a 'miscellaneous' block for handling generic things that need to be done (email, interruptions, etc)
 
-## Finish your work at the same time each day
+## Tactic #2: Finish your work at the same time each day
 
 **Fixed-schedule productivity:** have a firm goal of not working past a certain time, then work backwards to find productivity strategies that allow you to satisfy this declaration.
 
 * You drop what can't be done, and find ways to maximize what you want to do given your limited time budget
 
-Tactic: set drastic quotas on the major sources of _shallow_ endeavors while protecting the _deep_ efforts
+**Tactic**: set drastic quotas on the major sources of _shallow_ endeavors while protecting the _deep_ efforts
 
 * Be asymmetric in the culling your activities to make the fixed-schedule productivity work: cut the shallow while preserving the deep
-* Limits to time necessitate more careful thinking about your organizational habits, leading to more value produced
+* Limiting your time forces you to carefully think about your actions, forcing you to be more productive
 
 This is a **meta-habit** that's simple to adopt but broad in impact
 
-# Give Yourself Down Time - It Helps with Recovery
+# Give Yourself Down Time
+
+Aka: Don't take your work home
+
 You need to be able to relax your brain when you're not working, so that it's ready to again give a 100% when you start working again.  If you don't have any problems with that, then go ahead and skip this section.  If you find yourself thinking about work when you're sitting with your family, then read on.
 
 One tactic for this: Have a Shutdown Ritual
@@ -206,14 +220,16 @@ If you follow a GTD, bullet journaling, or BASB type system, that system should 
 Cal adds that when you're done, have a set phrase you say that indicates completion (e.g. "Shutdown complete").  I never did this part myself, but I can see how the routine-ness of it could help flick a mental trigger for some folks.
 
 # Conclusion
-Deep Work can be an incredibly rewarding activity, both personally and professionally.  
+
+Deep Work can be an incredibly rewarding activity, both personally and professionally.
 
 In short, the keys to successfully engaging in deep work are to:
-1. Work on tasks you find Highly Motivating (and motivate yourself some more)
-2. Develop a Structure for how you'll do deep work.  Don't just sit there waiting for inspiration to strike 
-3. Train yourself to Get Better at Focusing.  You can't do deep work if you constantly get distracted
-4. Get Rid of your Time Wasters.  I'm looking at you, Facebook
-5. Remove Shallow Work as much as you can.  Sometimes that work is important, but often it's not really
-6. Save some Down Time to Recover.  Deep work is hard, give your brain time to rest
+
+1. **Work on tasks you find Highly Motivating** and then motivate yourself some more
+2. **Develop a Structure for how you'll do deep work**.  Don't just sit there waiting for inspiration to strike
+3. **Train yourself to Get Better at Focusing**.  You can't do deep work if you constantly get distracted
+4. **Get Rid of your Time Wasters**.  I'm looking at you, Facebook
+5. **Remove Shallow Work as much as possible**.  Sometimes that work is important, but often it's not really
+6. **Save some Down Time to Recover**.  Deep work is hard, give your brain time to rest
 
 If you found these tips useful, sign up below to get new articles I write at the intersection of self-improvement, psychology, business, and technology.
