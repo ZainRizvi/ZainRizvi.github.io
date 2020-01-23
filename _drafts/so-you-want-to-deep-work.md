@@ -3,7 +3,7 @@ layout: post
 title: So you want to do Deep Work?
 excerpt: 'In this information era where all mechanical tasks are being automated,
   in order to be successful you need to be able to do what machines cannot: be creative.  And
-  creativity is something you get on demand through Deep Work'
+  creativity is something you generate on demand through Deep Work'
 tags:
 - Deep Work
 - Psychology
@@ -14,7 +14,7 @@ Deep Work has been called "the ability to focus without distraction on a cogniti
 
 _"'The best moments usually occur when a person’s body or mind is stretched to its limits in a voluntary effort to accomplish something difficult and worthwhile.'... this mental state \[is\] Flow"_
 
-In this information era where all mechanical tasks are being automated, in order to be successful you need to be able to do what machines cannot: be creative.  And creativity is something you get on demand through deep work, and in his book "Deep Work" Cal explains how you can achieve it.
+In this information era where all mechanical tasks are being automated, in order to be successful you need to be able to do what machines cannot: be creative.  And creativity is something you can generate on demand through deep work, and in his book "Deep Work" Cal explains how you can achieve it.
 
 Below are the key takeaways I had from his book, with a bunch of my own thoughts sprinkled in.
 
@@ -91,7 +91,7 @@ Personally, I find it next to impossible to take a self-imposed deadline serious
 
 Many creatives know the pain of sitting in front of a black piece of paper and then thinking 'now what'?  The best people use a formula that works for them.  It seems counterintuitive to use a formula for creativity, but people are most creative when we are given certain limitations (otherwise we risk [information overload](https://hbr.org/2009/09/death-by-information-overload)).  Those people have a specific pattern of actions that help them focus and concentrate, and you'll want to develop one for yourself that you'll use to do your deep thinking.
 
-There's no one fixed formula because it'll vary based on your industry, the type of work you do, and even your personality.  
+There's no one fixed formula because it'll vary based on your industry, the type of work you do, and even your personality.
 
 However, you can take the following formula as a starting point.  Then overtime you'll build on it and adjust it to meet your own needs
 
@@ -113,7 +113,7 @@ You have to be able to focus on your deep work.  Without this skill, your mind w
 
 Being able to focus is a skill in and of itself, and you can develop that skill. When you concentrate on something regularly every day (e.g. meditation) you are building up your concentration muscles which will help you have laser focus in other areas of your life.
 
-The way you get better at focusing is to force yourself to get distracted less.  
+The way you get better at focusing is to force yourself to get distracted less.
 
 Distractions are things like:
 
