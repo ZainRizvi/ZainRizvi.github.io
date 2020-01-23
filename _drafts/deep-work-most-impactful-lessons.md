@@ -6,16 +6,15 @@ excerpt: ''
 ---
 Deep Work has been called "the ability to focus without distraction on a cognitively demanding task."  Other people call this being in the state of "flow" or "being in the zone" where you can effortlessly focus on your work and be incredibly productive.
 
+_"'The best moments usually occur when a person’s body or mind is stretched to its limits in a voluntary effort to accomplish something difficult and worthwhile.'... this mental state \[is\] Flow"_
+
 In this information era where all mechanical tasks are being automated, in order to be successful you need to be able to do what machines cannot: be creative.  And creativity is something you get on demand through deep work, and in his book "Deep Work" Cal explains how you can achieve it.
 
 Below are the key takeaways I had from his book, with a bunch of my own thoughts sprinkled in.
 
-Key quotes:
+# Your Motivation is the Key
 _"the skillful management of attention is...the key to improving virtually every aspect of your experience."_
 
-_"'The best moments usually occur when a person’s body or mind is stretched to its limits in a voluntary effort to accomplish something difficult and worthwhile.'... this mental state \[is\] Flow"_
-
-# Your Motivation is the Key
 Deep Work requires you to concentrate on a topic for long stretches of time.  This is an extremely challenging task unless the topic is something that you feel highly motivated to work on.  
 
 What happens if you try to work on a task you're not motivated about? You procrastinate. And delay. And do almost anything else except work on that one task.  You might slowly make progress, but you'll be terribly inefficient.
