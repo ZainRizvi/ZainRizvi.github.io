@@ -1,7 +1,9 @@
 ---
 layout: post
 title: The Truth about VPC Security Controls
-excerpt: ''
+excerpt: GCP's VPC Service Controls protection is often described as a virtual firewall
+  for your GCP projects.  That metaphor quickly breaks down if you're trying to actually
+  add it to your GCP projects. I learned that the hard way.
 tags:
 - Technical
 - GCP
