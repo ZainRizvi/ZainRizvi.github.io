@@ -61,17 +61,11 @@
       </footer>
     </div><!-- /.article-wrap -->
 
-
-  {% if site.owner.disqus-shortname and page.comments == true %}
-    <section id="disqus_thread"></section><!-- /#disqus_thread -->
-  {% endif %}
   </article>
-</div><!-- /#main -->
-
-<div class="footer-wrap">
+  
   {% if site.related_posts.size > 0 %}
   <div class="related-articles">
-  <h4>You might also enjoy <small class="pull-right">(<a href="{{ site.url }}/blog/">View all posts</a>)</small></h4>
+  <h3>You might also enjoy <small class="pull-right">(<a href="{{ site.url }}/blog/">View all posts</a>)</small></h3>
     <ul>
     {% for post in site.related_posts limit:3 %}
       <li><a href="{{ site.url }}{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
@@ -80,6 +74,13 @@
     <hr />
   </div><!-- /.related-articles -->
   {% endif %}
+
+{% if site.owner.disqus-shortname and page.comments == true %}
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+{% endif %}
+</div><!-- /#main -->
+
+<div class="footer-wrap">
   <footer>
     {% include _footer.html %}
   </footer>
