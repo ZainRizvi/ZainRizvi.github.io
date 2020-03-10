@@ -101,18 +101,18 @@ This can be used as a form of undo to remove commits from the dependency tree
 # Create a New Branch from Current Branch
 
 ```bash
-git checkout -b [newBranch]
+git checkout -b [newBranchName]
 ```
 
 And then to push that branch to a remote repository:
 
 ```bash
-git push -u origin feature_branch_name
+git push -u origin [newBranchName]
 ```
 
 # Diffing Changes
 
-Key thing to note is that appending \~ to the end of a commit makes it refer to it’s parent. Appending \~N instead makes it refer to it’s Nth parent
+Key thing to note is that appending \~ to the end of a commit makes it refer to its parent. Appending \~N instead makes it refer to it’s Nth parent
 
 ## Diffing the last commit
 
