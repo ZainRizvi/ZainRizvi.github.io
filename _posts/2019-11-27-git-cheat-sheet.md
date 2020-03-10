@@ -100,7 +100,15 @@ This can be used as a form of undo to remove commits from the dependency tree
 
 # Create a New Branch from Current Branch
 
-    git checkout -b [newBranch]
+```bash
+git checkout -b [newBranch]
+```
+
+And then to push that branch to a remote repository:
+
+```bash
+git push -u origin feature_branch_name
+```
 
 # Diffing Changes
 
