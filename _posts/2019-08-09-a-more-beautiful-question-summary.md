@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A More Beautiful Question - Key Insights
+title: Be Creative by Asking Better Questions
 excerpt: |-
   Find Innovative Business Ideas by Asking Questions. Develop better critical thinking and problem solving skills, and fight information overload.
 
