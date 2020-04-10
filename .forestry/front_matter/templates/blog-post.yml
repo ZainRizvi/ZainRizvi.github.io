@@ -16,6 +16,14 @@ fields:
 - type: list
   name: tags
   label: tags
+- name: tweets
+  type: list
+  config:
+    use_select: false
+    min: 
+    max: 
+  label: Tweets
+  description: List of tweets to include in page
 pages:
 - _posts/2019-08-07-so-good-they-can-t-ignore-you-key-ideas.md
 - _posts/2019-08-09-a-more-beautiful-question-summary.md
