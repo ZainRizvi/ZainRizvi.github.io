@@ -9,10 +9,6 @@ tags:
 - GCP
 
 ---
-# The truth about VPC-SC
-
-Created Time: Feb 20, 2020 6:09 AM
-Status: Drafts
 
 GCP's [VPC Service Controls](https://cloud.google.com/vpc-service-controls) protection is often described as a virtual firewall for your GCP projects.  That's a useful mental model for your company's decision makers to think with, but the analogy quickly breaks down if you're an engineer trying to actually implement VPC-SC protection for your GCP projects.
 
