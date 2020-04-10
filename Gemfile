@@ -8,3 +8,4 @@ gem "html-proofer"
 gem 'jekyll-compose', group: [:jekyll_plugins]
 gem 'jekyll-feed'
 gem 'jekyll-redirect-from'
+gem 'jekyll-twitter-plugin'

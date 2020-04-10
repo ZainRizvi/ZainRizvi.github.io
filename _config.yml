@@ -43,6 +43,7 @@ plugins:
   - jekyll-gist
   - jekyll-feed
   - jekyll-redirect-from
+  - jekyll-twitter-plugin
 
 kramdown:
   auto_ids: true
