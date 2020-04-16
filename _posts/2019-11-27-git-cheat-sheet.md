@@ -89,6 +89,12 @@ For when you want to pull a new branch from your repo origin.  You can replace '
 
 For more details see [this article](https://stackabuse.com/git-fetch-a-remote-branch/)
 
+# Rebase your branch to the latest master
+
+If your current branch was branched off of master and you want to pull the latest updates pushed to master since then:
+
+    git pull --rebase origin master
+
 # Changing the Branch HEAD
 
 To change the current branch’s head to a different commit
