@@ -2,7 +2,6 @@
 layout: page
 title: Get in Touch!
 excerpt: ''
-published: false
 
 ---
 Interested in talking about software or any of the other things I post about?  Email me!
