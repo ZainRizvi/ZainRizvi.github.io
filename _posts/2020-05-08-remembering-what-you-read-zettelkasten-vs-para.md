@@ -8,10 +8,6 @@ tags:
 tweets: []
 
 ---
-# Remember what you Read - BASB vs Zettelkasten
-
-Created Time: May 08, 2020 10:22 AM Status: Drafts
-
 I love reading. But retaining what I read tends to be a challenge. I usually walk away from a book feeling good but with only a faint idea of what was in there. Heck, if I spend a couple hours online I'll barely remember what articles I read! And it's not just me, studies show that [you only retain a tiny percentage of what you read](https://learningsolutionsmag.com/articles/1379/brain-science-the-forgetting-curvethe-dirty-secret-of-corporate-training). I hated the idea of wasting all that time I spent reading, so about a year ago I started looking into ways to retain what I learned.
 
 # The Contenders
