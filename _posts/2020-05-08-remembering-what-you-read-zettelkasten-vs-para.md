@@ -2,7 +2,7 @@
 layout: post
 title: 'Remembering what you read: Zettelkasten vs PARA'
 excerpt: I spent over a year researching better ways to take notes to remember what
-  I read, and here's what I found.
+  I read. Here's what I found.
 tags:
 - productivity
 tweets: []
