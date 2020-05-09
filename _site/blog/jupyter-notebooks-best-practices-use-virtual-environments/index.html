@@ -93,6 +93,31 @@
 </script>
 <!-- End MailerLite Universal -->
 
+<!-- Google Analytics -->
+<!--<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+-->
+<!-- Asynchronous Google Analytics snippet -->
+
+  <script>
+    var _gaq = _gaq || [];
+    var pluginUrl =
+   '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-63901701-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 </head>
 
 <body class="post">
@@ -135,7 +160,7 @@
 
 
   <h3 itemprop="name">Zain Rizvi</h3>
-  <p>Software Engineer, Experimenter, Life-long Student. Working at Google improving GCP AI Platform Notebooks</p>
+  <p>Software Engineer @ Google, ex-Microsoftie. Experimenter, Life-long Student. Working to improve GCP AI Platform Notebooks. Opinions are all my own</p>
   
   <a href="//twitter.com/zainrzv" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
   
@@ -179,7 +204,23 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
-      <p>iUsing Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven’t yet caught on in Python notebooks.  However, they’re easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them.</p>
+     
+      
+
+<section id="table-of-contents" class="toc">
+<div id="drawer" markdown="1">
+<ul>
+  <li><a href="#what-will-this-enable-you-to-do">What will this enable you to do?</a></li>
+  <li><a href="#why-does-it-matter">Why does it matter?</a></li>
+  <li><a href="#how-do-you-set-it-up">How do you set it up?</a></li>
+  <li><a href="#the-results">The Results</a></li>
+  <li><a href="#see-it-in-action">See it in Action</a></li>
+</ul>
+
+</div>
+</section><!-- /#table-of-contents -->
+      
+      <p>Using Virtual Environments has become a standard best practice in the Python community.  They allow you to work on multiple python projects at the same time, without one accidentally corrupting the dependencies of another.  While using these Virtual Environments has become the norm with Python projects, they haven’t yet caught on in Python notebooks.  However, they’re easy to add to your Jupyter Notebook or Jupyter Lab setup.  This post will describe just how you can use them.</p>
 
 <h1 id="what-will-this-enable-you-to-do">What will this enable you to do?</h1>
 
@@ -249,6 +290,8 @@ deactivate # exit the virtual env
 
 <p>And there you have it.  You can now create virtual environments on your Jupyter Lab notebooks</p>
 
+<p><em>Interested in creating Conda Environments instead?  Nikolai has</em> <a href="https://janakiev.com/blog/jupyter-virtual-envs/"><em>a pretty nice write-up here</em></a><em>, which I also depended on to write the above steps</em></p>
+
       <hr />
       <br/>
       <!-- https://applause-button.com/ -->
@@ -287,33 +330,34 @@ deactivate # exit the virtual env
       </footer>
     </div><!-- /.article-wrap -->
 
-
-  
-    <section id="disqus_thread"></section><!-- /#disqus_thread -->
-  
   </article>
-</div><!-- /#main -->
-
-<div class="footer-wrap">
+  
   
   <div class="related-articles">
-  <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h4>
+  <h3>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h3>
     <ul>
     
-      <li><a href="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/" title="Authenticating AI Platform Notebooks against BigQuery in Python">Authenticating AI Platform Notebooks against BigQuery in Python</a></li>
+      <li><a href="http://localhost:4000/blog/remembering-what-you-read-zettelkasten-vs-para/" title="Remembering what you read: Zettelkasten vs PARA">Remembering what you read: Zettelkasten vs PARA</a></li>
     
-      <li><a href="http://localhost:4000/blog/a-more-beautiful-question-summary/" title="A More Beautiful Question - Key Insights">A More Beautiful Question - Key Insights</a></li>
+      <li><a href="http://localhost:4000/blog/quickly-building-products-for-actual-customers/" title="Quickly Building Products for ACTUAL Customers">Quickly Building Products for ACTUAL Customers</a></li>
     
-      <li><a href="http://localhost:4000/blog/so-good-they-can-t-ignore-you-key-ideas/" title="So Good They Can't Ignore You - Key Ideas">So Good They Can't Ignore You - Key Ideas</a></li>
+      <li><a href="http://localhost:4000/blog/the-truth-about-vpc-security-controls/" title="The Truth about VPC Security Controls">The Truth about VPC Security Controls</a></li>
     
     </ul>
     <hr />
   </div><!-- /.related-articles -->
   
+
+
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+
+</div><!-- /#main -->
+
+<div class="footer-wrap">
   <footer>
     
 
-<span>&copy; 2019 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+<span>&copy; 2020 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
 
   </footer>
 </div><!-- /.footer-wrap -->
@@ -347,16 +391,6 @@ deactivate # exit the virtual env
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-63901701-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 
 
 </body>

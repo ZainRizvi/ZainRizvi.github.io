@@ -93,6 +93,31 @@
 </script>
 <!-- End MailerLite Universal -->
 
+<!-- Google Analytics -->
+<!--<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+-->
+<!-- Asynchronous Google Analytics snippet -->
+
+  <script>
+    var _gaq = _gaq || [];
+    var pluginUrl =
+   '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-63901701-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 </head>
 
 <body class="post">
@@ -135,7 +160,7 @@
 
 
   <h3 itemprop="name">Zain Rizvi</h3>
-  <p>Software Engineer, Experimenter, Life-long Student. Working at Google improving GCP AI Platform Notebooks</p>
+  <p>Software Engineer @ Google, ex-Microsoftie. Experimenter, Life-long Student. Working to improve GCP AI Platform Notebooks. Opinions are all my own</p>
   
   <a href="//twitter.com/zainrzv" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
   
@@ -179,35 +204,33 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
+     
+      
+
+<section id="table-of-contents" class="toc">
+<div id="drawer" markdown="1">
+<ul>
+  <li><a href="#getting-started">Getting started</a></li>
+  <li><a href="#setting-up-the-database">Setting up the database</a></li>
+  <li><a href="#getting-access-to-the-users-email">Getting access to the User’s Email</a>
+    <ul>
+      <li><a href="#actually-reading-the-email-address">Actually reading the email address</a></li>
+      <li><a href="#getting-the-email-address-from-facebook">Getting the email address from Facebook</a></li>
+    </ul>
+  </li>
+  <li><a href="#getting-the-user-name-from-facebook-and-getting-rid-of-the-extra-registration-page">Getting the User Name from Facebook and getting rid of the extra Registration page</a></li>
+  <li><a href="#poking-around-the-database">Poking around the database</a></li>
+  <li><a href="#the-end">The End</a></li>
+</ul>
+
+</div>
+</section><!-- /#table-of-contents -->
+      
       <p>The goal of this post is to setup Facebook authentication in a way that we get access to the person’s basic information and their email address when they log in.</p>
 
 <p>Setting up auth from an external service is hard.  At least it is if the steps aren’t really documented.  I’m sharing the steps I followed to get Facebook auth working for a brand new ASP.NET Core site.</p>
 
 <p>These instructions assume you’ve got Visual Studio 2015 RC1 installed. I expect these steps should keep working after VS RTMs as well.</p>
-
-<section id="table-of-contents" class="toc">
-  <header>
-    <h3>Overview</h3>
-  </header>
-<div id="drawer">
-<ul id="markdown-toc">
-  <li><a href="#getting-started" id="markdown-toc-getting-started">Getting started</a></li>
-  <li><a href="#setting-up-the-database" id="markdown-toc-setting-up-the-database">Setting up the database</a></li>
-  <li><a href="#getting-access-to-the-users-email" id="markdown-toc-getting-access-to-the-users-email">Getting access to the User’s Email</a>    <ul>
-      <li><a href="#actually-reading-the-email-address" id="markdown-toc-actually-reading-the-email-address">Actually reading the email address</a></li>
-      <li><a href="#getting-the-email-address-from-facebook" id="markdown-toc-getting-the-email-address-from-facebook">Getting the email address from Facebook</a></li>
-    </ul>
-  </li>
-  <li><a href="#getting-the-user-name-from-facebook-and-getting-rid-of-the-extra-registration-page" id="markdown-toc-getting-the-user-name-from-facebook-and-getting-rid-of-the-extra-registration-page">Getting the User Name from Facebook and getting rid of the extra Registration page</a></li>
-  <li><a href="#poking-around-the-database" id="markdown-toc-poking-around-the-database">Poking around the database</a></li>
-  <li><a href="#the-end" id="markdown-toc-the-end">The End</a></li>
-</ul>
-
-  </div>
-</section>
-<!-- /#table-of-contents -->
-
-<hr />
 
 <h1 id="getting-started">Getting started</h1>
 
@@ -502,33 +525,34 @@
       </footer>
     </div><!-- /.article-wrap -->
 
-
-  
-    <section id="disqus_thread"></section><!-- /#disqus_thread -->
-  
   </article>
-</div><!-- /#main -->
-
-<div class="footer-wrap">
+  
   
   <div class="related-articles">
-  <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h4>
+  <h3>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h3>
     <ul>
     
-      <li><a href="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/" title="Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]">Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]</a></li>
+      <li><a href="http://localhost:4000/blog/remembering-what-you-read-zettelkasten-vs-para/" title="Remembering what you read: Zettelkasten vs PARA">Remembering what you read: Zettelkasten vs PARA</a></li>
     
-      <li><a href="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/" title="Authenticating AI Platform Notebooks against BigQuery in Python">Authenticating AI Platform Notebooks against BigQuery in Python</a></li>
+      <li><a href="http://localhost:4000/blog/quickly-building-products-for-actual-customers/" title="Quickly Building Products for ACTUAL Customers">Quickly Building Products for ACTUAL Customers</a></li>
     
-      <li><a href="http://localhost:4000/blog/a-more-beautiful-question-summary/" title="A More Beautiful Question - Key Insights">A More Beautiful Question - Key Insights</a></li>
+      <li><a href="http://localhost:4000/blog/the-truth-about-vpc-security-controls/" title="The Truth about VPC Security Controls">The Truth about VPC Security Controls</a></li>
     
     </ul>
     <hr />
   </div><!-- /.related-articles -->
   
+
+
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+
+</div><!-- /#main -->
+
+<div class="footer-wrap">
   <footer>
     
 
-<span>&copy; 2019 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+<span>&copy; 2020 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
 
   </footer>
 </div><!-- /.footer-wrap -->
@@ -562,16 +586,6 @@
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-63901701-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 
 
 </body>

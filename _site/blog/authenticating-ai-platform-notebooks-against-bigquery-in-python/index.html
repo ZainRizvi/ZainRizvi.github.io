@@ -93,6 +93,31 @@
 </script>
 <!-- End MailerLite Universal -->
 
+<!-- Google Analytics -->
+<!--<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+-->
+<!-- Asynchronous Google Analytics snippet -->
+
+  <script>
+    var _gaq = _gaq || [];
+    var pluginUrl =
+   '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-63901701-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 </head>
 
 <body class="post">
@@ -135,7 +160,7 @@
 
 
   <h3 itemprop="name">Zain Rizvi</h3>
-  <p>Software Engineer, Experimenter, Life-long Student. Working at Google improving GCP AI Platform Notebooks</p>
+  <p>Software Engineer @ Google, ex-Microsoftie. Experimenter, Life-long Student. Working to improve GCP AI Platform Notebooks. Opinions are all my own</p>
   
   <a href="//twitter.com/zainrzv" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
   
@@ -179,6 +204,16 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
+     
+      
+
+<section id="table-of-contents" class="toc">
+<div id="drawer" markdown="1">
+
+
+</div>
+</section><!-- /#table-of-contents -->
+      
       <p>When you use <a href="https://cloud.google.com/ai-platform-notebooks/">AI Platform Notebooks</a> by default any API calls you make to GCP use the default compute service account that your notebook runs under.  This makes it easy to start getting stuff done, but sometimes you may want to use BigQuery to query data that your service account doesn’t have access to.</p>
 
 <p>The below instructions describe how to use your personal account to authenticate with BigQuery.  This specifically applies to authentication when using a python based notebook.  If you want to authenticate on a R based notebook you can find <a href="https://www.zainrizvi.io/blog/authenticating-to-bigrquery-on-gcp-ai-platform-notebooks/">instructions for that here</a>.</p>
@@ -290,33 +325,34 @@ client = bq.Client(project="project-name", credentials=credentials)
       </footer>
     </div><!-- /.article-wrap -->
 
-
-  
-    <section id="disqus_thread"></section><!-- /#disqus_thread -->
-  
   </article>
-</div><!-- /#main -->
-
-<div class="footer-wrap">
+  
   
   <div class="related-articles">
-  <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h4>
+  <h3>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h3>
     <ul>
     
-      <li><a href="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/" title="Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]">Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]</a></li>
+      <li><a href="http://localhost:4000/blog/remembering-what-you-read-zettelkasten-vs-para/" title="Remembering what you read: Zettelkasten vs PARA">Remembering what you read: Zettelkasten vs PARA</a></li>
     
-      <li><a href="http://localhost:4000/blog/a-more-beautiful-question-summary/" title="A More Beautiful Question - Key Insights">A More Beautiful Question - Key Insights</a></li>
+      <li><a href="http://localhost:4000/blog/quickly-building-products-for-actual-customers/" title="Quickly Building Products for ACTUAL Customers">Quickly Building Products for ACTUAL Customers</a></li>
     
-      <li><a href="http://localhost:4000/blog/so-good-they-can-t-ignore-you-key-ideas/" title="So Good They Can't Ignore You - Key Ideas">So Good They Can't Ignore You - Key Ideas</a></li>
+      <li><a href="http://localhost:4000/blog/the-truth-about-vpc-security-controls/" title="The Truth about VPC Security Controls">The Truth about VPC Security Controls</a></li>
     
     </ul>
     <hr />
   </div><!-- /.related-articles -->
   
+
+
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+
+</div><!-- /#main -->
+
+<div class="footer-wrap">
   <footer>
     
 
-<span>&copy; 2019 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+<span>&copy; 2020 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
 
   </footer>
 </div><!-- /.footer-wrap -->
@@ -350,16 +386,6 @@ client = bq.Client(project="project-name", credentials=credentials)
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-63901701-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 
 
 </body>

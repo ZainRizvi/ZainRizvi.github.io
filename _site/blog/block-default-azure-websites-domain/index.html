@@ -93,6 +93,31 @@
 </script>
 <!-- End MailerLite Universal -->
 
+<!-- Google Analytics -->
+<!--<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+-->
+<!-- Asynchronous Google Analytics snippet -->
+
+  <script>
+    var _gaq = _gaq || [];
+    var pluginUrl =
+   '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-63901701-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 </head>
 
 <body class="post">
@@ -135,7 +160,7 @@
 
 
   <h3 itemprop="name">Zain Rizvi</h3>
-  <p>Software Engineer, Experimenter, Life-long Student. Working at Google improving GCP AI Platform Notebooks</p>
+  <p>Software Engineer @ Google, ex-Microsoftie. Experimenter, Life-long Student. Working to improve GCP AI Platform Notebooks. Opinions are all my own</p>
   
   <a href="//twitter.com/zainrzv" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
   
@@ -179,25 +204,35 @@
       
     </div><!--/ .headline-wrap -->
     <div class="article-wrap">
+     
+      
+
+<section id="table-of-contents" class="toc">
+<div id="drawer" markdown="1">
+
+
+</div>
+</section><!-- /#table-of-contents -->
+      
       <p>When you create a new website using <a href="https://azure.microsoft.com/en-us/services/app-service/web/">Azure Web Apps</a> you get a default <code class="highlighter-rouge">&lt;sitename&gt;.azurewebsites.net</code> domain assigned to your site.  That’s great, but what if you add a custom host name to your site and don’t want people to be able to access your default *.azurewebsites.net domain anymore? (You paid good money for that custom domain.)  This post explains how to redirect all traffic aimed at your site’s default domain to your custom domain instead.</p>
 
 <p>It’s really simple. You just need to add a redirect rule to your site’s web.config file.  You can do that by adding the following rewrite rule to the web.config file in your wwwroot folder.  If you don’t have a web.config file, then you can create one and just paste the text below into it, just change the host names to match your site’s host names:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;configuration&gt;
-  &lt;system.webServer&gt;  
-    &lt;rewrite&gt;  
-        &lt;rules&gt;  
-          &lt;rule name="Redirect rquests to default azure websites domain" stopProcessing="true"&gt;
-            &lt;match url="(.*)" /&gt;  
-            &lt;conditions logicalGrouping="MatchAny"&gt;
-              &lt;add input="{HTTP_HOST}" pattern="^yoursite\.azurewebsites\.net$" /&gt;
-            &lt;/conditions&gt;
-            &lt;action type="Redirect" url="http://www.yoursite.com/{R:0}" /&gt;  
-          &lt;/rule&gt;  
-        &lt;/rules&gt;  
-    &lt;/rewrite&gt;  
-  &lt;/system.webServer&gt;  
-&lt;/configuration&gt;  
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;system.webServer&gt;</span>  
+    <span class="nt">&lt;rewrite&gt;</span>  
+        <span class="nt">&lt;rules&gt;</span>  
+          <span class="nt">&lt;rule</span> <span class="na">name=</span><span class="s">"Redirect rquests to default azure websites domain"</span> <span class="na">stopProcessing=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;match</span> <span class="na">url=</span><span class="s">"(.*)"</span> <span class="nt">/&gt;</span>  
+            <span class="nt">&lt;conditions</span> <span class="na">logicalGrouping=</span><span class="s">"MatchAny"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;add</span> <span class="na">input=</span><span class="s">"{HTTP_HOST}"</span> <span class="na">pattern=</span><span class="s">"^yoursite\.azurewebsites\.net$"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/conditions&gt;</span>
+            <span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">"Redirect"</span> <span class="na">url=</span><span class="s">"http://www.yoursite.com/{R:0}"</span> <span class="nt">/&gt;</span>  
+          <span class="nt">&lt;/rule&gt;</span>  
+        <span class="nt">&lt;/rules&gt;</span>  
+    <span class="nt">&lt;/rewrite&gt;</span>  
+  <span class="nt">&lt;/system.webServer&gt;</span>  
+<span class="nt">&lt;/configuration&gt;</span>  
 </code></pre></div></div>
 
 <p>Basically we’re telling IIS to take any request where the host name matches the RegEx pattern “^yoursite.azurewebsites.net$” and return an HTTP 301 response. The response will include the originally requested url, except it’ll be pointing to your custom “www.yoursite.com” domain instead.  When the user’s browser reads that 301 response and the new url, it will automatically load that new url instead. It’ll even change the address the user sees in the address bar.</p>
@@ -206,33 +241,33 @@
 
 <p>So let’s see what’s going on here:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;configuration&gt;
-  &lt;system.webServer&gt;  
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;system.webServer&gt;</span>  
   ...
-  &lt;/system.webServer&gt;  
-&lt;/configuration&gt;  
+  <span class="nt">&lt;/system.webServer&gt;</span>  
+<span class="nt">&lt;/configuration&gt;</span>  
 </code></pre></div></div>
 
 <p>This part tells IIS that we’re modifying the web server’s configuration settings. The next section is where it starts to get tricky:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;rewrite&gt;  
-    &lt;rules&gt; 
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;rewrite&gt;</span>  
+    <span class="nt">&lt;rules&gt;</span> 
     ... 
-    &lt;/rules&gt;  
-&lt;/rewrite&gt;  
+    <span class="nt">&lt;/rules&gt;</span>  
+<span class="nt">&lt;/rewrite&gt;</span>  
 </code></pre></div></div>
 
 <p>The <code class="highlighter-rouge">&lt;rewrite&gt;</code> tag tells IIS that the elements it encloses are settings for the the <a href="http://www.iis.net/learn/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module">URL Rewrite</a> module.  The <code class="highlighter-rouge">&lt;rules&gt;</code> tag lists all the rules that we want that module to follow.   In our case, we want it to follow a rule that will return a HTTP 301 redirect response to the client (the user’s web browser).</p>
 
 <p>Now for the actual rule:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;rule name="Redirect rquests to default azure websites domain" stopProcessing="true"&gt;
-  &lt;match url="(.*)" /&gt;  
-  &lt;conditions logicalGrouping="MatchAny"&gt;
-    &lt;add input="{HTTP_HOST}" pattern="^yoursite\.azurewebsites\.net$" /&gt;
-  &lt;/conditions&gt;
-  &lt;action type="Redirect" url="http://www.yoursite.com/{R:0}" /&gt;  
-&lt;/rule&gt;  
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;rule</span> <span class="na">name=</span><span class="s">"Redirect rquests to default azure websites domain"</span> <span class="na">stopProcessing=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;match</span> <span class="na">url=</span><span class="s">"(.*)"</span> <span class="nt">/&gt;</span>  
+  <span class="nt">&lt;conditions</span> <span class="na">logicalGrouping=</span><span class="s">"MatchAny"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;add</span> <span class="na">input=</span><span class="s">"{HTTP_HOST}"</span> <span class="na">pattern=</span><span class="s">"^yoursite\.azurewebsites\.net$"</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/conditions&gt;</span>
+  <span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">"Redirect"</span> <span class="na">url=</span><span class="s">"http://www.yoursite.com/{R:0}"</span> <span class="nt">/&gt;</span>  
+<span class="nt">&lt;/rule&gt;</span>  
 </code></pre></div></div>
 
 <p>The “name” attribute is just for human readability. It doesn’t affect execution at all. StopProcessing=”true” tells the rewrite module that if this rule applies to the incomming request, then not to bother processing any other rules  after this one becuase they won’t matter.  In our case we only have one rule, so this tag doesn’t do anything, but it can save you some CPU if you have more rules defined.</p>
@@ -243,14 +278,14 @@
 
 <p>Here’s the condition we used:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;add input="{HTTP_HOST}" pattern="^yoursite\.azurewebsites\.net$" /&gt;
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;add</span> <span class="na">input=</span><span class="s">"{HTTP_HOST}"</span> <span class="na">pattern=</span><span class="s">"^yoursite\.azurewebsites\.net$"</span> <span class="nt">/&gt;</span>
 </code></pre></div></div>
 
 <p>It says to look at the http host and evaluate the condition as true if the host matches the given regEx pattern, which we set to your default azure domain name.</p>
 
 <p>The last bit is the action, the meat of the whole rule:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;action type="Redirect" url="http://www.yoursite.com/{R:0}" /&gt;  
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">"Redirect"</span> <span class="na">url=</span><span class="s">"http://www.yoursite.com/{R:0}"</span> <span class="nt">/&gt;</span>  
 </code></pre></div></div>
 
 <p>Here we’re telling the Rewrite module what action to take (what it’s actually supposed to do) when a request matches the above rules.  The action we want is “Redirect”, which is where it’ll return the HTTP 301 to the client, and when it returns a 301 we need to tell the client what url it should be redirected to. That’s how we get to specify our desired domain name.</p>
@@ -261,21 +296,21 @@
 
 <p>As a final example, here’s web.config file’s conent for my site:</p>
 
-<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;configuration&gt;
-  &lt;system.webServer&gt;  
-    &lt;rewrite&gt;  
-        &lt;rules&gt;  
-          &lt;rule name="Redirect rquests to default azure websites domain" stopProcessing="true"&gt;
-            &lt;match url="(.*)" /&gt;  
-            &lt;conditions logicalGrouping="MatchAny"&gt;
-              &lt;add input="{HTTP_HOST}" pattern="^zainrizvi\.azurewebsites\.net$" /&gt;
-            &lt;/conditions&gt;
-            &lt;action type="Redirect" url="http://www.zainrizvi.io/{R:0}" /&gt;  
-          &lt;/rule&gt;  
-        &lt;/rules&gt;  
-    &lt;/rewrite&gt;  
-  &lt;/system.webServer&gt;  
-&lt;/configuration&gt;  
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;configuration&gt;</span>
+  <span class="nt">&lt;system.webServer&gt;</span>  
+    <span class="nt">&lt;rewrite&gt;</span>  
+        <span class="nt">&lt;rules&gt;</span>  
+          <span class="nt">&lt;rule</span> <span class="na">name=</span><span class="s">"Redirect rquests to default azure websites domain"</span> <span class="na">stopProcessing=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;match</span> <span class="na">url=</span><span class="s">"(.*)"</span> <span class="nt">/&gt;</span>  
+            <span class="nt">&lt;conditions</span> <span class="na">logicalGrouping=</span><span class="s">"MatchAny"</span><span class="nt">&gt;</span>
+              <span class="nt">&lt;add</span> <span class="na">input=</span><span class="s">"{HTTP_HOST}"</span> <span class="na">pattern=</span><span class="s">"^zainrizvi\.azurewebsites\.net$"</span> <span class="nt">/&gt;</span>
+            <span class="nt">&lt;/conditions&gt;</span>
+            <span class="nt">&lt;action</span> <span class="na">type=</span><span class="s">"Redirect"</span> <span class="na">url=</span><span class="s">"http://www.zainrizvi.io/{R:0}"</span> <span class="nt">/&gt;</span>  
+          <span class="nt">&lt;/rule&gt;</span>  
+        <span class="nt">&lt;/rules&gt;</span>  
+    <span class="nt">&lt;/rewrite&gt;</span>  
+  <span class="nt">&lt;/system.webServer&gt;</span>  
+<span class="nt">&lt;/configuration&gt;</span>  
 </code></pre></div></div>
 
       <hr />
@@ -316,33 +351,34 @@
       </footer>
     </div><!-- /.article-wrap -->
 
-
-  
-    <section id="disqus_thread"></section><!-- /#disqus_thread -->
-  
   </article>
-</div><!-- /#main -->
-
-<div class="footer-wrap">
+  
   
   <div class="related-articles">
-  <h4>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h4>
+  <h3>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h3>
     <ul>
     
-      <li><a href="http://localhost:4000/blog/jupyter-notebooks-best-practices-use-virtual-environments/" title="Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]">Use Virtual Environments Inside Jupyter Notebooks & Jupter Lab [Best Practices]</a></li>
+      <li><a href="http://localhost:4000/blog/remembering-what-you-read-zettelkasten-vs-para/" title="Remembering what you read: Zettelkasten vs PARA">Remembering what you read: Zettelkasten vs PARA</a></li>
     
-      <li><a href="http://localhost:4000/blog/authenticating-ai-platform-notebooks-against-bigquery-in-python/" title="Authenticating AI Platform Notebooks against BigQuery in Python">Authenticating AI Platform Notebooks against BigQuery in Python</a></li>
+      <li><a href="http://localhost:4000/blog/quickly-building-products-for-actual-customers/" title="Quickly Building Products for ACTUAL Customers">Quickly Building Products for ACTUAL Customers</a></li>
     
-      <li><a href="http://localhost:4000/blog/a-more-beautiful-question-summary/" title="A More Beautiful Question - Key Insights">A More Beautiful Question - Key Insights</a></li>
+      <li><a href="http://localhost:4000/blog/the-truth-about-vpc-security-controls/" title="The Truth about VPC Security Controls">The Truth about VPC Security Controls</a></li>
     
     </ul>
     <hr />
   </div><!-- /.related-articles -->
   
+
+
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+
+</div><!-- /#main -->
+
+<div class="footer-wrap">
   <footer>
     
 
-<span>&copy; 2019 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+<span>&copy; 2020 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
 
   </footer>
 </div><!-- /.footer-wrap -->
@@ -376,16 +412,6 @@
 
 
 
-<script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-63901701-1', 'auto');
-  ga('send', 'pageview');
-
-</script>
 
 
 </body>

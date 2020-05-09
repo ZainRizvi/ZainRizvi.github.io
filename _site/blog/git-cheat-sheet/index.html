@@ -1,0 +1,515 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>The Essential Git Cheat Sheet &#8211; Zain Rizvi's blog</title>
+<meta name="description" content="Quick cheat sheet of commonly used git commands that I’d otherwise have to keep Googling to remember">
+<meta name="keywords" content="cheatsheet, github, git">
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="The Essential Git Cheat Sheet">
+<meta name="twitter:description" content="Quick cheat sheet of commonly used git commands that I’d otherwise have to keep Googling to remember">
+<meta name="twitter:site" content="@zainrzv">
+<meta name="twitter:creator" content="@zainrzv">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Essential Git Cheat Sheet">
+<meta property="og:description" content="Quick cheat sheet of commonly used git commands that I’d otherwise have to keep Googling to remember">
+<meta property="og:url" content="http://localhost:4000/blog/git-cheat-sheet/">
+<meta property="og:site_name" content="Zain Rizvi's blog">
+
+<meta property="og:image" content="http://localhost:4000/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/git-cheat-sheet/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi's blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<!-- <link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png"> -->
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png"> -->
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png"> -->
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png"> -->
+
+<!-- add the applause button style & script -->
+<link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css" />
+<script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
+
+<!-- RSS feed metadata -->
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Zain Rizvi's blog" />
+
+<!-- MailerLite Universal -->
+<script>
+  (function(m,a,i,l,e,r){ m['MailerLiteObject']=e;function f(){
+  var c={ a:arguments,q:[]};var r=this.push(c);return "number"!=typeof r?r:f.bind(c.q);}
+  f.q=f.q||[];m[e]=m[e]||f.bind(f.q);m[e].q=m[e].q||f.q;r=a.createElement(i);
+  var _=a.getElementsByTagName(i)[0];r.async=1;r.src=l+'?v'+(~~(new Date().getTime()/1000000));
+  _.parentNode.insertBefore(r,_);})(window, document, 'script', 'https://static.mailerlite.com/js/universal.js', 'ml');
+
+  var ml_account = ml('accounts', '1765926', 's9l3w3n7b0', 'load');
+</script>
+<!-- End MailerLite Universal -->
+
+<!-- Google Analytics -->
+<!--<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+-->
+<!-- Asynchronous Google Analytics snippet -->
+
+  <script>
+    var _gaq = _gaq || [];
+    var pluginUrl =
+   '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-63901701-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000/">Zain Rizvi's blog</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/about/" >About</a></li>
+				
+				<li>
+					<a href="http://localhost:4000/feed.xml"><img src="/images/rss.png" alt="rss feed" height=20 width=20/></a>
+				</li>
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://localhost:4000/images/bio-photo.png" class="bio-photo" alt="Zain Rizvi bio photo">
+
+
+  <h3 itemprop="name">Zain Rizvi</h3>
+  <p>Software Engineer @ Google, ex-Microsoftie. Experimenter, Life-long Student. Working to improve GCP AI Platform Notebooks. Opinions are all my own</p>
+  
+  <a href="//twitter.com/zainrzv" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  
+  <a href="http://github.com/ZainRizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  <a href="//stackoverflow.com/users/21539/zain-rizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> Stackoverflow</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="//techstuff.buzzsprout.com" class="author-social" target="_blank"><i class="fa fa-fw"></i> Podcast: Tech Stuff</a>
+</div>
+<hr />
+<div class="ml-form-embed"
+  data-account="1765926:s9l3w3n7b0"
+  data-form="1616786:y5z4v2">
+</div>
+
+    <hr />
+    <!-- https://applause-button.com/ -->
+
+    <div style="margin:0 auto; width: 58px" >
+    <applause-button style="width: 58px; height: 58px; align-content: center" multiclap="true"/>
+    </div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/blog/git-cheat-sheet/" rel="bookmark" title="The Essential Git Cheat Sheet">The Essential Git Cheat Sheet</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+     
+      
+
+<section id="table-of-contents" class="toc">
+<div id="drawer" markdown="1">
+<ul>
+  <li><a href="#committing-changes">Committing Changes</a>
+    <ul>
+      <li><a href="#merge-changes-with-last-commit">Merge changes with last commit</a></li>
+      <li><a href="#squash-commits">Squash commits</a></li>
+      <li><a href="#set-the-date-of-the-last-commit-to-right-now">Set the date of the last commit to right now</a></li>
+    </ul>
+  </li>
+  <li><a href="#undoingreverting-changes">Undoing/Reverting Changes</a>
+    <ul>
+      <li><a href="#discard-all-local-changes-to-tracked-files">Discard all local changes to tracked files</a></li>
+      <li><a href="#discard-all-local-changes-to-a-single-unstaged-file">Discard all local changes to a single unstaged file</a></li>
+      <li><a href="#discard-changes-to-all-untrackedunstaged-files-this-cannot-be-undone">Discard changes to all untracked/unstaged files. This cannot be undone</a></li>
+      <li><a href="#discard-all-local-changes">Discard all local changes</a></li>
+      <li><a href="#revertundo-an-entire-commit">Revert/Undo an Entire Commit</a></li>
+      <li><a href="#revertundo-changes-to-a-single-file-in-a-commit">Revert/Undo changes to a single file in a commit</a></li>
+    </ul>
+  </li>
+  <li><a href="#set-your-branch-head-to-the-remote-branchs-head">Set your branch head to the remote branch’s head</a></li>
+  <li><a href="#pull-a-new-remote-branch-to-your-existing-repo">Pull a new remote branch to your existing repo</a></li>
+  <li><a href="#rebase-your-branch-to-the-latest-master">Rebase your branch to the latest master</a></li>
+  <li><a href="#changing-the-branch-head">Changing the Branch HEAD</a></li>
+  <li><a href="#create-a-new-branch-from-current-branch">Create a New Branch from Current Branch</a></li>
+  <li><a href="#diffing-changes">Diffing Changes</a>
+    <ul>
+      <li><a href="#diffing-the-last-commit">Diffing the last commit</a></li>
+      <li><a href="#diffing-a-specific-commit">Diffing a specific commit</a></li>
+      <li><a href="#diffing-the-last-n-commits">Diffing the last N commits</a></li>
+    </ul>
+  </li>
+  <li><a href="#pretty-git-log-printout">Pretty Git Log printout</a></li>
+</ul>
+
+</div>
+</section><!-- /#table-of-contents -->
+      
+      <p>Quick cheat sheet of commonly used git commands that I’d otherwise have to keep Googling to remember</p>
+
+<p><img src="/media/2019-11-27-github.jpeg" alt="" /></p>
+
+<h1 id="committing-changes">Committing Changes</h1>
+
+<h2 id="merge-changes-with-last-commit">Merge changes with last commit</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit --amend --no-edit
+</code></pre></div></div>
+
+<h2 id="squash-commits">Squash commits</h2>
+
+<p>To squash the last four commits into one, do the following:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase -i HEAD~4
+</code></pre></div></div>
+
+<p>or</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git rebase -i [hash of commit before the one last one you want to squash]
+</code></pre></div></div>
+
+<p>In the list that shows up, replace the word “pick” with “squash” or “s” next to all but the oldest commit you’re squashing</p>
+
+<h2 id="set-the-date-of-the-last-commit-to-right-now">Set the date of the last commit to right now</h2>
+
+<p>You may want to do this after you’ve squashed some commits</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git commit --amend --no-edit --date "$(date)"
+</code></pre></div></div>
+
+<h1 id="undoingreverting-changes">Undoing/Reverting Changes</h1>
+
+<h2 id="discard-all-local-changes-to-tracked-files">Discard all local changes to tracked files</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset --hard
+</code></pre></div></div>
+
+<h2 id="discard-all-local-changes-to-a-single-unstaged-file">Discard all local changes to a single unstaged file</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout --[file]
+</code></pre></div></div>
+
+<h2 id="discard-changes-to-all-untrackedunstaged-files-this-cannot-be-undone">Discard changes to all untracked/unstaged files. <em>This cannot be undone</em></h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># first run 'git clean -n' to get a preview of what will be deleted
+git clean -f
+</code></pre></div></div>
+
+<h2 id="discard-all-local-changes">Discard all local changes</h2>
+
+<p>Combine the above to get:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset --hard
+git clean -f 
+</code></pre></div></div>
+
+<h2 id="revertundo-an-entire-commit">Revert/Undo an Entire Commit</h2>
+
+<p>Note: this leaves the commit in the branch history</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git revert [commit-id]
+</code></pre></div></div>
+
+<h2 id="revertundo-changes-to-a-single-file-in-a-commit">Revert/Undo changes to a single file in a commit</h2>
+
+<p>This will undo the changes to a single file from the given commit id.</p>
+
+<p>The edited file will be unstaged.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git show [commit-id] -- [file] | git apply -R
+</code></pre></div></div>
+
+<h1 id="set-your-branch-head-to-the-remote-branchs-head">Set your branch head to the remote branch’s head</h1>
+
+<p>Use when you want to discard any local changes and start over from the remote branch state</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># Replace 'origin/master' with your desired remote branch or 
+#   the specific CL you want to set the HEAD to
+git reset --hard origin/master 
+</code></pre></div></div>
+
+<h1 id="pull-a-new-remote-branch-to-your-existing-repo">Pull a new remote branch to your existing repo</h1>
+
+<p>For when you want to pull a new branch from your repo origin.  You can replace ‘origin’ with your desired remote branch if you’re using something different</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout --track origin/[branch_name]
+</code></pre></div></div>
+
+<p>For more details see <a href="https://stackabuse.com/git-fetch-a-remote-branch/">this article</a></p>
+
+<h1 id="rebase-your-branch-to-the-latest-master">Rebase your branch to the latest master</h1>
+
+<p>If your current branch was branched off of master and you want to pull the latest updates pushed to master since then:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git pull --rebase origin master
+</code></pre></div></div>
+
+<h1 id="changing-the-branch-head">Changing the Branch HEAD</h1>
+
+<p>To change the current branch’s head to a different commit</p>
+
+<p>This can be used as a form of undo to remove commits from the dependency tree</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git reset --hard [commit-id]
+git push -f # This line changes the head on the remote branch as well
+</code></pre></div></div>
+
+<h1 id="create-a-new-branch-from-current-branch">Create a New Branch from Current Branch</h1>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git checkout <span class="nt">-b</span> <span class="o">[</span>newBranchName]
+</code></pre></div></div>
+
+<p>And then to push that branch to a remote repository:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git push <span class="nt">-u</span> origin <span class="o">[</span>newBranchName]
+</code></pre></div></div>
+
+<h1 id="diffing-changes">Diffing Changes</h1>
+
+<p>Key thing to note is that appending ~ to the end of a commit makes it refer to its parent. Appending ~N instead makes it refer to it’s Nth parent</p>
+
+<h2 id="diffing-the-last-commit">Diffing the last commit</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff HEAD~ HEAD
+</code></pre></div></div>
+
+<h2 id="diffing-a-specific-commit">Diffing a specific commit</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff [commitId]~ [commitId] #e.g. git diff f23a4s~ f23a4s
+</code></pre></div></div>
+
+<h2 id="diffing-the-last-n-commits">Diffing the last N commits</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git diff HEAD~N HEAD # e.g diff last 4 commits: git diff HEAD~4 HEAD
+</code></pre></div></div>
+
+<h1 id="pretty-git-log-printout">Pretty Git Log printout</h1>
+
+<p>Add the following to your <a href="https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/Where-system-global-and-local-Windows-Git-config-files-are-saved">git config</a> file to enable pretty logs (based on work by <a href="https://coderwall.com/p/euwpig/a-better-git-log">Filipe Kiss</a>)</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>alias.lg=!git lg1
+alias.lg1=!git lg1-specific
+alias.lg2=!git lg2-specific
+alias.lg3=!git lg3-specific
+alias.lgs=!git lg1 — simplify-by-decoration
+alias.lg1s=!git lg1-specific — all — simplify-by-decoration
+alias.lg2s=!git lg2-specific — all — simplify-by-decoration
+alias.lg3s=!git lg3-specific — all — simplify-by-decoration
+alias.lg1-specific=log — graph — abbrev-commit — decorate — format=format:’%C(bold blue)%h%C(reset) — %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)’
+alias.lg2-specific=log — graph — abbrev-commit — decorate — format=format:’%C(bold blue)%h%C(reset) — %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n’’ %C(white)%s%C(reset) %C(dim white)- %an%C(reset)’
+alias.lg3-specific=log — graph — abbrev-commit — decorate — format=format:’%C(bold blue)%h%C(reset) — %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset) %C(bold cyan)(committed: %cD)%C(reset) %C(auto)%d%C(reset)%n’’ %C(white)%s%C(reset)%n’’ %C(dim white)- %an &lt;%ae&gt; %C(reset) %C(dim white)(committer: %cn &lt;%ce&gt;)%C(reset)’
+</code></pre></div></div>
+
+<p>With the above in your git config file you can just enter the below to see your history:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git lg
+</code></pre></div></div>
+
+<p>Or to limit history to just the past N commits:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git lg -[# of commits]  # Example: git lg -5
+</code></pre></div></div>
+
+      <hr />
+      <br/>
+      <!-- https://applause-button.com/ -->
+
+    <div style="margin:0 auto; width: 58px" >
+    <applause-button style="width: 58px; height: 58px; align-content: center" multiclap="true"/>
+    </div>
+
+      <br/>
+      <div class="ml-form-embed"
+  data-account="1765926:s9l3w3n7b0"
+  data-form="1616590:u0m8l0">
+</div>
+
+
+      <hr/>
+
+      <footer role="contentinfo">
+        
+<!--
+<div class="social-share">
+  <h5>Thanks for reading! If you found this post valuable, your followers might also like it</h5>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/git-cheat-sheet/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/git-cheat-sheet/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+  </ul>
+</div>
+-->
+<!-- /.social-share -->
+
+        <p class="byline"><strong>The Essential Git Cheat Sheet</strong> was published on <time datetime="2019-11-27T00:00:00-08:00">November 27, 2019</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+
+  </article>
+  
+  
+  <div class="related-articles">
+  <h3>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h3>
+    <ul>
+    
+      <li><a href="http://localhost:4000/blog/remembering-what-you-read-zettelkasten-vs-para/" title="Remembering what you read: Zettelkasten vs PARA">Remembering what you read: Zettelkasten vs PARA</a></li>
+    
+      <li><a href="http://localhost:4000/blog/quickly-building-products-for-actual-customers/" title="Quickly Building Products for ACTUAL Customers">Quickly Building Products for ACTUAL Customers</a></li>
+    
+      <li><a href="http://localhost:4000/blog/the-truth-about-vpc-security-controls/" title="The Truth about VPC Security Controls">The Truth about VPC Security Controls</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+
+
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <footer>
+    
+
+<span>&copy; 2020 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'zainrizvi'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+</body>
+</html>

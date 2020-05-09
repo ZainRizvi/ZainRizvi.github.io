@@ -1,0 +1,425 @@
+<!doctype html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if (IE 7)&!(IEMobile)]><html class="no-js lt-ie9 lt-ie8" lang="en"><![endif]-->
+<!--[if (IE 8)&!(IEMobile)]><html class="no-js lt-ie9" lang="en"><![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"><!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<title>The Truth about VPC Security Controls &#8211; Zain Rizvi's blog</title>
+<meta name="description" content="GCP's VPC Service Controls protection is often described as a virtual firewall for your GCP projects.  That metaphor quickly breaks down if you're trying to actually add it to your GCP projects. I learned that the hard way.">
+<meta name="keywords" content="Technical, GCP">
+
+
+
+
+<!-- Twitter Cards -->
+<meta name="twitter:title" content="The Truth about VPC Security Controls">
+<meta name="twitter:description" content="GCP's VPC Service Controls protection is often described as a virtual firewall for your GCP projects.  That metaphor quickly breaks down if you're trying to actually add it to your GCP projects. I learned that the hard way.">
+<meta name="twitter:site" content="@zainrzv">
+<meta name="twitter:creator" content="@zainrzv">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://localhost:4000/images/default-thumb.png">
+
+<!-- Open Graph -->
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Truth about VPC Security Controls">
+<meta property="og:description" content="GCP's VPC Service Controls protection is often described as a virtual firewall for your GCP projects.  That metaphor quickly breaks down if you're trying to actually add it to your GCP projects. I learned that the hard way.">
+<meta property="og:url" content="http://localhost:4000/blog/the-truth-about-vpc-security-controls/">
+<meta property="og:site_name" content="Zain Rizvi's blog">
+
+<meta property="og:image" content="http://localhost:4000/images/default-thumb.png">
+
+
+
+
+
+
+<link rel="canonical" href="http://localhost:4000/blog/the-truth-about-vpc-security-controls/">
+<link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Zain Rizvi's blog Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+
+<!-- HTML5 Shiv and Media Query Support -->
+<!--[if lt IE 9]>
+	<script src="http://localhost:4000/assets/js/vendor/html5shiv.min.js"></script>
+	<script src="http://localhost:4000/assets/js/vendor/respond.min.js"></script>
+<![endif]-->
+
+<!-- Modernizr -->
+<script src="/assets/js/vendor/modernizr-2.7.1.custom.min.js"></script>
+
+<link href='//fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700%7CPT+Serif:400,700,400italic' rel='stylesheet' type='text/css'>
+
+<!-- Icons -->
+<!-- 16x16 -->
+<link rel="shortcut icon" href="/favicon.ico">
+<!-- 32x32 -->
+<link rel="shortcut icon" href="/favicon.png">
+<!-- 57x57 (precomposed) for iPhone 3GS, pre-2011 iPod Touch and older Android devices -->
+<!-- <link rel="apple-touch-icon-precomposed" href="http://localhost:4000/images/apple-touch-icon-precomposed.png"> -->
+<!-- 72x72 (precomposed) for 1st generation iPad, iPad 2 and iPad mini -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://localhost:4000/images/apple-touch-icon-72x72-precomposed.png"> -->
+<!-- 114x114 (precomposed) for iPhone 4, 4S, 5 and post-2011 iPod Touch -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://localhost:4000/images/apple-touch-icon-114x114-precomposed.png"> -->
+<!-- 144x144 (precomposed) for iPad 3rd and 4th generation -->
+<!-- <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://localhost:4000/images/apple-touch-icon-144x144-precomposed.png"> -->
+
+<!-- add the applause button style & script -->
+<link rel="stylesheet" href="https://unpkg.com/applause-button/dist/applause-button.css" />
+<script src="https://unpkg.com/applause-button/dist/applause-button.js"></script>
+
+<!-- RSS feed metadata -->
+<link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Zain Rizvi's blog" />
+
+<!-- MailerLite Universal -->
+<script>
+  (function(m,a,i,l,e,r){ m['MailerLiteObject']=e;function f(){
+  var c={ a:arguments,q:[]};var r=this.push(c);return "number"!=typeof r?r:f.bind(c.q);}
+  f.q=f.q||[];m[e]=m[e]||f.bind(f.q);m[e].q=m[e].q||f.q;r=a.createElement(i);
+  var _=a.getElementsByTagName(i)[0];r.async=1;r.src=l+'?v'+(~~(new Date().getTime()/1000000));
+  _.parentNode.insertBefore(r,_);})(window, document, 'script', 'https://static.mailerlite.com/js/universal.js', 'ml');
+
+  var ml_account = ml('accounts', '1765926', 's9l3w3n7b0', 'load');
+</script>
+<!-- End MailerLite Universal -->
+
+<!-- Google Analytics -->
+<!--<script>
+  window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+  ga('create', '', 'auto');
+  ga('send', 'pageview');
+  </script>
+  <script async src='https://www.google-analytics.com/analytics.js'></script>
+-->
+<!-- Asynchronous Google Analytics snippet -->
+
+  <script>
+    var _gaq = _gaq || [];
+    var pluginUrl =
+   '//www.google-analytics.com/plugins/ga/inpage_linkid.js';
+    _gaq.push(['_require', 'inpage_linkid', pluginUrl]);
+    _gaq.push(['_setAccount', 'UA-63901701-1']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+</head>
+
+<body class="post">
+
+<!--[if lt IE 9]><div class="browser-upgrade alert alert-info">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div><![endif]-->
+
+<div class="navigation-wrapper">
+	<div class="site-name">
+		<a href="http://localhost:4000/">Zain Rizvi's blog</a>
+	</div><!-- /.site-name -->
+	<div class="top-navigation">
+		<nav id="site-nav" class="nav">
+		    <ul>
+		        
+				    
+				    <li><a href="http://localhost:4000/blog/" >Blog</a></li>
+				
+				    
+				    <li><a href="http://localhost:4000/about/" >About</a></li>
+				
+				<li>
+					<a href="http://localhost:4000/feed.xml"><img src="/images/rss.png" alt="rss feed" height=20 width=20/></a>
+				</li>
+		    </ul>
+		</nav>
+	</div><!-- /.top-navigation -->
+</div><!-- /.navigation-wrapper -->
+
+
+
+
+<div id="main" role="main">
+  <div class="article-author-side">
+    
+
+<div itemscope itemtype="http://schema.org/Person">
+
+
+	<img src="http://localhost:4000/images/bio-photo.png" class="bio-photo" alt="Zain Rizvi bio photo">
+
+
+  <h3 itemprop="name">Zain Rizvi</h3>
+  <p>Software Engineer @ Google, ex-Microsoftie. Experimenter, Life-long Student. Working to improve GCP AI Platform Notebooks. Opinions are all my own</p>
+  
+  <a href="//twitter.com/zainrzv" class="author-social" target="_blank"><i class="fa fa-fw fa-twitter-square"></i> Twitter</a>
+  
+  
+  
+  
+  
+  
+  <a href="http://github.com/ZainRizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-github"></i> Github</a>
+  <a href="//stackoverflow.com/users/21539/zain-rizvi" class="author-social" target="_blank"><i class="fa fa-fw fa-stack-overflow"></i> Stackoverflow</a>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  <a href="//techstuff.buzzsprout.com" class="author-social" target="_blank"><i class="fa fa-fw"></i> Podcast: Tech Stuff</a>
+</div>
+<hr />
+<div class="ml-form-embed"
+  data-account="1765926:s9l3w3n7b0"
+  data-form="1616786:y5z4v2">
+</div>
+
+    <hr />
+    <!-- https://applause-button.com/ -->
+
+    <div style="margin:0 auto; width: 58px" >
+    <applause-button style="width: 58px; height: 58px; align-content: center" multiclap="true"/>
+    </div>
+
+  </div>
+  <article class="post">
+    <div class="headline-wrap">
+      
+        <h1><a href="http://localhost:4000/blog/the-truth-about-vpc-security-controls/" rel="bookmark" title="The Truth about VPC Security Controls">The Truth about VPC Security Controls</a></h1>
+      
+    </div><!--/ .headline-wrap -->
+    <div class="article-wrap">
+     
+      
+
+<section id="table-of-contents" class="toc">
+<div id="drawer" markdown="1">
+<ul>
+  <li><a href="#what-problem-is-vpc-sc-supposed-to-solve-anyways">What Problem is VPC-SC Supposed to Solve Anyways?</a></li>
+  <li><a href="#vpc-sc-to-the-rescue">VPC-SC to the Rescue</a></li>
+  <li><a href="#the-big-misunderstanding">The Big Misunderstanding</a></li>
+  <li><a href="#the-power-is-yours">The Power is Yours</a></li>
+</ul>
+
+</div>
+</section><!-- /#table-of-contents -->
+      
+      <p>GCP’s <a href="https://cloud.google.com/vpc-service-controls">VPC Service Controls</a> protection is often described as a virtual firewall for your GCP projects.  That’s a useful mental model for your company’s decision makers to think with, but the analogy quickly breaks down if you’re an engineer trying to actually implement VPC-SC protection for your GCP projects.</p>
+
+<p>I learned that the hard way.</p>
+
+<p>Here I’ll describe just what VPC-SC is, why it was needed, and a big mistake I made which you reeeally want to make sure you avoid.</p>
+
+<h1 id="what-problem-is-vpc-sc-supposed-to-solve-anyways">What Problem is VPC-SC Supposed to Solve Anyways?</h1>
+
+<p>The core problem VPC-SC is meant to solve is to protect companies against <strong>data exfiltration</strong>.  That’s a fancy way to describe preventing adversaries from copying your private data off of your servers and onto their own.</p>
+
+<p><img src="/media/2020-02-21-vpc-sc-truth-1.png" alt="" /></p>
+
+<p>You can setup many types of protections to prevent attackers from getting access to your machines (let’s strong with decent passwords, shall we?), but following the principle of <a href="https://www.imperva.com/learn/application-security/defense-in-depth/">defense in depth</a>, enterprises with more critical data protection requirements sometimes need an additional layer of protection which says “Even if someone hacks into our machines, joke’s on them. They still can’t steal our data!” That’s the core problem we’re trying to solve here.</p>
+
+<p>This problem has been around for a while. How was it solved in the pre-cloud era?</p>
+
+<p>Back then, companies would have a private corporate network. All employee computers would be inside that network, and that network would have a set of strict firewall rules setup to prevent data from being passed to the outside world.  The firewall would only be opened up for a few, strictly vetted sites that employees had real business need to access.</p>
+
+<p>This way, even if an attacker gained access to a machine they still would not be able to send a copy of the data to themselves.  The firewall would block any such attempts.</p>
+
+<p><img src="/media/2020-02-21-vpc-sc-truth-2.png" alt="" /></p>
+
+<p>Now what changes if you move to the cloud?  Not too much actually!</p>
+
+<p>You can define firewall rules for your cloud VMs as well and you can set those up to match very similar rules to what your local company network had.</p>
+
+<p><img src="/media/2020-02-21-vpc-sc-truth-3.png" alt="" /></p>
+
+<p>But what if you wanted to use any of the other mouth watering array of services GCP offers?  Things like blob storage, pub sub, or juptyer notebooks as a service?</p>
+
+<p><img src="/media/2020-02-21-vpc-sc-truth-4.png" alt="" /></p>
+
+<p>Those services live outside the reach of your firewalls.  They’re run on servers which are the entry point for resources owned by all GCP customers.</p>
+
+<p>The usual solution of opening up a firewall hole to allow traffic just to those services doesn’t quite work.  Take Google Cloud Storage (GCS) for example, it’s specifically designed to store data so it would be trivial for an attacker to take your secret data, push it to their own GCS bucket and then download the data from there at their leisure.</p>
+
+<p><img src="/media/2020-02-21-vpc-sc-truth-5.png" alt="" /></p>
+
+<p>Some companies worked around this problem by self-hosting their own versions of these services within their private corporate networks.  That’s an option, but it’s expensive. You have to run, debug, maintain, and upgrade both the software and servers, all by yourself.  Your dev ops team is cursed to toil away in the kitchen making boiled chicken, while longingly looking upon the <a href="https://images.app.goo.gl/KedFe6Tui7kKR7cc7">duck confit</a> delivered to their neighbor’s doorsteps.</p>
+
+<p>VPC-SC provides a better way.</p>
+
+<h1 id="vpc-sc-to-the-rescue">VPC-SC to the Rescue</h1>
+
+<p>At a high level, VPC-SC controls are settings you can define across your projects that help you eat from the GCP buffet without worrying about <a href="https://youtu.be/YbFnrkeH7IA?t=11">an alligator eating you</a>.</p>
+
+<p>These settings are called your VPC-SC perimeter.  You create and enable a VPC-SC perimeter (the virtual firewall) by defining three things:</p>
+
+<ul>
+  <li>A list of GCP services that you want to set on lockdown mode</li>
+  <li>The specific projects of yours that the lockdown mode should be applied to</li>
+  <li>Exceptions you want to make to the above policy (via <a href="https://cloud.google.com/access-context-manager/docs">Access Context Manager</a>), but let’s ignore this category</li>
+</ul>
+
+<p>Let’s call the set of projects in the perimeter P. By adding GCP services and projects to the perimeter you’re saying you want to see the following behavior implemented by each of those services:</p>
+
+<ul>
+  <li>Data Ingress limits: the service shouldn’t allow anything outside the P projects in to read/write data to P. So data is never read from outside the perimeter.</li>
+  <li>Data Egress limits: The service shouldn’t allow projects P to write data anywhere <em>except</em> in one of the P projects. So data never gets written outside the perimeter.</li>
+</ul>
+
+<p>The above two clauses put together tell GCP Services to make sure your data stays inside your projects.</p>
+
+<p>So you’ve combined the traditional firewall + DNS rules that were used to protect computers, and added a layer of VPC-SC service level protection on top of that.  These combine to protect your resources from data exfiltration.</p>
+
+<p>How? Now, the only way to access your project’s data is from your VM, which is protected by your custom firewall rules.  Even if an adversary manages to get a hold of your GCP credentials they still wouldn’t be able to steal your data. They would first have to breach your firewall to enter your VPC-SC perimeter! (Defense in depth!)</p>
+
+<p><img src="/media/2020-02-21-vpc-sc-truth-6.png" alt="" /></p>
+
+<p>And that’s how you get the virtual firewall!</p>
+
+<p><em>The more astute among you may have noticed that the VPC-SC controls actually have nothing to do with your VPC network.  I never asked, but I assume the name VPC-SC was chosen for marketing purposes to make the ‘virtual firewall’ analogy easier to accept</em></p>
+
+<h1 id="the-big-misunderstanding">The Big Misunderstanding</h1>
+
+<p>There’s one horrible assumption that people tend to make when setting up VPC-SC networks.  I made this mistake too and spent a long time trying to debug it before I realized what I was doing wrong.</p>
+
+<p>Notice how you’re adding services into your VPC-SC perimeter to enable the “lockdown mode”?  What happens if you don’t add some service to the perimeter?  My naïve assumption was that it would be blocked and inaccessible to my VMs.</p>
+
+<p>That is absolutely, completely, 100% not the case.</p>
+
+<p>In fact, if you don’t add a service to your VPC-SC perimeter then you’ve basically left the route open for your internal VMs to send data to that service but neglected to lock down that service itself. Chickens are in the hen house, but the door is left wide open.</p>
+
+<p>Here comes the fox ready to exfiltrate your data!</p>
+
+<p><img src="/media/2020-02-21-vpc-sc-truth-7.png" alt="" /></p>
+
+<p>In case that wasn’t clear: *You must to <strong>opt-in</strong> to <strong>every__ service ***<em>that you want to have locked-down</em>. Opting-out means **zero</strong> protection.</p>
+
+<p>There were probably good technical reasons for setting this up as the default behavior. The first guess which comes to mind would be that not all GCP services support the VPC-SC lockdown yet. But boy, you can really get caught with your pants down if you don’t see this one coming.</p>
+
+<p>How do you protect yourself against this?  First step is to include all services that you actually plan to use in your VPC-SC perimeter.  Then, block all the services that you do not plan to use.  I’m not sure what the recommended way to do this is (probably something at either the DNS or the IAM levels) but that’s what you’ll want to do.  Otherwise you’ll have left a hole wide open that’s big enough for an adversary to drive a Humvee full of chickens through.</p>
+
+<p>Please don’t do that</p>
+
+<h1 id="the-power-is-yours">The Power is Yours</h1>
+
+<p>There’s a quick overview of what VPC-SC controls offer you and what they don’t.  Hope this helped you get a better understanding of how to set it up.</p>
+
+<p>If you have any thoughts, war stories, or corrections, shout out in the comments and let me know!</p>
+
+      <hr />
+      <br/>
+      <!-- https://applause-button.com/ -->
+
+    <div style="margin:0 auto; width: 58px" >
+    <applause-button style="width: 58px; height: 58px; align-content: center" multiclap="true"/>
+    </div>
+
+      <br/>
+      <div class="ml-form-embed"
+  data-account="1765926:s9l3w3n7b0"
+  data-form="1616590:u0m8l0">
+</div>
+
+
+      <hr/>
+
+      <footer role="contentinfo">
+        
+<!--
+<div class="social-share">
+  <h5>Thanks for reading! If you found this post valuable, your followers might also like it</h5>
+  <ul>
+    <li>
+      <a href="https://twitter.com/intent/tweet?text=http://localhost:4000/blog/the-truth-about-vpc-security-controls/" class="twitter" title="Share on Twitter"><i class="fa fa-twitter"></i><span> Twitter</span></a>
+    </li>
+    <li>
+      <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:4000/blog/the-truth-about-vpc-security-controls/" class="facebook" title="Share on Facebook"><i class="fa fa-facebook"></i><span> Facebook</span></a>
+    </li>
+  </ul>
+</div>
+-->
+<!-- /.social-share -->
+
+        <p class="byline"><strong>The Truth about VPC Security Controls</strong> was published on <time datetime="2020-02-21T00:00:00-08:00">February 21, 2020</time>.</p>
+      </footer>
+    </div><!-- /.article-wrap -->
+
+  </article>
+  
+  
+  <div class="related-articles">
+  <h3>You might also enjoy <small class="pull-right">(<a href="http://localhost:4000/blog/">View all posts</a>)</small></h3>
+    <ul>
+    
+      <li><a href="http://localhost:4000/blog/remembering-what-you-read-zettelkasten-vs-para/" title="Remembering what you read: Zettelkasten vs PARA">Remembering what you read: Zettelkasten vs PARA</a></li>
+    
+      <li><a href="http://localhost:4000/blog/quickly-building-products-for-actual-customers/" title="Quickly Building Products for ACTUAL Customers">Quickly Building Products for ACTUAL Customers</a></li>
+    
+      <li><a href="http://localhost:4000/blog/so-you-want-to-deep-work/" title="So you want to do Deep Work?">So you want to do Deep Work?</a></li>
+    
+    </ul>
+    <hr />
+  </div><!-- /.related-articles -->
+  
+
+
+  <section id="disqus_thread"></section><!-- /#disqus_thread -->
+
+</div><!-- /#main -->
+
+<div class="footer-wrap">
+  <footer>
+    
+
+<span>&copy; 2020 Zain Rizvi. Powered by <a href="http://jekyllrb.com" rel="nofollow">Jekyll</a> using the <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a> theme.</span>
+
+  </footer>
+</div><!-- /.footer-wrap -->
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="http://localhost:4000/assets/js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+<script src="/assets/js/scripts.min.js"></script>
+
+
+  
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'zainrizvi'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+
+
+</body>
+</html>

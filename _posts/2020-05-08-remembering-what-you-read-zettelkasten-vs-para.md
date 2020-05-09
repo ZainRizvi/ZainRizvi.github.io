@@ -20,7 +20,7 @@ FS also suggested writing down the book’s core ideas from memory right after y
 
 Those tips were exciting, but I couldn't stick with it.  I needed something different.
 
-Next I came across the [Zettelkasten note taking method](https://writingcooperative.com/zettelkasten-how-one-german-scholar-was-so-freakishly-productive-997e4e0ca125). It's core idea is to create atomic notes, where each note is about exactly one topic (not more than a few paragraphs tops) and nothing more. Then you file the away in your system by linking that note to other notes which seem most relevant to it. All the notes are written in your own words, so you’re really writing down your own thoughts here.
+Next I came across the [Zettelkasten note taking method](https://writingcooperative.com/zettelkasten-how-one-german-scholar-was-so-freakishly-productive-997e4e0ca125). Its core idea is to create atomic notes, where each note is about exactly one topic (not more than a few paragraphs tops) and nothing more. Then you file the away in your system by linking that note to other notes which seem most relevant to it. All the notes are written in your own words, so you’re really writing down your own thoughts here.
 
 ![](/media/2020-05-08-Remember what you read (2).png)
 
@@ -54,11 +54,11 @@ And it’s not just good for retention. I’m finding that this purpose-based or
 
 Even the step of summarizing what you read is optimized for efficiency. It's called [Progressive Summarization](https://fortelabs.co/blog/progressive-summarization-a-practical-technique-for-designing-discoverable-notes/)
 
-With progressive summarization you don't bother summarizing what you're learning, at least not as first. Instead you take the passages you found most interesting and copy them into your notes. If you ever reread those notes in the future then you can start highlighting the phrases that really spoke to you and if you reread them again, only then will you do the work to summarize the ideas in your own words.
+With progressive summarization you don't bother summarizing what you're learning, at least not at first. Instead you take the passages you found most interesting and copy them into your notes. If you ever reread those notes in the future then you can start highlighting the phrases that really spoke to you and if you reread them again, only then will you do the work to summarize the ideas in your own words.
 
 It's not that summarizing your notes from the beginning is bad, but if you procrastinate on it while still expecting yourself to do it then you're setting yourself up for failure. Progressive summarization offers you a way to delay summarization while still retaining value.
 
-Note what's happened here: Instead of forcing myself to be disciplined about organizing my notes, P.A.R.A. + Progressive Summarization takes advantage of the times when I'm **already excited to work on them**.  Each time I touch the notes, I have to take a small amount of effort which is proportionate to my level of interest in the task.  **We've replaced forced discipline with leveraged excitement**
+Note what's happened here: Instead of forcing myself to be disciplined about organizing my notes, P.A.R.A. + Progressive Summarization takes advantage of the times when I'm **already excited to work on them**.  Each time I touch the notes, I have to take a small amount of effort which is proportionate to my level of interest in the task.  **We've replaced forced discipline with leveraged excitement.**
 
 # Limit what you save
 
@@ -72,7 +72,7 @@ You're highly encouraged to **limit** the kind of things you save in your second
 
 Tiago recommends thinking about the 12 problems you care most about and _only_ store things related to those problems in your notebook (so skip the articles about ancient mummies...unless you're an archaeologist). https://fortelabs.co/blog/how-to-use-evernote-for-your-creative-workflow/
 
-By limiting which topics you put in your second brain you free up more cognitive space to notice what you do store. By storing less you’ll remember more.
+By limiting which topics you put in your second brain you free up more cognitive space to notice what you do store. By storing less you’ll remember more 🤯
 
 Not making your second brain cognitively overwhelming is an under-emphasized part of the PARA system. There shouldn't be anything in your project's section unless you are actively working on it. Even the other sections are also meant to be pruned on a regular basis so that they only represent your primary interests.  A good rule of thumb: if any folder gains more notes than you can easily skim (\~50-100 notes), it might be time to split that folder into two or maybe even delete some notes.
 
