@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Remembering what you read: Zettelkasten vs PARA'
+title: 'Remembering what you Read: Zettelkasten vs PARA'
 excerpt: I spent over a year researching better ways to take notes to remember what
   I read. Here's what I found.
 tags:
