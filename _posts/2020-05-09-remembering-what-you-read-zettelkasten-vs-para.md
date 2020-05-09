@@ -8,11 +8,13 @@ tags:
 tweets: []
 
 ---
-I love reading. But retaining what I read tends to be a challenge. I usually walk away from a book feeling good but with only a faint idea of what was in there. Heck, if I spend a couple hours online I'll barely remember what articles I read! And it's not just me, studies show that [you only retain a tiny percentage of what you read](https://learningsolutionsmag.com/articles/1379/brain-science-the-forgetting-curvethe-dirty-secret-of-corporate-training). I hated the idea of wasting all that time I spent reading, so about a year ago I started looking into ways to retain what I learned.
+I love reading. But retaining what I read tends to be a challenge. I usually walk away from a book feeling good but with only a faint idea of what was in there. Heck, if I spend a couple hours online I'll barely remember what articles I read! And it's not just me, studies show that [you only retain a tiny percentage of what you read](https://learningsolutionsmag.com/articles/1379/brain-science-the-forgetting-curvethe-dirty-secret-of-corporate-training).
+
+I hated the idea of wasting all that time I spent reading, so a year ago I started looking into ways to retain what I learned.
 
 # The Contenders
 
-My first attempt led me to Farnam Street’s tips on [remembering what you read](https://fs.blog/2014/05/remembering-what-you-read/). Their concept of writing your notes on the book itself was liberating (it’s okay to WRITE in my book?!?). But those notes would then be trapped in the analogue world, locked away until I happened to peruse the book some time in the future.
+My first attempt led me to Farnam Street’s tips on [remembering what you read](https://fs.blog/2014/05/remembering-what-you-read/). Their concept of writing your notes on the book itself was liberating (it’s okay to WRITE in my book?!?). Actively writing down notes helped me get more insights out of the text, but those thoughts would then be trapped in the analogue world, locked away until I happened to peruse the book some time in the future.
 
 ![](/media/2020-05-08-Remember what you read (1).png)
 
@@ -24,7 +26,7 @@ Next I came across the [Zettelkasten note taking method](https://writingcooperat
 
 ![](/media/2020-05-08-Remember what you read (2).png)
 
-The key here is that the linking process **groups relevant notes together**. Now when you’re interested in browsing your notes on a given topic, you’ll easily find related notes. You get to see how your ideas relate to each other as well as discover interesting ways they may play off against or even contradict one another.
+The key here is that the linking process **groups relevant notes together**. Now when you’re interested in browsing your notes on a given topic, you’ll easily find them. You get to see how your ideas relate to each other as well as discover interesting ways they may play off against or even contradict one another.
 
 But this technique is time intensive. You have to:
 
@@ -32,13 +34,13 @@ But this technique is time intensive. You have to:
 * Search for relevant notes to link it to
 * Potentially update your table of contents to find that note more easily later on
 
-If you take a lot of notes, it's easy for the stream of incoming notes to quickly leave you overwhelmed. This technique requires a large time commitment and dedication.
+If you take a lot of notes, the stream of incoming notes can quickly leave you overwhelmed. This technique requires time and dedication.
 
 I couldn't stick with it.
 
-Finally I discovered [P.A.R.A](https://fortelabs.co/blog/para/). P.A.R.A. offers a much easier alternative for busy people.
+Finally I discovered [P.A.R.A](https://fortelabs.co/blog/para/). It offers an easier option for busy people.
 
-With P.A.R.A. you organize all your notes by purpose, not by category. Let’s say you’re trying to build a SaaS app. You’ll have a folder just for that app. And if you study databases in order to build that app, you'll file any notes you take inside your app’s folder, not a “databases” folder.
+With P.A.R.A. you organize all your notes by purpose, not by category. Let’s say you’re trying to build an app. You’ll have a folder called 'app' for all notes about it. Now if you study databases in order to build it, you'll file any notes you take inside the 'app' folder, not in a separate 'databases' folder.
 
 ![](/media/2020-05-08-Remember what you read (3).png)
 
@@ -62,7 +64,7 @@ Note what's happened here: Instead of forcing myself to be disciplined about org
 
 # Limit what you save
 
-There is one other critical aspect of PARA that’s required to keep the system from being overwhelming. Successful followers of the Zettelkasten method seem to follow this instinctively, but I haven’t seen them explicitly mention this:
+There is one other critical aspect of PARA that’s required to keep the system from being overwhelming. Successful followers of the Zettelkasten method seem to follow this instinctively, but [it's rarely mentioned](https://zettelkasten.de/posts/collectors-fallacy/):
 
 You're highly encouraged to **limit** the kind of things you save in your second brain to the following:
 
@@ -70,7 +72,7 @@ You're highly encouraged to **limit** the kind of things you save in your second
 * Store things that surprise you: Don't store stuff you already know
 * A 12 select problems that you love to think about
 
-Tiago recommends thinking about the 12 problems you care most about and _only_ store things related to those problems in your notebook (so skip the articles about ancient mummies...unless you're an archaeologist). https://fortelabs.co/blog/how-to-use-evernote-for-your-creative-workflow/
+Tiago recommends thinking about [the 12 problems you care most about](https://fortelabs.co/blog/how-to-use-evernote-for-your-creative-workflow/) and _only_ store things related to those problems in your notebook (so skip the articles about ancient mummies...unless you're an archaeologist). 
 
 By limiting which topics you put in your second brain you free up more cognitive space to notice what you do store. By storing less you’ll remember more 🤯
 
