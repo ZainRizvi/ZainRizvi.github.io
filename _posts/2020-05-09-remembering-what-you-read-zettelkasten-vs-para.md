@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'Remembering what you Read: Zettelkasten vs PARA'
+title: 'Remembering what you Read: Zettelkasten vs P.A.R.A.'
 excerpt: I spent over a year researching better ways to take notes to remember what
   I read. Here's what I found.
 tags:
@@ -38,7 +38,7 @@ If you take a lot of notes, the stream of incoming notes can quickly leave you o
 
 I couldn't stick with it.
 
-Finally I discovered [P.A.R.A](https://fortelabs.co/blog/para/). It offers an easier option for busy people.
+Finally I discovered Building a Second Brain and it's [P.A.R.A](https://fortelabs.co/blog/para/) technique. It offers an easier option for busy people.
 
 With P.A.R.A. you organize all your notes by purpose, not by category. Let’s say you’re trying to build an app. You’ll have a folder called 'app' for all notes about it. Now if you study databases in order to build it, you'll file any notes you take inside the 'app' folder, not in a separate 'databases' folder.
 
