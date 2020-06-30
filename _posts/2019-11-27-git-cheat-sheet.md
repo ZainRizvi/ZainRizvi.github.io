@@ -95,6 +95,16 @@ If your current branch was branched off of master and you want to pull the lates
 
     git pull --rebase origin master
 
+# Rebase your branch to an arbitrary branch
+
+If you want to rebase your branch to any other branch. This command assumes that you're currently on the branch you wish to rebase
+
+    git rebase --onto [desired-parent-branch] [current-parent-branch]
+
+If you want to rebase it from a different branch, use the following command instead:
+
+    git rebase --onto [desired-parent-branch] [current-parent-branch] [branch-to-rebase]
+
 # Changing the Branch HEAD
 
 To change the current branch’s head to a different commit
