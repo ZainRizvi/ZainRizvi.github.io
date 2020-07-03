@@ -66,6 +66,8 @@ page_layout: page
 # Format titles with titlecase?
 titlecase: true
 
+feed:
+  posts_limit: 1000
 
 # Site owner
 owner:
