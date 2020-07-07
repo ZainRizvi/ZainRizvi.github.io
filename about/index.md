@@ -12,10 +12,17 @@ image:
 share: false
 
 ---
-I'm Zain Rizvi, a Software Engineer at Google working on the [Google Cloud Platform](https://cloud.google.com/)'s [AI Platform Notebooks](https://cloud.google.com/ai-platform-notebooks/). Previously I was part of the the [Microsoft Azure App Services](https://azure.microsoft.com/en-us/services/app-service/web/) team, and before that I worked on Windows.
+I'm Zain Rizvi, a Software Engineer at Stripe. In past lives I've helped develop [Google Cloud Platform](https://cloud.google.com/)'s [AI Platform Notebooks](https://cloud.google.com/ai-platform-notebooks/) and Microsoft's [Azure App Platform](https://azure.microsoft.com/en-us/services/app-service/web/). I even worked on Windows when I was a wee lad.
 
-I'm interested in cloud services, AI/ML, finding creative ways to solve customer problems, and work hard to be a [Lazy developer](http://blog.codinghorror.com/how-to-be-lazy-dumb-and-successful/). In case you couldn't tell I'm a big fan of [Jeff Atwood](http://blog.codinghorror.com/).
+The topics I'm most interested in include a few different fields, but a high level overview would include:
+* Tech industry:
+  * It's business strategy
+  * Mindsets for engineering effectively
+* Personal psychology:
+  * Introspective analysis
+  * Productivity hacking
+* Business & startups:
+  * Practicing rapid experimentation
+  * Seeing things from the customer's point of view and solving their *actual* problems
 
-Shout out in the comments if you have topics about Google Cloud, Azure Web Apps or cloud computing in general that you'd like to hear more about.
-
-You might also find a few interesting projects on my [Github](https://github.com/ZainRizvi).
+If any of the above sounds interesting to you you may want to join my newsletter to get the best articles I find on those topics as well as any insights I write about. You can also find me posting on twitter as [@ZainRzv](https://www.twitter.com/zainrzv)
