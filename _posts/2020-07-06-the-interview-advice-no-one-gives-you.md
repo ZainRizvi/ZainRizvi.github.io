@@ -9,7 +9,7 @@ tweets: []
 
 ---
 
-“What would you say if I asked you to design me a service capable of responding to thousands of user requests every second and latency was critical?” 
+“What would you say if I asked you to design me a service capable of responding to millions of user requests every second and latency was critical?” 
 
 “Umm...that you have to solve this problem at work. But you’re out of ideas, and are looking to interviewees for suggestions”
 
@@ -63,7 +63,7 @@ When you're in a real interview the world changes: You're locked in a cage with 
 
 You only get that experience in a real interview. And only real interviews teach you how to deal with it. The first interview will kick your ass. So will the second. But once you get a few under your belt you'll get used to the adrenaline rush. Perhaps enjoy it even. You'll become a bullfighter, confidently facing down the charging bull. That’s how you get over the fear.
 
-You may even discover these practice interviews are much easier! When the stakes are low that lion doesn't look so fierce. I've found that I perform the best in the interviews where I don't care about the outcome. I'm much more relaxed and at ease. I can think faster, my brain reaches out to more possibilities. Now, even in important interviews I try to convince myself that I don't really care. That mindset shift is only possible because I got to experience it in the low stakes games first.
+You may even find that these practice interviews are much easier! When the stakes are low that lion doesn't look so fierce. I've found that I perform the best in the interviews where I don't care about the outcome. I'm much more relaxed and at ease. I can think faster, my brain reaches out to more possibilities. Now, even in important interviews I try to convince myself that I don't really care. That mindset shift is only possible because I got to experience it in the low stakes games first.
 
 **Learn to answer the more ambiguous questions**
 
@@ -79,7 +79,7 @@ And I did. More than once.
 
 # Tip #3: Be open to learning during the interview
 
-I learned this one by accident, but boy does it pay off. And Lady Serendipity nearly changed the course of my life in a career fair from my college days.
+I learned this one by accident, but boy does it pay off.
 
 I was wandering around the booths with my bag full of swag. My eyes caught a pile of rubik’s cubes being given away by some company I'd never heard of. I wanted one! Of course I couldn't just go up and ask for it directly, so I went and chatted with the guy manning the booth. His name was Vince. A few minutes later I walked away with my prized rubik's cube in hand. That evening Vince called me up offering to conduct a full interview loop on campus. I already had a job offer from a company I liked, but I thought "Sure, why not? I could use the experience"
 
@@ -87,11 +87,10 @@ I had no intention of joining the company, they were some boring finance busines
 
 Turns out they liked that: the next day I had a second job offer. At a significantly higher salary than my first one. Oh, and they wanted to fly me to New York in two weeks for an introduction to the company. I still didn’t want to join, but a free trip to New York? Sign me up! The company's name: Bloomberg
 
-Bloomberg was a practiced hand at recruiting. They had a full two days of events to leave us starry eyed about the company. While there, Vince told me I’d made a great impression by fearlessly asking questions, even when I was stumped. 
+Bloomberg was a practiced hand at recruiting. They had a full two days of events to leave us starry eyed about the company (I came thiiiiis close to accepting their offer). While there, Vince told me I’d made a great impression by fearlessly asking questions, even when I was stumped. 
 
-Key takeaway: If you have a question, don’t hesitate to ask! And as an interviewer, I can attest: sincere interest is always a good sign.
+Since then I’ve stopped hesitating before asking any question in an interview. Let your curiosity run free! Don’t cage it! And as an interviewer, I can attest: sincere interest is always a good sign.
 
-So what happened to that Bloomberg offer? By the time I left New York I was ready to sign it. And I would have too if I hadn't later gotten an offer from Microsoft.
 
 # Tip #4: Keep your skills sharp even when you’re not job hunting
 
