@@ -9,7 +9,7 @@ tweets: []
 
 ---
 
-“What would you say if I asked you to design me a service capable of responding to thousands of user requests every second and latency was critical?”
+“What would you say if I asked you to design me a service capable of responding to thousands of user requests every second and latency was critical?” 
 
 “Umm...that you have to solve this problem at work. But you’re out of ideas, and are looking to interviewees for suggestions”
 
