@@ -15,7 +15,7 @@ tweets: []
 
 That’s the actual response I gave the interviewer the first time I was asked a design question. He had a good laugh. But then still made me design the service.
 
-In the decade since I’ve lost track of how many hours I’ve spent in the interview room, on both sides of the table. I’ve worked at Microsoft, Google, and Stripe, and gotten offers from many other companies. As I interviewed, I realized one thing: standard interviewing advice falls woefully short.
+In the decade since I’ve lost track of how many hours I’ve spent in the interview room, on both sides of the table. I’ve worked at Microsoft, Google, and Stripe, and received offers from many other companies. As I interviewed, I realized one thing: standard interviewing advice falls woefully short.
 
 What good does it do to practice coding problems for weeks if your mind goes blank in an interview room? How can you show your “best self” if you’re too afraid to let it out? Everyone says to be wary of the recruiters, but what if you weren’t?
 
@@ -45,6 +45,7 @@ Ask them questions! Things like:
 
 * “What should I do to prepare for the interview?”
 * “What are the company values that would be good to highlight during the interview?”
+* "I'm interested in X, Y, & Z. What other companies are hiring?" (Only try this if the recruiter reached out to you first, they work for a recruiting agency, and you haven't had your interview yet)
 
 And be forthright about any problems you run into:
 * If you get sick the day before the interview, call up the recruiter and ask to reschedule. They want to test you when you're at your best!
