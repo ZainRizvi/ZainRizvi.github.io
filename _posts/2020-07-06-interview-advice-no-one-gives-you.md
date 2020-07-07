@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 'The Interviewing Advice No One Gives You'
+title: 'The Interview Advice No One Gives You'
 excerpt: I spent over a year researching better ways to take notes to remember what
   I read. Here's what I found.
 tags:
