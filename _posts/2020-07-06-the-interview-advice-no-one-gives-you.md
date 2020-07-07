@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 'The Interview Advice No One Gives You'
-excerpt: I spent over a year researching better ways to take notes to remember what
-  I read. Here's what I found.
+excerpt: What good does it do to practice coding problems for weeks if your mind goes blank in an interview room? How can you show your “best self” if you’re too afraid to let it out? Everyone says to be wary of the recruiters, but what if you weren’t?
+
 tags:
 - interviews
 tweets: []
