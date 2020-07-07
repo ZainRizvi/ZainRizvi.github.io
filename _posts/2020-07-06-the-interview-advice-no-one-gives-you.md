@@ -106,7 +106,8 @@ What hadn't occurred to me at the time is that C# is a very verbose language whi
 
 Four months later a company called Stripe reached out to me. They also expect you to write working code and even let you use your own IDE. This time I was ready. And now I work there. (Psst, [we're hiring](https://stripe.com/jobs/search)!)
 
-These four strategies have helped me over and over again to perform well in the interview room: leveraging the recruiters, doing real interviews for practice, asking questions during interviews, and keeping those skills sharp even after getting the job. 
+These four strategies have helped me over and over again to perform well in the interview room: leveraging the recruiters, doing real interviews for practice, asking questions during interviews, and keeping those skills sharp even after getting the job.
 
-I hope you find them as useful as I did. If you were able to put these to good use or if you've discovered your own tips please reach out! I'd love to learn.
+What do all these tactics have in common? They eliminate your FEAR. That fear holds you back from letting your best self out. Do them often enough and interview rooms will feel like your home turf instead of a foreign war zone.
 
+“Never let them see you sweat” Vince told me. But when the stakes are low and you’re having fun, who sweats?
