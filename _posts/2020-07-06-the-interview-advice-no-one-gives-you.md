@@ -21,7 +21,7 @@ What good does it do to practice coding problems for weeks if your mind goes bla
 
 I tested the answers to these questions multiple times (sometimes by accident). Turns out conventional wisdom gets you conventional results. But you can do better. Interviewing is a skill and anyone can learn it.
 
-I haven't seen anyone talk about these aspects of interviewing, but they've been invaluable to me time and time again.
+For some reason no one talks about these challenges with interviewing. But I’ve found some principles that help me over and over again:
 
 We’ll cover:
 * Using recruiters to your advantage
@@ -42,14 +42,12 @@ Now the recruiter wants to work with you. Their whole job is to, you know, recru
 **How can you take advantage of this?**
 
 Ask them questions! Things like:
-
-* “What should I do to prepare for the interview?”
 * “What are the company values that would be good to highlight during the interview?”
 * "I'm interested in X, Y, & Z. What other companies are hiring?" (Only try this if the recruiter reached out to you first, they work for a recruiting agency, and you haven't had your interview yet)
 
-And be forthright about any problems you run into:
+And you can be forthright about any problems you run into:
 * If you get sick the day before the interview, call up the recruiter and ask to reschedule. They want to test you when you're at your best!
-* Work pressures left you with no time to prepare? Tell them! Ask to reschedule. At worst they'll say "Sorry, we can't do that". It will not hurt your chances of getting in
+* Work pressures left you with no time to prepare? You can still try rescheduling. At worst they'll say "sorry, we can't do that". It will not hurt your chances of getting in
 
 Your mad technical skills no longer matter to them. If anything, humility and an openness to learning will show you in the best light. 
 
@@ -100,7 +98,7 @@ It's an extremely liberating feeling knowing that even if you lose your job you'
 
 I haven't been very good about this myself, but every once in a while I'll accept an invitation from a recruiter (it helps to set up your LinkedIn account). I don't bother doing any prep for these interviews, at least not initially. Those interviews show me the areas I need to brush up on or where the industry practices are changing.
 
-For example, in a tech screen I did last summer there was some miscommunication and I didn’t realize they expected actual working code. Instead of the usual sudo code written in a google doc, the interviewer told me to select my language of choice on an online IDE. Now, I don't have a particular language I consider myself super proficient in. I touch many different tools at work and end up having to use a different language about every 5 months. So even basic things like "create an array" tends to require googling the syntax. Given that, what's my favorite language of choice? C#, hands down. So I selected that. 
+For example, in a tech screen I did last summer there was some miscommunication and I didn’t realize they expected actual working code. Instead of the usual pseudo code written in a google doc, the interviewer told me to select my language of choice on an online IDE. Now, I don't have a particular language I consider myself super proficient in. I touch many different tools at work and end up having to use a different language about every 5 months. So even basic things like "create an array" tends to require googling the syntax. Given that, what's my favorite language of choice? C#, hands down. So I selected that. 
 
 What hadn't occurred to me at the time is that C# is a very verbose language which Visual Studio beautifully automates away the tedious parts of. This online IDE automated nothing. Even for a basic task like creating an array I had to spend precious interview minutes looking up the right package to import and the exact syntax to use. Needless to say, I ran out of time. I crashed and burned there, but it opened my eyes to the way interviews are changing and how I needed to prepare in the future.
 
